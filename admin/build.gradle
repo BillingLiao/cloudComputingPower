@@ -1,16 +1,9 @@
-plugins {
-    id 'java'
-}
-
-group 'com.ant'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+dependencies{
+    compile libs.mysql
+    compile libs.mybatis
+    compile libs.mybatisplus
+    compile libs.durid
+    compile libs.freemarker
+    compile libs.jedis
+    compile libs.shiro
 }

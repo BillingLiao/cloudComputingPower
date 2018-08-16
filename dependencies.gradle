@@ -2,7 +2,7 @@ ext {
     versions = [
             springBootVersion: '2.0.0.RELEASE',
             mybatisplusVersion: '2.1.9',
-//            shiroVersion: '1.4.0'
+            shiroVersion: '1.4.0'
     ]
 libs = [
         common : [
@@ -28,7 +28,14 @@ libs = [
         durid : [
                 "com.alibaba:druid-spring-boot-starter:1.1.9"
         ],
-
+        jedis   : [
+                "redis.clients:jedis:2.9.0"
+        ],
+        shiro   : [
+                "org.apache.shiro:shiro-spring:${versions.shiroVersion}",
+                // https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache
+                "org.apache.shiro:shiro-ehcache:${versions.shiroVersion}"
+        ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
 
