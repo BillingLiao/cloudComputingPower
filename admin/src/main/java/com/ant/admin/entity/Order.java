@@ -1,5 +1,7 @@
 package com.ant.admin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
@@ -10,6 +12,7 @@ import java.util.Date;
  * @author Billing
  * @date 2018/8/13 9:31
  */
+@TableName("t_order")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -17,6 +20,7 @@ public class Order implements Serializable {
     /**
      * 订单编号
      */
+    @TableId
     private Integer orderId;
 
     /**

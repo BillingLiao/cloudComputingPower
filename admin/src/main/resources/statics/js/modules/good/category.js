@@ -199,61 +199,61 @@ Menu.initColumn = function () {
         {title: '分类名称', field: 'name', visible: false,align: 'center', valign: 'middle', sortable: true, width: '100px'},
         {title: '频道名称', field: 'channelName', align: 'center', valign: 'middle', sortable: true, width: '100px'},
         {title: '分类类型', field: 'type', align: 'center', valign: 'middle', sortable: true, width: '100px', formatter: function(item, index){
-            if(item.type === 0){
+            if(item === 0){
                 return '<span class="label label-primary">总目录</span>';
             }
-            if(item.type === 1){
+            if(item === 1){
                 return '<span class="label label-success">一级分类</span>';
             }
-            if(item.type === 2){
+            if(item === 2){
                 return '<span class="label label-warning">二级分类</span>';
             }
         }},
         {title: '是否显示', field: 'status', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
-       	 if(item.status === 0){
+       	 if(item === 0){
                 return '<span class="label label-primary">隐藏</span>';
             }
-            if(item.status === 1){
+            if(item === 1){
                 return '<span class="label label-success">显示</span>';
             }
        }},
        {title: '导航栏', field: 'showInNav', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
-      	 if(item.showInNav === 0){
+      	 if(item === 0){
                return '<span class="label label-primary">隐藏</span>';
            }
-           if(item.showInNav === 1){
+           if(item === 1){
                return '<span class="label label-success">显示</span>';
            }
       }},
       {title: '为你推荐', field: 'showInCommend', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
-       	 if(item.showInCommend === 0){
+       	 if(item === 0){
                 return '<span class="label label-primary">默认</span>';
             }
-            if(item.showInCommend === 1){
+            if(item === 1){
                 return '<span class="label label-success">推荐</span>';
             }
        }},
       {title: '是否置顶', field: 'showInTop', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
-     	 if(item.showInTop === 0){
+     	 if(item === 0){
               return '<span class="label label-primary">默认</span>';
           }
-          if(item.showInTop === 1){
+          if(item === 1){
               return '<span class="label label-success">置顶</span>';
           }
      }},
      {title: '是否热门', field: 'showInHot', align: 'center', valign: 'middle', sortable: true, width: '80px', formatter: function(item, index){
-    	 if(item.showInHot === 0){
+    	 if(item === 0){
              return '<span class="label label-primary">默认</span>';
          }
-         if(item.showInHot === 1){
+         if(item === 1){
              return '<span class="label label-success">热门</span>';
          }
     }},{title: '分类小图标', field: 'icon', align: 'center', valign: 'middle', sortable: true, width: '100px', formatter: function(item, index){
-   	 if(item.icon){
-         return  '<a class="btn btn-sm btn-info" onclick="icon('+item.categoryId+',&apos;'+item.icon+'&apos;)"><i class="fa fa-file-photo-o"></i>&nbsp;预览图片</a>';
+   	 if(item){
+         return  '<a class="btn btn-sm btn-info" onclick="icon('+''/*item.categoryId*/+',&apos;'+item.icon+'&apos;)"><i class="fa fa-file-photo-o"></i>&nbsp;预览图片</a>';
      }else{
     	 
-    	 return  '<a class="btn btn-sm btn-danger" onclick="icon('+item.categoryId+')"><i class="fa fa-file-photo-o"></i>&nbsp;暂无图片</a>';
+    	 return  '<a class="btn btn-sm btn-danger" onclick="icon('+''/*item.categoryId*/+')"><i class="fa fa-file-photo-o"></i>&nbsp;暂无图片</a>';
      }
       
       
@@ -283,7 +283,7 @@ $(function() {
 	    table.setIdField("categoryId");
 	    table.setCodeField("categoryId");
 	    table.setParentCodeField("parentId");
-	    table.setExpandAll(true);
+	    //table.setExpandAll(true);
 	    table.setData(vm.search);
 	    table.init();
 	    Menu.table = table;

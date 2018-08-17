@@ -19,7 +19,14 @@ $(function () {
 	        }}, 								 			
 			{ label: '出生日期', name: 'birth', index: 'birth', width: 80 }, 			
 			{ label: '年龄', name: 'age', index: 'age', width: 80 }, 			
-			{ label: '用户头像', name: 'picImg', index: 'pic_img', width: 80 }, 			
+			{ label: '用户头像', name: 'picImg', index: 'pic_img', width: 200 ,formatter: function(cellvalue, options, rowObject){
+				 if(cellvalue)
+			            return '<img  style="width:200x;height:200px;" src="'+cellvalue+'" />';
+					 else
+						 return '暂无图片';
+			           
+	           
+	        }}, 			
 			{ label: '状态 ', name: 'status', index: 'status', width: 80 ,formatter: function(cellvalue, options, rowObject){
 				if(cellvalue == 0){
 	                return '<span class="label label-primary">正常/span>';

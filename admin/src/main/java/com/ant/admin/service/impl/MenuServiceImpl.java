@@ -8,6 +8,8 @@ import com.ant.admin.service.MenuService;
 import com.ant.admin.service.RoleMenuService;
 import com.ant.admin.service.UserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +23,18 @@ import java.util.List;
 @Service("menuService")
 public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  MenuService{
 
+    private Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
+
     @Autowired
     private UserService userService;
     @Autowired
     private RoleMenuService roleMenuService;
 
+    /**
+     * 根据父菜单，查询子菜单
+     * @param parentId 父菜单ID
+     * @param menuIdList  用户菜单ID
+     */
     @Override
     public List<Menu> queryListParentId(Integer parentId, List<Integer> menuIdList) {
         List<Menu> menuList = queryListParentId(parentId);
@@ -35,23 +44,33 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
 
         List<Menu> userMenuList = new ArrayList<>();
         for(Menu menu : menuList){
-            if(menuIdList.contains(menu.getMenuId())){
+            //if(menuIdList.contains(menu.getMenuId())){
                 userMenuList.add(menu);
-            }
+           // }
         }
         return userMenuList;
     }
 
+    /**
+     * 根据父菜单，查询子菜单
+     * @param parentId 父菜单ID
+     */
     @Override
     public List<Menu> queryListParentId(Integer parentId) {
         return baseMapper.queryListParentId(parentId);
     }
 
+    /**
+     * 获取不包含按钮的菜单列表
+     */
     @Override
     public List<Menu> queryNotButtonList() {
         return baseMapper.queryNotButtonList();
     }
 
+    /**
+     * 获取用户菜单列表
+     */
     @Override
     public List<Menu> getUserMenuList(Integer userId) {
         //系统管理员，拥有最高权限
@@ -64,6 +83,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
         return getAllMenuList(menuIdList);
     }
 
+    /**
+     * 删除
+     */
     @Override
     public void delete(Integer menuId) {
         //删除菜单

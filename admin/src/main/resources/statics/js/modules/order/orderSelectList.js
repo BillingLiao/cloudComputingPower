@@ -74,7 +74,6 @@ $(function () {
            /* { label: '配送方式', name: 'expressType', width: 80 },
             { label: '快递信息', name: 'expressMsg',width: 80},*/
             { label: '订单状态', name: 'orderStatus', width: 80, formatter: function (cellvalue, options, rowObject) {     
-            	alert(cellvalue);
             	return getOrderStatus(cellvalue);
             }},
 

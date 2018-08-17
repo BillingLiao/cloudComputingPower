@@ -50,6 +50,7 @@ var vm = new Vue({
 		},
 		showList: true,
 		title: null,
+		isReadOnly:null,
 		schedule: {}
 	},
 	methods: {
@@ -71,6 +72,7 @@ var vm = new Vue({
 				vm.showList = false;
                 vm.title = "修改";
 				vm.schedule = r.schedule;
+				vm.isReadOnly = "readonly";
 			});
 		},
 		saveOrUpdate: function (event) {

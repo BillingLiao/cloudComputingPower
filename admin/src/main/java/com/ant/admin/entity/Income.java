@@ -1,5 +1,8 @@
 package com.ant.admin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,6 +12,7 @@ import java.math.BigDecimal;
  * @author Billing
  * @date 2018/8/10 18:08
  */
+@TableName("t_income")
 public class Income implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -16,6 +20,7 @@ public class Income implements Serializable {
     /**
      * 收益编号
      */
+    @TableId
     private Integer incomeId;
 
     /**

@@ -12,8 +12,10 @@
 <script src="${request.contextPath}/statics/libs/bootstrap-table.min.js"></script>
 <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.min.js"></script>
 <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
-<script src="${request.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+<!-- <script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.js"></script>
+ --><script src="${request.contextPath}/statics/plugins/treegrid/tree.table.js"></script>
+<script src="${request.contextPath}/statics/plugins/treegrid/jquery.treegrid.extension.boostrap-treetable.js"></script>  
+
 </head>
 <body>
 	<div id="rrapp" v-cloak>
@@ -25,9 +27,9 @@
 
 				</select>
 				<input type="text" class="form-control"  v-model="search.name"  @keyup.enter="query" placeholder="分类名称"     style="width: 17%;display: inline-block;">
- 		
-	 
-			<a class="btn btn-default" @click="query">查询</a>
+	 		<a class="btn btn-default" @click="query">查询</a>
+	 		</div>
+			
 				<#if shiro.hasPermission("good:category:save")> <a
 					class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 				</#if>

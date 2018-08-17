@@ -8,6 +8,15 @@
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
+         <div class="form-group">
+ 				<select id="search_channelId" name="channelId" class="selectpicker" @keyup.enter="query" 
+							data-live-search="true"  >
+				</select>
+				<select id="search_oneCategory" name="channelId" class="selectpicker" @keyup.enter="query" 
+							data-live-search="true"  >
+				</select>
+				 				<a class="btn btn-default" @click="query">查询</a>
+ 		</div>
 			<#if shiro.hasPermission("good:categoryspec:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>

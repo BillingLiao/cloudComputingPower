@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.ToticesDao" >
 
-    <!-- 可根据自己的需求，是否要使用 -->
+<!--    &lt;!&ndash; 可根据自己的需求，是否要使用 &ndash;&gt;
     <resultMap id="toticesMap" type="com.ant.admin.entity.Totices">
         <result column="toticesId" property="totices_id"/>
         <result column="userId" property="user_id"/>
@@ -16,11 +16,8 @@
     </resultMap>
     <select id="find" parameterType="Map" resultType="toticesMap">
         select * from t_totices
-        <where>
-            1=1
-        </where>
     </select>
     <select id="findAll" resultType="toticesMap">
         select * from t_totices
-    </select>
+    </select>-->
 </mapper>

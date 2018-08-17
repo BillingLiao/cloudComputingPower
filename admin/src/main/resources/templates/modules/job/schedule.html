@@ -45,13 +45,13 @@
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">bean名称</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="schedule.beanName" placeholder="spring bean名称，如：testTask"/>
+			      <input type="text" class="form-control" v-model="schedule.beanName" :readonly="isReadOnly"  placeholder="spring bean名称，如：testTask"/>
 			    </div>
 			</div>
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">方法名称</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="schedule.methodName" placeholder="方法名称"/>
+			      <input type="text" class="form-control" v-model="schedule.methodName"  :readonly="isReadOnly" placeholder="方法名称"/>
 			    </div>
 			</div>
 			<div class="form-group">

@@ -1,4 +1,4 @@
-function getchannelList() {//获取下拉学校列表
+function getchannelList() {//获取下拉频道列表
 	$.ajax({
 		url : baseURL +"good/channel/getChannelList",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
 		// 数据发送方式
@@ -10,13 +10,18 @@ function getchannelList() {//获取下拉学校列表
 		
  		// 回调函数，接受服务器端返回给客户端的值，即result值
 		success : function(data) {
-			console.info(data);
-			 if(!data.data||data.data.length==0){
+ 			 if(!data.data||data.data.length==0){
 				alert("请先添加频道数据")
 			} 
+ 			$('#search_channelId').append(
+			"<option value=''>所有频道 </option>");
+ 			
 				$('#channelId').append(
 				"<option value=''>所有频道 </option>");
 			$.each(data.data, function(i) {
+				$('#search_channelId').append(
+						"<option value=" + data.data[i].channelId + ">"
+								+ data.data[i].name + "</option>");
 				$('#channelId').append(
 						"<option value=" + data.data[i].channelId + ">"
 								+ data.data[i].name + "</option>");
@@ -24,6 +29,9 @@ function getchannelList() {//获取下拉学校列表
   			$('#channelId').selectpicker('refresh');
  			$('#channelId').selectpicker('val', '');
  			$('#channelId').selectpicker('render');
+ 			$('#search_channelId').selectpicker('refresh');
+ 			$('#search_channelId').selectpicker('val', '');
+ 			$('#search_channelId').selectpicker('render');
 
 		},
 		error : function(data) {
@@ -36,6 +44,9 @@ function getchannelList() {//获取下拉学校列表
 }
 function getOneCategoryList() {//
 	var channelId =   $('#channelId').selectpicker('val');
+	if(!channelId){
+		channelId =   $('#search_channelId').selectpicker('val');
+	}
 	$.ajax({
 		url : baseURL +"good/category/getOneCategorylist",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
 		// 数据发送方式
@@ -50,9 +61,17 @@ function getOneCategoryList() {//
 			 if(!data.data||data.data.length==0){
 				alert("请先添加商品分类数据")
 			} 
+				$('#search_oneCategory').empty();
+	 			$('#search_oneCategory').append(
+				"<option value=''>所有分类 </option>");
+	 			
 			$('#categoryIdAdd').empty();
 	 			$('#categoryId').empty();
 			$.each(data.data, function(i) {
+				$('#search_oneCategory').append(
+						"<option value=" + data.data[i].categoryId   + ">"
+								+ data.data[i].name + "</option>");
+				
 				$('#categoryId').append(
 						"<option value=" + data.data[i].categoryId + ">"
 								+ data.data[i].name + "</option>");
@@ -65,6 +84,8 @@ function getOneCategoryList() {//
  			$('#categoryId').selectpicker('val', '');
  			$('#categoryIdAdd').selectpicker('refresh');
  			$('#categoryIdAdd').selectpicker('val', '');
+ 			$('#search_oneCategory').selectpicker('refresh');
+ 			$('#search_oneCategory').selectpicker('val', '');
 		},
 		error : function(data) {
 
@@ -77,6 +98,21 @@ function getOneCategoryList() {//
 
 
 $(function () {
+	$("#search_channelId").selectpicker({  
+	    noneSelectedText : '请选择频道'  ,
+	    liveSearchPlaceholder : "请输入关键字",
+	    noneResultsText : "内容无法匹配"
+	});
+	$("#search_oneCategory").selectpicker({  
+	    noneSelectedText : '请选择一级分类'  ,
+	    liveSearchPlaceholder : "请输入关键字",
+	    noneResultsText : "内容无法匹配"
+	});
+	
+	  $('#search_channelId').change(function(){ 
+		  getOneCategoryList();  
+	  });
+	
 	  $('#channelId').change(function(){ 
 		  getOneCategoryList();  
 	  });
@@ -150,19 +186,23 @@ var vm = new Vue({
 		showList: true,
 		title: null,
 		categorySpec: {},
-		 addShow:true
+		 addShow:true,
+		 search:{}
 	},
 	methods: {
 		query: function () {
+			vm.search.categoryId =$('#search_oneCategory').selectpicker('val');
 			vm.reload();
 		},
 		add: function(){
+			$('#channelId').selectpicker('val', '');
 			vm.addShow=true;
 			vm.showList = false;
 			vm.title = "新增";
 			vm.categorySpec = {sort:0,isShow:1,isMobileShow:1};
 		},
 		update: function (event) {
+			$('#channelId').selectpicker('val', '');
 			vm.addShow=false;
 			var id = getSelectedRow();
 			if(id == null){
@@ -229,6 +269,7 @@ var vm = new Vue({
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
+			    postData:vm.search,
                 page:page
             }).trigger("reloadGrid");
 		}

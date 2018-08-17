@@ -229,7 +229,9 @@ function spec(goodId){
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(data){
-							 layer.close(index);
+							vm.reload(); 
+							layer.close(index);
+							 
 						});
 					}else{
 						alert(r.msg, function(data){
@@ -559,7 +561,9 @@ $(function () {
 	           
 	        }}, 
 /*			{ label: '搜索的关键词', name: 'searchKey', index: 'search_key', width: 80 }, 			
-*/			{ label: '销量', name: 'sales', index: 'sales', width: 100 }, 			
+*/			{ label: '总销量', name: 'salesVolume', index: 'salesVolume', width: 100 }, 
+			{ label: '总库存', name: 'stock', index: 'stock', width: 100 }, 		
+			{ label: '访问量', name: 'pageViews', index: 'pageViews', width: 100 }, 		
 			/*{ label: '页面标题', name: 'pageTitle', index: 'page_title', width: 80 }, 			
 			{ label: '页面的描述', name: 'pageDescription', index: 'page_description', width: 80 }, 			
 			{ label: '页面的关键词', name: 'pageKeyword', index: 'page_keyword', width: 80 }, 	*/		

@@ -1,6 +1,11 @@
 package com.ant.admin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +16,7 @@ import java.util.Date;
  * @author Billing
  * @date 2018-8-10 16:25
  */
+@TableName("t_bank")
 public class Bank implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,6 +24,7 @@ public class Bank implements Serializable {
     /**
      * 银行卡编号
      */
+    @TableId
     private Integer bankId;
 
     /**
@@ -54,12 +61,16 @@ public class Bank implements Serializable {
      * 创建时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(fill = FieldFill.INSERT)
     private Date createAt;
 
     /**
      * 更新时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(fill = FieldFill.UPDATE)
     private Date updateAt;
 
     /**

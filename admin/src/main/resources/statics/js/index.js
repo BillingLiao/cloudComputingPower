@@ -41,7 +41,7 @@ var vm = new Vue({
 		system:'飞特',
 		user:{},
 		menuList:{},
-		main:"main",
+		main:"main.html",
 		password:'',
 		newPassword:'',
         navTitle:"控制台",

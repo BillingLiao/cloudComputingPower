@@ -1,6 +1,5 @@
 dependencies{
     compile libs.mysql
-    compile libs.mybatis
     compile libs.mybatisplus
     compile libs.durid
     compile libs.freemarker
