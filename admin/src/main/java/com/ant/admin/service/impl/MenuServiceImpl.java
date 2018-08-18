@@ -44,9 +44,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
 
         List<Menu> userMenuList = new ArrayList<>();
         for(Menu menu : menuList){
-            //if(menuIdList.contains(menu.getMenuId())){
+            if(menuIdList.contains(menu.getMenuId())){
                 userMenuList.add(menu);
-           // }
+            }
         }
         return userMenuList;
     }
@@ -94,8 +94,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
         roleMenuService.deleteByMap(new MapUtils().put("menu_id", menuId));
     }
 
-
-
     /**
      * 获取所有菜单列表
      */
@@ -104,7 +102,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
         List<Menu> menuList = queryListParentId(0, menuIdList);
         //递归获取子菜单
         getMenuTreeList(menuList, menuIdList);
-
         return menuList;
     }
 
