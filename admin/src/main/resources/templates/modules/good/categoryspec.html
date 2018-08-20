@@ -17,15 +17,15 @@
 				</select>
 				 				<a class="btn btn-default" @click="query">查询</a>
  		</div>
-			<#if shiro.hasPermission("good:categoryspec:save")>
+			<#--<#if shiro.hasPermission("good:categoryspec:save")>-->
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
-			</#if>
-			<#if shiro.hasPermission("good:categoryspec:update")>
+			<#--</#if>
+			<#if shiro.hasPermission("good:categoryspec:update")>-->
             <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-			</#if>
-			<#if shiro.hasPermission("good:categoryspec:delete")>
+			<#--</#if>
+			<#if shiro.hasPermission("good:categoryspec:delete")>-->
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
+			<#--</#if>-->
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>
