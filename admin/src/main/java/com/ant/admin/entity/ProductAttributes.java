@@ -16,6 +16,19 @@ public class ProductAttributes implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public ProductAttributes(){
+
+    }
+
+    public ProductAttributes(Integer productId, String remark, String name, String value, Short status, Integer sort) {
+        this.productId = productId;
+        this.remark = remark;
+        this.name = name;
+        this.value = value;
+        this.status = status;
+        this.sort = sort;
+    }
+
     /**
      * 产品属性编号
      */
@@ -28,9 +41,14 @@ public class ProductAttributes implements Serializable {
     private Integer productId;
 
     /**
+     * 属性备注
+     */
+    private String remark;
+
+    /**
      * 属性名
      */
-    private String Name;
+    private String name;
 
     /**
      * 属性值
@@ -46,28 +64,6 @@ public class ProductAttributes implements Serializable {
      * 排序
      */
     private Integer sort;
-
-    /**
-     * 创建时间
-     */
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createAt;
-
-    /**
-     * 更新时间
-     */
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date updateAt;
-
-    /**
-     * 创建者
-     */
-    private Integer createUser;
-
-    /**
-     * 更新者
-     */
-    private Integer updateUser;
 
     public Integer getAttributesId() {
         return attributesId;
@@ -85,12 +81,20 @@ public class ProductAttributes implements Serializable {
         this.productId = productId;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getValue() {
@@ -115,37 +119,5 @@ public class ProductAttributes implements Serializable {
 
     public void setSort(Integer sort) {
         this.sort = sort;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Integer getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
     }
 }

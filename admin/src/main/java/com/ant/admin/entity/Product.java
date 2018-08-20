@@ -1,10 +1,15 @@
 package com.ant.admin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldFill;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,9 +20,23 @@ import java.util.Set;
  * @date 2018/8/10 18:25
  */
 @TableName("t_product")
-public class Product implements Serializable {
+public class Product<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public Product(){
+
+    }
+
+    public Product(T t) {
+        try {
+            BeanUtils.copyProperties(this, t);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 产品编号
@@ -28,7 +47,7 @@ public class Product implements Serializable {
     /**
      * 产品类别编号
      */
-    private Integer typeId;
+    private Integer categoryId;
 
     /**
      * 产品名称
@@ -49,22 +68,28 @@ public class Product implements Serializable {
      * 创建时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(fill = FieldFill.INSERT)
     private Date createAt;
 
     /**
      * 更新时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(fill = FieldFill.UPDATE)
     private Date updateAt;
 
     /**
      * 创建者
      */
+    @TableField(fill = FieldFill.INSERT)
     private Integer createUser;
 
     /**
      * 更新者
      */
+    @TableField(fill = FieldFill.UPDATE)
     private Integer updateUser;
 
     public Integer getProductId() {
@@ -75,12 +100,12 @@ public class Product implements Serializable {
         this.productId = productId;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getProductName() {

@@ -1,14 +1,34 @@
 package com.ant.admin.dto;
 
+import com.ant.admin.entity.Product;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 云算力产品
+ * 云算力产品明细表
  *
  * @author Billing
  * @date 2018/8/13 11:05
  */
-public class CloudProduct {
+@TableName("t_cloud_product")
+public class CloudProduct extends Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 理财明细id
+     */
+    @TableId
+    private Integer cloudId;
+
+    /**
+     * 产品Id
+     */
+    private Integer productId;
+
 
     /**
      * 本期总算力
@@ -64,6 +84,24 @@ public class CloudProduct {
      * 管理费
      */
     private BigDecimal managementExpense;
+
+    public Integer getCloudId() {
+        return cloudId;
+    }
+
+    public void setCloudId(Integer cloudId) {
+        this.cloudId = cloudId;
+    }
+
+    @Override
+    public Integer getProductId() {
+        return productId;
+    }
+
+    @Override
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 
     public BigDecimal getTotalStock() {
         return totalStock;
