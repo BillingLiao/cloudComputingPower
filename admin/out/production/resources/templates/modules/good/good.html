@@ -25,6 +25,7 @@
 				<input type="text" class="form-control" style="display: inline-block; width: auto;" v-model="search.goodName"  @keyup.enter="query" placeholder="商品名称">	 			
 				<a class="btn btn-default" @click="query">查询</a>
  		</div>
+<<<<<<< HEAD
  		<div class="form-group">
             <#--  -<#if shiro.hasPermission("good:good:save")> -->
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
@@ -35,6 +36,18 @@
 			<#if shiro.hasPermission("good:good:delete")>-->
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
             <#--</#if> -->
+=======
+ 		<div class="form-group"> 
+			<!--<#if shiro.hasPermission("good:good:save")>-->
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			<!--</#if>-->
+			<!--<#if shiro.hasPermission("good:good:update")>-->
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			<!--</#if>-->
+			<!--<#if shiro.hasPermission("good:good:delete")>-->
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			<!--</#if>-->
+>>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
 			<a class="btn btn-success" @click="shelve1"><i class="fa fa-plus-square"></i>&nbsp;上架</a>
 				<a class="btn btn-success" @click="shelve0"><i class="fa fa-minus-square"></i>&nbsp;下架</a>
 				<a class="btn btn-danger" @click="activate"><i class="fa fa-check"></i>&nbsp;激活</a>

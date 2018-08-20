@@ -1,21 +1,33 @@
 package com.ant.admin.dto;
 
 import com.ant.admin.entity.Product;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * 理财产品
+ * 理财产品明细表
  *
  * @author Billing
  * @date 2018/8/13 10:21
  */
-public class FinancialProduct {
+@TableName("t_financial_product")
+public class FinancialProduct extends Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 产品
+     * 理财明细id
      */
-    private Product product;
+    @TableId
+    private Integer financialId;
+
+    /**
+     * 产品Id
+     */
+    private Integer productId;
 
     /**
      * 起投金额
@@ -43,8 +55,62 @@ public class FinancialProduct {
      */
     private String salesStatus;
 
-    /**
-     * 备注
-     */
-    private String memo;
+    public Integer getFinancialId() {
+        return financialId;
+    }
+
+    public void setFinancialId(Integer financialId) {
+        this.financialId = financialId;
+    }
+
+    @Override
+    public Integer getProductId() {
+        return productId;
+    }
+
+    @Override
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public BigDecimal getThresholdAmount() {
+        return thresholdAmount;
+    }
+
+    public void setThresholdAmount(BigDecimal thresholdAmount) {
+        this.thresholdAmount = thresholdAmount;
+    }
+
+    public BigDecimal getStepTerm() {
+        return stepTerm;
+    }
+
+    public void setStepTerm(BigDecimal stepTerm) {
+        this.stepTerm = stepTerm;
+    }
+
+    public Integer getLockAmount() {
+        return lockAmount;
+    }
+
+    public void setLockAmount(Integer lockAmount) {
+        this.lockAmount = lockAmount;
+    }
+
+    public BigDecimal getRewardRate() {
+        return rewardRate;
+    }
+
+    public void setRewardRate(BigDecimal rewardRate) {
+        this.rewardRate = rewardRate;
+    }
+
+    public String getSalesStatus() {
+        return salesStatus;
+    }
+
+    public void setSalesStatus(String salesStatus) {
+        this.salesStatus = salesStatus;
+    }
+
 }
