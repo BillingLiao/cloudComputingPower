@@ -147,4 +147,20 @@ public class User implements Serializable {
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", telphone='" + telphone + '\'' +
+                ", btc_addr='" + btc_addr + '\'' +
+                ", Alipay='" + Alipay + '\'' +
+                ", invitationCode='" + invitationCode + '\'' +
+                ", status=" + status +
+                ", registerTime='" + registerTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
+    }
 }
