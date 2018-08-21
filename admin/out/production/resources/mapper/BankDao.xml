@@ -3,24 +3,10 @@
 
 <mapper namespace="com.ant.admin.dao.BankDao" >
 
-<!--    &lt;!&ndash; 可根据自己的需求，是否要使用 &ndash;&gt;
-    <resultMap id="bankMap" type="com.ant.admin.entity.Bank">
-        <result column="bankId" property="bank_id"/>
-        <result column="userId" property="user_id"/>
-        <result column="title" property="title"/>
-        <result column="content" property="content"/>
-        <result column="publishDate" property="publish_date"/>
-        <result column="updateDate" property="update_date"/>
-        <result column="publishUser" property="publish_user"/>
-        <result column="updateUser" property="update_user"/>
-    </resultMap>
-    <select id="find" parameterType="Map" resultType="bankMap">
-        select * from t_bank
-        <where>
-            1=1
-        </where>
+    <select id="selectList" resultType="com.ant.admin.entity.Bank" >
+        SELECT `bank` .*, `user` .user_name FROM
+        t_bank `bank` LEFT JOIN t_user `user` ON `bank` .user_id = `user` .user_id
+        <where> 1=1  ${ew.sqlSegment}</where>
     </select>
-    <select id="findAll" resultType="bankMap">
-        select * from t_bank
-    </select>-->
+
 </mapper>
