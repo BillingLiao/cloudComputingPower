@@ -1,73 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81ea7f3e-c431-4860-92a0-de098e0a906c" name="Default" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" afterDir="false" />
+    <list default="true" id="b202eba4-0743-4e20-adac-c0759b0a1f88" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/CloudProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/FinancialProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/MinerProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/statics/js/modules/product/financialProduct.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/modules/product/financialProduct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/categoryspec.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/categoryspec.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/good.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/good.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categoryspec.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categoryspec.html" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/PageUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/Query.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/xss/SQLFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/CloudProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/MinerProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MinerProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/CloudProductDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/MinerProductDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/ProductDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/db/coundcomputingpower.sql" beforeDir="false" afterPath="$PROJECT_DIR$/admin/db/coundcomputingpower.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/CloudProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/CloudProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dao/FinancialProductDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dao/FinancialProductDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/FinancialProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/FinancialProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/MinerProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/dto/MinerProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/Order.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/ProductAttributes.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/entity/ProductAttributes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/CategoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/CloudProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/CloudProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/FinancialProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/FinancialProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/MinerProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/MinerProductService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/CloudProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/CloudProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/FinancialProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/FinancialProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/MinerProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/MinerProductServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/classes/com/ant/admin/service/impl/ProductServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/out/production/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/out/production/resources/mapper/FinancialProductDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/resources/mapper/FinancialProductDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/good.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/out/production/resources/templates/modules/good/good.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/BankController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/BankDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/BankDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/MinerProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/MinerProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/ProductAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/ProductAttributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MinerProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MinerProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/application.yml" afterDir="false" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/admin/.gradle/" />
     <ignored path="$PROJECT_DIR$/admin/build/" />
     <ignored path="$PROJECT_DIR$/admin/out/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/cloudComputingPower$AdminApplication.ic" NAME="AdminApplication Coverage Results" MODIFIED="1534417843639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.ant.admin.*</FILTER>
-    </SUITE>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -91,132 +81,33 @@
       </state>
     </system>
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-828436785">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="6" />
-          <entry key="java" value="13" />
-          <entry key="xml" value="1" />
-          <entry key="yml" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="6" />
-          <entry key="JAVA" value="13" />
-          <entry key="XML" value="1" />
-          <entry key="YAML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="html" value="26" />
-          <entry key="java" value="2" />
-          <entry key="yml" value="69" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="HTML" value="26" />
-          <entry key="JAVA" value="2" />
-          <entry key="YAML" value="69" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-              <folding>
-                <element signature="e#1520#1526#0" expanded="true" />
-=======
-      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/ProductController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categoryspec.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-=======
-      <file leaf-file-name="good.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="214" column="56" selection-start-line="214" selection-start-column="56" selection-end-line="214" selection-end-column="56" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pass</find>
-      <find>role</find>
-      <find>userService</find>
-      <find>roleMenuService</find>
-      <find>captcha</find>
-      <find>refreshCode</find>
-      <find>getUserId</find>
-      <find>system</find>
-      <find>user</find>
-      <find>item</find>
-      <find>menuList</find>
-      <find>getMenuTreeList</find>
-      <find>getAllMenuList</find>
-      <find>queryListParentId</find>
-      <find>hasPermission</find>
-      <find>specValLayer</find>
-      <find>specLayerspecLayer</find>
-      <find>specLayer</find>
-      <find>title</find>
-      <find>uploadForm</find>
-      <find>商品发布</find>
-      <find>save</find>
+      <find>good.js</find>
       <find>list</find>
-      <find>baseURL</find>
+      <find>selectpicker</find>
+      <find>channelId</find>
+      <find>getchannelList</find>
+      <find>.js</find>
+      <find>index</find>
+      <find>menu</find>
+      <find>menu.js</find>
+      <find>getOneCategoryList</find>
+      <find>module</find>
+      <find>search_channelId</find>
+      <find>search</find>
+      <find>channel</find>
+      <find>categoryId</find>
+      <find>reload</find>
+      <find>menuList</find>
+      <find>query</find>
+      <find>FinancialProduct</find>
+      <find>order</find>
       <find>good</find>
-      <find>jqGrid</find>
-      <find>sele</find>
     </findStrings>
-    <replaceStrings>
-      <replace>map</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -224,12 +115,12 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="/usr/software/gradle-4.9" />
+        <entry key="$PROJECT_DIR$" value="C:\Billing\java\gradle-4.8.1" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$" value="4.9" />
+        <entry key="$PROJECT_DIR$" value="4.8.1" />
       </map>
     </option>
     <option name="availableProjects">
@@ -578,152 +469,155 @@
               <option name="name" value="cloudComputingPower" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="/usr/software/gradle-4.9/src/publish" />
-                  <option value="/usr/software/gradle-4.9/src/workers" />
-                  <option value="/usr/software/gradle-4.9/src/ear" />
-                  <option value="/usr/software/gradle-4.9/src/plugin-use" />
-                  <option value="/usr/software/gradle-4.9/src/reporting" />
-                  <option value="/usr/software/gradle-4.9/src/composite-builds" />
-                  <option value="/usr/software/gradle-4.9/src/jvm-services" />
-                  <option value="/usr/software/gradle-4.9/src/build-cache-http" />
-                  <option value="/usr/software/gradle-4.9/src/native" />
-                  <option value="/usr/software/gradle-4.9/src/testing-base" />
-                  <option value="/usr/software/gradle-4.9/src/model-core" />
-                  <option value="/usr/software/gradle-4.9/src/base-services-groovy" />
-                  <option value="/usr/software/gradle-4.9/src/plugins" />
-                  <option value="/usr/software/gradle-4.9/src/platform-play" />
-                  <option value="/usr/software/gradle-4.9/src/antlr" />
-                  <option value="/usr/software/gradle-4.9/src/messaging" />
-                  <option value="/usr/software/gradle-4.9/src/resources" />
-                  <option value="/usr/software/gradle-4.9/src/platform-base" />
-                  <option value="/usr/software/gradle-4.9/src/ide-play" />
-                  <option value="/usr/software/gradle-4.9/src/language-native" />
-                  <option value="/usr/software/gradle-4.9/src/cli" />
-                  <option value="/usr/software/gradle-4.9/src/internal-integ-testing" />
-                  <option value="/usr/software/gradle-4.9/src/resources-gcs" />
-                  <option value="/usr/software/gradle-4.9/src/platform-jvm" />
-                  <option value="/usr/software/gradle-4.9/src/internal-android-performance-testing" />
-                  <option value="/usr/software/gradle-4.9/src/osgi" />
-                  <option value="/usr/software/gradle-4.9/src/scala" />
-                  <option value="/usr/software/gradle-4.9/src/dependency-management" />
-                  <option value="/usr/software/gradle-4.9/src/ide-native" />
-                  <option value="/usr/software/gradle-4.9/src/jacoco" />
-                  <option value="/usr/software/gradle-4.9/src/javascript" />
-                  <option value="/usr/software/gradle-4.9/src/persistent-cache" />
-                  <option value="/usr/software/gradle-4.9/src/resources-s3" />
-                  <option value="/usr/software/gradle-4.9/src/platform-native" />
-                  <option value="/usr/software/gradle-4.9/src/plugin-development" />
-                  <option value="/usr/software/gradle-4.9/src/language-java" />
-                  <option value="/usr/software/gradle-4.9/src/core-api" />
-                  <option value="/usr/software/gradle-4.9/src/signing" />
-                  <option value="/usr/software/gradle-4.9/src/language-jvm" />
-                  <option value="/usr/software/gradle-4.9/src/internal-testing" />
-                  <option value="/usr/software/gradle-4.9/src/diagnostics" />
-                  <option value="/usr/software/gradle-4.9/src/core" />
-                  <option value="/usr/software/gradle-4.9/src/tooling-api-builders" />
-                  <option value="/usr/software/gradle-4.9/src/tooling-api" />
-                  <option value="/usr/software/gradle-4.9/src/model-groovy" />
-                  <option value="/usr/software/gradle-4.9/src/testing-native" />
-                  <option value="/usr/software/gradle-4.9/src/testing-jvm" />
-                  <option value="/usr/software/gradle-4.9/src/build-comparison" />
-                  <option value="/usr/software/gradle-4.9/src/build-init" />
-                  <option value="/usr/software/gradle-4.9/src/test-kit" />
-                  <option value="/usr/software/gradle-4.9/src/resources-http" />
-                  <option value="/usr/software/gradle-4.9/src/wrapper" />
-                  <option value="/usr/software/gradle-4.9/src/language-scala" />
-                  <option value="/usr/software/gradle-4.9/src/logging" />
-                  <option value="/usr/software/gradle-4.9/src/process-services" />
-                  <option value="/usr/software/gradle-4.9/src/internal-performance-testing" />
-                  <option value="/usr/software/gradle-4.9/src/version-control" />
-                  <option value="/usr/software/gradle-4.9/src/build-cache" />
-                  <option value="/usr/software/gradle-4.9/src/code-quality" />
-                  <option value="/usr/software/gradle-4.9/src/resources-sftp" />
-                  <option value="/usr/software/gradle-4.9/src/ide" />
-                  <option value="/usr/software/gradle-4.9/src/build-option" />
-                  <option value="/usr/software/gradle-4.9/src/maven" />
-                  <option value="/usr/software/gradle-4.9/src/launcher" />
-                  <option value="/usr/software/gradle-4.9/src/language-groovy" />
-                  <option value="/usr/software/gradle-4.9/src/announce" />
-                  <option value="/usr/software/gradle-4.9/src/installation-beacon" />
-                  <option value="/usr/software/gradle-4.9/src/testing-junit-platform" />
-                  <option value="/usr/software/gradle-4.9/src/base-services" />
-                  <option value="/usr/software/gradle-4.9/src/ivy" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-build-cache-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-installation-beacon-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-kotlin-dsl-tooling-builders-0.18.4.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-docs-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-base-services-groovy-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-logging-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-kotlin-dsl-0.18.4.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-wrapper-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-native-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-process-services-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-runtime-api-info-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/ant-launcher-1.9.11.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-base-services-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-cli-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-persistent-cache-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-model-core-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-kotlin-dsl-provider-plugins-0.18.4.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-tooling-api-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-core-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-resources-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-launcher-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/groovy-all-2.4.12.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-kotlin-dsl-tooling-models-0.18.4.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-core-api-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-model-groovy-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-jvm-services-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-messaging-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/ant-1.9.11.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/gradle-build-option-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-resources-s3-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-diagnostics-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-testing-junit-platform-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-build-comparison-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-scala-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-maven-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-language-groovy-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-workers-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-announce-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-platform-jvm-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-reporting-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-resources-sftp-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-resources-http-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-platform-base-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-build-init-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-testing-jvm-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-ide-native-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-platform-native-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-tooling-api-builders-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-composite-builds-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-test-kit-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-plugin-development-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-version-control-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-language-native-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-ide-play-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-osgi-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-build-cache-http-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-language-java-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-plugin-use-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-publish-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-language-jvm-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-ide-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-signing-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-code-quality-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-platform-play-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-language-scala-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-plugins-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-jacoco-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-javascript-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-resources-gcs-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-testing-base-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/ivy-2.2.0.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-testing-native-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-ivy-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-dependency-management-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-antlr-4.9.jar" />
-                  <option value="/usr/software/gradle-4.9/lib/plugins/gradle-ear-4.9.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/announce" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/antlr" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/base-services" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/base-services-groovy" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/build-cache" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/build-cache-http" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/build-comparison" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/build-init" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/build-option" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/cli" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/code-quality" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/composite-builds" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/core" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/core-api" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/dependency-management" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/diagnostics" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/ear" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/ide" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/ide-native" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/ide-play" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/installation-beacon" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/internal-android-performance-testing" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/internal-integ-testing" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/internal-performance-testing" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/internal-testing" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/ivy" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/jacoco" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/javascript" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/jvm-services" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/language-groovy" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/language-java" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/language-jvm" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/language-native" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/language-scala" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/launcher" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/logging" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/maven" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/messaging" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/model-core" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/model-groovy" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/native" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/osgi" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/persistent-cache" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/platform-base" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/platform-jvm" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/platform-native" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/platform-play" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/plugin-development" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/plugin-use" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/plugins" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/process-services" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/publish" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/reporting" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/resources" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/resources-gcs" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/resources-http" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/resources-s3" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/resources-sftp" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/scala" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/signing" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/test-kit" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/testing-base" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/testing-junit-platform" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/testing-jvm" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/testing-native" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/tooling-api" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/tooling-api-builders" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/version-control" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/workers" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/src/wrapper" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/ant-1.9.11.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/ant-launcher-1.9.11.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-base-services-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-base-services-groovy-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-build-cache-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-build-option-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-cli-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-core-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-core-api-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-docs-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-installation-beacon-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-jvm-services-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-kotlin-dsl-0.17.5.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-kotlin-dsl-provider-plugins-0.17.5.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-kotlin-dsl-provider-spi-0.17.5.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-kotlin-dsl-tooling-builders-0.17.5.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-kotlin-dsl-tooling-models-0.17.5.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-launcher-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-logging-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-messaging-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-model-core-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-model-groovy-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-native-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-persistent-cache-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-process-services-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-resources-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-runtime-api-info-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-tooling-api-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/gradle-wrapper-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/groovy-all-2.4.12.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-announce-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-antlr-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-build-cache-http-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-build-comparison-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-build-init-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-code-quality-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-composite-builds-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-dependency-management-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-diagnostics-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-ear-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-ide-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-ide-native-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-ide-play-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-ivy-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-jacoco-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-javascript-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-language-groovy-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-language-java-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-language-jvm-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-language-native-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-language-scala-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-maven-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-osgi-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-platform-base-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-platform-jvm-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-platform-native-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-platform-play-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-plugin-development-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-plugin-use-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-plugins-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-publish-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-reporting-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-resources-gcs-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-resources-http-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-resources-s3-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-resources-sftp-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-scala-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-signing-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-test-kit-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-testing-base-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-testing-junit-platform-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-testing-jvm-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-testing-native-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-tooling-api-builders-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-version-control-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/gradle-workers-4.8.1.jar" />
+                  <option value="$PROJECT_DIR$/../../java/gradle-4.8.1/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
+                  <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
               </option>
             </ExternalProjectBuildClasspathPojo>
@@ -733,134 +627,53 @@
     </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/../../Files/product_yun/computingPower/001/computing-power" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../Files/product_yun/q3h2df/financial-master" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../../GitSource/my-first-springboot-shiro" value="PREVIEW" />
         <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-        <entry key="$PROJECT_DIR$/../computing-power" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../financial" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../toDo" value="PREVIEW" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/RoleMenuService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/MenuDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/MapUtils.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/AbstractController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Menu.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/RoleMenuService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/RoleMenuDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/RoleMenuDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/UserService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/RoleMenu.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/BankServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CategoryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/IncomeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/OrderServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/RoleMenuServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/config/ShiroConfiguration.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/login.html" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/SysPageController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Bank.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Category.java" />
-=======
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Income.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Jurisdiction.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Proxy.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Role.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Totices.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/User.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/UserRole.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/UserRoleDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/MenuDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/AdminApplication.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/UserRoleService.java" />
-        <option value="$PROJECT_DIR$/admin/build.gradle" />
-        <option value="$PROJECT_DIR$/dependencies.gradle" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/ToticesDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/UserDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/UserRoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/UserRoleDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/index2.html" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/MenuController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MenuServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categoryspec.html" />
-=======
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/BankController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/ProductAttributes.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CategoryService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/PageUtils.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/xss/SQLFilter.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/Query.java" />
         <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/ProductService.java" />
         <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/ProductController.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/cloudProductDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/CloudProductDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/MinerProductDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/ProductDao.xml" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/MinerProduct.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/MinerProductDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/CloudProductDao.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java" />
         <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MinerProductService.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java" />
-        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/MinerProductController.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/CloudProductController.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java" />
         <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductServiceImpl.java" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/resources/templates/modules/product/financialProduct.html" />
+        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/resources/statics/js/modules/product/financialProduct.js" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/FinancialProductController.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/BankController.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/BankService.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/BankServiceImpl.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/BankDao.java" />
+        <option value="$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-<<<<<<< HEAD
-    <option name="x" value="54" />
-    <option name="y" value="129" />
-    <option name="width" value="1697" />
-    <option name="height" value="917" />
-=======
-    <option name="x" value="707" />
-    <option name="y" value="101" />
+    <option name="x" value="392" />
+    <option name="y" value="219" />
     <option name="width" value="1437" />
-    <option name="height" value="857" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -919,8 +732,6 @@
               <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-<<<<<<< HEAD
-=======
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
@@ -936,7 +747,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ant" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
@@ -944,8 +755,59 @@
               <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ant" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputingPower" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputingPower" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputingPower" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputingPower" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudComputingPower" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="admin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
@@ -965,8 +827,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-<<<<<<< HEAD
-=======
             </path>
             <path>
               <item name="cloudComputingPower" type="b2602c69:ProjectViewProjectNode" />
@@ -977,43 +837,27 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="good" type="462c0819:PsiDirectoryNode" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+              <item name="product" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534775593111" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534602466177" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ant.admin.service.impl" />
-      <recent name="com.ant.admin.service" />
-      <recent name="com.ant.admin.dao" />
-      <recent name="com.ant.admin.common.xss" />
-      <recent name="com.ant.admin.common.utils" />
+      <recent name="com.ant.admin.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\resources\mapper" />
-      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\resources" />
-      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\java\com\ant\admin\common\config" />
-      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\java\com\ant\admin\dao" />
-      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\java\com\ant\admin\common\utils" />
+      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\resources\statics\js\modules\product" />
+      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\resources\statics\js\modules" />
+      <recent name="C:\Billing\IdeaWorkspace\cloudComputingPower\admin\src\main\resources\templates\modules\product" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1028,7 +872,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AdminApplication">
+  <component name="RunManager">
     <configuration name="AdminApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ant.admin.AdminApplication" />
       <module name="admin_main" />
@@ -1042,9 +886,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method>
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1053,7 +894,7 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
+      <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -1061,16 +902,6 @@
         <value defaultName="singleModule" />
       </option>
       <patterns />
-      <method>
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="admin_main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ant.admin.AdminApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1081,7 +912,7 @@
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
+      <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
@@ -1093,17 +924,7 @@
       <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method>
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
-    <list>
-<<<<<<< HEAD
-      <item itemvalue="Spring Boot.AdminApplication" />
-=======
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-      <item itemvalue="Application.AdminApplication" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AdminApplication" />
@@ -1115,271 +936,371 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="81ea7f3e-c431-4860-92a0-de098e0a906c" name="Default" comment="" />
-      <created>1534383258876</created>
+      <changelist id="b202eba4-0743-4e20-adac-c0759b0a1f88" name="Default" comment="" />
+      <created>1534815695856</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1534383258876</updated>
-      <workItem from="1534596821676" duration="5122000" />
-      <workItem from="1534774931059" duration="670000" />
+      <updated>1534815695856</updated>
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5792000" />
-  </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-    <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2483731" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-=======
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.24782608" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005325" side_tool="true" weight="0.47826087" />
-      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49851632" weight="0.32960597" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26894864" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32826087" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18104367" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.7785714" weight="0.39084134" />
+      <window_info anchor="bottom" id="Messages" weight="0.32934782" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.50652176" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32934782" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24068157" />
+      <window_info anchor="bottom" id="Build" weight="0.32934782" />
+      <window_info anchor="right" id="Gradle" weight="0.32960597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49851632" weight="0.24973376" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.08695652" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-<<<<<<< HEAD
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36739132" />
+      <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46454766" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.35819072" />
-=======
-      <window_info anchor="right" id="Bean Validation" order="4" />
-      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Web" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="10" weight="0.26650366" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32826087" />
-      <window_info anchor="bottom" id="Spring" order="12" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49851632" weight="0.24973376" />
-=======
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="8" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.22142857" side_tool="true" visible="true" weight="0.16347177" />
-<<<<<<< HEAD
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" sideWeight="0.7785714" weight="0.28904554" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49851632" weight="0.32960597" />
-      <window_info anchor="right" id="Database" order="10" />
-      <window_info anchor="right" id="Bean Validation" order="11" />
-=======
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="bottom" id="Build" order="13" weight="0.26650366" />
-      <window_info id="Designer" order="3" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26894864" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49851632" weight="0.24973376" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005325" side_tool="true" weight="0.47826087" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.24782608" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32889965" />
-      <window_info anchor="right" id="Maven Projects" order="11" sideWeight="0.49851632" weight="0.32960597" />
-      <window_info anchor="right" id="Gradle" order="8" sideWeight="0.7785714" weight="0.39084134" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24349241" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Web" order="4" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="10" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="4" sideWeight="0.22142857" side_tool="true" visible="true" weight="0.16347177" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Bean Validation" order="6" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946752" weight="0.35819072" />
-    </layout-to-restore>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-=======
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/sort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1181" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/modules/good/good.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="480" column="59" selection-start-line="480" selection-start-column="55" selection-end-line="480" selection-end-column="59" />
+        <state relative-caret-position="147">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/mapper/EntityWrapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="73" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CategoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/CategoryDao.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/CloudProductDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/CloudProductDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="54" lean-forward="true" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/IncomeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="53" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Category.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MenuServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="31" />
+        <state relative-caret-position="153">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/service/IService.class">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        <state relative-caret-position="221">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/service/impl/ServiceImpl.class">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="70" column="30" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="30" />
+        <state relative-caret-position="238">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#561#562#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/ProductAttributes.java">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="40" column="29" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="29" />
+        <state relative-caret-position="136">
+          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/CloudProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="40" column="62" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/modules/product/financialProduct.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-501">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4333" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/contabs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5274" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="141" column="52" selection-start-line="141" selection-start-column="47" selection-end-line="141" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/index1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="120" column="76" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/index3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="121" column="73" lean-forward="true" selection-start-line="121" selection-start-column="73" selection-end-line="121" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="284" column="81" selection-start-line="284" selection-start-column="74" selection-end-line="284" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/SysPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="33" column="47" lean-forward="true" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/plugins/metisMenu/jquery.metisMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="184" column="33" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
+          <folding>
+            <element signature="e#3260#3261#0" expanded="true" />
+            <element signature="e#3307#3308#0" expanded="true" />
+            <element signature="e#3345#3346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/plugins/Page.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.4.RELEASE/7dd842c0b8f141d4e7de926a5519aa28f0af33e2/spring-webmvc-5.0.4.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="927" selection-start-line="927" selection-end-line="927" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.4.RELEASE/7dd842c0b8f141d4e7de926a5519aa28f0af33e2/spring-webmvc-5.0.4.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="984" selection-start-line="984" selection-end-line="984" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.5.28/4dbe0fbab4a1a3b8bfb097b83e8409096f8235cd/tomcat-embed-core-8.5.28-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="195" selection-start-line="195" selection-end-line="195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/org/apache/shiro/web/servlet/AdviceFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/shiro/shiro-web/1.4.0/shiro-web-1.4.0.jar!/org/apache/shiro/web/servlet/OncePerRequestFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/subject/support/SubjectCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/subject/support/DelegatingSubject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="296" selection-start-line="296" selection-end-line="296" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/5.0.4.RELEASE/7dd842c0b8f141d4e7de926a5519aa28f0af33e2/spring-webmvc-5.0.4.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="877" selection-start-line="877" selection-end-line="877" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.4.RELEASE/2fbf13b190d2b64c44f4235ff24038a1215cbf2d/spring-web-5.0.4.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/PageUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/mapper/EntityWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/statics/js/modules/product/financialProduct.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="347" column="48" selection-start-line="347" selection-start-column="48" selection-end-line="347" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/product/financialProduct.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="287" column="79" selection-start-line="287" selection-start-column="63" selection-end-line="287" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="30" />
+          <folding>
+            <element signature="e#3543#3544#0" expanded="true" />
+            <element signature="e#3573#3574#0" expanded="true" />
+            <element signature="e#3620#3621#0" expanded="true" />
+            <element signature="e#3658#3659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding>
+            <element signature="e#1073#1074#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1167#1168#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/Result.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="14" selection-end-column="30" />
+        <state relative-caret-position="186">
+          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
           <folding>
             <element signature="e#807#808#0" expanded="true" />
             <element signature="e#833#834#0" expanded="true" />
@@ -1387,403 +1308,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/MapUtils.java">
+    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/service/IService.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/xss/SQLFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="50" lean-forward="true" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../java/jdk1.8.0_171/src.zip!/java/lang/reflect/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="383" column="18" selection-start-line="383" selection-start-column="18" selection-end-line="383" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/ProductAttributesDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/MenuDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/ProductAttributesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductAttributesServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/RoleMenuDao.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/MenuDao.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/CloudProductDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/FinancialProductDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/MinerProductDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/ProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/ProductDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/FinancialProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/CloudProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dto/MinerProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/MinerProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/FinancialProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/CloudProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.baomidou/mybatis-plus-core/2.3/9533f5e24db35cd256a287f88a727c5f3e701cba/mybatis-plus-core-2.3-sources.jar!/com/baomidou/mybatisplus/MybatisConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.baomidou/mybatis-plus-support/2.3/2ca6af2ac631b5a3c59b3aed3311c5c87006e663/mybatis-plus-support-2.3-sources.jar!/com/baomidou/mybatisplus/service/IService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
-=======
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/CloudProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="117" selection-start-line="11" selection-start-column="98" selection-end-line="11" selection-end-column="117" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/CloudProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="667">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-=======
-        <state relative-caret-position="153">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MenuService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1073">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MenuServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2117">
-          <caret line="91" column="20" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.baomidou/mybatis-plus-support/2.3/2ca6af2ac631b5a3c59b3aed3311c5c87006e663/mybatis-plus-support-2.3-sources.jar!/com/baomidou/mybatisplus/service/impl/ServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5829">
-          <caret line="253" column="49" selection-start-line="253" selection-start-column="49" selection-end-line="253" selection-end-column="49" />
-          <folding>
-            <element signature="e#8397#8398#0" expanded="true" />
-            <element signature="e#8464#8465#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.baomidou/mybatis-plus-support/2.3/2ca6af2ac631b5a3c59b3aed3311c5c87006e663/mybatis-plus-support-2.3-sources.jar!/com/baomidou/mybatisplus/mapper/BaseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1276">
-          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
-=======
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="74" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/MinerProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="986">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-=======
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+        <state relative-caret-position="119">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/FinancialProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="696">
-          <caret line="29" column="28" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="28" />
-          <folding>
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1325#1326#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/MenuDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1334">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4785" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categorygood.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-348" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/channel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-          <folding>
-            <element signature="e#1520#1526#0" expanded="true" />
-=======
-        <state relative-caret-position="68">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/MinerProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/mapper/Wrapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="153" column="22" selection-start-line="153" selection-start-column="22" selection-end-line="153" selection-end-column="22" />
-          <folding>
-            <element signature="e#5091#5092#0" expanded="true" />
-            <element signature="e#5143#5144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/com/baomidou/mybatis-plus-support/2.3/mybatis-plus-support-2.3.jar!/com/baomidou/mybatisplus/mapper/BaseMapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/common/utils/PageUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/entity/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="46" selection-start-line="7" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="e#2157#2158#0" expanded="true" />
-            <element signature="e#2190#2191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/ProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="54" selection-end-column="15" />
-          <folding>
-            <element signature="e#1549#1567#0" expanded="true" />
-            <element signature="e#1733#1742#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="39" column="53" lean-forward="true" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="55" lean-forward="true" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        <state relative-caret-position="734">
+          <caret line="54" column="52" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/categoryspec.html">
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/dao/BankDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-=======
-    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/templates/modules/good/good.html">
+        <state relative-caret-position="306">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/FinancialProductService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="214" column="56" selection-start-line="214" selection-start-column="56" selection-end-line="214" selection-end-column="56" />
->>>>>>> 1f25310df8a8deea3993e44a66f1e34fa28701d3
+        <state relative-caret-position="340">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/resources/mapper/BankDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="48" lean-forward="true" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/impl/BankServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="53" lean-forward="true" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding>
+            <element signature="e#765#771#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/service/BankService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/BankController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/src/main/java/com/ant/admin/controller/FinancialProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

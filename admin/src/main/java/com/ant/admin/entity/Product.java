@@ -37,7 +37,6 @@ public class Product<T> implements Serializable {
         }
     }
 
-
     /**
      * 产品编号
      */
@@ -60,9 +59,9 @@ public class Product<T> implements Serializable {
     private String introduction;
 
     /**
-     * 产品属性集合
+     * 是否上架：1=上架/0=下架
      */
-    private Set<ProductAttributes> productAttributes;
+    private Integer showInShelve;
 
     /**
      * 创建时间
@@ -91,6 +90,11 @@ public class Product<T> implements Serializable {
      */
     @TableField(fill = FieldFill.UPDATE)
     private Integer updateUser;
+
+    /**
+     * 假删除 0：未删除 1：删除
+     */
+    private Integer delFlag;
 
     public Integer getProductId() {
         return productId;
@@ -124,12 +128,12 @@ public class Product<T> implements Serializable {
         this.introduction = introduction;
     }
 
-    public Set<ProductAttributes> getProductAttributes() {
-        return productAttributes;
+    public Integer getShowInShelve() {
+        return showInShelve;
     }
 
-    public void setProductAttributes(Set<ProductAttributes> productAttributes) {
-        this.productAttributes = productAttributes;
+    public void setShowInShelve(Integer showInShelve) {
+        this.showInShelve = showInShelve;
     }
 
     public Date getCreateAt() {
@@ -162,5 +166,13 @@ public class Product<T> implements Serializable {
 
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 }

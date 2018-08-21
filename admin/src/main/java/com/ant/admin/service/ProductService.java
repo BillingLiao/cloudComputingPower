@@ -16,10 +16,4 @@ import java.util.Map;
  * @date 2018/8/13 19:31
  */
 public interface ProductService extends IService<Product> {
-
-    FinancialProduct infoFinancial(Integer productId) throws Exception;
-
-    PageUtils ListFinancial(Map<String,Object> params, FinancialProduct financialProduct);
-
-    void insertProduct(FinancialProduct financialProduct);
 }

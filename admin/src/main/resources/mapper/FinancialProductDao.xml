@@ -3,4 +3,13 @@
 
 <mapper namespace="com.ant.admin.dao.FinancialProductDao">
 
+    <select id="selectProductList" resultType="com.ant.admin.dto.FinancialProduct">
+        SELECT
+        financial.*,product.*,c.category_name
+        FROM
+        t_financial_product financial
+        LEFT JOIN t_product product ON financial.product_id = product.product_id
+        left join t_category c on c.category_id = product.category_id
+        <where> 1=1 ${ew.sqlSegment}</where>
+    </select>
 </mapper>

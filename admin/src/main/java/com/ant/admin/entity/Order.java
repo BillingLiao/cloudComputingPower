@@ -80,6 +80,12 @@ public class Order implements Serializable {
      */
     private Integer updateUser;
 
+
+    /**
+     * 假删除 0：未删除 1：删除
+     */
+    private Integer delFlag;
+
     public Integer getOrderId() {
         return orderId;
     }
@@ -174,5 +180,13 @@ public class Order implements Serializable {
 
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 }

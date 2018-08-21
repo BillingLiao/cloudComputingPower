@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>商品表</title>
+    <title>理财产品表</title>
 		<#include "/header.html">
 		  <link rel="stylesheet" href="${request.contextPath}/statics/plugins/fileinput/fileinput.css">
 	<link rel="stylesheet" href="${request.contextPath}/statics/css/addcss.css">
@@ -13,16 +13,7 @@
     <div v-show="showList">
         <div class="grid-btn">
         <div class="form-group">
- 				<select id="search_channelId" name="channelId" class="selectpicker" @keyup.enter="query" 
-							data-live-search="true"  >
-				</select>
-				<select id="search_oneCategory" name="channelId" class="selectpicker" @keyup.enter="query" 
-							data-live-search="true"  >
-				</select>
-				<select id="search_twoCategory" name="channelId" class="selectpicker" @keyup.enter="query" 
-							data-live-search="true"  >
-				</select>
-				<input type="text" class="form-control" style="display: inline-block; width: auto;" v-model="search.goodName"  @keyup.enter="query" placeholder="商品名称">	 			
+				<input type="text" class="form-control" style="display: inline-block; width: auto;" v-model="search.productName"  @keyup.enter="query" placeholder="产品名称">
 				<a class="btn btn-default" @click="query">查询</a>
  		</div>
  		<div class="form-group">
@@ -294,7 +285,7 @@
 	 </div>
 	 
 	
-<script src="${request.contextPath}/statics/js/modules/good/good.js?_${.now?long}"></script>
+<script src="${request.contextPath}/statics/js/modules/product/financialProduct.js?_${.now?long}"></script>
 
 </body>
 </html>

@@ -3,8 +3,10 @@ package com.ant.admin.dto;
 import com.ant.admin.entity.Product;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.apache.commons.beanutils.BeanUtils;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 /**
@@ -17,6 +19,9 @@ import java.math.BigDecimal;
 public class FinancialProduct extends Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public FinancialProduct(){
+    }
 
     /**
      * 理财明细id
@@ -49,11 +54,21 @@ public class FinancialProduct extends Product implements Serializable {
      */
     private BigDecimal rewardRate;
 
+    //分类名称
+    private String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     /**
      * 销售状态
      */
-    private String salesStatus;
+    private Integer salesStatus;
 
     public Integer getFinancialId() {
         return financialId;
@@ -105,11 +120,11 @@ public class FinancialProduct extends Product implements Serializable {
         this.rewardRate = rewardRate;
     }
 
-    public String getSalesStatus() {
+    public Integer getSalesStatus() {
         return salesStatus;
     }
 
-    public void setSalesStatus(String salesStatus) {
+    public void setSalesStatus(Integer salesStatus) {
         this.salesStatus = salesStatus;
     }
 

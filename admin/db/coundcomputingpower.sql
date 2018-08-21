@@ -109,13 +109,10 @@ INSERT INTO `t_menu` VALUES ('4', '1', '菜单管理', 'modules/sys/menu.html', 
 INSERT INTO `t_menu` VALUES ('5', '0', '产品管理', NULL, NULL, '0', 'fa fa-shopping-basket', '0');
 INSERT INTO `t_menu` VALUES ('6', '5', '矿机产品管理', 'modules/good/good.html', NULL, '1', NULL, '1');
 INSERT INTO `t_menu` VALUES ('7', '5', '云算力产品管理', 'modules/good/good.html', NULL, '1', NULL, '2');
-INSERT INTO `t_menu` VALUES ('8', '5', '理财产品管理', NULL, NULL, '0', 'fa fa-shopping-basket', '3');
-INSERT INTO `t_menu` VALUES ('9', '8', '商品发布', 'modules/good/good.html', 'good:good:list,good:good:info,good:good:save,good:good:update,good:good:delete', '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('8', '5', '理财产品管理', 'modules/product/financialProduct.html', NULL, '1', NULL, '3');
 INSERT INTO `t_menu` VALUES ('10', '8', '商品规格', 'modules/good/categoryspec.html', 'good:categoryspec:list,good:categoryspec:info,good:categoryspec:save,good:categoryspec:update,good:categoryspec:delete', '1', NULL, '0');
 INSERT INTO `t_menu` VALUES ('11', '0', '订单管理', NULL, NULL, '0', 'fa fa-bars', '3');
 INSERT INTO `t_menu` VALUES ('12', '11', '订单列表', 'modules/order/orderList.html', NULL, '1', NULL, '0');
-
-
 
 /*Table structure for table `t_order` */
 
@@ -134,7 +131,7 @@ CREATE TABLE `t_order` (
   `caeate_at` DATETIME DEFAULT NULL COMMENT '创建时间',
   `update_user` INT(11) DEFAULT NULL COMMENT '更新者',
   `update_at` DATETIME DEFAULT NULL COMMENT '更新时间',
-  `is_delete` INT(11) NOT NULL COMMENT '活动状态：0-未删除,1-已删除',
+  `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
   PRIMARY KEY (`order_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
@@ -146,18 +143,26 @@ DROP TABLE IF EXISTS `t_product`;
 
 CREATE TABLE `t_product` (
   `product_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '产品编号',
-  `type_id` INT(11) NOT NULL COMMENT '产品类别编号',
+  `category_id` INT(11) NOT NULL COMMENT '产品类别编号',
   `product_name` VARCHAR(100) NOT NULL COMMENT '产品名称',
   `introduction` TEXT COMMENT '产品介绍',
+  `show_in_shelve` TINYINT(1) DEFAULT '0' COMMENT '是否上架：1=上架/0=下架',
   `create_user` INT(11) DEFAULT NULL COMMENT '创建者',
   `create_at` DATETIME DEFAULT NULL COMMENT '创建时间',
   `update_user` INT(11) DEFAULT NULL COMMENT '更新者',
   `update_at` DATETIME DEFAULT NULL COMMENT '更新时间',
-  `is_delete` INT(11) NOT NULL COMMENT '活动状态：0-未删除,1-已删除',
+  `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
   PRIMARY KEY (`product_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='产品表';
 
 /*Data for the table `t_product` */
+
+INSERT INTO `t_product` VALUES ('1', '3', '理财产品1号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('2', '3', '理财产品2号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号', '这是矿机是显卡,dfkjkj1dfdfad1', '1', NULL,'2018-06-12 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('4', '1', '矿机产品2号', '这款打造的,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('5', '2', '云算力产品1号', '这优惠,dfkjkj1dfdfad1', '1', NULL,'2018-06-11 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('6', '2', '云算力产品2号', '这价格,dfkjkj1dfdfad1', '1', NULL,'2018-08-11 14:09:31',NULL, NULL,'0');
 
 /*Table structure for table `t_product_cloud` */
 
@@ -178,10 +183,14 @@ CREATE TABLE t_cloud_product
    start_step           INT COMMENT '起投单位',
    `power`              VARCHAR(50) COMMENT '电源',
    management_expense   DECIMAL(15,3) COMMENT '管理费',
+   `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (cloud_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='云算力明细表';
 
 /*Data for the table `t_cloud_product` */
+
+INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570', '9月20号-10月10号', 'A9', '14T','很多','1','test',NULL,'0');
+INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630', '9月10号-10月1号', '蚂蚁M9', '13.5T','很多','1','test',NULL, '0');
 
 /*Table structure for table `t_financial_product` */
 
@@ -195,11 +204,15 @@ CREATE TABLE t_financial_product
    step_term            DECIMAL(15,3) NOT NULL COMMENT '投资步长',
    lock_amount          INT NOT NULL COMMENT '锁定期',
    reward_rate          DECIMAL(15,3) NOT NULL COMMENT '年化收益率',
-   sales_status         VARCHAR(20) NOT NULL COMMENT '销售状态',
+   sales_status         INT(11) DEFAULT '0' COMMENT '状态,0:审核中,1:销售中,2:暂停销售,3:已结束',
+   `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (financial_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='理财明细表';
 
-/*Data for the table `t_financial_product
+/*Data for the table `t_financial_product */
+
+INSERT INTO `t_financial_product` VALUES ('1', '1', '10000.0', '1000', '0', '4.2', '0', '0');
+INSERT INTO `t_financial_product` VALUES ('2', '2', '20000.0', '2000', '0', '4.3', '0', '0');
 
 /*Table structure for table `t_miner_product` */
 
@@ -209,6 +222,7 @@ CREATE TABLE t_miner_product
 (
    miner_id         	INT(11) NOT NULL AUTO_INCREMENT COMMENT '矿机明细id',
    product_id     	INT(11) NOT NULL COMMENT '产品id',
+   `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (miner_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='矿机明细表';
 
