@@ -18,6 +18,9 @@ public class CloudProduct extends Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public CloudProduct(){
+    }
+
     /**
      * 理财明细id
      */
@@ -84,6 +87,11 @@ public class CloudProduct extends Product implements Serializable {
      * 管理费
      */
     private BigDecimal managementExpense;
+
+    /**
+     * 假删除 0：未删除 1：删除
+     */
+    private Integer delFlag;
 
     public Integer getCloudId() {
         return cloudId;
@@ -189,5 +197,15 @@ public class CloudProduct extends Product implements Serializable {
 
     public void setManagementExpense(BigDecimal managementExpense) {
         this.managementExpense = managementExpense;
+    }
+
+    @Override
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    @Override
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 }

@@ -4,7 +4,9 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.dto.MinerProduct;
+import com.ant.admin.entity.Product;
 import com.ant.admin.service.MinerProductService;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,7 @@ import java.util.Map;
 public class MinerProductController {
 
     @Autowired
-    private MinerProductService MinerproductService;
+    private MinerProductService minerproductService;
 
     /**
      * 列表
@@ -32,13 +34,15 @@ public class MinerProductController {
      */
     @RequestMapping("/list")
     public Result list(@RequestParam Map<String,Object> params, MinerProduct minerProduct){
-        PageUtils page = MinerproductService.ListMiner(params,minerProduct);
+        EntityWrapper<Product> wrapper = new EntityWrapper<Product>();
+        wrapper.like("product.product_name", minerProduct.getProductName());
+        PageUtils page = new PageUtils(minerproductService.queryPage(params, wrapper));
         return Result.ok().put("page", page);
     }
 
     @RequestMapping("/info/{productId}")
     public Result info(@PathVariable("productId") Integer productId) throws Exception {
-        MinerProduct minerProduct =  MinerproductService.infoMiner(productId);
+        MinerProduct minerProduct =  minerproductService.infoMiner(productId);
         return Result.ok().put("minerProduct",minerProduct);
     }
     /**
@@ -51,7 +55,7 @@ public class MinerProductController {
     @RequestMapping("/save")
     public Result save(@RequestBody(required = false) MinerProduct minerProduct){
         ValidatorUtils.validateEntity(minerProduct);
-        MinerproductService.insertMiner(minerProduct);
+        minerproductService.insertMiner(minerProduct);
         return Result.ok();
     }
 

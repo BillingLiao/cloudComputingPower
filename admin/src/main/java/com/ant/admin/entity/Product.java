@@ -58,6 +58,7 @@ public class Product<T> implements Serializable {
      */
     private String introduction;
 
+
     /**
      * 是否上架：1=上架/0=下架
      */

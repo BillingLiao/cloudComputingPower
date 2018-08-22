@@ -2,7 +2,7 @@ package com.ant.admin.service;
 
 import com.ant.admin.dto.FinancialProduct;
 import com.ant.admin.entity.Product;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 
@@ -18,5 +18,9 @@ public interface FinancialProductService extends IService<FinancialProduct> {
 
     void insertProduct(FinancialProduct financialProduct);
 
-    Page<FinancialProduct> queryPage(Map<String,Object> params, EntityWrapper<Product> wrapper);
+    void deleteProduct(Integer[] productIds);
+
+    Page<FinancialProduct> queryPage(Map<String,Object> params, Wrapper<Product> wrapper);
+
+
 }

@@ -3,7 +3,7 @@ package com.ant.admin.dao;
 import com.ant.admin.dto.FinancialProduct;
 import com.ant.admin.entity.Product;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,5 +23,5 @@ public interface FinancialProductDao extends BaseMapper<FinancialProduct> {
      * @param wrapper
      * @return
      */
-    List<FinancialProduct> selectProductList(Page<FinancialProduct> page,@Param("ew") EntityWrapper<Product> wrapper);
+    List<FinancialProduct> selectProductList(Page<FinancialProduct> page,@Param("ew") Wrapper<Product> wrapper);
 }

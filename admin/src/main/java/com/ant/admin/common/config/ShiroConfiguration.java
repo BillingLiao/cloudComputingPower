@@ -38,11 +38,17 @@ public class ShiroConfiguration {
         bean.setSuccessUrl("/");
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/login*", "anon"); //表示可以匿名访问
+
+        filterChainDefinitionMap.put("/*", "anon");//表示可以匿名访问
+        filterChainDefinitionMap.put("/**", "anon");
+        filterChainDefinitionMap.put("/*.*", "anon");
+
+/*        filterChainDefinitionMap.put("/login*", "anon"); //表示可以匿名访问
         filterChainDefinitionMap.put("/logout*","anon");
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
-        filterChainDefinitionMap.put("/*.*", "authc");
+        filterChainDefinitionMap.put("/*.*", "authc");*/
+
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }

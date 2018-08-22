@@ -4,7 +4,9 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.dto.CloudProduct;
+import com.ant.admin.entity.Product;
 import com.ant.admin.service.CloudProductService;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/cloud")
-public class CloudProductController {
+public class CloudProductController extends AbstractController{
 
     @Autowired
     private CloudProductService cloudProductService;
@@ -32,7 +34,9 @@ public class CloudProductController {
      */
     @RequestMapping("/list")
     public Result list(@RequestParam Map<String,Object> params, CloudProduct cloudProduct){
-        PageUtils page = cloudProductService.ListCloud(params,cloudProduct);
+        EntityWrapper<Product> wrapper = new EntityWrapper<Product>();
+        wrapper.like("product.product_name", cloudProduct.getProductName());
+        PageUtils page = new PageUtils(cloudProductService.queryPage(params, wrapper));
         return Result.ok().put("page", page);
     }
 

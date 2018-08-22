@@ -1,8 +1,9 @@
 package com.ant.admin.service;
 
-import com.ant.admin.common.utils.PageUtils;
-import com.ant.admin.dto.FinancialProduct;
 import com.ant.admin.dto.MinerProduct;
+import com.ant.admin.entity.Product;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.Map;
@@ -15,7 +16,7 @@ public interface MinerProductService extends IService<MinerProduct> {
 
     MinerProduct infoMiner(Integer productId) throws Exception;
 
-    PageUtils ListMiner(Map<String,Object> params, MinerProduct minerProduct);
-
     void insertMiner(MinerProduct minerProduct);
+
+    Page<MinerProduct> queryPage(Map<String,Object> params, Wrapper<Product> wrapper);
 }

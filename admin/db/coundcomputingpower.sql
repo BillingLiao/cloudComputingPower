@@ -145,7 +145,7 @@ CREATE TABLE `t_product` (
   `product_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '产品编号',
   `category_id` INT(11) NOT NULL COMMENT '产品类别编号',
   `product_name` VARCHAR(100) NOT NULL COMMENT '产品名称',
-  `introduction` TEXT COMMENT '产品介绍',
+  `introduction` TEXT DEFAULT NULL COMMENT '产品介绍',
   `show_in_shelve` TINYINT(1) DEFAULT '0' COMMENT '是否上架：1=上架/0=下架',
   `create_user` INT(11) DEFAULT NULL COMMENT '创建者',
   `create_at` DATETIME DEFAULT NULL COMMENT '创建时间',
@@ -159,7 +159,7 @@ CREATE TABLE `t_product` (
 
 INSERT INTO `t_product` VALUES ('1', '3', '理财产品1号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('2', '3', '理财产品2号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号', '这是矿机是显卡,dfkjkj1dfdfad1', '1', NULL,'2018-06-12 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号', '1. 扫描玛雅矿机官方微信号二维码可获取最新资讯消息。2. 本批矿机价格已包含电源价格。3. 款项支付时间：确认订单60分钟内支付。4. 预期发货时间：2018年6月，物流运费到付。5. 已付货款项将不予退还，矿机无法出货情况除外。6. 本批次矿机最小订单量为1台，仅支持发货不支持托管。7. 玛雅保留此次预售的最终解释权。', '1', NULL,'2018-06-12 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('4', '1', '矿机产品2号', '这款打造的,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('5', '2', '云算力产品1号', '这优惠,dfkjkj1dfdfad1', '1', NULL,'2018-06-11 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('6', '2', '云算力产品2号', '这价格,dfkjkj1dfdfad1', '1', NULL,'2018-08-11 14:09:31',NULL, NULL,'0');
@@ -222,12 +222,20 @@ CREATE TABLE t_miner_product
 (
    miner_id         	INT(11) NOT NULL AUTO_INCREMENT COMMENT '矿机明细id',
    product_id     	INT(11) NOT NULL COMMENT '产品id',
+   price                DECIMAL(15,3) NOT NULL COMMENT '单价',
+   stock 		DECIMAL(13,2) NOT NULL COMMENT '额定算力',
+   model                VARCHAR(50) NOT NULL COMMENT '机型',
+   remark               VARCHAR(200) DEFAULT NULL COMMENT '参考收益',
+   `power`              VARCHAR(50) DEFAULT NULL COMMENT '电源',
+   electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
+   management_expense   DECIMAL(15,3) DEFAULT NULL COMMENT '管理费',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (miner_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='矿机明细表';
 
-/*Data for the table `t_miner_product
-
+/*Data for the table `t_miner_product */
+INSERT INTO `t_miner_product` VALUES ('1', '3', '12000.0', '13.5', '蚂蚁M9', '这样哪有', NULL, NULL, NULL, '0');
+INSERT INTO `t_miner_product` VALUES ('2', '4', '23000.0', '14', 'A9', '很火', NULL, NULL, NULL, '0');
 
 /*Table structure for table `t_proxy` */
 

@@ -3,4 +3,14 @@
 
 <mapper namespace="com.ant.admin.dao.MinerProductDao">
 
+    <select id="selectProductList" resultType="com.ant.admin.dto.MinerProduct">
+        SELECT
+        miner.*,product.*,c.category_name
+        FROM
+        t_miner_product miner
+        LEFT JOIN t_product product ON miner.product_id = product.product_id
+        LEFT JOIN t_category c on c.category_id = product.category_id
+        <where> 1=1 ${ew.sqlSegment}</where>
+    </select>
+
 </mapper>

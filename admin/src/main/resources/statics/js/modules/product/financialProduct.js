@@ -132,72 +132,6 @@ function spec(goodId){
     });
 }
 
-function specValLayer(){
-	 layer.open({
-        type: 1,
-        offset: '50px',
-        skin: 'layui-layer-molv',
-        title: "设置规格",
-        area: ['700px', '450px'],
-        shade: 0,
-        shadeClose: false,
-        maxmin: true,
-        content: jQuery("#specValLayer"),
-        btn: ['重置规格','更新规格', '关闭'],
-        yes: function (index) {
-        	var goodId = getSelectedRow();
-			if(goodId == null){
-				return ;
-			}	 
-		 confirm('是否删除所有的商品规格吗', function(){
-			        	$.ajax({
-							type: "POST",
-						    url: baseURL + "good/goodspecvalue/deleteSpec",
- 						    data: {goodId:goodId},
-						    success: function(r){
-						    	if(r.code === 0){
-									alert('操作成功', function(data){
-										 layer.close(index);
- 									});
-								}else{
-									alert(r.msg, function(data){
-										 
- 									});
-								} 
-							}
-						});
-			});    
-        },
-	 btn2: function (index) {
-		 confirm('是否确定要重新生成商品规格吗', function(){
-			  var url = "good/goodspecvalue/saveGoodSpecValue"
-		 			$.ajax({
-						type: "POST",
-					    url: baseURL + url,
-		             contentType: "application/json",
-					    data: JSON.stringify(vm.specVal),
-					    success: function(r){
-					    	if(r.code === 0){
-								alert('操作成功', function(data){
-									layer.close(index);
-								});
-							}else{
-								alert(r.msg,function(data){
-									 
-									});
-							}
-						}
-					});
-			 
-		 
-		 });
-		 return false;
-
-}
-       
-    });
-}
-
 function picImg(goodId){
 	$('#input-702').fileinput('destroy');
 
@@ -340,7 +274,7 @@ $(function () {
         colModel: [			
 			{ label: '产品id', name: 'productId', index: 'product_id', width: 80, key: true },
 			{ label: '产品名称', name: 'productName', index: 'product_name', width: 150 },
-			{ label: '分类', name: 'categoryName', index: 'category_name', width: 200 ,formatter: function(cellvalue, options, rowObject){
+			{ label: '分类', name: 'categoryName', index: 'category_name', width: 120 ,formatter: function(cellvalue, options, rowObject){
  	            if(cellvalue == null || cellvalue == ''){
  	           	return   "它的分类被删除了";
  	            }
@@ -348,7 +282,7 @@ $(function () {
 				return   rowObject.categoryName;
 	           
 	        }},
-	        { label: '产品介绍', name: 'introduction', index: 'introduction', width: 150 },
+	        //{ label: '产品介绍', name: 'introduction', index: 'introduction', width: 150 },
 	        { label: '起投金额', name: 'thresholdAmount', index: 'threshold_amount', width: 120 },
 	        { label: '投资步长', name: 'stepTerm', index: 'step_term', width: 120 },
 	        { label: '锁定期', name: 'lockAmount', index: 'lock_amount', width: 120 },
@@ -379,8 +313,8 @@ $(function () {
 	            return '<span class="label label-primary">上架</span>';
 	           
 	        }}, 	
-	    	{ label: '创建时间', name: 'createAt', index: 'create_at', width: 80 },
-            { label: '创建者', name: 'createUser', index: 'create_user', width: 80 },
+	    	{ label: '创建时间', name: 'createAt', index: 'create_at', width: 120 },
+            { label: '创建者', name: 'createUser', index: 'create_user', width: 120},
 			/*
 			{ label: '更新者', name: 'updateBy', index: 'update_by', width: 80 }, 			
 			{ label: '更新时间', name: 'updateTime', index: 'update_time', width: 80 }, */
@@ -422,50 +356,48 @@ var vm = new Vue({
 		goodPrice:{},
 		spec:[],
 		specVal:[],
-		good: {},
+		financialProduct: {},
 		goodImage:[],
 		goodImageIds:[],
 		initialPreviewConfig:[],
 		search:{}
 	},
 	methods: {
-		specReset:function(){
-			var goodId = getSelectedRow();
-			if(!goodId){
-				return
-			}
-			 vm.oneCategoryId = $("#jqGrid").jqGrid("getRowData",goodId).oneCategoryId;
-			 getSpecVal();
-			 querySpecVal(goodId);
-			 specValLayer();
-		},
 		query: function () {
 			 
 			vm.reload();
 		},
 		add: function(){
-		 
-			location.href=baseURL + 'modules/good/sort.html';
+		    vm.showList = false;
+            vm.title = "新增";
+            vm.financialProduct = {};
 		},
 		update: function (event) {
-			var goodId = getSelectedRow();
-			if(goodId == null){
+		    var productId = getSelectedRow();
+                if(productId == null){
+                    return ;
+                }
+                vm.showList = false;
+                vm.title = "修改";
+
+                vm.getInfo(productId)
+			/*var productId = getSelectedRow();
+			if(productId == null){
 				return ;
 			}
-
-			location.href=baseURL + 'modules/good/type.html?goodId='+goodId;
+			location.href=baseURL + 'modules/product/type.html?productId='+productId;*/
 		},
 		 
 		shelve1: function (event) {
-			var goodId = getSelectedRow();
-			if(goodId == null){
+			var productId = getSelectedRow();
+			if(productId == null){
 				return ;
 			}
 			confirm('确定要上架吗', function(){
 			        	$.ajax({
 							type: "POST",
-						    url: baseURL + "good/good/updateShelve",
- 						    data: {showInShelve:1,goodId:goodId},
+						    url: baseURL + "financial/updateShelve",
+ 						    data: {showInShelve:1,productId:productId},
 						    success: function(r){
 						    	if(r.code === 0){
 									alert('操作成功', function(data){
@@ -483,15 +415,15 @@ var vm = new Vue({
 		},
 		 	 
 		shelve0: function (event) {
-			var goodId = getSelectedRow();
-			if(goodId == null){
+			var productId = getSelectedRow();
+			if(productId == null){
 				return ;
 			}
 			confirm('确定要下架吗', function(){
 			        	$.ajax({
 							type: "POST",
-						    url: baseURL + "good/good/updateShelve",
- 						    data: {showInShelve:0,goodId:goodId},
+						    url: baseURL + "financial/updateShelve",
+ 						    data: {showInShelve:0,productId:productId},
 						    success: function(r){
 						    	if(r.code === 0){
 									alert('操作成功', function(data){
@@ -507,76 +439,13 @@ var vm = new Vue({
 			});  
 			 
 		},
-		activate: function (event) {
-			var goodId = getSelectedRow();
-			if(goodId == null){
-				return ;
-			}
-			confirm('确定要激活吗', function(){
-			        	$.ajax({
-							type: "POST",
-						    url: baseURL + "good/good/updateShelve",
- 						    data: {activate:1,goodId:goodId},
-						    success: function(r){
-						    	if(r.code === 0){
-									alert('操作成功', function(data){
-										vm.reload();
-									});
-								}else{
-									alert(r.msg, function(data){
-										vm.reload();
- 									});
-								} 
-							}
-						});
-			});  
-			 
-		},
-		noactivate: function (event) {
-			var goodId = getSelectedRow();
-			if(goodId == null){
-				return ;
-			}
-			confirm('确定要未激活吗', function(){
-			        	$.ajax({
-							type: "POST",
-						    url: baseURL + "good/good/updateShelve",
- 						    data: {activate:0,goodId:goodId},
-						    success: function(r){
-						    	if(r.code === 0){
-									alert('操作成功', function(data){
-										vm.reload();
-									});
-								}else{
-									alert(r.msg, function(data){
-										vm.reload();
- 									});
-								} 
-							}
-						});
-			});  
-			 
-		},
-		insertSpec:function (type){
-   		 let specObj = {};
-   		 
-    		 var addvalue = $("#spec"+type.id).val();
-    		 if(addvalue == ''){
-    			 alert("请输入规格值");
-    			 return false;
-    		 }
-			specObj.specValue = addvalue;
-			specObj.categorySpecId = type.id;
-			specObj.goodId = this.goodId;
-   		 vm.specVal.push(specObj); 
- 
-   	},
-   	remove:function (item) {
+
+       	remove:function (item) {
    	      this.specVal.splice(this.specVal.indexOf(item), 1)
-       },
+        },
 		 	 
 		saveOrUpdate: function (event) {
-			var url = vm.good.goodId == null ? "financial/save" : "financial/update";
+			var url = vm.financialProduct.productId == null ? "financial/save" : "financial/update";
 			$.ajax({
 				type: "POST",
 			    url: baseURL + url,
@@ -594,17 +463,17 @@ var vm = new Vue({
 			});
 		},
 		del: function (event) {
-			var goodIds = getSelectedRows();
-			if(goodIds == null){
+			var productIds = getSelectedRows();
+			if(productIds == null){
 				return ;
 			}
 			
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: baseURL + "good/good/delete",
+				    url: baseURL + "financial/delete",
                     contentType: "application/json",
-				    data: JSON.stringify(goodIds),
+				    data: JSON.stringify(productIds),
 				    success: function(r){
 						if(r.code == 0){
 							alert('操作成功', function(index){
@@ -619,7 +488,7 @@ var vm = new Vue({
 		},
 		getInfo: function(productId){
 			$.get(baseURL + "financial/info/"+productId, function(r){
-                vm.good = r.good;
+                vm.financialProduct = r.financialProduct;
             });
 		},
 		reload: function (event) {

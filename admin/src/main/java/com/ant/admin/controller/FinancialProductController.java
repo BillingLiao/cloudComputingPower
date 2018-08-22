@@ -8,10 +8,10 @@ import com.ant.admin.entity.Product;
 import com.ant.admin.service.FinancialProductService;
 import com.ant.admin.service.ProductService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/financial")
-public class FinancialProductController {
+public class FinancialProductController extends AbstractController{
 
     @Autowired
     private ProductService productService;
@@ -39,6 +39,7 @@ public class FinancialProductController {
      */
     @RequestMapping("/list")
     public Result List(@RequestParam Map<String,Object> params, FinancialProduct financialProduct){
+        logger.info("列表请求参数：{}", params.toString());
         EntityWrapper<Product> wrapper = new EntityWrapper<Product>();
         wrapper.like("product.product_name", financialProduct.getProductName());
         PageUtils page = new PageUtils(financialProductService.queryPage(params, wrapper));
@@ -65,6 +66,7 @@ public class FinancialProductController {
      */
     @RequestMapping("/save")
     public Result save(@RequestBody(required = false) FinancialProduct financialProduct){
+        logger.info("保存请求参数：{}", financialProduct.toString());
         ValidatorUtils.validateEntity(financialProduct);
         financialProductService.insertProduct(financialProduct);
         return Result.ok();
@@ -77,19 +79,21 @@ public class FinancialProductController {
      */
     @RequestMapping("delete")
     public Result delete(@RequestBody Integer[] productIds){
-        for(int i=0;i<productIds.length;i++){
-            Integer productId=productIds[i];
-            EntityWrapper<FinancialProduct> orderEntityWrapper=new EntityWrapper<FinancialProduct>();
-            Wrapper<FinancialProduct> financialWrapper=orderEntityWrapper.eq("id",productId);
-            FinancialProduct financialProduct=financialProductService.selectOne(financialWrapper);
-            Integer proId = financialProduct.getProductId();
-            Product product = productService.selectById(proId);
-            financialProduct.setDelFlag(1);
-            product.setDelFlag(1);
-            financialProductService.updateAllColumnById(financialProduct);
-            productService.updateAllColumnById(product);
-        }
-        return Result.ok("订单产品已删除");
+        financialProductService.deleteProduct(productIds);
+        return Result.ok("产品已删除");
+    }
+
+    /**
+     * 修改上架 下架
+     *
+     * @throws IOException
+     */
+    @RequestMapping("/updateShelve")
+    public Result shelve(FinancialProduct financialProduct) throws IOException {
+        logger.info("请求参数：{}", financialProduct.toString());
+        Product product = new Product(financialProduct);
+        productService.updateById(product);
+        return Result.ok();
     }
 
 }

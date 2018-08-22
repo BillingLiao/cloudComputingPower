@@ -44,18 +44,18 @@ public class MenuController extends AbstractController {
      * 所有菜单列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("sys:menu:list")
     public List<Menu> list() {
         List<Menu> menuList = menuService.selectList(null);
-        for (Menu sysMenuEntity : menuList) {
-            Menu parentMenuEntity = menuService.selectById(sysMenuEntity.getParentId());
-            if (parentMenuEntity != null) {
-                sysMenuEntity.setParentName(parentMenuEntity.getName());
+        for(Menu menu : menuList){
+            Menu parentMenuEntity = menuService.selectById(menu.getParentId());
+            if(parentMenuEntity != null){
+                menu.setParentName(parentMenuEntity.getName());
             }
         }
-
         return menuList;
     }
+
+
 
     /**
      * 选择菜单(添加、修改菜单)
