@@ -220,26 +220,25 @@ var vm = new Vue({
 		title: null,
 		financialProduct: {},
 		introduction:true,
+		search:{},
 		goodImage:[],
 		goodImageIds:[],
 		initialPreviewConfig:[],
 	},
-	watch:{
-
-        Vue.nextTick(function () {
-           var E = window.wangEditor;
-           editor = new E('#editor');
-            // 配置服务器端地址
-           editor.customConfig.uploadFileName = 'file';
-           editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';
-           editor.create();
-           if(vm.advertsDetail){
-               editor.txt.html(vm.financialProduct.introduction);
-           }
-        });
+	created:function() {
+      	   Vue.nextTick(function () {
+      		   var E = window.wangEditor;
+      	        editor = new E('#editor');
+      	        // 配置服务器端地址
+      	       editor.customConfig.uploadFileName = 'file';
+      	       editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';
+      	       editor.create();
+      	        if(vm.financialProduct){
+                    editor.txt.html(vm.financialProduct.introduction);
+                 }
+      	         });
 
     },
-
 	methods: {
 		query: function () {
 			vm.reload();

@@ -50,6 +50,10 @@ CREATE TABLE `t_category` (
 
 /*Data for the table `t_category` */
 
+INSERT INTO `t_category` VALUES ('1', '矿机产品', 'minerProduct');
+INSERT INTO `t_category` VALUES ('2', '云算力产品', 'cloudProduct');
+INSERT INTO `t_category` VALUES ('3', '理财产品', 'financialProduct');
+
 /*Table structure for table `t_income` */
 
 DROP TABLE IF EXISTS `t_income`;

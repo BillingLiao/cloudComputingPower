@@ -124,10 +124,11 @@ var vm = new Vue({
 			this.src = "captcha.jpg?t=" + $.now();
 		},
 		login: function (event) {
+			<!--var data = "username="+vm.username+"&password="+vm.password+"&captcha="+vm.captcha;-->
 			var data = "username="+vm.username+"&password="+vm.password+"&captcha="+vm.captcha;
 			$.ajax({
 				type: "POST",
-			    url: "sys/login",
+			    url: "users/login",
 			    data: data,
 			    dataType: "json",
 			    success: function(result){

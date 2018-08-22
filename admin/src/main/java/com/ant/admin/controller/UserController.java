@@ -22,10 +22,11 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/login")
-    public ModelAndView goToLoginPage(){
-        ModelAndView modelAndView = new ModelAndView();
+    public String goToLoginPage(){
+        /*ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        return modelAndView;
+        return modelAndView;*/
+        return  "login";
     }
 
     @PostMapping("/login")
