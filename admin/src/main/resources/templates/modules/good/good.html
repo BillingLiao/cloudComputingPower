@@ -209,91 +209,12 @@
         </form>
        
     </div>
-    <!-- 规格值预览 -->
-	 	<div id="specValLayer"  style="padding: 10px;display:none">
-		 	 				 
-	    <form class="form-horizontal" method="post" id="uploadForm" enctype="multipart/form-data">  
-						<div class="form-group">
-					<div class="addtypewrap" v-for="(type,index) in spec">
-						<label class="col-sm-2 control-label" for="">{{type.specName}}</label>
-						<div class="col-sm-4 ">
-							<input class="addinput form-control " type=""
-								v-bind:id="'spec'+type.id" placeholder="请输入属性值" />
-						</div>
-						<button class="AddMoreFileBox   btn btn-default" type="button"
-						@click="insertSpec(type)"	>添加属性值</button>
-						<div class="InputsWrapper">
-							<div class="col" v-for="(item,index) in specVal"
-								v-if="type.id == item.categorySpecId">
-								<label class="col-sm-2 control-label"></label>
-								<div class="col-sm-4">
-									<input class="form-control" type="text"
-										v-model="item.specValue" readonly="" />
-								</div>
-								<button type="button" class="btn btn-default"
-									@click="remove(item)"	 >删除</button>
-							</div>
-						</div>
 
-					</div>
-					<!-- <table id="table"  >
-								<td><td v-for="table in table">{{table.name}}</td></th>
-								<tr v-for="tr in table.tr"><td>{{tr.name}}</td><td>{{tr.number}}</td><td>{{tr.brand}}</td></tr>
-							</table>   -->
-						</div>  
-						
-				</form>
-</div>
- 	<!-- 规格预览 -->
-	 	<div id="specLayer"  style="display: none; padding: 10px;">
-		 	<div class="form-group formtitle " style="padding: 6px 12px;">
-								<div class="col-md-5 control-label" style="text-align:left;padding: 15px;">规格名称</div> 
-								<div class="col-md-2 control-label">库存</div> 
-								<div class="col-md-2 control-label">价格</div> 
-								<div class="col-md-2 control-label">销售量</div> 
- 							</div>
-							<div class="form-group formitem" v-for="good in goodPrice" style="overflow:hidden;">
-								<div class="col-md-5">
-									<span class="form-control" style="border:0;box-shadow:none;">{{good.specName}}</span> 
-								</div>
-								<div class="col-md-2">
-									<input type="text" placeholder="库存" class="form-control stock trvalue" v-model="good.stock"> 
-								</div>
-								<div class="col-md-2">
-									<input type="text" placeholder="" class="form-control price trvalue"  v-model="good.price"> 
-								</div>
-								<div class="col-md-2">
-									<input type="text" placeholder="" class="form-control brand trvalue"  v-model="good.salesVolume"> 
-								</div>
-								
-							</div>
-							 
-	         
-	           		</div>
+
 	 </div>
 </div>
 
-
-	<!-- 图片预览 -->
-	 	<div id="imgLayer" style="display: none; padding: 10px;">
-		<div class="itemb tabitem"> 
-	           			<form class="form-horizontal" method="post" id="uploadForm" enctype="multipart/form-data">
-		                    <div class="form-group">
-		                        <label for=" "  class="col-sm-2 control-label">商品相册</label>
-		                        <div class="col-sm-10">
-		                       		<!-- <div id="gallery" v-for> 
-							         	<img src="${request.contextPath}/public/favicon.ico" width="70" height="70" alt=""> 
-							        </div> -->
-							         <div class="file-loading col-sm-10">
-			                            <input id="input-702" name="files" type="file" multiple>
-			                        </div>
-		                       	</div>
-		                    </div> 
-	               		 </form>
-	           		</div>
-	 </div>
-	 
-	
+<script type="text/javascript" src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
 <script src="${request.contextPath}/statics/js/modules/good/good.js?_${.now?long}"></script>
 
 </body>

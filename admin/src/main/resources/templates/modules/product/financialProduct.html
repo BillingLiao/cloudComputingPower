@@ -2,224 +2,154 @@
 <html>
 <head>
     <title>理财产品表</title>
-		<#include "/header.html">
-		  <link rel="stylesheet" href="${request.contextPath}/statics/plugins/fileinput/fileinput.css">
-	<link rel="stylesheet" href="${request.contextPath}/statics/css/addcss.css">
-	<script src="${request.contextPath}/statics/plugins/fileinput/fileinput.js"></script>
+    <#include "/header.html">
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/fileinput/fileinput.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/addcss.css">
+    <script src="${request.contextPath}/statics/plugins/fileinput/fileinput.js"></script>
     <script src="${request.contextPath}/statics/plugins/fileinput/zh.js"></script>
 </head>
 <body>
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
-        <div class="form-group">
-				<input type="text" class="form-control" style="display: inline-block; width: auto;" v-model="search.productName"  @keyup.enter="query" placeholder="产品名称">
-				<a class="btn btn-default" @click="query">查询</a>
- 		</div>
- 		<div class="form-group">
-            <#--  -<#if shiro.hasPermission("good:good:save")> -->
-            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
-			<#-- </#if>
-			<#if shiro.hasPermission("good:good:update")>-->
-            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-            <#--</#if>
-			<#if shiro.hasPermission("good:good:delete")>-->
-            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-            <#--</#if> -->
-			<a class="btn btn-success" @click="shelve1"><i class="fa fa-plus-square"></i>&nbsp;上架</a>
-            <a class="btn btn-success" @click="shelve0"><i class="fa fa-minus-square"></i>&nbsp;下架</a>
-       		</div>
-        </div>
-        <table id="jqGrid"></table>
-        <div id="jqGridPager"></div>
-    </div>
-
-    <div v-show="!showList" class="panel panel-default">
-        <div class="panel-heading">{{title}}</div>
-        <form class="form-horizontal">
-														                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商品名称</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.goodName" placeholder="商品名称"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商品编号</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.goodNumber" placeholder="商品编号"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">最大价格</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.maxPrice" placeholder="最大价格"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">最小价格</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.minPrice" placeholder="最小价格"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商品简介</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.introduce" placeholder="商品简介"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">展示图片</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.picImg" placeholder="展示图片"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">是否置顶 1=置顶/0=默认</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.showInTop" placeholder="是否置顶 1=置顶/0=默认"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">是否导航栏 1=显示/0=隐藏</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.showInNav" placeholder="是否导航栏 1=显示/0=隐藏"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">猜你喜欢 1=显示/0=隐藏</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.showInLike" placeholder="猜你喜欢 1=显示/0=隐藏"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">是否热门 1=热门/0=默认</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.showInHot" placeholder="是否热门 1=热门/0=默认"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">是否上架：1=上架/0=下架</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.showInShelve" placeholder="是否上架：1=上架/0=下架"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">搜索的关键词</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.searchKey" placeholder="搜索的关键词"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">销量</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.sales" placeholder="销量"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">页面标题</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.pageTitle" placeholder="页面标题"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">页面的描述</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.pageDescription" placeholder="页面的描述"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">页面的关键词</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.pageKeyword" placeholder="页面的关键词"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">备注信息</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.remarks" placeholder="备注信息"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">创建时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.createTime" placeholder="创建时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">创建者</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.createBy" placeholder="创建者"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">上架时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.shelveTime" placeholder="上架时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">上架人</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.shelveBy" placeholder="上架人"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">更新者</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.updateBy" placeholder="更新者"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">更新时间</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.updateTime" placeholder="更新时间"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label">商户id</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.martId" placeholder="商户id"/>
-                        </div>
-                    </div>
-											                    <div class="form-group">
-                        <div class="col-sm-2 control-label"></div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="financialProduct.delFlag" placeholder=""/>
-                        </div>
-                    </div>
-							            <div class="form-group">
-                <div class="col-sm-2 control-label"></div>
-                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
-                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            <div class="form-group">
+                <input type="text" class="form-control" style="display: inline-block; width: auto;"
+                       v-model="search.productName" @keyup.enter="query" placeholder="产品名称">
+                <a class="btn btn-default" @click="query">查询</a>
             </div>
-        </form>
-       
-    </div>
+            <div class="form-group">
+                <#-- -<#if shiro.hasPermission("good:good:save")> -->
+                <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+                <#--
+            </
+            #if>
+            <#if shiro.hasPermission("good:good:update")>-->
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            <#--
+        </
+        #if>
+        <#if shiro.hasPermission("good:good:delete")>-->
+        <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        <#--
+    </
+    #if> -->
+    <a class="btn btn-success" @click="shelve1"><i class="fa fa-plus-square"></i>&nbsp;上架</a>
+    <a class="btn btn-success" @click="shelve0"><i class="fa fa-minus-square"></i>&nbsp;下架</a>
+</div>
+</div>
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+</div>
 
-	 </div>
+<div v-show="!showList" class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品名称</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.productName" placeholder="产品名称"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">起投金额（元）</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.thresholdAmount" placeholder="起投金额"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">投资步长(元)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.stepTerm" placeholder="投资步长"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">锁定期(天)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.lockAmount" placeholder="锁定期"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">年化收益率(%)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.rewardRate" placeholder="年化收益率"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">销售状态</div>
+            <div class="col-sm-10">
+                <label class="radio-inline"><input type="radio" name="status" value="0" v-model="financialProduct.salesStatus">
+                    审核中</label>
+                <label class="radio-inline"><input type="radio" name="status" value="1" v-model="financialProduct.salesStatus">
+                    销售中</label>
+                <label class="radio-inline"><input type="radio" name="status" value="2" v-model="financialProduct.salesStatus">
+                    暂停销售</label>
+                <label class="radio-inline"><input type="radio" name="status" value="4" v-model="financialProduct.salesStatus">
+                    已结束</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品介绍</div>
+            <div class="col-sm-10">
+                <div id="editor" style="width: 710px;">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">上架时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.createAt" placeholder="上架时间" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">上架人</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.createUser" placeholder="上架人" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">更新时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.updateAt" placeholder="更新时间" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">更新者</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="financialProduct.updateUser" placeholder="更新者" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+            &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+        </div>
+    </form>
+
+</div>
+</div>
 </div>
 
 
-	<!-- 图片预览 -->
-	 	<div id="imgLayer" style="display: none; padding: 10px;">
-		<div class="itemb tabitem"> 
-	           			<form class="form-horizontal" method="post" id="uploadForm" enctype="multipart/form-data">
-		                    <div class="form-group">
-		                        <label for=" "  class="col-sm-2 control-label">商品相册</label>
-		                        <div class="col-sm-10">
-		                       		<!-- <div id="gallery" v-for> 
-							         	<img src="${request.contextPath}/public/favicon.ico" width="70" height="70" alt=""> 
-							        </div> -->
-							         <div class="file-loading col-sm-10">
-			                            <input id="input-702" name="files" type="file" multiple>
-			                        </div>
-		                       	</div>
-		                    </div> 
-	               		 </form>
-	           		</div>
-	 </div>
-	 
-	
+<!-- 图片预览 -->
+<div id="imgLayer" style="display: none; padding: 10px;">
+    <div class="itemb tabitem">
+        <form class="form-horizontal" method="post" id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for=" " class="col-sm-2 control-label">商品相册</label>
+                <div class="col-sm-10">
+                    <!-- <div id="gallery" v-for>
+                      <img src="${request.contextPath}/public/favicon.ico" width="70" height="70" alt="">
+                 </div> -->
+                    <div class="file-loading col-sm-10">
+                        <input id="input-702" name="files" type="file" multiple>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 <script src="${request.contextPath}/statics/js/modules/product/financialProduct.js?_${.now?long}"></script>
 
 </body>

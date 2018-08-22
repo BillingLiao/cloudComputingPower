@@ -1,137 +1,3 @@
- function querySpecVal(goodId){
-	 $.ajax({
-			url : baseURL +"good/goodspecvalue/list",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-			// 数据发送方式
-			type : "get",
-			// 接受数据格式
-			dataType : "json",
-			// 要传递的数据
-			data : {goodId:goodId},
-			// 回调函数，接受服务器端返回给客户端的值，即result值
-			success : function(data) {
-				 vm.specVal = [];
-				 if(!data.data||data.data.length==0){
-					alert("请先添加规格数据")
-				} 
-					$.each(data.data, function(i) {
-						 
-						 vm.specVal.push(data.data[i]);
-	 					 
-					});
-
-			},
-			error : function(data) {
-
-				alert("查询失败" + data);
-
-			}
-		})
-
- }
-/* 查看规格值*/
-function getSpecVal(){
-	$.ajax({
-		url : baseURL +"good/categoryspec/specList",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-		// 数据发送方式
-		type : "get",
-		// 接受数据格式
-		dataType : "json",
-		// 要传递的数据
-		data : {is_show:1,categoryId:vm.oneCategoryId},
-		// 回调函数，接受服务器端返回给客户端的值，即result值
-		success : function(data) {
-			 vm.spec = [];
-			 if(!data.data||data.data.length==0){
-				alert("请先添加规格数据")
-			} 
-				$.each(data.data, function(i) {
-					 let specObj = {};
-					specObj.specName =  data.data[i].specName;
-					specObj.id = data.data[i].id;
-					 vm.spec.push(specObj);
- 					 
-				});
-
-		},
-		error : function(data) {
-
-			alert("查询失败" + data);
-
-		}
-	})
-
-}
-
-/*获取商品规格*/
-function getGoodSpecPrice(goodId){
-	$.ajax({
-		url : baseURL +"good/goodspecprice/getGoodSpecPricelist",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-		// 数据发送方式
-		type : "get",
-		// 接受数据格式
-		dataType : "json",
-		// 要传递的数据
-		data : {goodId:goodId},
-		// 回调函数，接受服务器端返回给客户端的值，即result值
-		success : function(data) {
-			console.info(data);
-			 if(!data.data||data.data.length==0){
- 				alert('请先添加商品规格数据', function(index){
-  					//location.href=baseURL + "modules/good/standard.html?id="+vm.goodInfo.goodId+"&categoryId="+vm.goodInfo.oneCategoryId;
-				});
-			} 
-			 vm.goodPrice = data.data;
- 		},
-		error : function(data) {
-
-			alert("查询失败" + data);
-
-		}
-	})
-}
-
-
-
-
-function spec(goodId){
- 	getGoodSpecPrice(goodId);
-	 layer.open({
-        type: 1,
-        offset: '50px',
-        skin: 'layui-layer-molv',
-        title: "设置规格",
-        area: ['700px', '450px'],
-        shade: 0,
-        maxmin: true,
-        shadeClose: false,
-        content: jQuery("#specLayer"),
-        btn: ['确定', '取消'],
-        btn1: function (index) {
-        	$.ajax({
-				type: "POST",
-			    url: baseURL + "good/goodspecprice/saveGoodSpecPriceEntity",
-                contentType: "application/json",
-			    data: JSON.stringify(vm.goodPrice),
-			    success: function(r){
-			    	if(r.code === 0){
-						alert('操作成功', function(data){
-							vm.reload(); 
-							layer.close(index);
-							 
-						});
-					}else{
-						alert(r.msg, function(data){
-						 layer.close(index);
-						});
-					} 
-				}
-			});
-           
-        }
-       
-    });
-}
-
 function picImg(goodId){
 	$('#input-702').fileinput('destroy');
 
@@ -346,32 +212,46 @@ $(function () {
         }
     });
 });
-
+var editor;
 var vm = new Vue({
 	el:'#rrapp',
 	data:{
-		oneCategoryId:null,
 		showList: true,
 		title: null,
-		goodPrice:{},
-		spec:[],
-		specVal:[],
 		financialProduct: {},
+		introduction:true,
 		goodImage:[],
 		goodImageIds:[],
 		initialPreviewConfig:[],
-		search:{}
 	},
+	watch:{
+        Vue.nextTick(function () {
+           var E = window.wangEditor;
+           editor = new E('#editor');
+            // 配置服务器端地址
+           editor.customConfig.uploadFileName = 'file';
+           editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';
+           editor.create();
+           if(vm.advertsDetail){
+               editor.txt.html(vm.financialProduct.introduction);
+           }
+        });
+    },
+
 	methods: {
 		query: function () {
-			 
 			vm.reload();
 		},
 		add: function(){
 		    vm.showList = false;
             vm.title = "新增";
             vm.financialProduct = {};
+            vm.financialProduct = {salesStatus:0};
+            if(editor){
+                editor.txt.html('');
+            }
 		},
+
 		update: function (event) {
 		    var productId = getSelectedRow();
                 if(productId == null){
@@ -380,12 +260,10 @@ var vm = new Vue({
                 vm.showList = false;
                 vm.title = "修改";
 
-                vm.getInfo(productId)
-			/*var productId = getSelectedRow();
-			if(productId == null){
-				return ;
-			}
-			location.href=baseURL + 'modules/product/type.html?productId='+productId;*/
+                vm.getInfo(productId);
+                if(editor){
+                   editor.txt.html(vm.financialProduct.introduction);
+                }
 		},
 		 
 		shelve1: function (event) {
@@ -440,11 +318,10 @@ var vm = new Vue({
 			 
 		},
 
-       	remove:function (item) {
-   	      this.specVal.splice(this.specVal.indexOf(item), 1)
-        },
-		 	 
 		saveOrUpdate: function (event) {
+		    if(editor){
+            	vm.financialProduct.introduction =editor.txt.html();
+            }
 			var url = vm.financialProduct.productId == null ? "financial/save" : "financial/update";
 			$.ajax({
 				type: "POST",
