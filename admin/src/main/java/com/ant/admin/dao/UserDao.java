@@ -27,4 +27,10 @@ public interface UserDao extends BaseMapper<User> {
      * @return
      */
     List<Integer> queryAllMenuId(Integer userId);
+
+    /**
+     * 查询用户的所有权限
+     * @param userId  用户ID
+     */
+    List<String> queryAllPerms(Integer userId);
 }

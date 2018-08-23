@@ -321,21 +321,22 @@ DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
-  `user_name` INT(11) NOT NULL COMMENT '用户名',
   `password` VARCHAR(50) NOT NULL COMMENT '登陆密码',
+  `user_name` VARCHAR(20) DEFAULT NULL COMMENT '用户名',
   `telphone` VARCHAR(20) DEFAULT NULL COMMENT '手机号码',
   `btc_addr` VARCHAR(50) DEFAULT NULL COMMENT 'BTC地址',
   `Alipay` VARCHAR(50) DEFAULT NULL COMMENT '支付宝账号',
   `register_time` DATE DEFAULT NULL COMMENT '注册时间',
   `update_time` DATE DEFAULT NULL COMMENT '修改时间',
   `invitation_code` VARCHAR(100) DEFAULT NULL COMMENT '邀请码',
-  `status` TINYINT(4) DEFAULT NULL COMMENT '状态  0：禁用   1：正常',
+  `status` TINYINT(4) DEFAULT '1' COMMENT '状态  0：禁用   1：正常',
   PRIMARY KEY (`user_id`)
 ) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user`(`user_id`,`user_name`,`password`,`telphone`,`btc_addr`,`Alipay`,`register_time`,`update_time`,`invitation_code`,`status`) VALUES (1,'32454512','123456','15012015410','root@cnadmart.com','136000001','2016-11-11','2016-11-11','134df',1);
+INSERT  INTO `t_user`(`user_id`,`user_name`,`password`,`telphone`,`btc_addr`,`Alipay`,`register_time`,`update_time`,`invitation_code`,`status`) VALUES (1,'admin','123456','15012015410','root@cnadmart.com','136000001','2016-11-11','2016-11-11','134df',1);
+INSERT  INTO `t_user` VALUES (2,'Billing','wowo','15012920449','root@cnadmart.com','136000001','2016-11-11','2016-11-11','5454',1);
 
 /*Table structure for table `t_user_role` */
 
@@ -350,7 +351,16 @@ CREATE TABLE `t_user_role` (
 
 /*Data for the table `t_user_role` */
 
-INSERT  INTO `t_user_role`(`id`,`role_id`,`user_id`) VALUES (1,4,1);
+INSERT  INTO `t_user_role`(`id`,`role_id`,`user_id`) VALUES (1,4,2);
+
+DROP TABLE IF EXISTS `t_oss`;
+CREATE TABLE `t_oss` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `url` VARCHAR(200) DEFAULT NULL COMMENT 'URL地址',
+  `create_date` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)`sys_config`
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='文件上传';
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

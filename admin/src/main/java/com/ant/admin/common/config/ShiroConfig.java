@@ -2,7 +2,8 @@ package com.ant.admin.common.config;
 
 import com.ant.admin.common.cache.RedisCache;
 import com.ant.admin.common.cache.RedisCacheManager;
-import com.ant.admin.common.session.RedisSessionDao;
+import com.ant.admin.common.shiro.AuthRealm;
+import com.ant.admin.common.shiro.RedisSessionDao;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -25,16 +26,16 @@ import java.util.LinkedHashMap;
  */
 
 @Configuration
-public class ShiroConfiguration {
+public class ShiroConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);
+    private static Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
 
     @Bean(name="shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(@Qualifier("securityManager") SecurityManager manager) {
         ShiroFilterFactoryBean bean=new ShiroFilterFactoryBean();
         bean.setSecurityManager(manager);
         //配置登录的url和登录成功的url
-        bean.setLoginUrl("/users/login");
+        bean.setLoginUrl("/login.html");
         bean.setSuccessUrl("/");
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
@@ -42,9 +43,13 @@ public class ShiroConfiguration {
         /*filterChainDefinitionMap.put("/*", "anon");//表示可以匿名访问
         filterChainDefinitionMap.put("/**", "anon");
         filterChainDefinitionMap.put("/*.*", "anon");*/
-        filterChainDefinitionMap.put("/statics/**", "anon"); //表示可以匿名访问
-        filterChainDefinitionMap.put("/login*", "anon"); //表示可以匿名访问
-        filterChainDefinitionMap.put("/logout*","anon");
+
+        filterChainDefinitionMap.put("/statics/**", "anon");//表示可以匿名访问
+        filterChainDefinitionMap.put("/login.html", "anon");
+        filterChainDefinitionMap.put("/editor.html", "anon");
+        filterChainDefinitionMap.put("/sys/login", "anon");
+        filterChainDefinitionMap.put("/captcha.jpg", "anon");
+        filterChainDefinitionMap.put("/", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/*.*", "authc");
@@ -52,6 +57,8 @@ public class ShiroConfiguration {
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
+
+
     //配置核心安全事务管理器
     @Bean(name="securityManager")
     public SecurityManager securityManager(@Qualifier("authRealm") AuthRealm authRealm,

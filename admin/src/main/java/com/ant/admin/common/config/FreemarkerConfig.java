@@ -1,6 +1,7 @@
 
 package com.ant.admin.common.config;
 
+import com.ant.admin.common.shiro.ShiroTag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -21,11 +22,11 @@ import java.util.Properties;
 public class FreemarkerConfig {
 
     @Bean
-    public FreeMarkerConfigurer freeMarkerConfigurer(){
+    public FreeMarkerConfigurer freeMarkerConfigurer(ShiroTag shiroTag){
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setTemplateLoaderPath("classpath:/templates");
         Map<String, Object> variables = new HashMap<>(1);
-        //variables.put("shiro", shiroTag);
+        variables.put("shiro", shiroTag);
         configurer.setFreemarkerVariables(variables);
 
         Properties settings = new Properties();

@@ -16,7 +16,9 @@
 
 package com.ant.admin.controller;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,11 +40,7 @@ public class SysPageController {
 	public String index(){
 		return "index2";
 	}
-	/*
-	@RequestMapping(value = {"/"})
-	public String mobile(){
-		return "redirect:mobile/index.html";
-	}*/
+
 	@RequestMapping("/{index}.html")
 	public String toIndex( @PathVariable("index") String index){
 		return index;

@@ -1,4 +1,4 @@
-package com.ant.admin.common.session;
+package com.ant.admin.common.shiro;
 
 import com.ant.admin.common.utils.JedisUtil;
 import org.apache.shiro.session.Session;

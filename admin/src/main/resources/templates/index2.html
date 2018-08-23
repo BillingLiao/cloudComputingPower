@@ -66,7 +66,7 @@ var _hmt = _hmt || [];
                             <li><a @click="personal" href="#">信箱</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="/logout">安全退出</a>
+                            <li><a href="logout">安全退出</a>
                             </li>
                         </ul>
                         <div class="logo-element">{{system}}</div>
@@ -99,34 +99,6 @@ var _hmt = _hmt || [];
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="hidden-xs"><a href="index1.html" target="_Blank"
                                              class=""><i class="fa fa-rss-square"></i>旧版入口</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle count-info"
-                                            data-toggle="dropdown" href="#"> <i class="fa fa-envelope"></i>
-                        <span class="label label-warning"> </span>通知
-                    </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li v-for="row in rows" class="m-t-xs">
-                                <div class="dropdown-messages-box">
-                                    <a class="pull-left"> <i
-                                            class="fa fa-server"></i>
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right"> </small>
-                                        <strong> </strong>
-                                         <br>
-                                        <small class="text-muted"> </small>
-                                    </div>
-                                </div>
-                                <div class="divider"></div>
-                            </li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a class="J_menuItem" href="/oa/notify/selfNotify"> <i
-                                            class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="hidden-xs"><a @click="personal" href="#" ><i class="fa fa-id-card"></i> 个人</a></li>
                     <li class="dropdown hidden-xs"><a
                             class="right-sidebar-toggle" aria-expanded="false"> <i
@@ -159,7 +131,7 @@ var _hmt = _hmt || [];
                     <li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
                 </ul>
             </div>
-            <a href="/logout" class="roll-nav roll-right J_tabExit"><i
+            <a href="logout" class="roll-nav roll-right J_tabExit"><i
                     class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
@@ -180,8 +152,6 @@ var _hmt = _hmt || [];
                 <li class="active"><a data-toggle="tab" href="#tab-1"> <i
                         class="fa fa-gear"></i> 主题
                 </a></li>
-                <li class=""><a data-toggle="tab" href="#tab-2"> 通知 </a></li>
-                <li><a data-toggle="tab" href="#tab-3"> 项目进度 </a></li>
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
@@ -253,24 +223,7 @@ var _hmt = _hmt || [];
                         </div>
                     </div>
                 </div>
-                <div id="tab-2" class="tab-pane">
 
-                    <div class="sidebar-title">
-                        <h3>
-                            <i class="fa fa-comments-o"></i> 最新通知
-                        </h3>
-                        <small><i class="fa fa-tim"></i> 您当前有10条未读信息</small>
-                    </div>
-                </div>
-                <div id="tab-3" class="tab-pane">
-
-                    <div class="sidebar-title">
-                        <h3>
-                            <i class="fa fa-cube"></i> 最新任务
-                        </h3>
-                        <small><i class="fa fa-tim"></i> 您当前有14个任务，10个已完成</small>
-                    </div>
-                </div>
             </div>
 
         </div>

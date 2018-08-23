@@ -2,7 +2,8 @@ ext {
     versions = [
             springBootVersion: '2.0.0.RELEASE',
             mybatisplusVersion: '2.3',
-            shiroVersion: '1.4.0'
+            shiroVersion: '1.4.0',
+            kaptchaVersion: '0.0.9'
     ]
 libs = [
         common : [
@@ -35,6 +36,12 @@ libs = [
                 "org.apache.shiro:shiro-spring:${versions.shiroVersion}",
                 // https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache
                 "org.apache.shiro:shiro-ehcache:${versions.shiroVersion}"
+        ],
+        kaptcha: [
+                "com.github.axet:kaptcha:${versions.kaptchaVersion}"
+        ],
+        joda: [
+                "joda-time:joda-time:2.9.9"
         ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"

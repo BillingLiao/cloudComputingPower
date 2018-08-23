@@ -32,7 +32,9 @@ public abstract class AbstractController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
 	protected User getUser() {
-		return (User) SecurityUtils.getSubject().getPrincipal();
+		//return (User) SecurityUtils.getSubject().getPrincipal();
+		User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+		return user;
 	}
 
 	protected Integer getUserId() {

@@ -21,14 +21,6 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping("/login")
-    public String goToLoginPage(){
-        /*ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;*/
-        return  "login";
-    }
-
     @PostMapping("/login")
     @ResponseBody
     public Result login(User user){
