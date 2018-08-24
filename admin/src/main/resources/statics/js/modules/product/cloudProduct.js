@@ -135,7 +135,7 @@ $(function () {
 
 	//getImage();
     $("#jqGrid").jqGrid({
-        url: baseURL + 'financial/list',
+        url: baseURL + 'cloud/list',
         datatype: "json",
         colModel: [			
 			{ label: '产品id', name: 'productId', index: 'product_id', width: 80, key: true },
@@ -218,7 +218,7 @@ var vm = new Vue({
 	data:{
 		showList: true,
 		title: null,
-		financialProduct: {},
+		cloudProduct: {},
 		introduction:true,
 		search:{},
 		goodImage:[],
@@ -233,8 +233,8 @@ var vm = new Vue({
       	      /* editor.customConfig.uploadFileName = 'file';
       	       editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';*/
       	       editor.create();
-      	        if(vm.financialProduct){
-                    editor.txt.html(vm.financialProduct.introduction);
+      	        if(vm.cloudProduct){
+                    editor.txt.html(vm.cloudProduct.introduction);
                  }
       	         });
 
@@ -246,8 +246,8 @@ var vm = new Vue({
 		add: function(){
 		    vm.showList = false;
             vm.title = "新增";
-            vm.financialProduct = {};
-            vm.financialProduct = {salesStatus:0};
+            vm.cloudProduct = {};
+            vm.cloudProduct = {salesStatus:0};
             if(editor){
                 editor.txt.html('');
             }
@@ -263,7 +263,7 @@ var vm = new Vue({
 
                 vm.getInfo(productId);
                 if(editor){
-                   editor.txt.html(vm.financialProduct.introduction);
+                   editor.txt.html(vm.cloudProduct.introduction);
                 }
 		},
 		 
@@ -275,7 +275,7 @@ var vm = new Vue({
 			confirm('确定要上架吗', function(){
 			        	$.ajax({
 							type: "POST",
-						    url: baseURL + "financial/updateShelve",
+						    url: baseURL + "cloud/updateShelve",
  						    data: {showInShelve:1,productId:productId},
 						    success: function(r){
 						    	if(r.code === 0){
@@ -301,7 +301,7 @@ var vm = new Vue({
 			confirm('确定要下架吗', function(){
 			        	$.ajax({
 							type: "POST",
-						    url: baseURL + "financial/updateShelve",
+						    url: baseURL + "cloud/updateShelve",
  						    data: {showInShelve:0,productId:productId},
 						    success: function(r){
 						    	if(r.code === 0){
@@ -321,14 +321,14 @@ var vm = new Vue({
 
 		saveOrUpdate: function (event) {
 		    if(editor){
-            	vm.financialProduct.introduction =editor.txt.html();
+            	vm.cloudProduct.introduction =editor.txt.html();
             }
-			var url = vm.financialProduct.productId == null ? "financial/save" : "financial/update";
+			var url = vm.cloudProduct.productId == null ? "cloud/save" : "cloud/update";
 			$.ajax({
 				type: "POST",
 			    url: baseURL + url,
                 contentType: "application/json",
-			    data: JSON.stringify(vm.financialProduct),
+			    data: JSON.stringify(vm.cloudProduct),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -349,7 +349,7 @@ var vm = new Vue({
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: baseURL + "financial/delete",
+				    url: baseURL + "cloud/delete",
                     contentType: "application/json",
 				    data: JSON.stringify(productIds),
 				    success: function(r){
@@ -365,8 +365,8 @@ var vm = new Vue({
 			});
 		},
 		getInfo: function(productId){
-			$.get(baseURL + "financial/info/"+productId, function(r){
-                vm.financialProduct = r.financialProduct;
+			$.get(baseURL + "cloud/info/"+productId, function(r){
+                vm.cloudProduct = r.cloudProduct;
             });
 		},
 		reload: function (event) {

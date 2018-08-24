@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -30,14 +31,27 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
     private FinancialProductDao financialProductDao;
 
     /**
-     * 插入
+     * 查询
      * @param productId
      * @return
      */
     @Override
     public FinancialProduct infoFinancial(Integer productId){
-        FinancialProduct financialProduct = financialProductDao.selectById(productId);
+        FinancialProduct financialProduct = financialProductDao.selectByProductId(productId);
         return financialProduct;
+    }
+
+    /**
+     * 更新
+     * @param financialProduct
+     */
+    @Override
+    @Transactional
+    public void updateProduct(FinancialProduct financialProduct) {
+        Product product = new Product(financialProduct);
+        //全部更新
+        productDao.updateAllColumnById(product);
+        financialProductDao.updateAllColumnById(financialProduct);
     }
 
     /**
@@ -46,25 +60,33 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
      * @return
      */
     @Override
+    @Transactional
     public void insertProduct(FinancialProduct financialProduct){
         //插入产品表数据
         Product product = new Product(financialProduct);
+        product.setCategoryId(3);
         productDao.insert(product);
+        financialProduct.setProductId(product.getProductId());
         financialProductDao.insert(financialProduct);
     }
 
+    /**
+     * 删除
+     * @param productIds
+     */
     @Override
     public void deleteProduct(Integer[] productIds) {
         for(int i=0;i<productIds.length;i++){
             Integer productId=productIds[i];
             Product product = productDao.selectById(productId);
-            FinancialProduct financialProduct = financialProductDao.selectById(productId);
+            FinancialProduct financialProduct = financialProductDao.selectByProductId(productId);
             product.setDelFlag(1);
             financialProduct.setDelFlag(1);
             productDao.updateAllColumnById(product);
             financialProductDao.updateAllColumnById(financialProduct);
         }
     }
+
 
     @Override
     public Page<FinancialProduct> queryPage(Map<String, Object> params, Wrapper<Product> wrapper) {

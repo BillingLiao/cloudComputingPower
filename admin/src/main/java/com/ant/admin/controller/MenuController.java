@@ -44,6 +44,7 @@ public class MenuController extends AbstractController {
      * 所有菜单列表
      */
     @RequestMapping("/list")
+    @RequiresPermissions("sys:menu:list")
     public List<Menu> list() {
         List<Menu> menuList = menuService.selectList(null);
         for(Menu menu : menuList){
@@ -82,7 +83,7 @@ public class MenuController extends AbstractController {
      */
     @RequestMapping("/info/{menuId}")
     @RequiresPermissions("sys:menu:info")
-    public Result info(@PathVariable("menuId") Long menuId) {
+    public Result info(@PathVariable("menuId") Integer menuId) {
         Menu menu = menuService.selectById(menuId);
         return Result.ok().put("menu", menu);
     }
@@ -125,7 +126,7 @@ public class MenuController extends AbstractController {
     //@SysLog("删除菜单")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:menu:delete")
-    @CacheEvict(value = {"sysMenu"}, allEntries = true)
+    //@CacheEvict(value = {"sysMenu"}, allEntries = true)
     //@J2CacheEvit("permsList")
     public Result delete(Integer menuId) {
         if (menuId <= 31) {

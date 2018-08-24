@@ -230,8 +230,8 @@ var vm = new Vue({
       		   var E = window.wangEditor;
       	        editor = new E('#editor');
       	        // 配置服务器端地址
-      	       editor.customConfig.uploadFileName = 'file';
-      	       editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';
+      	      /* editor.customConfig.uploadFileName = 'file';
+      	       editor.customConfig.uploadImgServer = baseURL +'sys/oss/wangEditorupload';*/
       	       editor.create();
       	        if(vm.financialProduct){
                     editor.txt.html(vm.financialProduct.introduction);
@@ -328,7 +328,7 @@ var vm = new Vue({
 				type: "POST",
 			    url: baseURL + url,
                 contentType: "application/json",
-			    data: JSON.stringify(vm.good),
+			    data: JSON.stringify(vm.financialProduct),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){

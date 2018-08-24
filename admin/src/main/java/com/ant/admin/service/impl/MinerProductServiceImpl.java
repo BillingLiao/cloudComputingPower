@@ -1,6 +1,5 @@
 package com.ant.admin.service.impl;
 
-import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.MinerProductDao;
 import com.ant.admin.dao.ProductDao;
@@ -12,6 +11,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -28,17 +28,60 @@ public class MinerProductServiceImpl extends ServiceImpl<MinerProductDao,MinerPr
     @Autowired
     private MinerProductDao minerProductDao;
 
+    /**
+     * 查询
+     * @param productId
+     * @return
+     */
     @Override
     public MinerProduct infoMiner(Integer productId){
-        MinerProduct minerProduct = minerProductDao.selectById(productId);
+        MinerProduct minerProduct = minerProductDao.selectByProductId(productId);
         return minerProduct;
     }
 
+    /**
+     * 保存
+     * @param minerProduct
+     * @return
+     */
     @Override
-    public void insertMiner(MinerProduct minerProduct) {
+    public void insertProduct(MinerProduct minerProduct) {
+        //插入
         Product product = new Product(minerProduct);
+        product.setCategoryId(1);
         productDao.insert(product);
+        minerProduct.setProductId(product.getProductId());
         minerProductDao.insert(minerProduct);
+    }
+
+    /**
+     * 更新
+     * @param minerProduct
+     */
+    @Override
+    @Transactional
+    public void updateProduct(MinerProduct minerProduct) {
+        Product product = new Product(minerProduct);
+        //全部更新
+        productDao.updateAllColumnById(product);
+        minerProductDao.updateAllColumnById(minerProduct);
+    }
+
+    /**
+     * 删除
+     * @param productIds
+     */
+    @Override
+    public void deleteProduct(Integer[] productIds) {
+        for(int i=0;i<productIds.length;i++){
+            Integer productId=productIds[i];
+            Product product = productDao.selectById(productId);
+            MinerProduct minerProduct = minerProductDao.selectByProductId(productId);
+            product.setDelFlag(1);
+            minerProduct.setDelFlag(1);
+            productDao.updateAllColumnById(product);
+            minerProductDao.updateAllColumnById(minerProduct);
+        }
     }
 
     @Override

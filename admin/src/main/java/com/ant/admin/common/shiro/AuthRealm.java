@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -22,6 +23,7 @@ import java.util.*;
  * @author zhaopinchao
  * @date 2018-7-28 08:04
  */
+@Component
 public class AuthRealm extends AuthorizingRealm {
 
     private static Logger logger = LoggerFactory.getLogger(AuthRealm.class);
@@ -57,7 +59,8 @@ public class AuthRealm extends AuthorizingRealm {
         return info;
 */
 
-        User user = (User)principals.getPrimaryPrincipal();
+        User user = (User)SecurityUtils.getSubject().getSession().getAttribute("user");
+
         Integer userId = user.getUserId();
 
         List<String> permsList;
@@ -124,7 +127,6 @@ public class AuthRealm extends AuthorizingRealm {
 
         //将用户登录信息放入shiro的session中
         SecurityUtils.getSubject().getSession().setAttribute("user",user);
-        System.out.println(SecurityUtils.getSubject().getSession().getAttribute("user"));
 
         //放入shiro.调用CredentialsMatcher检验密码
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());

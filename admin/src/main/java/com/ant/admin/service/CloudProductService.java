@@ -16,7 +16,11 @@ public interface CloudProductService extends IService<CloudProduct> {
 
     CloudProduct infoCloud(Integer productId);
 
-    void insertCloud(CloudProduct cloudProduct);
+    void insertProduct(CloudProduct cloudProduct);
+
+    void updateProduct(CloudProduct cloudProduct);
+
+    void deleteProduct(Integer[] productIds);
 
     Page<CloudProduct> queryPage(Map<String,Object> params, Wrapper<Product> wrapper);
 }

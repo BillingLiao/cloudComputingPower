@@ -16,7 +16,11 @@ public interface MinerProductService extends IService<MinerProduct> {
 
     MinerProduct infoMiner(Integer productId) throws Exception;
 
-    void insertMiner(MinerProduct minerProduct);
+    void insertProduct(MinerProduct minerProduct);
+
+    void updateProduct(MinerProduct minerProduct);
+
+    void deleteProduct(Integer[] productIds);
 
     Page<MinerProduct> queryPage(Map<String,Object> params, Wrapper<Product> wrapper);
 }

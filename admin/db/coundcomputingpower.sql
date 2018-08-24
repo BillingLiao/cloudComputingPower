@@ -110,13 +110,36 @@ INSERT INTO `t_menu` VALUES ('1', '0', '系统管理', NULL, NULL, '0', 'fa fa-c
 INSERT INTO `t_menu` VALUES ('2', '1', '管理员管理', 'modules/sys/user.html', NULL, '1', 'fa fa-user', '2');
 INSERT INTO `t_menu` VALUES ('3', '1', '角色管理', 'modules/sys/role.html', NULL, '1', 'fa fa-user-secret', '2');
 INSERT INTO `t_menu` VALUES ('4', '1', '菜单管理', 'modules/sys/menu.html', NULL, '1', 'fa fa-th-list', '3');
-INSERT INTO `t_menu` VALUES ('5', '0', '产品管理', NULL, NULL, '0', 'fa fa-shopping-basket', '0');
-INSERT INTO `t_menu` VALUES ('6', '5', '矿机产品管理', 'modules/good/good.html', NULL, '1', NULL, '1');
-INSERT INTO `t_menu` VALUES ('7', '5', '云算力产品管理', 'modules/good/good.html', NULL, '1', NULL, '2');
-INSERT INTO `t_menu` VALUES ('8', '5', '理财产品管理', 'modules/product/financialProduct.html', NULL, '1', NULL, '3');
-INSERT INTO `t_menu` VALUES ('10', '8', '商品规格', 'modules/good/categoryspec.html', 'good:categoryspec:list,good:categoryspec:info,good:categoryspec:save,good:categoryspec:update,good:categoryspec:delete', '1', NULL, '0');
-INSERT INTO `t_menu` VALUES ('11', '0', '订单管理', NULL, NULL, '0', 'fa fa-bars', '3');
-INSERT INTO `t_menu` VALUES ('12', '11', '订单列表', 'modules/order/orderList.html', NULL, '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('5', '2', '查看', NULL, 'sys:user:list,sys:user:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('6', '2', '新增', NULL, 'sys:user:save,sys:role:select', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('7', '2', '修改', NULL, 'sys:user:update,sys:role:select', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('8', '2', '删除', NULL, 'sys:user:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('9', '3', '查看', NULL, 'sys:role:list,sys:role:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('10', '3', '新增', NULL, 'sys:role:save,sys:menu:perms', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('11', '3', '修改', NULL, 'sys:role:update,sys:menu:perms', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('12', '3', '删除', NULL, 'sys:role:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('13', '4', '查看', NULL, 'sys:menu:list,sys:menu:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('14', '4', '新增', NULL, 'sys:menu:save,sys:menu:select', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('15', '4', '修改', NULL, 'sys:menu:update,sys:menu:select', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('16', '4', '删除', NULL, 'sys:menu:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('17', '0', '产品管理', NULL, NULL, '0', 'fa fa-shopping-basket', '0');
+INSERT INTO `t_menu` VALUES ('18', '17', '矿机产品管理', 'modules/product/minderProduct.html', NULL, '1', NULL, '1');
+INSERT INTO `t_menu` VALUES ('19', '17', '云算力产品管理', 'modules/product/cloudProduct.html', NULL, '1', NULL, '2');
+INSERT INTO `t_menu` VALUES ('20', '17', '理财产品管理', 'modules/product/financialProduct.html', NULL, '1', NULL, '3');
+INSERT INTO `t_menu` VALUES ('21', '0', '订单管理', NULL, NULL, '0', 'fa fa-bars', '3');
+INSERT INTO `t_menu` VALUES ('22', '21', '订单列表', 'modules/order/orderList.html', NULL, '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('23', '18', '查看', NULL, 'product:miner:list,product:miner:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('24', '18', '新增', NULL, 'product:miner:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('25', '18', '修改', NULL, 'product:miner:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('26', '18', '删除', NULL, 'product:miner:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('27', '19', '查看', NULL, 'product:cloud:list,product:cloud:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('28', '19', '新增', NULL, 'product:cloud:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('29', '19', '修改', NULL, 'product:cloud:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('30', '19', '删除', NULL, 'product:cloud:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('31', '20', '查看', NULL, 'product:financial:list,product:financial:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('32', '20', '新增', NULL, 'product:financial:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('33', '20', '修改', NULL, 'product:financial:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('34', '20', '删除', NULL, 'product:financial:delete', '2', NULL, '0');
 
 /*Table structure for table `t_order` */
 

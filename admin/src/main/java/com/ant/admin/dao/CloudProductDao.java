@@ -9,12 +9,25 @@ import com.baomidou.mybatisplus.plugins.Page;
 import java.util.List;
 
 /**
- * 云算力明细
+ * 云算力
  *
  * @author Billing
  * @date 2018/8/20 19:19
  */
 public interface CloudProductDao extends BaseMapper<CloudProduct> {
 
+    /**
+     * 分页查询
+     * @param page
+     * @param wrapper
+     * @return
+     */
     List<CloudProduct> selectProductList(Page<CloudProduct> page, Wrapper<Product> wrapper);
+
+    /**
+     * 根据产品id查询云算力产品
+     * @param productId
+     * @return
+     */
+    CloudProduct selectByProductId(Integer productId);
 }

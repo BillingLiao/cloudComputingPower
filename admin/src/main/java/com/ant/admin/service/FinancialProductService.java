@@ -23,4 +23,5 @@ public interface FinancialProductService extends IService<FinancialProduct> {
     Page<FinancialProduct> queryPage(Map<String,Object> params, Wrapper<Product> wrapper);
 
 
+    void updateProduct(FinancialProduct financialProduct);
 }

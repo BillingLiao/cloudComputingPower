@@ -6,14 +6,16 @@ import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.dto.MinerProduct;
 import com.ant.admin.entity.Product;
 import com.ant.admin.service.MinerProductService;
+import com.ant.admin.service.ProductService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 /**
- * 产品controller
+ * 矿机产品controller
  *
  * @author Billing
  * @date 2018/8/15 11:17
@@ -21,6 +23,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/miner")
 public class MinerProductController {
+
+    @Autowired
+    private ProductService productService;
 
     @Autowired
     private MinerProductService minerproductService;
@@ -33,6 +38,7 @@ public class MinerProductController {
      * @return
      */
     @RequestMapping("/list")
+    @RequiresPermissions("product:miner:list")
     public Result list(@RequestParam Map<String,Object> params, MinerProduct minerProduct){
         EntityWrapper<Product> wrapper = new EntityWrapper<Product>();
         wrapper.like("product.product_name", minerProduct.getProductName());
@@ -41,6 +47,7 @@ public class MinerProductController {
     }
 
     @RequestMapping("/info/{productId}")
+    @RequiresPermissions("product:miner:info")
     public Result info(@PathVariable("productId") Integer productId) throws Exception {
         MinerProduct minerProduct =  minerproductService.infoMiner(productId);
         return Result.ok().put("minerProduct",minerProduct);
@@ -53,11 +60,46 @@ public class MinerProductController {
      * @return
      */
     @RequestMapping("/save")
+    @RequiresPermissions("product:miner:save")
     public Result save(@RequestBody(required = false) MinerProduct minerProduct){
         ValidatorUtils.validateEntity(minerProduct);
-        minerproductService.insertMiner(minerProduct);
+        minerproductService.insertProduct(minerProduct);
         return Result.ok();
     }
 
+
+    /**
+     * 修改
+     */
+    @RequestMapping("/update")
+    @RequiresPermissions("product:miner:update")
+    public Result update(@RequestBody MinerProduct minerProduct){
+        ValidatorUtils.validateEntity(minerProduct);
+        minerproductService.updateProduct(minerProduct);
+        return Result.ok();
+    }
+
+    /**
+     * 删除
+     * @param productIds
+     * @return
+     */
+    @RequestMapping("/delete")
+    @RequiresPermissions("product:miner:delete")
+    public Result delete(@RequestBody Integer[] productIds){
+        minerproductService.deleteProduct(productIds);
+        return Result.ok("产品已删除");
+    }
+
+    /**
+     * 修改上架 下架
+     */
+    @RequestMapping("/updateShelve")
+    @RequiresPermissions("product:miner:update")
+    public Result shelve(MinerProduct minerProduct){
+        Product product = new Product(minerProduct);
+        productService.updateById(product);
+        return Result.ok();
+    }
 
 }

@@ -7,6 +7,7 @@ import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.apache.shiro.util.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.util.SerializationUtils;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import java.util.Set;
  * @author zhaopinchao
  * @date 2018-7-29 10:06
  */
+@Component
 public class RedisSessionDao extends AbstractSessionDAO {
 
     private Logger logger = LoggerFactory.getLogger(RedisSessionDao.class);

@@ -24,4 +24,11 @@ public interface FinancialProductDao extends BaseMapper<FinancialProduct> {
      * @return
      */
     List<FinancialProduct> selectProductList(Page<FinancialProduct> page,@Param("ew") Wrapper<Product> wrapper);
+
+    /**
+     * 根据产品id查询理财产品
+     * @param productId
+     * @return
+     */
+    FinancialProduct selectByProductId(Integer productId);
 }
