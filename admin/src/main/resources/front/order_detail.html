@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>确认订单-蚂蚁矿业</title>
+	<meta name="keywords" content="蚂蚁矿业" /> 
+	<meta name="description" content="蚂蚁矿业" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="author" content="pennychen" />
+	<meta name="Copyright" content="蚂蚁矿业" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
+	
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<!--动画-->
+	<script src="js/wow.min.js"></script>
+	<link href="css/animate.css" rel='stylesheet' type='text/css' />
+	<script>
+		new WOW().init();
+	</script>
+		
+</head>
+	
+	
+	
+	
+<body class="cbp-spmenu-push">
+<div id="page">
+
+	<!--header-->
+    <div id="header">
+		<div class="logo">确认订单</div>
+	</div>
+	<!--header end-->
+	
+	
+		<!--移动端导航-->
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<section class="buttonset"><button id="showRightPush"><img src="images/nav.png" alt="" class="logo-img" /></button>
+		</section>
+		
+		<div class="clearfix"></div>
+		<!--- Push Navigation Starts ---->
+				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+					<a href="index.html">首页</a>
+					<a href="rent.html">云算力租赁</a>
+					<a href="mall.html">云算力合约商城</a>
+					<a href="agent.html">代理中心</a>
+					<a href="personal.html">个人信息</a>
+					<a href="my.html">我的云算力</a>
+				</nav>
+				<script src="js/classie.js"></script>
+				<script>
+					var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+						showRightPush = document.getElementById( 'showRightPush' ),
+						body = document.body;
+		
+					showRightPush.onclick = function() {
+						classie.toggle( this, 'active' );
+						classie.toggle( body, 'cbp-spmenu-push-toleft' );
+						classie.toggle( menuRight, 'cbp-spmenu-open' );
+						disableOther( 'showRightPush' );
+					};
+		
+					function disableOther( button ) {
+						if( button !== 'showRightPush' ) {
+							classie.toggle( showRightPush, 'disabled' );
+						}
+					}
+				</script>
+				<script type="text/javascript" src="js/easing.js"></script>
+				<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){		
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+				</script>
+
+		<!--- Push Navigation ends ---->
+		<!--移动端导航 end-->
+		
+		
+			
+	<div class="r_detail">
+		<div class="r_detail_con">
+		
+			<h1 class="ord_t">订单明细：</h1>
+
+			<ul class="ord_info" id="car_two">
+		
+				<li>合约名称：	 <span>矿场合约一个月</span></li>
+				<li>年化利率： <span>5%</span></li>
+				<li>周期：	 <span>30天，每月按30天计算</span></li>
+				<li>投入金额：	 <span>￥ 10000</span></li>
+				<li>订单号：	 <span>VSDF145524</span></li>
+				<li class="shouyi">收益计算：	 <span>每日收益：1.61CNY</span><span>每月收益：37.61CNY</span><span>到期收益：37.61CNY</span></li>
+			
+			</ul>
+			
+			<div class="index_reg"><a class="yew" href="pay.html">去支付</a></div>
+			
+			<div class="tips">
+				<p><a href="">对订单有疑问？</a></p>
+				<p><a href="">取消订单</a></p>
+			</div>
+			
+		
+		</div>
+	</div>
+	
+	
+		
+	<!--footer-->
+	<div class="footer">
+		<div class="links"></div>
+		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
+	</div>
+	<!--footer end-->
+	
+
+	<!--导航-->
+	<ul class="nav_b">
+		<li><a class="icon_01" href="index.html">首页</a></li>
+		<li><a class="icon_02" href="rent.html">租赁</a></li>
+		<li><a class="icon_03" href="mall.html">商城</a></li>
+		<li><a class="icon_05" href="personal.html">我</a></li>
+	</ul>
+	
+			
+</div>
+	
+		
+</body>
+</html>

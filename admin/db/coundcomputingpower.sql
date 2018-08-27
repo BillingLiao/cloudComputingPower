@@ -360,7 +360,7 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user` VALUES (1,'admin','e296cc16053e01b3f619958f3fab4e9e143b5c22fec5bd2b3dd633d7a13ee9bb', 'YzcmCZNvbXocrsz9dm8e','15012015410','root@cnadmart.com','root@cn','136000001','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
+INSERT  INTO `t_user` VALUES (1,'admin','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012015410','root@cnadmart.com','root@cn','136000001','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
 INSERT  INTO `t_user` VALUES (2,'Billing','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012920449','root@cnadmart.com','root@cnad','136000001','2016-11-11 17:49:54','2016-11-11 13:11:11','5454',1);
 
 /*Table structure for table `t_user_role` */

@@ -92,21 +92,6 @@ public class AuthRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
-        /*//从主体传过来的认证信息中，获得用户名
-        String username = (String) token.getPrincipal();
-        //通过用户名得到数据库中的凭证
-        User user = userDao.getUserByName(username);
-        String password = null;
-        if(user == null){
-            return null;
-        }
-        password = user.getPassword();
-        if (StringUtils.isEmpty(password)){
-            return null;
-        }
-        //将用户登录信息放入shiro的session中
-        SecurityUtils.getSubject().getSession().setAttribute("user",user);*/
-
         UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
 
         //查询用户信息
@@ -123,11 +108,30 @@ public class AuthRealm extends AuthorizingRealm {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
 
+        //SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());
         //将用户登录信息放入shiro的session中
         SecurityUtils.getSubject().getSession().setAttribute("user",user);
 
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
         return info;
-        //SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());
     }
-}
+        /*//从主体传过来的认证信息中，获得用户名
+        String username = (String) token.getPrincipal();
+        //通过用户名得到数据库中的凭证
+        User user = userDao.getUserByName(username);
+        String password = null;
+        if(user == null){
+            return null;
+        }
+        password = user.getPassword();
+        if (StringUtils.isEmpty(password)){
+            return null;
+        }
+        //将用户登录信息放入shiro的session中
+        SecurityUtils.getSubject().getSession().setAttribute("user",user);
+
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());
+
+        */
+    }
+
