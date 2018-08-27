@@ -11,6 +11,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,13 @@ public class AuthRealm extends AuthorizingRealm {
 
     private static Logger logger = LoggerFactory.getLogger(AuthRealm.class);
 
-    /*@Autowired
-    private FuncDao funcDao;*/
-
     @Autowired
     private MenuDao menuDao;
 
     @Autowired
     private UserDao userDao;
 
-    {super.setName("authRealm");}
+    //{super.setName("authRealm");}
 
     /**
      * 授权(验证权限时调用)
@@ -93,7 +91,7 @@ public class AuthRealm extends AuthorizingRealm {
      * 认证(登录时调用)
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         /*//从主体传过来的认证信息中，获得用户名
         String username = (String) token.getPrincipal();
         //通过用户名得到数据库中的凭证
@@ -109,11 +107,11 @@ public class AuthRealm extends AuthorizingRealm {
         //将用户登录信息放入shiro的session中
         SecurityUtils.getSubject().getSession().setAttribute("user",user);*/
 
-        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken)token;
+        UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
 
         //查询用户信息
         User user = new User();
-        user.setUserName(usernamePasswordToken.getUsername());
+        user.setUserName(token.getUsername());
         user = userDao.selectOne(user);
         //账号不存在
         if(user == null) {
@@ -128,8 +126,8 @@ public class AuthRealm extends AuthorizingRealm {
         //将用户登录信息放入shiro的session中
         SecurityUtils.getSubject().getSession().setAttribute("user",user);
 
-        //放入shiro.调用CredentialsMatcher检验密码
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());
-        return authenticationInfo;
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
+        return info;
+        //SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserName(),user.getPassword(),this.getClass().getName());
     }
 }

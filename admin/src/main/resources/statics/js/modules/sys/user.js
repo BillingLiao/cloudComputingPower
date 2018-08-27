@@ -4,16 +4,15 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: '用户ID', name: 'userId', index: "user_id", width: 45, key: true },
-			{ label: '用户名', name: 'username', width: 75 },
-            { label: '所属部门', name: 'deptName', sortable: false, width: 75 },
+			{ label: '用户名', name: 'userName', index: 'user_name', width: 75 },
 			{ label: '邮箱', name: 'email', width: 90 },
-			{ label: '手机号', name: 'mobile', width: 100 },
+			{ label: '手机号', name: 'telphone', width: 100 },
 			{ label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
 				return value === 0 ? 
 					'<span class="label label-danger">禁用</span>' : 
 					'<span class="label label-success">正常</span>';
 			}},
-			{ label: '创建时间', name: 'createTime', index: "create_time", width: 85}
+			{ label: '创建时间', name: 'registerTime', index: "register_time", width: 85}
         ],
 		viewrecords: true,
         height: 385,
@@ -85,9 +84,9 @@ var vm = new Vue({
             //获取角色信息
             this.getRoleList();
 
-            vm.getDept();
+            //vm.getDept();
         },
-        getDept: function(){
+        /*getDept: function(){
             //加载部门树
             $.get(baseURL + "sys/dept/list", function(r){
                 ztree = $.fn.zTree.init($("#deptTree"), setting, r);
@@ -98,7 +97,7 @@ var vm = new Vue({
                     vm.user.deptName = node.name;
                 }
             })
-        },
+        },*/
         update: function () {
             var userId = getSelectedRow();
             if(userId == null){
@@ -159,7 +158,7 @@ var vm = new Vue({
                 vm.user = r.user;
                 vm.user.password = null;
 
-                vm.getDept();
+                //vm.getDept();
             });
         },
         getRoleList: function(){
@@ -167,7 +166,7 @@ var vm = new Vue({
                 vm.roleList = r.list;
             });
         },
-        deptTree: function(){
+        /*deptTree: function(){
             layer.open({
                 type: 1,
                 offset: '50px',
@@ -187,7 +186,7 @@ var vm = new Vue({
                     layer.close(index);
                 }
             });
-        },
+        },*/
         reload: function () {
             vm.showList = true;
             var page = $("#jqGrid").jqGrid('getGridParam','page');

@@ -7,4 +7,5 @@ dependencies{
     compile libs.shiro
     compile libs.kaptcha
     compile libs.joda
+    compile libs.hutool
 }

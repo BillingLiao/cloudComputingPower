@@ -55,7 +55,7 @@ var menu_setting = {
     }
 };
 
-//部门结构树
+/*//部门结构树
 var dept_ztree;
 var dept_setting = {
     data: {
@@ -69,7 +69,7 @@ var dept_setting = {
             url:"nourl"
         }
     }
-};
+};*/
 
 //数据树
 var data_ztree;
@@ -115,9 +115,9 @@ var vm = new Vue({
             vm.role = {deptName:null, deptId:null};
             vm.getMenuTree(null);
 
-            vm.getDept();
+            //vm.getDept();
 
-            vm.getDataTree();
+            //vm.getDataTree();
         },
         update: function () {
             var roleId = getSelectedRow();
@@ -127,10 +127,10 @@ var vm = new Vue({
 
             vm.showList = false;
             vm.title = "修改";
-            vm.getDataTree();
+            //vm.getDataTree();
             vm.getMenuTree(roleId);
 
-            vm.getDept();
+            //vm.getDept();
         },
         del: function () {
             var roleIds = getSelectedRows();
@@ -167,14 +167,14 @@ var vm = new Vue({
                     menu_ztree.checkNode(node, true, false);
                 }
 
-                //勾选角色所拥有的部门数据权限
+                /*//勾选角色所拥有的部门数据权限
                 var deptIds = vm.role.deptIdList;
                 for(var i=0; i<deptIds.length; i++) {
                     var node = data_ztree.getNodeByParam("deptId", deptIds[i]);
                     data_ztree.checkNode(node, true, false);
-                }
+                }*/
 
-                vm.getDept();
+                //vm.getDept();
             });
         },
         saveOrUpdate: function () {
@@ -186,13 +186,13 @@ var vm = new Vue({
             }
             vm.role.menuIdList = menuIdList;
 
-            //获取选择的数据
+            /*//获取选择的数据
             var nodes = data_ztree.getCheckedNodes(true);
             var deptIdList = new Array();
             for(var i=0; i<nodes.length; i++) {
                 deptIdList.push(nodes[i].deptId);
             }
-            vm.role.deptIdList = deptIdList;
+            vm.role.deptIdList = deptIdList;*/
 
             var url = vm.role.roleId == null ? "sys/role/save" : "sys/role/update";
             $.ajax({
@@ -223,15 +223,15 @@ var vm = new Vue({
                 }
             });
         },
-        getDataTree: function(roleId) {
+        /*getDataTree: function(roleId) {
             //加载菜单树
             $.get(baseURL + "sys/dept/list", function(r){
                 data_ztree = $.fn.zTree.init($("#dataTree"), data_setting, r);
                 //展开所有节点
                 data_ztree.expandAll(true);
             });
-        },
-        getDept: function(){
+        },*/
+        /*getDept: function(){
             //加载部门树
             $.get(baseURL + "sys/dept/list", function(r){
                 dept_ztree = $.fn.zTree.init($("#deptTree"), dept_setting, r);
@@ -242,8 +242,8 @@ var vm = new Vue({
                     vm.role.deptName = node.name;
                 }
             })
-        },
-        deptTree: function(){
+        },*/
+        /*deptTree: function(){
             layer.open({
                 type: 1,
                 offset: '50px',
@@ -263,7 +263,7 @@ var vm = new Vue({
                     layer.close(index);
                 }
             });
-        },
+        },*/
         reload: function () {
             vm.showList = true;
             var page = $("#jqGrid").jqGrid('getGridParam','page');

@@ -5,6 +5,7 @@ import com.ant.admin.dao.UserRoleDao;
 import com.ant.admin.entity.UserRole;
 import com.ant.admin.service.UserRoleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author Billing
  * @date 2018/8/17 16:43
  */
+@Service("userRoleService")
 public class UserRoleServiceImpl extends ServiceImpl<UserRoleDao, UserRole> implements UserRoleService {
 
     @Override

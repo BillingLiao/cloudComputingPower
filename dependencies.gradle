@@ -43,6 +43,9 @@ libs = [
         joda: [
                 "joda-time:joda-time:2.9.9"
         ],
+        hutool: [
+                "cn.hutool:hutool-all:4.0.12"
+        ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
 
