@@ -1,11 +1,15 @@
 package com.ant.admin.dto;
 
 import com.ant.admin.entity.Product;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 云算力产品明细表
@@ -22,7 +26,7 @@ public class CloudProduct extends Product implements Serializable {
     }
 
     /**
-     * 理财明细id
+     * 云算力产品id
      */
     @TableId
     private Integer cloudId;
@@ -49,6 +53,10 @@ public class CloudProduct extends Product implements Serializable {
     private BigDecimal ElectricityFees;
 
     /**
+     * 售价
+     */
+    private BigDecimal retailPrice;
+    /**
      * 单价
      */
     private BigDecimal price;
@@ -69,7 +77,7 @@ public class CloudProduct extends Product implements Serializable {
     private String rated;
 
     /**
-     * 参考收益
+     * 预估日收益
      */
     private String remark;
 
@@ -84,14 +92,78 @@ public class CloudProduct extends Product implements Serializable {
     private String power;
 
     /**
-     * 管理费
+     * 管理费(服务费)
      */
     private BigDecimal managementExpense;
+
+    /**
+     * 合同周期
+     */
+    private String contractCycle;
 
     /**
      * 假删除 0：未删除 1：删除
      */
     private Integer delFlag;
+
+    /**
+     * 分类名称
+     */
+    @TableField(exist = false)
+    private String categoryName;
+
+    /**
+     * 产品类别编号
+     */
+    @TableField(exist = false)
+    private Integer categoryId;
+
+    /**
+     * 产品名称
+     */
+    @TableField(exist = false)
+    private String productName;
+
+    /**
+     * 产品介绍
+     */
+    @TableField(exist = false)
+    private String introduction;
+
+
+    /**
+     * 是否上架：1=上架/0=下架
+     */
+    @TableField(exist = false)
+    private Integer showInShelve;
+
+    /**
+     * 创建时间
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(exist = false)
+    private Date createAt;
+
+    /**
+     * 更新时间
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(exist = false)
+    private Date updateAt;
+
+    /**
+     * 创建者
+     */
+    @TableField(exist = false)
+    private Integer createUser;
+
+    /**
+     * 更新者
+     */
+    @TableField(exist = false)
+    private Integer updateUser;
 
     public Integer getCloudId() {
         return cloudId;
@@ -133,6 +205,14 @@ public class CloudProduct extends Product implements Serializable {
 
     public void setElectricityFees(BigDecimal electricityFees) {
         ElectricityFees = electricityFees;
+    }
+
+    public BigDecimal getRetailPrice() {
+        return retailPrice;
+    }
+
+    public void setRetailPrice(BigDecimal retailPrice) {
+        this.retailPrice = retailPrice;
     }
 
     public BigDecimal getPrice() {
@@ -199,6 +279,14 @@ public class CloudProduct extends Product implements Serializable {
         this.managementExpense = managementExpense;
     }
 
+    public String getContractCycle() {
+        return contractCycle;
+    }
+
+    public void setContractCycle(String contractCycle) {
+        this.contractCycle = contractCycle;
+    }
+
     @Override
     public Integer getDelFlag() {
         return delFlag;
@@ -207,5 +295,94 @@ public class CloudProduct extends Product implements Serializable {
     @Override
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    @Override
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    @Override
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    @Override
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    @Override
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    @Override
+    public Integer getShowInShelve() {
+        return showInShelve;
+    }
+
+    @Override
+    public void setShowInShelve(Integer showInShelve) {
+        this.showInShelve = showInShelve;
+    }
+
+    @Override
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    @Override
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    @Override
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    @Override
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    @Override
+    public Integer getCreateUser() {
+        return createUser;
+    }
+
+    @Override
+    public void setCreateUser(Integer createUser) {
+        this.createUser = createUser;
+    }
+
+    @Override
+    public Integer getUpdateUser() {
+        return updateUser;
+    }
+
+    @Override
+    public void setUpdateUser(Integer updateUser) {
+        this.updateUser = updateUser;
     }
 }

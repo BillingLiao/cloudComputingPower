@@ -141,34 +141,18 @@ $(function () {
 			{ label: '产品id', name: 'productId', index: 'product_id', width: 80, key: true },
 			{ label: '产品名称', name: 'productName', index: 'product_name', width: 150 },
 			{ label: '分类', name: 'categoryName', index: 'category_name', width: 120 ,formatter: function(cellvalue, options, rowObject){
- 	            if(cellvalue == null || cellvalue == ''){
- 	           	return   "它的分类被删除了";
- 	            }
- 	            
-				return   rowObject.categoryName;
-	           
-	        }},
-	        //{ label: '产品介绍', name: 'introduction', index: 'introduction', width: 150 },
-	        { label: '起投金额', name: 'thresholdAmount', index: 'threshold_amount', width: 120 },
-	        { label: '投资步长', name: 'stepTerm', index: 'step_term', width: 120 },
-	        { label: '锁定期', name: 'lockAmount', index: 'lock_amount', width: 120 },
-	        { label: '年化收益率', name: 'rewardRate', index: 'reward_rate', width: 120 },
-	        { label: '状态 ', name: 'salesStatus', index: 'sales_status', width: 120 ,formatter: function(cellvalue, options, rowObject){
-                if(cellvalue == 0){
-                    return '<span class="label label-primary">审核中</span>';
+                if(cellvalue == null || cellvalue == ''){
+                return   "它的分类被删除了";
                 }
-                if(cellvalue == 1){
-                    return '<span class="label label-success">销售中</span>';
-                }
-                if(cellvalue == 2){
-                    return '<span class="label label-success">暂停销售</span>';
-                }
-                if(cellvalue == 3){
-                    return '<span class="label label-success">已结束</span>';
-                }
-                return '<span class="label label-primary">审核中</span>';
 
-             }},
+                return   rowObject.categoryName;
+
+            }},
+	        //{ label: '产品介绍', name: 'introduction', index: 'introduction', width: 150 },
+	        { label: '库存(T)', name: 'stock', index: 'stock', width: 120 },
+	        { label: '单价(元)', name: 'price', index: 'price', width: 120 },
+	        { label: '服务费', name: 'managementExpense', index: 'management_expense', width: 120 },
+	        { label: '本期开售时间', name: 'saleTime', index: 'sale_time', width: 120 },
             { label: '上架', name: 'showInShelve', index: 'show_in_shelve', width: 120 ,formatter: function(cellvalue, options, rowObject){
 				if(cellvalue == 0){
 	                return '<span class="label label-primary">下架</span>';
@@ -180,7 +164,7 @@ $(function () {
 	           
 	        }}, 	
 	    	{ label: '创建时间', name: 'createAt', index: 'create_at', width: 120 },
-            { label: '创建者', name: 'createUser', index: 'create_user', width: 120},
+            //{ label: '创建者', name: 'createUser', index: 'create_user', width: 120},
 			/*
 			{ label: '更新者', name: 'updateBy', index: 'update_by', width: 80 }, 			
 			{ label: '更新时间', name: 'updateTime', index: 'update_time', width: 80 }, */

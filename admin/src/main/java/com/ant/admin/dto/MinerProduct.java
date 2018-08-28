@@ -1,11 +1,15 @@
 package com.ant.admin.dto;
 
 import com.ant.admin.entity.Product;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 矿机产品明细表
@@ -64,15 +68,70 @@ public class MinerProduct extends Product implements Serializable {
      */
     private BigDecimal managementExpense;
 
-    /**
-     * 分类名称
-     */
-    private String categoryName;
 
     /**
      * 假删除 0：未删除 1：删除
      */
     private Integer delFlag;
+
+    /**
+     * 分类名称
+     */
+    @TableField(exist = false)
+    private String categoryName;
+
+    /**
+     * 产品类别编号
+     */
+    @TableField(exist = false)
+    private Integer categoryId;
+
+    /**
+     * 产品名称
+     */
+    @TableField(exist = false)
+    private String productName;
+
+    /**
+     * 产品介绍
+     */
+    @TableField(exist = false)
+    private String introduction;
+
+
+    /**
+     * 是否上架：1=上架/0=下架
+     */
+    @TableField(exist = false)
+    private Integer showInShelve;
+
+    /**
+     * 创建时间
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(exist = false)
+    private Date createAt;
+
+    /**
+     * 更新时间
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    @TableField(exist = false)
+    private Date updateAt;
+
+    /**
+     * 创建者
+     */
+    @TableField(exist = false)
+    private Integer createUser;
+
+    /**
+     * 更新者
+     */
+    @TableField(exist = false)
+    private Integer updateUser;
 
     public Integer getMinerId() {
         return minerId;

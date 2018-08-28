@@ -5,6 +5,7 @@ import com.ant.admin.entity.Product;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface CloudProductDao extends BaseMapper<CloudProduct> {
      * @param wrapper
      * @return
      */
-    List<CloudProduct> selectProductList(Page<CloudProduct> page, Wrapper<Product> wrapper);
+    List<CloudProduct> selectProductList(Page<CloudProduct> page,@Param("ew") Wrapper<Product> wrapper);
 
     /**
      * 根据产品id查询云算力产品

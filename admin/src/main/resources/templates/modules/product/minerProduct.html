@@ -45,42 +45,48 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">起投金额（元）</div>
+            <div class="col-sm-2 control-label">单价（元）</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.thresholdAmount" placeholder="起投金额"/>
+                <input type="text" class="form-control" v-model="minerProduct.price" placeholder="单价"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">投资步长(元)</div>
+            <div class="col-sm-2 control-label">额定算力</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.stepTerm" placeholder="投资步长"/>
+                <input type="text" class="form-control" v-model="minerProduct.stock" placeholder="额定算力"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">锁定期(天)</div>
+            <div class="col-sm-2 control-label">机型</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.lockAmount" placeholder="锁定期"/>
+                <input type="text" class="form-control" v-model="minerProduct.model" placeholder="机型"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">年化收益率(%)</div>
+            <div class="col-sm-2 control-label">参考收益</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.rewardRate" placeholder="年化收益率"/>
+                <input type="text" class="form-control" v-model="minerProduct.remark" placeholder="参考收益"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">销售状态</div>
+            <div class="col-sm-2 control-label">电源</div>
             <div class="col-sm-10">
-                <label class="radio-inline"><input type="radio" name="status" value="0" v-model="minerProduct.salesStatus">
-                    审核中</label>
-                <label class="radio-inline"><input type="radio" name="status" value="1" v-model="minerProduct.salesStatus">
-                    销售中</label>
-                <label class="radio-inline"><input type="radio" name="status" value="2" v-model="minerProduct.salesStatus">
-                    暂停销售</label>
-                <label class="radio-inline"><input type="radio" name="status" value="4" v-model="minerProduct.salesStatus">
-                    已结束</label>
+                <input type="text" class="form-control" v-model="minerProduct.power" placeholder="电源"/>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">电费</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="minerProduct.electricityFees" placeholder="电费"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">管理费</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="minerProduct.managementExpense" placeholder="管理费"/>
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-sm-2 control-label">产品介绍</div>
             <div class="col-sm-10">
@@ -91,27 +97,15 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">上架时间</div>
+            <div class="col-sm-2 control-label">创建时间</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.createAt" placeholder="上架时间" readonly="readonly"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">上架人</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.createUser" placeholder="上架人" readonly="readonly"/>
+                <input type="text" class="form-control" v-model="minerProduct.createAt" placeholder="创建时间" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">更新时间</div>
             <div class="col-sm-10">
                 <input type="text" class="form-control" v-model="minerProduct.updateAt" placeholder="更新时间" readonly="readonly"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">更新者</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="minerProduct.updateUser" placeholder="更新者" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">

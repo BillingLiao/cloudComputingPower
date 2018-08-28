@@ -5,14 +5,17 @@ import com.ant.admin.dao.CloudProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.admin.dto.CloudProduct;
 import com.ant.admin.entity.Product;
+import com.ant.admin.entity.User;
 import com.ant.admin.service.CloudProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -48,7 +51,14 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao,CloudPr
     public void insertProduct(CloudProduct cloudProduct) {
         //插入产品表数据
         Product product = new Product(cloudProduct);
+        //设置产品分类
         product.setCategoryId(2);
+        //设置创建日期
+        product.setCreateAt(new Date());
+        //获取登录用户信息
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        //设置插入产品的管理员id
+        product.setCreateUser(user.getUserId());
         productDao.insert(product);
         //插入云算力产品明细表数据
         cloudProduct.setProductId(product.getProductId());
@@ -63,6 +73,9 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao,CloudPr
     @Transactional
     public void updateProduct(CloudProduct cloudProduct) {
         Product product = new Product(cloudProduct);
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        product.setUpdateUser(user.getUserId());
+        product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);
         cloudProductDao.updateAllColumnById(cloudProduct);

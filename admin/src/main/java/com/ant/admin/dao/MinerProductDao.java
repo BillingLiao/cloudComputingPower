@@ -5,6 +5,7 @@ import com.ant.admin.entity.Product;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface MinerProductDao extends BaseMapper<MinerProduct> {
      * @param wrapper
      * @return
      */
-    List<MinerProduct> selectProductList(Page<MinerProduct> page, Wrapper<Product> wrapper);
+    List<MinerProduct> selectProductList(Page<MinerProduct> page,@Param("ew") Wrapper<Product> wrapper);
 
     /**
      * 根据产品id查询矿机产品

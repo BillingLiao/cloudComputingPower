@@ -180,7 +180,7 @@ $(function () {
 	           
 	        }}, 	
 	    	{ label: '创建时间', name: 'createAt', index: 'create_at', width: 120 },
-            { label: '创建者', name: 'createUser', index: 'create_user', width: 120},
+            //{ label: '创建者', name: 'createUser', index: 'create_user', width: 120},
 			/*
 			{ label: '更新者', name: 'updateBy', index: 'update_by', width: 80 }, 			
 			{ label: '更新时间', name: 'updateTime', index: 'update_time', width: 80 }, */

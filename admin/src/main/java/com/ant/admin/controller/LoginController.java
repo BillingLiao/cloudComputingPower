@@ -7,6 +7,8 @@ import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,8 @@ import java.io.IOException;
  */
 @Controller
 public class LoginController {
+
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	private Producer producer;
@@ -57,11 +61,11 @@ public class LoginController {
 		if(!captcha.equalsIgnoreCase(kaptcha)){
 			return Result.error("验证码不正确");
 		}
-		
 		try{
 			Subject subject = ShiroUtils.getSubject();
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			subject.login(token);
+			logger.info("用户信息：{}",subject.getPrincipal());
 		}catch (UnknownAccountException e) {
 			return Result.error(e.getMessage());
 		}catch (IncorrectCredentialsException e) {
@@ -71,7 +75,6 @@ public class LoginController {
 		}catch (AuthenticationException e) {
 			return Result.error("账户验证失败");
 		}
-	    
 		return Result.ok();
 	}
 	

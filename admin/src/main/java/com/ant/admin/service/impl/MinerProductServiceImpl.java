@@ -5,14 +5,17 @@ import com.ant.admin.dao.MinerProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.admin.dto.MinerProduct;
 import com.ant.admin.entity.Product;
+import com.ant.admin.entity.User;
 import com.ant.admin.service.MinerProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -49,6 +52,12 @@ public class MinerProductServiceImpl extends ServiceImpl<MinerProductDao,MinerPr
         //插入
         Product product = new Product(minerProduct);
         product.setCategoryId(1);
+        //设置创建日期
+        product.setCreateAt(new Date());
+        //获取登录用户信息
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        //设置插入产品的管理员id
+        product.setCreateUser(user.getUserId());
         productDao.insert(product);
         minerProduct.setProductId(product.getProductId());
         minerProductDao.insert(minerProduct);
@@ -62,6 +71,9 @@ public class MinerProductServiceImpl extends ServiceImpl<MinerProductDao,MinerPr
     @Transactional
     public void updateProduct(MinerProduct minerProduct) {
         Product product = new Product(minerProduct);
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        product.setUpdateUser(user.getUserId());
+        product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);
         minerProductDao.updateAllColumnById(minerProduct);

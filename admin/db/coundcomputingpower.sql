@@ -150,19 +150,22 @@ CREATE TABLE `t_order` (
   `order_no` VARCHAR(50) NOT NULL COMMENT '订单单号',
   `product_id` INT(11) NOT NULL COMMENT '产品编号',
   `user_id` INT(11) DEFAULT NULL COMMENT '用户编号',
-  `type` VARCHAR(50) NOT NULL COMMENT '申购类型',
-  `order_status` VARCHAR(50) NOT NULL COMMENT '订单状态',
-  `amount` DECIMAL(15,3) DEFAULT NULL COMMENT '购买金额',
+  `order_status` INT(11) NOT NULL DEFAULT '0' COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货  3:待收货 4:已收货 5:已完成订单',
+  `amount` DECIMAL(15,3) DEFAULT NULL COMMENT '实收款',
   `memo` VARCHAR(200) DEFAULT NULL COMMENT '备注',
-  `create_user` INT(11) DEFAULT NULL COMMENT '创建者',
-  `caeate_at` DATETIME DEFAULT NULL COMMENT '创建时间',
-  `update_user` INT(11) DEFAULT NULL COMMENT '更新者',
-  `update_at` DATETIME DEFAULT NULL COMMENT '更新时间',
+  `caeate_time` DATETIME DEFAULT NULL COMMENT '订单提交时间',
+  `payment_time` DATETIME DEFAULT NULL COMMENT '支付时间',
+  `delivery_time` DATETIME DEFAULT NULL COMMENT '发货时间',
+  `receiving_time` DATETIME DEFAULT NULL COMMENT '收货时间',
   `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
   PRIMARY KEY (`order_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
 /*Data for the table `t_order` */
+
+INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2','0','702.00', '理财产品', '2018-06-27 10:35:21', NULL, NULL, '0');
+INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2','0','752.00', '云算力',  '2018-06-27 14:01:02', NULL, NULL, '0');
+
 
 /*Table structure for table `t_product` */
 
@@ -201,23 +204,25 @@ CREATE TABLE t_cloud_product
    product_id           INT(11) NOT NULL COMMENT '产品id',
    total_stock          DECIMAL(13,2) NOT NULL COMMENT '本期总算力',
    stock                DECIMAL(13,2) NOT NULL COMMENT '剩余算力',
-   electricity_fees     DECIMAL(15,3) NOT NULL COMMENT '电费',
+   electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
+   retail_price		DECIMAL(15,3) NOT NULL COMMENT '售价',
    price                DECIMAL(15,3) NOT NULL COMMENT '单价',
-   sale_time            VARCHAR(50) NOT NULL COMMENT '本期售卖时间',
+   sale_time            VARCHAR(50) DEFAULT NULL COMMENT '本期售卖时间',
    model                VARCHAR(50) NOT NULL COMMENT '机型',
    rated                VARCHAR(50) NOT NULL COMMENT '额定算力',
-   remark               VARCHAR(200) NOT NULL COMMENT '参考收益',
-   start_step           INT COMMENT '起投单位',
+   remark               VARCHAR(200) DEFAULT NULL COMMENT '参考收益',
+   start_step           INT(11) DEFAULT '0' COMMENT '起投单位',
    `power`              VARCHAR(50) COMMENT '电源',
    management_expense   DECIMAL(15,3) COMMENT '管理费',
+   contract_cycle       VARCHAR(100) DEFAULT NULL COMMENT '合同周期',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (cloud_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='云算力明细表';
 
 /*Data for the table `t_cloud_product` */
 
-INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570', '9月20号-10月10号', 'A9', '14T','很多','1','test',NULL,'0');
-INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630', '9月10号-10月1号', '蚂蚁M9', '13.5T','很多','1','test',NULL, '0');
+INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570','400', '9月20号-10月10号', 'A9', '14T','100','1','test','500','一年签','0');
+INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630','570', '9月10号-10月1号', '蚂蚁M9', '13.5T','200','1','test','600', '永久','0');
 
 /*Table structure for table `t_financial_product` */
 

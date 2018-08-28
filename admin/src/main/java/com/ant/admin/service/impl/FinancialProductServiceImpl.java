@@ -5,14 +5,17 @@ import com.ant.admin.dao.FinancialProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.admin.dto.FinancialProduct;
 import com.ant.admin.entity.Product;
+import com.ant.admin.entity.User;
 import com.ant.admin.service.FinancialProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -49,6 +52,9 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
     @Transactional
     public void updateProduct(FinancialProduct financialProduct) {
         Product product = new Product(financialProduct);
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        product.setUpdateUser(user.getUserId());
+        product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);
         financialProductDao.updateAllColumnById(financialProduct);
@@ -65,6 +71,12 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
         //插入产品表数据
         Product product = new Product(financialProduct);
         product.setCategoryId(3);
+        //设置创建日期
+        product.setCreateAt(new Date());
+        //获取登录用户信息
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        //设置插入产品的管理员id
+        product.setCreateUser(user.getUserId());
         productDao.insert(product);
         financialProduct.setProductId(product.getProductId());
         financialProductDao.insert(financialProduct);

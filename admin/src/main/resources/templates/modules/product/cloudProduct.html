@@ -45,42 +45,84 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">起投金额（元）</div>
+            <div class="col-sm-2 control-label">售价</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.thresholdAmount" placeholder="起投金额"/>
+                <input type="text" class="form-control" v-model="cloudProduct.retailPrice" placeholder="售价"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">投资步长(元)</div>
+            <div class="col-sm-2 control-label">单价（元）</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.stepTerm" placeholder="投资步长"/>
+                <input type="text" class="form-control" v-model="cloudProduct.price" placeholder="单价(元)"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">锁定期(天)</div>
+            <div class="col-sm-2 control-label">服务费（元）</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.lockAmount" placeholder="锁定期"/>
+                <input type="text" class="form-control" v-model="cloudProduct.managementExpense" placeholder="服务费(元)"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">年化收益率(%)</div>
+            <div class="col-sm-2 control-label">本期总算力(T)</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.rewardRate" placeholder="年化收益率"/>
+                <input type="text" class="form-control" v-model="cloudProduct.totalStock" placeholder="总算力"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">销售状态</div>
+            <div class="col-sm-2 control-label">库存(T)</div>
             <div class="col-sm-10">
-                <label class="radio-inline"><input type="radio" name="status" value="0" v-model="cloudProduct.salesStatus">
-                    审核中</label>
-                <label class="radio-inline"><input type="radio" name="status" value="1" v-model="cloudProduct.salesStatus">
-                    销售中</label>
-                <label class="radio-inline"><input type="radio" name="status" value="2" v-model="cloudProduct.salesStatus">
-                    暂停销售</label>
-                <label class="radio-inline"><input type="radio" name="status" value="4" v-model="cloudProduct.salesStatus">
-                    已结束</label>
+                <input type="text" class="form-control" v-model="cloudProduct.stock" placeholder="库存"/>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">机型</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.model" placeholder="机型"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">额定算力</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.rated" placeholder="额定算力"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">预计日收益</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.remark" placeholder="预估日收益"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">起投单位(T)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.startStep" placeholder="起投单位"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">本期开售时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.saleTime" placeholder="本期开售时间"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">电费</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.power" placeholder="电费"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">电源</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.electricityFees" placeholder="电源"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">合同周期</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="cloudProduct.contractCycle" placeholder="合同周期"/>
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-sm-2 control-label">产品介绍</div>
             <div class="col-sm-10">
@@ -91,27 +133,15 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">上架时间</div>
+            <div class="col-sm-2 control-label">创建时间</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.createAt" placeholder="上架时间" readonly="readonly"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">上架人</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.createUser" placeholder="上架人" readonly="readonly"/>
+                <input type="text" class="form-control" v-model="cloudProduct.createAt" placeholder="创建时间" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">更新时间</div>
             <div class="col-sm-10">
                 <input type="text" class="form-control" v-model="cloudProduct.updateAt" placeholder="更新时间" readonly="readonly"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">更新者</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.updateUser" placeholder="更新者" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">

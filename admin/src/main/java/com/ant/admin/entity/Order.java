@@ -1,5 +1,6 @@
 package com.ant.admin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -39,17 +40,12 @@ public class Order implements Serializable {
     private Integer userId;
 
     /**
-     * 收购类型
-     */
-    private String type;
-
-    /**
-     * 订单状态
+     * 订单状态 0:待支付 1:待支付关闭(取消订单) 2:已付款，待发货(产品开始计算收益)  3:待收货 4:已收货 5:已完成订单
      */
     private String orderStatus;
 
     /**
-     * 购买金额
+     * 实收款
      */
     private BigDecimal amount;
 
@@ -59,32 +55,41 @@ public class Order implements Serializable {
     private String memo;
 
     /**
-     * 创建时间
+     * 订单提交时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createAt;
+    private Date caeateTime;
 
     /**
-     * 更新时间
+     * 发货时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date updateAt;
+    private Date deliveryTime;
 
     /**
-     * 创建者
+     * 发货时间
      */
-    private Integer createUser;
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    private Date paymentTime;
 
     /**
-     * 更新者
+     * 收货时间
      */
-    private Integer updateUser;
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    private Date receivingTime;
+
 
 
     /**
      * 假删除 0：未删除 1：删除
      */
     private Integer delFlag;
+
+    /**
+     * 分类名称
+     */
+    @TableField(exist = false)
+    private String categoryName;
 
     public Integer getOrderId() {
         return orderId;
@@ -118,14 +123,6 @@ public class Order implements Serializable {
         this.userId = userId;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -150,36 +147,36 @@ public class Order implements Serializable {
         this.memo = memo;
     }
 
-    public Date getCreateAt() {
-        return createAt;
+    public Date getCaeateTime() {
+        return caeateTime;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCaeateTime(Date caeateTime) {
+        this.caeateTime = caeateTime;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getDeliveryTime() {
+        return deliveryTime;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
-    public Integer getCreateUser() {
-        return createUser;
+    public Date getPaymentTime() {
+        return paymentTime;
     }
 
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
+    public void setPaymentTime(Date paymentTime) {
+        this.paymentTime = paymentTime;
     }
 
-    public Integer getUpdateUser() {
-        return updateUser;
+    public Date getReceivingTime() {
+        return receivingTime;
     }
 
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
+    public void setReceivingTime(Date receivingTime) {
+        this.receivingTime = receivingTime;
     }
 
     public Integer getDelFlag() {
@@ -188,5 +185,13 @@ public class Order implements Serializable {
 
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
