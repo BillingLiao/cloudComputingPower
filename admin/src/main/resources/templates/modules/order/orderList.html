@@ -1,129 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>订单管理</title>
-<#include "/header.html">
-<link rel="stylesheet" href="${request.contextPath}/statics/css/addcss.css">
-
+    <title>订单列表</title>
+    <#include "/header.html">
+    <link rel="stylesheet" href="${request.contextPath}/statics/plugins/fileinput/fileinput.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/css/addcss.css">
+    <script src="${request.contextPath}/statics/plugins/fileinput/fileinput.js"></script>
+    <script src="${request.contextPath}/statics/plugins/fileinput/zh.js"></script>
 </head>
-
+<body>
 <div id="rrapp" v-cloak>
     <div v-show="showList">
         <div class="grid-btn">
-            <div class="form-group orderlist">
-                <span class="widthseven">
-                    <select id="selectType" class="form-control">
-                        <option value="tel">按收货人电话</option>
-                        <option value="orderNo">按订单编号</option>
-                        <option value="userName">按用户名</option>
-                    </select>
-                </span>
-                <span class="widthseven"><input type="text" class="form-control" v-model="q.sel"  placeholder="收货人电话"></span>
-                 <a class="btn btn-default" @click="query()">查询</a>
-
-                <#if shiro.hasPermission("sys:dept:update")>
-                    <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
-                </#if>
-            </div>
-
-         </div>
-         <div class="buttoonnamber">
-
-             <span><input class="btn btn-default " id="allOrder" type="button" value="全部订单" @click="query('')"></span>
-              <span><input class="btn btn-default" type="button" value="待支付" @click="query(0)"></span>
-             <span><input class="btn btn-default" type="button" value="待支付关闭" @click="query(1)"></span>
-              <span><input class="btn btn-default" type="button" value="待发货" @click="query(2)"></span>
-              <span><input class="btn btn-default" type="button" value="待收货" @click="query(3)"></span>
-             <span><input class="btn btn-default" type="button" value="已收货" @click="query(4)"></span>
-             <span><input class="btn btn-default" type="button" value="申请退款" @click="query(6)"></span>
-              <span><input class="btn btn-default" type="button" value="已完成" @click="query(8)"></span>
-
-         </div>
-         <table id="jqGrid"></table>
-         <div id="jqGridPager"></div>
-    </div>
-    <div v-show="!showList" class="panel panel-default">
-        <div class="panel-heading">{{title}}</div>
-        <form class="form-horizontal">
             <div class="form-group">
-                <div class="col-sm-2 control-label">订单id</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.orderId" placeholder="订单id" readonly="readonly"/>
-                </div>
+                <input type="text" class="form-control" style="display: inline-block; width: auto;"
+                       v-model="categoryName" @keyup.enter="query" placeholder="订单类型">
+                <a class="btn btn-default" @click="query()">查询</a>
             </div>
             <div class="form-group">
-                <div class="col-sm-2 control-label">订单编号</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.orderNo" placeholder="订单编号" readonly="readonly"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">订单金额</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.totalAmount" placeholder="订单金额" readonly="readonly"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">用户名称</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.userName" placeholder="用户名称" readonly="readonly"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-2 control-label">收货人</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.consignee" placeholder="收货人"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">收货人地址</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.address" placeholder="收货人地址"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">收货人电话</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.tel" placeholder="收货人电话"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">快递单号</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.expressNumber" placeholder="快递单号"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">快递公司编号</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.expressCompanyNo" placeholder="快递公司编号"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">订单状态</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.orderStatus" placeholder="订单状态" readonly="readonly"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">订单提交时间</div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="orderModel.createdTime" placeholder="订单提交时间" disabled/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label"></div>
-                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
-                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload()" value="返回"/>
-            </div>
-        </form>
-    </div>
-    <div class="goodList" v-show="!showGoodList">
-        <table id="goodTable"></table>
-        <div id="orderGoodPager"></div>
-    </div>
+                <#if shiro.hasPermission("order:save")>
+                <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            </#if>
+            <#if shiro.hasPermission("order:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+        </#if>
+        <#if shiro.hasPermission("order:delete")>
+        <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+    </#if>
 </div>
+</div>
+<div class="buttoonnamber">
+
+    <span><input class="btn btn-default " id="allOrder" type="button" value="全部订单" @click="query('')"></span>
+    <span><input class="btn btn-default" type="button" value="待支付" @click="query(0)"></span>
+    <span><input class="btn btn-default" type="button" value="待支付关闭" @click="query(1)"></span>
+    <span><input class="btn btn-default" type="button" value="待发货" @click="query(2)"></span>
+    <span><input class="btn btn-default" type="button" value="待收货" @click="query(3)"></span>
+    <span><input class="btn btn-default" type="button" value="已收货" @click="query(4)"></span>
+    <span><input class="btn btn-default" type="button" value="已完成" @click="query(5)"></span>
+
+</div>
+<table id="jqGrid"></table>
+<div id="jqGridPager"></div>
+</div>
+<div v-show="!showList" class="panel panel-default">
+    <div class="panel-heading">{{title}}</div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品名称</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.productName" placeholder="产品名称"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">售价</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.retailPrice" placeholder="售价"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">单价（元）</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.price" placeholder="单价(元)"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">服务费（元）</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.managementExpense" placeholder="服务费(元)"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">本期总算力(T)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.totalStock" placeholder="总算力"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">库存(T)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.stock" placeholder="库存"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">机型</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.model" placeholder="机型"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">额定算力</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.rated" placeholder="额定算力"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">预计日收益</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.remark" placeholder="预估日收益"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">起投单位(T)</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.startStep" placeholder="起投单位"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">本期开售时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.saleTime" placeholder="本期开售时间"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">电费</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.power" placeholder="电费"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">电源</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.electricityFees" placeholder="电源"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">合同周期</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.contractCycle" placeholder="合同周期"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品介绍</div>
+            <div class="col-sm-10">
+                <!--<textarea class="layui-textarea" id="LAY_demo1" style="display: none">
+                </textarea>-->
+                <div id="editor" style="width: 710px;">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">创建时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.createAt" placeholder="创建时间" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">更新时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="order.updateAt" placeholder="更新时间" readonly="readonly"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+            &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+        </div>
+    </form>
+
+</div>
+</div>
+</div>
+
 <script src="${request.contextPath}/statics/js/modules/order/orderList.js?_${.now?long}"></script>
+
 </body>
 </html>

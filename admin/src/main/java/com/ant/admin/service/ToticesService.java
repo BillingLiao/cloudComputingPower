@@ -1,44 +1,24 @@
 package com.ant.admin.service;
 
+import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.entity.Totices;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 import java.util.Map;
 
-public interface ToticesService{
+public interface ToticesService extends IService<Totices> {
 
-    /**
-     * 添加产品
-     * @param totices
-     */
-    public int addTotices(Totices totices);
+    Page<Totices> queryPage(Map<String,Object> params, Wrapper<Totices> wrapper);
 
-    /**
-     * 更新产品
-     * @param totices
-     * @return
-     */
-    public int updateTotices(Totices totices);
+    void insertTotices(Totices totices);
 
-    /**
-     * 删除产品
-     * @param id
-     * @return
-     */
-    public int deleteTotices(Integer id);
+    void updateTotices(Totices totices);
 
-    /**
-     * 分页查询
-     * @param map
-     * @return
-     */
-    public List<Totices> find(Map<String, Object> map);
+    void deleteTotices(Integer[] toticesId);
 
-    /**
-     * 查询所有公告集合
-     * @return
-     */
-    public List<Totices> findAll();
-
+    Totices infoTotices(Integer toticesId);
 }
 

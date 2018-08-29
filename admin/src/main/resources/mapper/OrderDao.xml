@@ -5,12 +5,12 @@
 
     <select id="selectOrderList" resultType="com.ant.admin.entity.Order">
         SELECT
-        order.*,c.category_name
+        o.*,c.category_name
         FROM
-        t_order order
-        LEFT JOIN t_product product ON order.product_id = product.product_id
-        LEFT JOIN t_category c on c.category_id = product.category_id
-        <where> 1=1 and order.del_flag = 0 ${ew.sqlSegment}</where>
+        t_order o
+        LEFT JOIN t_product product ON o.product_id = product.product_id
+        LEFT JOIN t_category c ON c.category_id = product.category_id
+        <where> 1=1 and o.del_flag = 0 ${ew.sqlSegment}</where>
     </select>
 
     <!--<select id="selectByProductId" resultType="com.ant.admin.dto.CloudProduct">

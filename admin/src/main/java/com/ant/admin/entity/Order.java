@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -42,7 +43,7 @@ public class Order implements Serializable {
     /**
      * 订单状态 0:待支付 1:待支付关闭(取消订单) 2:已付款，待发货(产品开始计算收益)  3:待收货 4:已收货 5:已完成订单
      */
-    private String orderStatus;
+    private Integer orderStatus;
 
     /**
      * 实收款
@@ -58,27 +59,29 @@ public class Order implements Serializable {
      * 订单提交时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date caeateTime;
+    @DateTimeFormat
+    private Date createTime;
 
     /**
-     * 发货时间
+     * 付款时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
     private Date deliveryTime;
 
     /**
      * 发货时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
     private Date paymentTime;
 
     /**
      * 收货时间
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
     private Date receivingTime;
-
-
 
     /**
      * 假删除 0：未删除 1：删除
@@ -123,11 +126,11 @@ public class Order implements Serializable {
         this.userId = userId;
     }
 
-    public String getOrderStatus() {
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -147,12 +150,12 @@ public class Order implements Serializable {
         this.memo = memo;
     }
 
-    public Date getCaeateTime() {
-        return caeateTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCaeateTime(Date caeateTime) {
-        this.caeateTime = caeateTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getDeliveryTime() {

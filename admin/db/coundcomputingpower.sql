@@ -150,10 +150,10 @@ CREATE TABLE `t_order` (
   `order_no` VARCHAR(50) NOT NULL COMMENT '订单单号',
   `product_id` INT(11) NOT NULL COMMENT '产品编号',
   `user_id` INT(11) DEFAULT NULL COMMENT '用户编号',
-  `order_status` INT(11) NOT NULL DEFAULT '0' COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货  3:待收货 4:已收货 5:已完成订单',
+  `order_status` INT(11) NOT NULL DEFAULT 0 COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货  3:待收货 4:已收货 5:已完成订单',
   `amount` DECIMAL(15,3) DEFAULT NULL COMMENT '实收款',
   `memo` VARCHAR(200) DEFAULT NULL COMMENT '备注',
-  `caeate_time` DATETIME DEFAULT NULL COMMENT '订单提交时间',
+  `create_time` DATETIME DEFAULT NULL COMMENT '订单提交时间',
   `payment_time` DATETIME DEFAULT NULL COMMENT '支付时间',
   `delivery_time` DATETIME DEFAULT NULL COMMENT '发货时间',
   `receiving_time` DATETIME DEFAULT NULL COMMENT '收货时间',
@@ -163,8 +163,8 @@ CREATE TABLE `t_order` (
 
 /*Data for the table `t_order` */
 
-INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2','0','702.00', '理财产品', '2018-06-27 10:35:21', NULL, NULL, '0');
-INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2','0','752.00', '云算力',  '2018-06-27 14:01:02', NULL, NULL, '0');
+INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2',0,'702.00', '理财产品', '2018-06-27 10:35:21', NULL, NULL, NULL, '0');
+INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2',0,'752.00', '云算力',  '2018-06-27 14:01:02', NULL, NULL, NULL, '0');
 
 
 /*Table structure for table `t_product` */
@@ -331,7 +331,6 @@ DROP TABLE IF EXISTS `t_totices`;
 
 CREATE TABLE `t_totices` (
   `totices_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '公告id',
-  `user_id` INT(11) NOT NULL COMMENT '用户编号',
   `title` VARCHAR(40) NOT NULL COMMENT '标题',
   `content` TEXT NOT NULL COMMENT '内容',
   `publish_date` DATETIME DEFAULT NULL COMMENT '发布日期',

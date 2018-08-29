@@ -4,6 +4,7 @@ import com.ant.admin.entity.Order;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,5 +20,5 @@ public interface OrderDao extends BaseMapper<Order> {
      * @param wrapper
      * @return
      */
-    List<Order> selectOrderList(Page<Order> page, Wrapper<Order> wrapper);
+    List<Order> selectOrderList(Page<Order> page,@Param("ew") Wrapper<Order> wrapper);
 }

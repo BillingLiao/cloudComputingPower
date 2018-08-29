@@ -1,42 +1,64 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.utils.PageUtils;
+import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.ToticesDao;
 import com.ant.admin.entity.Totices;
+import com.ant.admin.entity.User;
 import com.ant.admin.service.ToticesService;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 @Service
-public class ToticesServiceImpl implements ToticesService{
+public class ToticesServiceImpl extends ServiceImpl<ToticesDao, Totices> implements ToticesService{
 
     @Resource
     private ToticesDao toticesDao;
 
     @Override
-    public int addTotices(Totices totices) {
-        return toticesDao.addTotices(totices);
+    public Page<Totices> queryPage(Map<String, Object> params, Wrapper<Totices> wrapper) {
+        Page<Totices> page =new Query<Totices>(params).getPage();
+        return page.setRecords(baseMapper.selectToticesList(page,wrapper));
+    }
+
+    /**
+     * 保存
+     * @param totices
+     */
+    @Override
+    public void insertTotices(Totices totices) {
+        //设置创建日期
+        totices.setPublishDate(new Date());
+        //获取登录用户信息
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        totices.setPuglishUser(user.getUserId());
+        toticesDao.insert(totices);
     }
 
     @Override
-    public int updateTotices(Totices totices) {
-        return toticesDao.updateTotices(totices);
+    public void updateTotices(Totices totices) {
+        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        totices.setUpdateUser(user.getUserId());
+        totices.setUpdateDate(new Date());
+        toticesDao.updateAllColumnById(totices);
     }
 
     @Override
-    public int deleteTotices(Integer id) {
-        return toticesDao.deleteTotices(id);
+    public void deleteTotices(Integer[] toticesIds) {
+        toticesDao.deleteBatchIds(Arrays.asList(toticesIds));
     }
 
     @Override
-    public List<Totices> find(Map<String, Object> map) {
-        return toticesDao.find(map);
-    }
-
-    @Override
-    public List<Totices> findAll() {
-        return toticesDao.findAll();
+    public Totices infoTotices(Integer toticesId) {
+        Totices totices = toticesDao.selectById(toticesId);
+        return totices;
     }
 }

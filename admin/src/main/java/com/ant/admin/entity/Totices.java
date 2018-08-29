@@ -23,10 +23,6 @@ public class Totices implements Serializable {
     @TableId
     private Integer toticesId;
 
-    /**
-     * 用户编号
-     */
-    private Integer userId;
 
     /**
      * 标题
@@ -66,14 +62,6 @@ public class Totices implements Serializable {
 
     public void setToticesId(Integer toticesId) {
         this.toticesId = toticesId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public String getTitle() {

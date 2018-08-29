@@ -28,15 +28,15 @@ public class OrderController extends  AbstractController{
      * 列表
      * 产品订单
      * @param params
-     * @param order
      * @return
      */
     @RequestMapping("/list")
     @RequiresPermissions("product:cloud:list")
-    public Result list(@RequestParam Map<String,Object> params, Order order){
-        EntityWrapper<Order> wrapper = new EntityWrapper<Order>();
-        wrapper.like("categroy.categroy_name", order.getCategoryName());
-        PageUtils page = new PageUtils(orderService.queryPage(params, wrapper));
+    public Result list(@RequestParam Map<String,Object> params){
+        PageUtils page=orderService.queryPage(params);
+/*        EntityWrapper<Order> wrapper = new EntityWrapper<Order>();
+        wrapper.like("c.category_name", order.getCategoryName());
+        PageUtils page = new PageUtils(orderService.queryPage(params, wrapper));*/
         return Result.ok().put("page", page);
     }
 }
