@@ -34,7 +34,7 @@ public class ToticesController {
     @RequestMapping("/list")
     public Result list(@RequestParam Map<String,Object> params, Totices totices){
         EntityWrapper<Totices> wrapper = new EntityWrapper<Totices>();
-        wrapper.like("totices.title", totices.getTitle());
+        wrapper.like("totices.totices_title", totices.getToticesTitle());
         PageUtils page = new PageUtils(toticesService.queryPage(params, wrapper));
         return Result.ok().put("page", page);
     }
@@ -45,9 +45,9 @@ public class ToticesController {
      * @return
      */
     @RequestMapping("/info/{toticesId}")
-    public Result info(@PathVariable("productId") Integer toticesId){
+    public Result info(@PathVariable("toticesId") Integer toticesId){
         Totices totices =  toticesService.infoTotices(toticesId);
-        return Result.ok().put("cloudProduct",totices);
+        return Result.ok().put("totices",totices);
     }
 
     /**

@@ -38,6 +38,7 @@ public class UserController extends  AbstractController{
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:user:list")
+    @ResponseBody
     public Result list(@RequestParam Map<String, Object> params){
         PageUtils page = userService.queryPage(params);
 

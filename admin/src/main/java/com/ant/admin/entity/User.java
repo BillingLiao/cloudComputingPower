@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -36,6 +37,8 @@ public class User implements Serializable {
     /**
      * 登陆密码
      */
+    @NotBlank(message="密码不能为空", groups = AddGroup.class)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     /**
@@ -51,7 +54,6 @@ public class User implements Serializable {
     /**
      * 邮箱
      */
-    @NotBlank(message="邮箱不能为空", groups = {AddGroup.class, UpdateGroup.class})
     @Email(message="邮箱格式不正确", groups = {AddGroup.class, UpdateGroup.class})
     private String email;
 

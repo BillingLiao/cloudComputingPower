@@ -331,7 +331,7 @@ DROP TABLE IF EXISTS `t_totices`;
 
 CREATE TABLE `t_totices` (
   `totices_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '公告id',
-  `title` VARCHAR(40) NOT NULL COMMENT '标题',
+  `totices_title` VARCHAR(40) NOT NULL COMMENT '标题',
   `content` TEXT NOT NULL COMMENT '内容',
   `publish_date` DATETIME DEFAULT NULL COMMENT '发布日期',
   `update_date` DATETIME DEFAULT NULL COMMENT '修改日期',
@@ -340,8 +340,11 @@ CREATE TABLE `t_totices` (
   PRIMARY KEY (`totices_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='滚动公告表';
 
+
 /*Data for the table `t_totices` */
 
+INSERT  INTO `t_totices` VALUES (1,'BAT区块链往事：李彦宏、马云、马化腾逐鹿区块链 谁能走到终盘？​​','<h2 style="text-align: left;">BAT区块链往事：李彦宏、马云、马化腾逐鹿区块链 谁能走到终盘？<span style="font-weight: normal;"></span></h2><p><span style="font-size: x-small;">百家号08-2910:08&nbsp;&nbsp;</span><br></p><p><br></p><p>“世界总是在迫人选择，是活下去，还是被淘汰。”</p><p>出品／一号财经</p><p>文／皮爷、子雨</p><p>插画师／轩轩</p><p>▼</p><p>生存还是死亡，这个问题终究还是有了最新的注解。</p><p>出海，关停，监管，交易清理……从业者们如履薄冰，风声鹤唳。</p><p>帝都，临安，鹏城，曾是引领传统互联网变革的潮头。如今，他们三线相交，成为区块链世界中一股别样的势力。</p><p>他们是监管最有力的执行者，也是区块链技术平台的收割者，没人知道他们何时异军突起，亦如没人知晓他们何时入局。</p><p>壹</p><p>大梦谁先觉，平生我自知。草堂春落落，窗外日迟迟。</p><div><img src="http://t12.baidu.com/it/u=1054705706,1538190110&amp;fm=173&amp;app=25&amp;f=JPEG?w=640&amp;h=964&amp;s=80B46C33095B70C84EF184DA0000A0B3"></div><p>15年夏天，百度区块链技术研发团队正式宣告成立。</p><p>这一年，是百度成立的十周年，其网络营销收入达640.37亿元，占全部收入的96.92%。Web时代谁有流量，谁就是大爷，两年前的百度还是独孤求败，转到移动互联网时代，就成了无爪的凤凰，缺少像腾讯社交和阿里电商这样的应用场景，AI和区块链成为唯技术至上的百度最后的救命稻草。</p><p>无独有偶，腾讯这一年也面临着巨大的“麻烦”——微信提现收费。</p><p>手握QQ、微信两大社交流量入口，微信支付用3年的时间走完了支付宝10年才走完的路，顺利完成支付场景的狙击。</p><p>争天下易，理世道难。</p><p>面对8亿用户微信支付产生的近3亿的银行手续费用，腾讯被迫开始寻找更高效，性价比更高的金融渠道来降低成本，反哺用户。</p><p>16年5月31日，腾讯在它的大本营——深圳，参与并建立了金融区块链合作联盟，旗下微众银行成为腾讯布局区块链的发轫者，推出了基于腾讯云的联盟链云服务（Baas），同时推出基于区块链技术的银行间联合贷款清算平台。</p><p>腾讯与阿里两个一样做着流量生意的大鱼，在传统互联网领域打得不可开交，这边淘宝上不允许贴QQ号和QQ邮箱，那边微信就封了淘宝的URL。</p><p>可在布局区块链的时候，AT两大宿敌终于不再“狭路相逢”，一个深耕金融，一个致力商品生态，成为两条不相交的平行线。</p><p>16年7月，基于区块链技术的支付宝爱心捐赠平台“听障儿童重获新声”上线，10名听障儿童最终筹集到19.8万元。</p><p>至此，阿里在区块链领域的第一款应用实现落地。</p><p>贰</p><p>人布局，链做棋，几生几灭难出局。</p><p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></p>','2018-08-30 10:06:01',NULL,1,NULL);
+INSERT  INTO `t_totices` VALUES (2,'科比：绝不会复出，想证明退役运动员可以在更多领域发展​​','<div><img src="https://c2.hoopchina.com.cn/uploads/star/event/images/180830/73015aa8a79fba929955653db615fa3330ab6784.jpg" alt="科比：绝不会复出，想证明退役运动员可以在更多领域发展"></div><div><p><span style="font-size: medium;">虎扑8月30日讯&nbsp;前湖人球员科比-布莱恩特近日接受了采访，对于自己退役后的生活以及与复出相关的流言也发表了看法。</span></p><p><span style="font-size: medium;">科比表示自己绝对不会复出，就是想向外界证明运动员退役后还可以做到更多事情。</span></p><p><span style="font-size: medium;">“我复出打球的几率为零，没有任何机会，已经结束了，就是这样。”科比说道。</span></p><p><span style="font-size: medium;">科比强调自己甚至没有过这种想法。</span></p><p><span style="font-size: medium;">“从没有，事情就是这样，对我们运动员来说转型会很困难。当我写《Dear Basketball》的时候，这真的是很私人的东西。去寻找接下来要做的事情，这才是真正的挑战。寻找那些你完全热爱做的事情，就像爱你最初的激情一样。这对我们来说是个挑战，我认为对于运动员来说不幸的地方就是，我们被认为只能做好一件事。因此当我退役的时候，所有人都在说‘他的竞争心太强了，不会知道如何处理自己的问题，未来他还是会回来打球得。’因此我会把这看作是一个挑战，就是他们认为我是只属于单一空间的家伙，我所知道的就只有运球、投篮、打比赛或者在那种水平中竞争。因此我把这看作是个人的挑战，我肯定不会再复出到比赛中了。我来到这里就是想向世人展示我们可以做到更多，建立自己的生意，赢得奥斯卡奖杯，赢得艾美奖，还有安妮奖，这些事情就是像外界展示，之后的运动员还可以做到跟多，‘不，不，比这些还要多的事情。’因此我绝不会复出了，想都不会想。”</span></p></div>','2018-08-30 10:14:26',NULL,1,NULL);
 /*Table structure for table `t_user` */
 
 DROP TABLE IF EXISTS `t_user`;
@@ -366,7 +369,7 @@ CREATE TABLE `t_user` (
 
 INSERT  INTO `t_user` VALUES (1,'admin','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012015410','root@cnadmart.com','root@cn','136000001','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
 INSERT  INTO `t_user` VALUES (2,'Billing','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012920449','root@cnadmart.com','root@cnad','136000001','2016-11-11 17:49:54','2016-11-11 13:11:11','5454',1);
-
+`cloudcomputingpower`
 /*Table structure for table `t_user_role` */
 
 DROP TABLE IF EXISTS `t_user_role`;

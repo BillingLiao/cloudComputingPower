@@ -27,7 +27,7 @@ public class Totices implements Serializable {
     /**
      * 标题
      */
-    private String title;
+    private String toticesTitle;
 
     /**
      * 内容
@@ -49,7 +49,7 @@ public class Totices implements Serializable {
     /**
      * 发布人
      */
-    private Integer puglishUser;
+    private Integer publishUser;
 
     /**
      * 更新人
@@ -64,12 +64,12 @@ public class Totices implements Serializable {
         this.toticesId = toticesId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getToticesTitle() {
+        return toticesTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setToticesTitle(String toticesTitle) {
+        this.toticesTitle = toticesTitle;
     }
 
     public String getContent() {
@@ -96,12 +96,12 @@ public class Totices implements Serializable {
         this.updateDate = updateDate;
     }
 
-    public Integer getPuglishUser() {
-        return puglishUser;
+    public Integer getPublishUser() {
+        return publishUser;
     }
 
-    public void setPuglishUser(Integer puglishUser) {
-        this.puglishUser = puglishUser;
+    public void setPublishUser(Integer publishUser) {
+        this.publishUser = publishUser;
     }
 
     public Integer getUpdateUser() {

@@ -1,6 +1,5 @@
 package com.ant.admin.service.impl;
 
-import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.ToticesDao;
 import com.ant.admin.entity.Totices;
@@ -39,7 +38,7 @@ public class ToticesServiceImpl extends ServiceImpl<ToticesDao, Totices> impleme
         totices.setPublishDate(new Date());
         //获取登录用户信息
         User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
-        totices.setPuglishUser(user.getUserId());
+        totices.setPublishUser(user.getUserId());
         toticesDao.insert(totices);
     }
 

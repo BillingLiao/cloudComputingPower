@@ -2,12 +2,12 @@
 $(function () {
 
     $("#jqGrid").jqGrid({
-        url: baseURL + 'cloud/list',
+        url: baseURL + 'totices/list',
         datatype: "json",
         colModel: [			
 			{ label: '公告编号', name: 'toticesId', index: 'totices_id', width: 80, key: true },
-			{ label: '标题', name: 'title', index: 'title', width: 150 },
-            { label: '内容', name: 'content', index: 'content', width: 360 },
+			{ label: '标题', name: 'toticesTitle', index: 'totices_title', width: 300 },
+            //{ label: '内容', name: 'content', index: 'content', width: 360 },
 	        { label: '发布日期', name: 'publishDate', index: 'publish_date', width: 120 },
 	    ],
 		viewrecords: true,
@@ -37,6 +37,7 @@ $(function () {
     });
 });
 
+var editor;
 var vm = new Vue({
 	el:'#rrapp',
 	data:{
@@ -45,6 +46,17 @@ var vm = new Vue({
 		totices: {},
 		search:{}
 	},
+	created:function() {
+        Vue.nextTick(function () {
+           var E = window.wangEditor;
+            editor = new E('#editor');
+            editor.create();
+            if(vm.totices){
+                editor.txt.html(vm.totices.content);
+            }
+            });
+
+    },
 	methods: {
 		query: function () {
 			vm.reload();
@@ -53,6 +65,9 @@ var vm = new Vue({
 		    vm.showList = false;
             vm.title = "新增";
             vm.totices = {};
+            if(editor){
+                            editor.txt.html('');
+            }
 		},
 
 		update: function (event) {
@@ -64,9 +79,17 @@ var vm = new Vue({
                 vm.title = "修改";
 
                 vm.getInfo(toticesId);
+               /* if(editor){
+                    editor.txt.html('');
+                    console.log(vm.totices.content);
+                    editor.txt.html(vm.totices.content);
+                }*/
 		},
 
 		saveOrUpdate: function (event) {
+		    if(editor){
+                vm.totices.content =editor.txt.html();
+            }
 			var url = vm.totices.toticesId == null ? "totices/save" : "totices/update";
 			$.ajax({
 				type: "POST",
@@ -108,9 +131,14 @@ var vm = new Vue({
 				});
 			});
 		},
-		getInfo: function(productId){
-			$.get(baseURL + "totices/info/"+productId, function(r){
+		getInfo: function(toticesId){
+			$.get(baseURL + "totices/info/"+toticesId, function(r){
                 vm.totices = r.totices;
+                if(editor){
+                    editor.txt.html('');
+                    console.log(vm.totices.content);
+                    editor.txt.html(vm.totices.content);
+                }
             });
 		},
 		reload: function (event) {

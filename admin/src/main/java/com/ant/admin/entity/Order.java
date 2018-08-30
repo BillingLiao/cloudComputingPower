@@ -55,6 +55,19 @@ public class Order implements Serializable {
      */
     private String memo;
 
+    public Order() {
+    }
+
+    public Order(String orderNo, Integer productId, Integer userId, Integer orderStatus, BigDecimal amount, Date createTime, Integer delFlag) {
+        this.orderNo = orderNo;
+        this.productId = productId;
+        this.userId = userId;
+        this.orderStatus = orderStatus;
+        this.amount = amount;
+        this.createTime = createTime;
+        this.delFlag = delFlag;
+    }
+
     /**
      * 订单提交时间
      */
