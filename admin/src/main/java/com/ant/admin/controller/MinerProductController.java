@@ -3,8 +3,8 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.admin.dto.MinerProduct;
-import com.ant.admin.entity.Product;
+import com.ant.dto.MinerProduct;
+import com.ant.entity.Product;
 import com.ant.admin.service.MinerProductService;
 import com.ant.admin.service.ProductService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/miner")
-public class MinerProductController {
+public class MinerProductController extends AbstractController{
 
     @Autowired
     private ProductService productService;

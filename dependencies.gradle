@@ -46,6 +46,9 @@ libs = [
         hutool: [
                 "cn.hutool:hutool-all:4.0.12"
         ],
+        beanutils: [
+                "commons-beanutils:commons-beanutils:1.9.3"
+        ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
 

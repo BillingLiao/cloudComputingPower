@@ -8,7 +8,7 @@ import com.ant.admin.common.validator.Assert;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.common.validator.group.AddGroup;
 import com.ant.admin.common.validator.group.UpdateGroup;
-import com.ant.admin.entity.User;
+import com.ant.entity.User;
 import com.ant.admin.service.UserRoleService;
 import com.ant.admin.service.UserService;
 import org.apache.commons.lang.ArrayUtils;

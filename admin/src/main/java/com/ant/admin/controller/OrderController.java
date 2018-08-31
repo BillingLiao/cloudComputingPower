@@ -2,12 +2,8 @@ package com.ant.admin.controller;
 
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
-import com.ant.admin.entity.Order;
-import com.ant.admin.entity.Product;
-import com.ant.admin.entity.User;
+import com.ant.entity.User;
 import com.ant.admin.service.OrderService;
-import com.ant.admin.service.ProductService;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,14 +42,20 @@ public class OrderController extends  AbstractController{
     }
 
     /**
-     * 用户下单
-     * @param user
-     * @param productId
+     *  用户下单
+     *
+     * @param user  用户
+     * @param productId 产品
+     * @param amount    购买数量
+     * @param actualReceipts    实收款
      * @return
      */
     @RequestMapping("/add")
-    public Result add(@SessionAttribute User user, @RequestParam Integer productId, @RequestParam BigDecimal amount){
-        orderService.add(user,productId,amount);
+    public Result add(@SessionAttribute User user, @RequestParam Integer productId, @RequestParam(required = false) BigDecimal amount,@RequestParam BigDecimal actualReceipts){
+        if(amount == null){
+            amount = new BigDecimal("1");
+        }
+        orderService.add(user,productId,amount,actualReceipts);
         return Result.ok();
     }
 }

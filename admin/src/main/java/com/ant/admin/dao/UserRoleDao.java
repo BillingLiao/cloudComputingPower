@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.admin.entity.UserRole;
+import com.ant.entity.UserRole;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.admin.entity.Role;
+import com.ant.entity.Role;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

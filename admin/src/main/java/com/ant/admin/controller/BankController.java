@@ -3,7 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.admin.entity.Bank;
+import com.ant.entity.Bank;
 import com.ant.admin.service.BankService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.beans.factory.BeanNameAware;

@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.admin.entity.Totices;
+import com.ant.entity.Totices;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

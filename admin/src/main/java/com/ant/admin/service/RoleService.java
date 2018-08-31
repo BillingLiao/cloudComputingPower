@@ -18,7 +18,7 @@ package com.ant.admin.service;
 
 
 import com.ant.admin.common.utils.PageUtils;
-import com.ant.admin.entity.Role;
+import com.ant.entity.Role;
 import com.baomidou.mybatisplus.service.IService;
 
 

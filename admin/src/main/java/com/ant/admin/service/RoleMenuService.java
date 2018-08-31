@@ -1,6 +1,6 @@
 package com.ant.admin.service;
 
-import com.ant.admin.entity.RoleMenu;
+import com.ant.entity.RoleMenu;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

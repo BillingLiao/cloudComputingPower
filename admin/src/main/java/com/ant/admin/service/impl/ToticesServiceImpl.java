@@ -2,8 +2,8 @@ package com.ant.admin.service.impl;
 
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.ToticesDao;
-import com.ant.admin.entity.Totices;
-import com.ant.admin.entity.User;
+import com.ant.entity.Totices;
+import com.ant.entity.User;
 import com.ant.admin.service.ToticesService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

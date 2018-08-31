@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.admin.entity.RoleMenu;
+import com.ant.entity.RoleMenu;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

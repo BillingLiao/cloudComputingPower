@@ -16,7 +16,7 @@
 
 package com.ant.admin.controller;
 
-import com.ant.admin.entity.User;
+import com.ant.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

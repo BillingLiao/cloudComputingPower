@@ -3,16 +3,16 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.admin.dto.CloudProduct;
-import com.ant.admin.dto.MinerProduct;
-import com.ant.admin.entity.Product;
-import com.ant.admin.service.CloudProductService;
 import com.ant.admin.service.ProductService;
+import com.ant.dto.CloudProduct;
+import com.ant.entity.Product;
+import com.ant.admin.service.CloudProductService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -101,9 +101,9 @@ public class CloudProductController extends AbstractController{
      */
     @RequestMapping("/updateShelve")
     @RequiresPermissions("product:cloud:update")
-    public Result shelve(MinerProduct minerProduct){
-        logger.info("请求参数：{}", minerProduct.toString());
-        Product product = new Product(minerProduct);
+    public Result shelve(CloudProduct cloudProduct) throws IOException {
+        logger.info("请求参数：{}", cloudProduct.toString());
+        Product product = new Product(cloudProduct);
         productService.updateById(product);
         return Result.ok();
     }

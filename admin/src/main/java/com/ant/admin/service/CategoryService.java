@@ -1,6 +1,6 @@
 package com.ant.admin.service;
 
-import com.ant.admin.entity.Category;
+import com.ant.entity.Category;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

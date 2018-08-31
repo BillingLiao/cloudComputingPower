@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018/8/15 11:53
  */
 @RestController
-public class IncomeController {
+public class IncomeController extends AbstractController{
 }

@@ -2,7 +2,7 @@ package com.ant.admin.service.impl;
 
 import com.ant.admin.common.utils.MapUtils;
 import com.ant.admin.dao.UserRoleDao;
-import com.ant.admin.entity.UserRole;
+import com.ant.entity.UserRole;
 import com.ant.admin.service.UserRoleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

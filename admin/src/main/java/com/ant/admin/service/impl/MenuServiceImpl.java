@@ -3,7 +3,7 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.MapUtils;
 import com.ant.admin.dao.MenuDao;
-import com.ant.admin.entity.Menu;
+import com.ant.entity.Menu;
 import com.ant.admin.service.MenuService;
 import com.ant.admin.service.RoleMenuService;
 import com.ant.admin.service.UserService;

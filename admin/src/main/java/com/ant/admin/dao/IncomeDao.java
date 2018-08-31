@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.admin.entity.Income;
+import com.ant.entity.Income;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

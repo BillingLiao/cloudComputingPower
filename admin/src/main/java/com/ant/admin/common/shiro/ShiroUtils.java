@@ -17,7 +17,7 @@
 package com.ant.admin.common.shiro;
 
 import com.ant.admin.common.exception.RRException;
-import com.ant.admin.entity.User;
+import com.ant.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;

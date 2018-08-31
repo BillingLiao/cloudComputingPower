@@ -6,7 +6,7 @@ import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.UserDao;
-import com.ant.admin.entity.User;
+import com.ant.entity.User;
 import com.ant.admin.service.UserRoleService;
 import com.ant.admin.service.UserService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;

@@ -4,11 +4,10 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.OrderDao;
 import com.ant.admin.dao.ProductDao;
-import com.ant.admin.entity.Order;
-import com.ant.admin.entity.Product;
-import com.ant.admin.entity.User;
+import com.ant.entity.Order;
+import com.ant.entity.Product;
+import com.ant.entity.User;
 import com.ant.admin.service.OrderService;
-import com.ant.admin.service.ProductService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -16,6 +15,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -61,29 +61,37 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     }
 
     /**
-     * 下单
+     * 用户下单
+     *
      * @param user
      * @param productId
      * @param amount
+     * @param actualReceipts
      */
     @Override
-    public void add(User user, Integer productId, BigDecimal amount) {
+    @Transactional(rollbackFor = Exception.class)
+    public void add(User user, Integer productId, BigDecimal amount , BigDecimal actualReceipts) {
         SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
         Product product = productDao.selectById(productId);
         Integer categoryId =  product.getCategoryId();
         String orderNo;
+        Integer orderType;
         if(categoryId == 1){
+            orderType = 1;  //设置订单类型
             orderNo = "KJ" + s.format(new Date());  //生成订单号
         }else if(categoryId == 2){
+            orderType = 2;
             orderNo = "YSL"+ s.format(new Date());
         }else if(categoryId == 3){
+            orderType = 3;
             orderNo = "LC" + s.format(new Date());
         }else{
+            orderType = 0;
             orderNo = "-";
         }
         Integer userId = user.getUserId();
         Date createTime = new Date();
-        Order order = new Order(orderNo, productId, userId, 0, amount,createTime, 0);
+        Order order = new Order(orderNo, productId, userId, orderType,0, amount,actualReceipts,createTime, 0);
         orderDao.insert(order);
     }
 }

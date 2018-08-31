@@ -1,12 +1,10 @@
 package com.ant.admin.service;
 
-import com.ant.admin.common.utils.PageUtils;
-import com.ant.admin.entity.Totices;
+import com.ant.entity.Totices;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 
-import java.util.List;
 import java.util.Map;
 
 public interface ToticesService extends IService<Totices> {

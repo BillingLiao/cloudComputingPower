@@ -1,7 +1,7 @@
 package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.CategoryDao;
-import com.ant.admin.entity.Category;
+import com.ant.entity.Category;
 import com.ant.admin.service.CategoryService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
