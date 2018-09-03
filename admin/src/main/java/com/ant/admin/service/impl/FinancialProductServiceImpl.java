@@ -3,7 +3,7 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.FinancialProductDao;
 import com.ant.admin.dao.ProductDao;
-import com.ant.dto.FinancialProduct;
+import com.ant.entity.FinancialProduct;
 import com.ant.entity.Product;
 import com.ant.entity.User;
 import com.ant.admin.service.FinancialProductService;

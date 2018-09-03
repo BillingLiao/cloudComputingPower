@@ -1,4 +1,4 @@
-package com.ant.admin.quartz;
+package com.ant.admin.common.quartz;
 
 import com.ant.admin.service.IncomeService;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,8 +21,8 @@ public class CalculateDailyIncomeJob {
     /**
      * 每天凌晨2点定期执行
      */
-    @Scheduled(cron="0 0 23 * * ?")
+    @Scheduled(cron="0 0 2 * * ?")
     public void work(){
-
+        incomeService.insertAllIncome();
     }
 }

@@ -1,9 +1,7 @@
-package com.ant.dto;
+package com.ant.entity;
 
-import com.ant.entity.Product;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,60 +11,103 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 理财产品明细表
+ * 云算力产品明细表
  *
  * @author Billing
- * @date 2018/8/13 10:21
+ * @date 2018/8/13 11:05
  */
-@TableName("t_financial_product")
-public class FinancialProduct extends Product implements Serializable {
+@TableName("t_cloud_product")
+public class CloudProduct extends Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public FinancialProduct(){
+    public CloudProduct(){
     }
 
     /**
-     * 理财明细id
+     * 云算力产品id
      */
     @TableId
-    private Integer financialId;
+    private Integer cloudId;
 
     /**
      * 产品Id
      */
     private Integer productId;
 
-    /**
-     * 起投金额
-     */
-    private BigDecimal thresholdAmount;
 
     /**
-     * 投资步长
+     * 本期总算力
      */
-    private BigDecimal stepTerm;
+    private BigDecimal totalStock;
 
     /**
-     * 锁定期
+     * 剩余算力
      */
-    private Integer lockAmount;
+    private BigDecimal stock;
 
     /**
-     * 年化收益率
+     * 电费
      */
-    private BigDecimal rewardRate;
-
+    private BigDecimal ElectricityFees;
 
     /**
-     * 销售状态
+     * 售价
      */
-    private Integer salesStatus;
+    private BigDecimal retailPrice;
+    /**
+     * 单价
+     */
+    private BigDecimal price;
+
+    /**
+     * 本期售卖时间
+     */
+    private String saleTime;
+
+    /**
+     * 机型
+     */
+    private String model;
+
+    /**
+     * 额定算力（T）
+     */
+    private BigDecimal rated;
+
+    /**
+     * 功耗(KW)
+     */
+    private BigDecimal powerWaste;
+
+    /**
+     * 预估日收益
+     */
+    private String remark;
+
+    /**
+     * 起投单位/T
+     */
+    private Integer startStep;
+
+    /**
+     * 电源
+     */
+    private String power;
+
+    /**
+     * 管理费(服务费)
+     */
+    private BigDecimal managementExpense;
+
+    /**
+     * 合同周期
+     */
+    private String contractCycle;
 
     /**
      * 假删除 0：未删除 1：删除
      */
-    @TableLogic
     private Integer delFlag;
 
     /**
@@ -128,12 +169,12 @@ public class FinancialProduct extends Product implements Serializable {
     @TableField(exist = false)
     private Integer updateUser;
 
-    public Integer getFinancialId() {
-        return financialId;
+    public Integer getCloudId() {
+        return cloudId;
     }
 
-    public void setFinancialId(Integer financialId) {
-        this.financialId = financialId;
+    public void setCloudId(Integer cloudId) {
+        this.cloudId = cloudId;
     }
 
     @Override
@@ -146,52 +187,116 @@ public class FinancialProduct extends Product implements Serializable {
         this.productId = productId;
     }
 
-    public BigDecimal getThresholdAmount() {
-        return thresholdAmount;
+    public BigDecimal getTotalStock() {
+        return totalStock;
     }
 
-    public void setThresholdAmount(BigDecimal thresholdAmount) {
-        this.thresholdAmount = thresholdAmount;
+    public void setTotalStock(BigDecimal totalStock) {
+        this.totalStock = totalStock;
     }
 
-    public BigDecimal getStepTerm() {
-        return stepTerm;
+    public BigDecimal getStock() {
+        return stock;
     }
 
-    public void setStepTerm(BigDecimal stepTerm) {
-        this.stepTerm = stepTerm;
+    public void setStock(BigDecimal stock) {
+        this.stock = stock;
     }
 
-    public Integer getLockAmount() {
-        return lockAmount;
+    public BigDecimal getElectricityFees() {
+        return ElectricityFees;
     }
 
-    public void setLockAmount(Integer lockAmount) {
-        this.lockAmount = lockAmount;
+    public void setElectricityFees(BigDecimal electricityFees) {
+        ElectricityFees = electricityFees;
     }
 
-    public BigDecimal getRewardRate() {
-        return rewardRate;
+    public BigDecimal getRetailPrice() {
+        return retailPrice;
     }
 
-    public void setRewardRate(BigDecimal rewardRate) {
-        this.rewardRate = rewardRate;
+    public void setRetailPrice(BigDecimal retailPrice) {
+        this.retailPrice = retailPrice;
     }
 
-    public Integer getSalesStatus() {
-        return salesStatus;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setSalesStatus(Integer salesStatus) {
-        this.salesStatus = salesStatus;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getSaleTime() {
+        return saleTime;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setSaleTime(String saleTime) {
+        this.saleTime = saleTime;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public BigDecimal getRated() {
+        return rated;
+    }
+
+    public void setRated(BigDecimal rated) {
+        this.rated = rated;
+    }
+
+    public BigDecimal getPowerWaste() {
+        return powerWaste;
+    }
+
+    public void setPowerWaste(BigDecimal powerWaste) {
+        this.powerWaste = powerWaste;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Integer getStartStep() {
+        return startStep;
+    }
+
+    public void setStartStep(Integer startStep) {
+        this.startStep = startStep;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public BigDecimal getManagementExpense() {
+        return managementExpense;
+    }
+
+    public void setManagementExpense(BigDecimal managementExpense) {
+        this.managementExpense = managementExpense;
+    }
+
+    public String getContractCycle() {
+        return contractCycle;
+    }
+
+    public void setContractCycle(String contractCycle) {
+        this.contractCycle = contractCycle;
     }
 
     @Override
@@ -202,6 +307,15 @@ public class FinancialProduct extends Product implements Serializable {
     @Override
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override
@@ -282,28 +396,5 @@ public class FinancialProduct extends Product implements Serializable {
     @Override
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
-    }
-
-    @Override
-    public String toString() {
-        return "FinancialProduct{" +
-                "financialId=" + financialId +
-                ", productId=" + productId +
-                ", thresholdAmount=" + thresholdAmount +
-                ", stepTerm=" + stepTerm +
-                ", lockAmount=" + lockAmount +
-                ", rewardRate=" + rewardRate +
-                ", salesStatus=" + salesStatus +
-                ", delFlag=" + delFlag +
-                ", categoryName='" + categoryName + '\'' +
-                ", categoryId=" + categoryId +
-                ", productName='" + productName + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", showInShelve=" + showInShelve +
-                ", createAt=" + createAt +
-                ", updateAt=" + updateAt +
-                ", createUser=" + createUser +
-                ", updateUser=" + updateUser +
-                '}';
     }
 }

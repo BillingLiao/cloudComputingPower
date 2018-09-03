@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.BankDao" >
 
-    <select id="selectList" resultType="com.ant.admin.entity.Bank" >
+    <select id="selectList" resultType="com.ant.entity.Bank" >
         SELECT `bank` .*, `user` .user_name FROM
         t_bank `bank` LEFT JOIN t_user `user` ON `bank` .user_id = `user` .user_id
         <where> 1=1  ${ew.sqlSegment}</where>

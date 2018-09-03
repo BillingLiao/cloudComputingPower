@@ -10,4 +10,9 @@ import com.baomidou.mybatisplus.service.IService;
  * @date 2018/8/13 19:28
  */
 public interface IncomeService extends IService<Income> {
+
+    /**
+     * 插入所有订单每日收益
+     */
+    void insertAllIncome();
 }

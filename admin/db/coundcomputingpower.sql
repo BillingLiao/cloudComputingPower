@@ -60,11 +60,15 @@ DROP TABLE IF EXISTS `t_income`;
 
 CREATE TABLE `t_income` (
   `income_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '收益编号',
-  `order_id` INT(11) DEFAULT NULL COMMENT '订单编号',
-  `income_type` VARCHAR(50) NOT NULL COMMENT '收益类别',
-  `daily_income` DECIMAL(15,3) NOT NULL COMMENT '每日收益值',
-  `total_income` DECIMAL(18,3) NOT NULL COMMENT '总收益值',
-  `unit` VARCHAR(20) NOT NULL COMMENT '收益单位',
+  `user_id` INT(11) DEFAULT NULL COMMENT '用户编号',
+  `income_type` INT(11) NOT NULL COMMENT '收益类别',
+  `theoretical_income` DECIMAL(25,11) DEFAULT NULL COMMENT '整机理论收益值(BTC)',
+  `electricity_fees` DECIMAL(25,11) DEFAULT NULL COMMENT '电费(BTC)',
+  `pure_income` DECIMAL(25,11) DEFAULT NULL COMMENT '纯收益(BTC)',
+  `settlement_income` DECIMAL(25,11) DEFAULT NULL COMMENT '结算收益(BTC)',
+  `management` DECIMAL(15,3) DEFAULT NULL COMMENT '管理费(%)',
+  `return_cycle` DECIMAL(25,11) DEFAULT NULL COMMENT '回本周期(天)',
+  `create_time` DATE DEFAULT NULL COMMENT '日期',
   PRIMARY KEY (`income_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='产品收益表';
 
@@ -224,8 +228,8 @@ CREATE TABLE t_cloud_product
 
 /*Data for the table `t_cloud_product` */
 
-INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570','400', '9月20号-10月10号', 'A9', '14','100','1','test','500','一年签','0');
-INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630','570', '9月10号-10月1号', '蚂蚁M9', '13.5','200','1','test','600', '永久','0');
+INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570','400', '9月20号-10月10号', 'A9', '14','1.34','100','1','test','500','一年签','0');
+INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630','570', '9月10号-10月1号', '蚂蚁M9', '13.5','1.35','200','1','test','600', '永久','0');
 
 /*Table structure for table `t_financial_product` */
 
@@ -387,6 +391,39 @@ CREATE TABLE `t_user_role` (
 /*Data for the table `t_user_role` */
 
 INSERT  INTO `t_user_role`(`id`,`role_id`,`user_id`) VALUES (1,4,2);
+
+
+/*Table structure for table `t_user` */
+
+DROP TABLE IF EXISTS `t_tstimate`;
+
+CREATE TABLE `t_tstimate` (
+  `tstimate_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `tstimate` DECIMAL(25,11) NOT NULL COMMENT '预估收益',
+  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`tstimate_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='预估收益表';
+
+/*Data for the table `t_user` */
+
+INSERT  INTO `t_tstimate` VALUES (1,'0.00003936','2017-03-24 15:23:13')
+
+
+DROP TABLE IF EXISTS `t_currency_price`;
+
+CREATE TABLE `t_currency_price` (
+  `price_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `btc_cny` DECIMAL(25,11) DEFAULT NULL COMMENT '比特币CNY价格',
+  `btc_usd` DECIMAL(25,11) DEFAULT NULL COMMENT '比特币USD价格',
+  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`price_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='预估收益表';
+
+/*Data for the table `t_user` */
+
+INSERT  INTO `t_currency_price` VALUES (1,'44223',NULL,'2017-03-24 15:23:13')
+
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

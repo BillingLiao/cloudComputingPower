@@ -3,7 +3,7 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.CloudProductDao;
 import com.ant.admin.dao.ProductDao;
-import com.ant.dto.CloudProduct;
+import com.ant.entity.CloudProduct;
 import com.ant.entity.Product;
 import com.ant.entity.User;
 import com.ant.admin.service.CloudProductService;

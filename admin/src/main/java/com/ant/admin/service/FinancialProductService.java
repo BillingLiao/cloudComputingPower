@@ -1,6 +1,6 @@
 package com.ant.admin.service;
 
-import com.ant.dto.FinancialProduct;
+import com.ant.entity.FinancialProduct;
 import com.ant.entity.Product;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

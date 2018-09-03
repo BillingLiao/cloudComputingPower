@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.FinancialProductDao">
 
-    <select id="selectProductList" resultType="com.ant.admin.dto.FinancialProduct">
+    <select id="selectProductList" resultType="com.ant.entity.FinancialProduct">
         SELECT
         financial.*,product.*,c.category_name
         FROM
@@ -13,7 +13,7 @@
         <where> 1=1 and financial.del_flag = 0 ${ew.sqlSegment} </where>
     </select>
 
-    <select id="selectByProductId" resultType="com.ant.admin.dto.FinancialProduct">
+    <select id="selectByProductId" resultType="com.ant.entity.FinancialProduct">
         SELECT
         financial.*,product.*,c.category_name
         FROM

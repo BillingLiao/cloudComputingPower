@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.CloudProductDao">
 
-    <select id="selectProductList" resultType="com.ant.admin.dto.CloudProduct">
+    <select id="selectProductList" resultType="com.ant.entity.CloudProduct">
         SELECT
         cloud.*,product.*,c.category_name
         FROM
@@ -13,7 +13,7 @@
         <where> 1=1 and cloud.del_flag = 0 ${ew.sqlSegment}</where>
     </select>
 
-    <select id="selectByProductId" resultType="com.ant.admin.dto.CloudProduct">
+    <select id="selectByProductId" resultType="com.ant.entity.CloudProduct">
         SELECT
         cloud.*,product.*,c.category_name
         FROM

@@ -3,7 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.dto.MinerProduct;
+import com.ant.entity.MinerProduct;
 import com.ant.entity.Product;
 import com.ant.admin.service.MinerProductService;
 import com.ant.admin.service.ProductService;

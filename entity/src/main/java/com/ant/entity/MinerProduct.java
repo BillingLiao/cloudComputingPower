@@ -1,6 +1,5 @@
-package com.ant.dto;
+package com.ant.entity;
 
-import com.ant.entity.Product;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;

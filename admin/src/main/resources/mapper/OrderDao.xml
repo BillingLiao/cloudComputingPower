@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.OrderDao">
 
-    <select id="selectOrderList" resultType="com.ant.admin.entity.Order">
+    <select id="selectOrderList" resultType="com.ant.entity.Order">
         SELECT
         o.*,c.category_name
         FROM

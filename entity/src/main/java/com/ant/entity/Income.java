@@ -2,9 +2,12 @@ package com.ant.entity;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 产品收益表
@@ -24,29 +27,51 @@ public class Income implements Serializable {
     private Integer incomeId;
 
     /**
-     * 订单编号
+     * 用户编号
      */
-    private Integer orderId;
+    private Integer userId;
 
     /**
      * 收益类别 -根据订单的产品类别判断
      */
-    private String incomeType;
+    private Integer incomeType;
 
     /**
-     * 每日收益
+     * 整机理论日收益（btc）
      */
-    private BigDecimal dailyIncome;
+    private BigDecimal theoreticalIncome;
 
     /**
-     * 总收益
+     * 电费(btc)
      */
-    private BigDecimal totalIncome;
+    private BigDecimal electricityFees;
 
     /**
-     * 收益单位
+     * 纯收益(btc)
      */
-    private String unit;
+    private BigDecimal pureIncome;
+
+    /**
+     * 管理费(%)
+     */
+    private BigDecimal management;
+
+    /**
+     * 结算收益(btc)
+     */
+    private BigDecimal settlementIncome;
+
+    /**
+     * 回本周期(天)
+     */
+    private BigDecimal returnCycle;
+
+    /**
+     * 日期
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @DateTimeFormat
+    private Date createTime;
 
     public Integer getIncomeId() {
         return incomeId;
@@ -56,43 +81,75 @@ public class Income implements Serializable {
         this.incomeId = incomeId;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getIncomeType() {
+    public Integer getIncomeType() {
         return incomeType;
     }
 
-    public void setIncomeType(String incomeType) {
+    public void setIncomeType(Integer incomeType) {
         this.incomeType = incomeType;
     }
 
-    public BigDecimal getDailyIncome() {
-        return dailyIncome;
+    public BigDecimal getTheoreticalIncome() {
+        return theoreticalIncome;
     }
 
-    public void setDailyIncome(BigDecimal dailyIncome) {
-        this.dailyIncome = dailyIncome;
+    public void setTheoreticalIncome(BigDecimal theoreticalIncome) {
+        this.theoreticalIncome = theoreticalIncome;
     }
 
-    public BigDecimal getTotalIncome() {
-        return totalIncome;
+    public BigDecimal getElectricityFees() {
+        return electricityFees;
     }
 
-    public void setTotalIncome(BigDecimal totalIncome) {
-        this.totalIncome = totalIncome;
+    public void setElectricityFees(BigDecimal electricityFees) {
+        this.electricityFees = electricityFees;
     }
 
-    public String getUnit() {
-        return unit;
+    public BigDecimal getPureIncome() {
+        return pureIncome;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setPureIncome(BigDecimal pureIncome) {
+        this.pureIncome = pureIncome;
+    }
+
+    public BigDecimal getManagement() {
+        return management;
+    }
+
+    public void setManagement(BigDecimal management) {
+        this.management = management;
+    }
+
+    public BigDecimal getSettlementIncome() {
+        return settlementIncome;
+    }
+
+    public void setSettlementIncome(BigDecimal settlementIncome) {
+        this.settlementIncome = settlementIncome;
+    }
+
+    public BigDecimal getReturnCycle() {
+        return returnCycle;
+    }
+
+    public void setReturnCycle(BigDecimal returnCycle) {
+        this.returnCycle = returnCycle;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

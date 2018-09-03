@@ -3,7 +3,7 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.MinerProductDao;
 import com.ant.admin.dao.ProductDao;
-import com.ant.dto.MinerProduct;
+import com.ant.entity.MinerProduct;
 import com.ant.entity.Product;
 import com.ant.entity.User;
 import com.ant.admin.service.MinerProductService;
