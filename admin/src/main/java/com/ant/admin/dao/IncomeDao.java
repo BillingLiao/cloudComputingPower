@@ -9,6 +9,13 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface IncomeDao extends BaseMapper<Income> {
 
-    void insertInomeList();
+    /**
+     * 插入理财产品收益
+     */
+    void insertFinancialInomeList();
 
+    /**
+     * 插入云算力产品收益
+     */
+    void insertCloudInomeList();
 }

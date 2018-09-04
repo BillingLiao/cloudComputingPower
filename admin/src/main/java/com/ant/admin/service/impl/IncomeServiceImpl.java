@@ -20,6 +20,9 @@ public class IncomeServiceImpl extends ServiceImpl<IncomeDao,Income> implements 
 
     @Override
     public void insertAllIncome() {
-        incomeDao.insertInomeList();
+        //云算力产品
+        incomeDao.insertCloudInomeList();
+        //理财产品
+        incomeDao.insertFinancialInomeList();
     }
 }

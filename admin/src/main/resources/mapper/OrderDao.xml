@@ -12,6 +12,11 @@
         LEFT JOIN t_category c ON c.category_id = product.category_id
         <where> 1=1 and o.del_flag = 0 ${ew.sqlSegment}</where>
     </select>
+    <update id="updateTypeByTime">
+        UPDATE t_order o LEFT JOIN t_financial_product f ON f.product_id = o.product_id
+        SET order_status = 5
+        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>f.cycle
+    </update>
 
     <!--<select id="selectByProductId" resultType="com.ant.admin.dto.CloudProduct">
         SELECT

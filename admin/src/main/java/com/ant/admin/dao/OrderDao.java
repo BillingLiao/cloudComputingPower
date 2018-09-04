@@ -21,4 +21,6 @@ public interface OrderDao extends BaseMapper<Order> {
      * @return
      */
     List<Order> selectOrderList(Page<Order> page,@Param("ew") Wrapper<Order> wrapper);
+
+    void updateTypeByTime();
 }

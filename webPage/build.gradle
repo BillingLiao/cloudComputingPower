@@ -1,0 +1,5 @@
+dependencies{
+    compile project(":entity")
+    compile libs.mysql
+    compile libs.durid
+}

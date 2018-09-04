@@ -94,4 +94,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         Order order = new Order(orderNo, productId, userId, orderType,0, amount,actualReceipts,createTime, 0);
         orderDao.insert(order);
     }
+
+    @Override
+    public void updateTypeByTime() {
+        orderDao.updateTypeByTime();
+    }
 }

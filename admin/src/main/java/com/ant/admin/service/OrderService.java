@@ -21,4 +21,9 @@ public interface OrderService extends IService<Order> {
     Page<Order> queryPage(Map<String,Object> params, Wrapper<Order> wrapper);
 
     void add(User user, Integer productId, BigDecimal amount, BigDecimal actualReceipts);
+
+    /**
+     * 根据产品周期是否到期更改订单状态
+     */
+    void updateTypeByTime();
 }
