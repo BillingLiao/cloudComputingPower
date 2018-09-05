@@ -36,56 +36,6 @@
 	</div>
 	<!--header end-->
 	
-	
-		<!--移动端导航-->
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<section class="buttonset"><button id="showRightPush"><img src="images/nav.png" alt="" class="logo-img" /></button>
-		</section>
-		
-		<div class="clearfix"></div>
-		<!--- Push Navigation Starts ---->
-				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-					<a href="index.html">首页</a>
-					<a href="rent.html">云算力租赁</a>
-					<a href="mall.html">云算力合约商城</a>
-					<a href="agent.html">代理中心</a>
-					<a href="personal.html">个人信息</a>
-					<a href="my.html">我的云算力</a>
-				</nav>
-				<script src="js/classie.js"></script>
-				<script>
-					var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-						showRightPush = document.getElementById( 'showRightPush' ),
-						body = document.body;
-		
-					showRightPush.onclick = function() {
-						classie.toggle( this, 'active' );
-						classie.toggle( body, 'cbp-spmenu-push-toleft' );
-						classie.toggle( menuRight, 'cbp-spmenu-open' );
-						disableOther( 'showRightPush' );
-					};
-		
-					function disableOther( button ) {
-						if( button !== 'showRightPush' ) {
-							classie.toggle( showRightPush, 'disabled' );
-						}
-					}
-				</script>
-				<script type="text/javascript" src="js/easing.js"></script>
-				<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$(".scroll").click(function(event){		
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-					});
-				});
-				</script>
-
-		<!--- Push Navigation ends ---->
-		<!--移动端导航 end-->
-		
-
-
 
 	<!--我的云算力-->
 	<div class="conbox">
@@ -116,7 +66,7 @@
 	<ul class="nav_b">
 		<li><a class="icon_01" href="index.html">首页</a></li>
 		<li><a class="icon_02" href="rent.html">租赁</a></li>
-		<li><a class="icon_03" href="mall.html">商城</a></li>
+		<li><a class="icon_03" href="mall.html">购买</a></li>
 		<li><a class="icon_05" href="personal.html">我</a></li>
 	</ul>
 	

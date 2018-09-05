@@ -2,4 +2,6 @@ dependencies{
     compile project(":entity")
     compile libs.mysql
     compile libs.durid
+    compile libs.fastjson
+    compile libs.jedis
 }

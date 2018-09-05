@@ -422,7 +422,7 @@ CREATE TABLE `t_currency_price` (
   `btc_usd` DECIMAL(25,11) DEFAULT NULL COMMENT '比特币USD价格',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`price_id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='预估收益表';
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='比特币价格';
 
 /*Data for the table `t_currency_price` */
 

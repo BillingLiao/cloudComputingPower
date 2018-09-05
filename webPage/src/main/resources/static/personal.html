@@ -32,110 +32,39 @@
 
 	<!--header-->
     <div id="header">
-		<div class="logo">蚂蚁云算力</div>
+		<div class="logo">我</div>
 	</div>
 	<!--header end-->
-	
-	
-		<!--移动端导航-->
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<section class="buttonset"><button id="showRightPush"><img src="images/nav.png" alt="" class="logo-img" /></button>
-		</section>
-		
-		<div class="clearfix"></div>
-		<!--- Push Navigation Starts ---->
-				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
-					<a href="index.html">首页</a>
-					<a href="rent.html">云算力租赁</a>
-					<a href="mall.html">云算力合约商城</a>
-					<a href="agent.html">代理中心</a>
-					<a href="personal.html">个人信息</a>
-					<a href="my.html">我的云算力</a>
-				</nav>
-				<script src="js/classie.js"></script>
-				<script>
-					var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-						showRightPush = document.getElementById( 'showRightPush' ),
-						body = document.body;
-		
-					showRightPush.onclick = function() {
-						classie.toggle( this, 'active' );
-						classie.toggle( body, 'cbp-spmenu-push-toleft' );
-						classie.toggle( menuRight, 'cbp-spmenu-open' );
-						disableOther( 'showRightPush' );
-					};
-		
-					function disableOther( button ) {
-						if( button !== 'showRightPush' ) {
-							classie.toggle( showRightPush, 'disabled' );
-						}
-					}
-				</script>
-				<script type="text/javascript" src="js/easing.js"></script>
-				<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$(".scroll").click(function(event){		
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-					});
-				});
-				</script>
-
-		<!--- Push Navigation ends ---->
-		<!--移动端导航 end-->
-		
 
 
 	<div class="head">
 		<div class="head_box">
 			<div class="head_img"><img src="images/imghead.png" /></div>
-			<h1>个人信息</h1>
+			<h1>中午好，138889989898</h1>
 		</div>
 	</div>
 
 	<!--个人信息-->
 	<div class="conbox">
-
-		<!--个人中心-->
-		<div class="info_form">
 		
-			<ul class="resume">
-
-				<div class="re_box personal">
-					<li><label>银行名称：</label>未填写</li>
-					<li><label>开户行：</label>未填写</li>
-					<li><label>银行卡号：</label>625851244524515</li>
-					<li><label>BTC地址：</label>未填写</li>
-					<li><label>手机号：</label>13455488755</li>
-					<li><label>支付宝账号：</label>未填写</li>
-					</li>
-				</div>
-				
-				<div class="index_reg"><a href="#">编辑 / 保存</a></div>
-				
-			</ul>
-			
+		<div class="stats">
+			<div class="triangle"></div>
+			<h2><p>持有算力</p>1.25T</h2><h2><p>持有金额（BTC钱包）</p>0.00005</h2><h2><p>昨日收益（BTC）</p>+0.000000</h2>
+			<h2><a href="financial.html">云算<br />理财</a></h2><h2><p>持有金额（CNY钱包）</p>0.00005</h2><h2><p>昨日收益CNY）</p>+6.22</h2>
 		</div>
-		<!--个人中心 end-->
 		
+		<!--定期-->		
+		<div class="p_menu">
 		
-		<h1 class="per_t">安全中心：</h1>
-		
-		<!--安全中心-->
-		<div class="info_form">
-			
-			<ul class="resume">
-
-				<div class="re_box personal">
-					<li><label>邮箱：</label>未设置</li>
-					<li><label>提取密码：</label>未设置</li>
-				</div>
-				
-			</ul>
-			
-		</div>
-		<!--安全中心 end-->
-		
+			<div class="pm_box"><a href="account.html">收款账号</a></div>
+			<div class="pm_box"><a href="hold.html">持有算力</a></div>
+			<div class="pm_box"><a href="">保底挖矿</a></div>
+			<div class="pm_box"><a href="record_tx.html">我要提现</a></div>
+			<div class="pm_box"><a href="record_2.html">提现记录</a></div>
+			<div class="pm_box"><a href="record.html">交易记录</a></div>
+					
+		</div>			
+		<!-- end 定期-->		
 			
 	</div>
 	<!--个人信息 end-->
@@ -154,7 +83,7 @@
 	<ul class="nav_b">
 		<li><a class="icon_01" href="index.html">首页</a></li>
 		<li><a class="icon_02" href="rent.html">租赁</a></li>
-		<li><a class="icon_03" href="mall.html">商城</a></li>
+		<li><a class="icon_03" href="mall.html">购买</a></li>
 		<li><a class="icon_05" href="personal.html">我</a></li>
 	</ul>
 	

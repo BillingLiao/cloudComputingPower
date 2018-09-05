@@ -1,7 +1,9 @@
 package com.ant.admin.common.quartz;
 
+import com.ant.admin.service.BalanceService;
 import com.ant.admin.service.IncomeService;
 import com.ant.admin.service.OrderService;
+import com.ant.entity.Balance;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,9 @@ public class CalculateDailyIncomeJob {
     @Resource
     private OrderService orderService; // 订单Service
 
+    @Resource
+    private BalanceService balanceService;
+
     /**
      * 每日凌晨0点定期执行
      */
@@ -36,8 +41,17 @@ public class CalculateDailyIncomeJob {
      */
     @Scheduled(cron="0 0 2 * * ?")
     public void work(){
-        //计算每日收益
+        //计算每日收益插入
         incomeService.insertAllIncome();
+    }
+
+    /**
+     * 每天凌晨2点01分定期执行
+     */
+    @Scheduled(cron="1 0 2 * * ?")
+    public void work3(){
+        //将更新的收益存入余额
+
     }
 
 }

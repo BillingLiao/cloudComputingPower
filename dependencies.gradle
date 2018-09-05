@@ -9,6 +9,7 @@ libs = [
         common : [
                 "org.springframework.boot:spring-boot-starter-web:${versions.springBootVersion}",
                 "org.springframework.boot:spring-boot-starter-data-jpa:${versions.springBootVersion}",
+                "org.springframework.boot:spring-boot-starter-data-redis:${versions.springBootVersion}",
                 "org.apache.commons:commons-lang3:3.5",
                 "commons-lang:commons-lang:2.6"
         ],
@@ -48,6 +49,9 @@ libs = [
         ],
         beanutils: [
                 "commons-beanutils:commons-beanutils:1.9.3"
+        ],
+        fastjson: [
+                "com.alibaba:fastjson:1.2.47"
         ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
