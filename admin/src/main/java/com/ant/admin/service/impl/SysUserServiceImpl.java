@@ -5,10 +5,10 @@ import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
-import com.ant.admin.dao.UserDao;
-import com.ant.entity.User;
+import com.ant.admin.dao.SysUserDao;
+import com.ant.admin.service.SysUserService;
 import com.ant.admin.service.UserRoleService;
-import com.ant.admin.service.UserService;
+import com.ant.entity.SysUser;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
@@ -27,7 +27,7 @@ import java.util.Map;
  * @date 2018/8/13 19:43
  */
 @Service("userService")
-public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserDao,SysUser> implements SysUserService {
 
     @Autowired
     private UserRoleService userRoleService;
@@ -42,9 +42,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
     public PageUtils queryPage(Map<String, Object> params) {
         String userName = (String)params.get("userName");
 
-        Page<User> page = this.selectPage(
-                new Query<User>(params).getPage(),
-                new EntityWrapper<User>()
+        Page<SysUser> page = this.selectPage(
+                new Query<SysUser>(params).getPage(),
+                new EntityWrapper<SysUser>()
                         .like(StringUtils.isNotBlank(userName),"userName", userName)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
         );
@@ -57,8 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(User user) {
-        user.setRegisterTime(new Date());
+    public void save(SysUser user) {
+        user.setCreateTime(new Date());
         //sha256加密
         String salt = RandomStringUtils.randomAlphanumeric(20);
         user.setSalt(salt);
@@ -71,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(User user) {
+    public void update(SysUser user) {
         if(StringUtils.isBlank(user.getPassword())){
             user.setPassword(null);
         }else{
@@ -85,9 +85,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
     @Override
     public boolean updatePassword(Integer userId, String password, String newPassword) {
-        User user = new User();
+        SysUser user = new SysUser();
         user.setPassword(newPassword);
         return this.update(user,
-                new EntityWrapper<User>().eq("user_id", userId).eq("password", password));
+                new EntityWrapper<SysUser>().eq("user_id", userId).eq("password", password));
     }
 }

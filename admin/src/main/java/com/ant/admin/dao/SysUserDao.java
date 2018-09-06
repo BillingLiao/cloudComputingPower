@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.User;
+import com.ant.entity.SysUser;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
@@ -11,14 +11,14 @@ import java.util.List;
  * @author Billing
  * @date 2018/8/13 19:27
  */
-public interface UserDao extends BaseMapper<User> {
+public interface SysUserDao extends BaseMapper<SysUser> {
 
     /**
      * 查询用户信息
      * @param userName
      * @return
      */
-    User getUserByName(String userName);
+    SysUser getUserByName(String userName);
 
     /**
      * 查询用户的所有菜单

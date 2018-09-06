@@ -3,10 +3,10 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.MapUtils;
 import com.ant.admin.dao.MenuDao;
+import com.ant.admin.service.SysUserService;
 import com.ant.entity.Menu;
 import com.ant.admin.service.MenuService;
 import com.ant.admin.service.RoleMenuService;
-import com.ant.admin.service.UserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
     private Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
 
     @Autowired
-    private UserService userService;
+    private SysUserService sysuserService;
     @Autowired
     private RoleMenuService roleMenuService;
 
@@ -79,7 +79,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements  Menu
         }
 
         //用户菜单列表
-        List<Integer> menuIdList = userService.queryAllMenuId(userId);
+        List<Integer> menuIdList = sysuserService.queryAllMenuId(userId);
         return getAllMenuList(menuIdList);
     }
 

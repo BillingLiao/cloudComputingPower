@@ -361,25 +361,51 @@ DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
-  `user_name` VARCHAR(20) DEFAULT NULL COMMENT '用户名',
+  `user_number` VARCHAR(50) DEFAULT NULL COMMENT '用户编号',
+  `telphone` VARCHAR(20) DEFAULT NULL COMMENT '手机号码',
   `password` VARCHAR(100) NOT NULL COMMENT '登陆密码',
   `salt` VARCHAR(20) DEFAULT NULL COMMENT '盐',
-  `telphone` VARCHAR(20) DEFAULT NULL COMMENT '手机号码',
   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
   `btc_addr` VARCHAR(50) DEFAULT NULL COMMENT 'BTC地址',
-  `Alipay` VARCHAR(50) DEFAULT NULL COMMENT '支付宝账号',
+  `card_number` VARCHAR(50) DEFAULT NULL COMMENT '银行卡号',
+  `alipay` VARCHAR(50) DEFAULT NULL COMMENT '支付宝账号',
+  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力余额(比特币)',
+  `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财余额(人民币)',
+  `principal` DECIMAL(15,3) DEFAULT NULL COMMENT '理财本金',
   `register_time` DATETIME DEFAULT NULL COMMENT '注册时间',
   `update_time` DATETIME DEFAULT NULL COMMENT '修改时间',
   `invitation_code` VARCHAR(100) DEFAULT NULL COMMENT '邀请码',
-  `status` TINYINT(4) DEFAULT '1' COMMENT '状态  0：禁用   1：正常',
+  `status` TINYINT(4) DEFAULT '1' COMMENT '状态  0：冻结   1：正常',
   PRIMARY KEY (`user_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user` VALUES (1,'admin','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012015410','root@cnadmart.com','root@cn','136000001','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
-INSERT  INTO `t_user` VALUES (2,'Billing','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012920449','root@cnadmart.com','root@cnad','136000001','2016-11-11 17:49:54','2016-11-11 13:11:11','5454',1);
-`cloudcomputingpower`
+INSERT  INTO `t_user` VALUES (1,'liaobilin','15012015410','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','root@cnadmart.com','root@cn','6213540045411444','136000001',NULL,NULL,NULL,'2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
+
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `t_sys_user`;
+
+CREATE TABLE `t_sys_user` (
+  `user_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',
+  `password` VARCHAR(100) DEFAULT NULL COMMENT '密码',
+  `salt` VARCHAR(20) DEFAULT NULL COMMENT '盐',
+  `mobile` VARCHAR(100) DEFAULT NULL COMMENT '手机号',
+  `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
+  `status` TINYINT(4) DEFAULT NULL COMMENT '状态  0：禁用   1：正常',
+  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`) USING BTREE
+) ENGINE=INNODB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+
+/*Data for the table `t_user` */
+
+INSERT  INTO `t_sys_user` VALUES (1,'admin','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012015410','root@cnadmart.com','1','2016-11-11 11:11:11');
+INSERT  INTO `t_sys_user` VALUES (2,'Billing','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','15012920449','root@cnadmart.com','1','2016-11-11 17:49:54');
+
 /*Table structure for table `t_user_role` */
 
 DROP TABLE IF EXISTS `t_user_role`;
@@ -409,7 +435,7 @@ CREATE TABLE `t_tstimate` (
 
 /*Data for the table `t_tstimate` */
 
-INSERT  INTO `t_tstimate` VALUES (1,'0.00003936','2017-03-24 15:23:13')
+INSERT  INTO `t_tstimate` VALUES (1,'0.00003936','2017-03-24 15:23:13');
 
 
 /*Table structure for table `t_currency_price` */
@@ -426,26 +452,10 @@ CREATE TABLE `t_currency_price` (
 
 /*Data for the table `t_currency_price` */
 
-INSERT  INTO `t_currency_price` VALUES (1,'44223',NULL,'2017-03-24 15:23:13')
+INSERT  INTO `t_currency_price` VALUES (1,'44223',NULL,'2017-03-24 15:23:13');
 
-/*Table structure for table `t_balance` */
 
-DROP TABLE IF EXISTS `t_balance`;
-
-CREATE TABLE `t_balance` (
-  `balance_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `user_id` INT(11) NOT NULL COMMENT '用户编号',
-  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力余额(比特币)',
-  `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财余额(人民币)',
-  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`balance_id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='用户余额表';
-
-/*Data for the table `t_balance` */
-
-INSERT  INTO `t_balance` VALUES (1,'2','0','0','2017-03-24 15:23:13')
-
-/*Table structure for table `t_balance` */
+/*Table structure for table `t_put_forward` */
 
 DROP TABLE IF EXISTS `t_put_forward`;
 
@@ -455,12 +465,12 @@ CREATE TABLE `t_put_forward` (
   `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力余额(比特币)',
   `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财余额(人民币)',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`balance_id`)
+  PRIMARY KEY (`put_forward_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='提现记录表';
 
-/*Data for the table `t_balance` */
+/*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_balance` VALUES (1,'2','0','0','2017-03-24 15:23:13')
+INSERT  INTO `t_put_forward` VALUES (1,'2','0','0','2017-03-24 15:23:13');
 
 
 

@@ -2,9 +2,9 @@ package com.ant.admin.common.shiro;
 
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.dao.MenuDao;
-import com.ant.admin.dao.UserDao;
+import com.ant.admin.dao.SysUserDao;
 import com.ant.entity.Menu;
-import com.ant.entity.User;
+import com.ant.entity.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -33,7 +33,7 @@ public class AuthRealm extends AuthorizingRealm {
     private MenuDao menuDao;
 
     @Autowired
-    private UserDao userDao;
+    private SysUserDao sysuserDao;
 
     //{super.setName("authRealm");}
 
@@ -57,9 +57,9 @@ public class AuthRealm extends AuthorizingRealm {
         return info;
 */
         //User user = (User)principals.getPrimaryPrincipal();
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser sysUser = ShiroUtils.getUser();//(SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
 
-        Integer userId = user.getUserId();
+        Integer userId = sysUser.getUserId();
 
         List<String> permsList;
         //系统管理员，拥有最高权限
@@ -70,7 +70,7 @@ public class AuthRealm extends AuthorizingRealm {
                 permsList.add(menu.getPerms());
             }
         } else {
-            permsList = userDao.queryAllPerms(userId);
+            permsList = sysuserDao.queryAllPerms(userId);
         }
         //用户权限列表
         Set<String> permsSet = new HashSet<>();
@@ -94,27 +94,27 @@ public class AuthRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 
-        //查询用户信息
-        User user = new User();
-        user.setUserName(token.getUsername());
-        user = userDao.selectOne(user);
+        //查询系统用户信息
+        SysUser sysUser = new SysUser();
+        sysUser.setUserName(token.getUsername());
+        sysUser = sysuserDao.selectOne(sysUser);
         //账号不存在
-        if (user == null) {
+        if (sysUser == null) {
             throw new UnknownAccountException("账号或密码不正确");
         }
 
         //账号锁定
-        if (user.getStatus() == 0) {
+        if (sysUser.getStatus() == 0) {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
 
         //SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
 
         //第一个参数使用user对象，原来使用的是user.getUserName()
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,user.getPassword(),this.getClass().getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(sysUser,sysUser.getPassword(),this.getClass().getName());
 
         //将用户登录信息放入shiro的session中
-        SecurityUtils.getSubject().getSession().setAttribute("user", user);
+        SecurityUtils.getSubject().getSession().setAttribute("sysUser", sysUser);
 
         return info;
     }

@@ -2,7 +2,6 @@ package com.ant.entity;
 
 import com.ant.common.validator.group.AddGroup;
 import com.ant.common.validator.group.UpdateGroup;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
+ * 用户表
  * @author Billing
  * @date 2018/8/13 10:04
  */
@@ -30,9 +30,14 @@ public class User implements Serializable {
     private Integer userId;
 
     /**
-     * 用户名
+     * 用户编号
      */
-    private String userName;
+    private String userNumber;
+
+    /**
+     * 手机号码
+     */
+    private String telphone;
 
     /**
      * 登陆密码
@@ -47,11 +52,6 @@ public class User implements Serializable {
     private String salt;
 
     /**
-     * 手机号码
-     */
-    private String telphone;
-
-    /**
      * 邮箱
      */
     @Email(message="邮箱格式不正确", groups = {AddGroup.class, UpdateGroup.class})
@@ -63,20 +63,34 @@ public class User implements Serializable {
     private String btc_addr;
 
     /**
+     * 银行卡号
+     */
+    private String cardNumber;
+
+    /**
      * 支付宝账号
      */
     private String Alipay;
 
     /**
+     * 云算力余额
+     */
+    private BigDecimal btc;
+
+    /**
+     * 理财余额
+     */
+    private BigDecimal cny;
+
+    /**
+     * 理财本金
+     */
+    private BigDecimal principal;
+
+    /**
      * 邀请码
      */
     private String invitationCode;
-
-    /**
-     * 角色ID列表
-     */
-    @TableField(exist=false)
-    private List<Integer> roleIdList;
 
     /**
      * 状态  0：禁用   1：正常
@@ -103,12 +117,20 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserNumber() {
+        return userNumber;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserNumber(String userNumber) {
+        this.userNumber = userNumber;
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone;
     }
 
     public String getPassword() {
@@ -127,14 +149,6 @@ public class User implements Serializable {
         this.salt = salt;
     }
 
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -151,6 +165,14 @@ public class User implements Serializable {
         this.btc_addr = btc_addr;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
     public String getAlipay() {
         return Alipay;
     }
@@ -159,20 +181,36 @@ public class User implements Serializable {
         Alipay = alipay;
     }
 
+    public BigDecimal getBtc() {
+        return btc;
+    }
+
+    public void setBtc(BigDecimal btc) {
+        this.btc = btc;
+    }
+
+    public BigDecimal getCny() {
+        return cny;
+    }
+
+    public void setCny(BigDecimal cny) {
+        this.cny = cny;
+    }
+
+    public BigDecimal getPrincipal() {
+        return principal;
+    }
+
+    public void setPrincipal(BigDecimal principal) {
+        this.principal = principal;
+    }
+
     public String getInvitationCode() {
         return invitationCode;
     }
 
     public void setInvitationCode(String invitationCode) {
         this.invitationCode = invitationCode;
-    }
-
-    public List<Integer> getRoleIdList() {
-        return roleIdList;
-    }
-
-    public void setRoleIdList(List<Integer> roleIdList) {
-        this.roleIdList = roleIdList;
     }
 
     public Integer getStatus() {
@@ -197,24 +235,5 @@ public class User implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
-                ", telphone='" + telphone + '\'' +
-                ", email='" + email + '\'' +
-                ", btc_addr='" + btc_addr + '\'' +
-                ", Alipay='" + Alipay + '\'' +
-                ", invitationCode='" + invitationCode + '\'' +
-                ", roleIdList=" + roleIdList +
-                ", status=" + status +
-                ", registerTime=" + registerTime +
-                ", updateTime=" + updateTime +
-                '}';
     }
 }

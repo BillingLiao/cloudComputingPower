@@ -1,4 +1,3 @@
-/*
 package com.ant.admin.controller;
 
 import com.ant.admin.common.annotation.SysLog;
@@ -9,62 +8,55 @@ import com.ant.admin.common.validator.Assert;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.common.validator.group.AddGroup;
 import com.ant.admin.common.validator.group.UpdateGroup;
-import com.ant.entity.User;
+import com.ant.admin.service.SysUserService;
 import com.ant.admin.service.UserRoleService;
-import com.ant.admin.service.UserService;
+import com.ant.entity.SysUser;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-*/
 /**
  * @author Billing
  * @date 2018/8/15 11:59
- *//*
-
+ */
 @Controller
 @RequestMapping("/sys/user")
-public class UserController extends  AbstractController{
+public class SysUserController extends  AbstractController{
 
     @Autowired
-    private UserService userService;
+    private SysUserService sysUserService;
     @Autowired
     private UserRoleService userRoleService;
 
-    */
-/**
+    /**
      * 所有用户列表
-     *//*
-
+     */
     @RequestMapping("/list")
     @RequiresPermissions("sys:user:list")
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params){
-        PageUtils page = userService.queryPage(params);
+        PageUtils page = sysUserService.queryPage(params);
 
         return Result.ok().put("page", page);
     }
 
-    */
-/**
+    /**
      * 获取登录的用户信息
-     *//*
-
+     */
     @RequestMapping("/info")
     public Result info(){
         return Result.ok().put("user", getUser());
     }
 
-    */
-/**
+    /**
      * 修改登录用户密码
-     *//*
-
+     */
     @SysLog("修改密码")
     @RequestMapping("/password")
     public Result password(String password, String newPassword){
@@ -76,7 +68,7 @@ public class UserController extends  AbstractController{
         newPassword = ShiroUtils.sha256(newPassword, getUser().getSalt());
 
         //更新密码
-        boolean flag = userService.updatePassword(getUserId(), password, newPassword);
+        boolean flag = sysUserService.updatePassword(getUserId(), password, newPassword);
         if(!flag){
             return Result.error("原密码不正确");
         }
@@ -84,15 +76,14 @@ public class UserController extends  AbstractController{
         return Result.ok();
     }
 
-    */
-/**
+    /**
      * 用户信息
-     *//*
-
+     */
     @RequestMapping("/info/{userId}")
     @RequiresPermissions("sys:user:info")
+    @ResponseBody
     public Result info(@PathVariable("userId") Integer userId){
-        User user = userService.selectById(userId);
+        SysUser user = sysUserService.selectById(userId);
 
         //获取用户所属的角色列表
         List<Integer> roleIdList = userRoleService.queryRoleIdList(userId);
@@ -101,46 +92,43 @@ public class UserController extends  AbstractController{
         return Result.ok().put("user", user);
     }
 
-    */
-/**
+    /**
      * 保存用户
-     *//*
-
+     */
     @SysLog("保存用户")
     @RequestMapping("/save")
     @RequiresPermissions("sys:user:save")
-    public Result save(@RequestBody User user){
+    @ResponseBody
+    public Result save(@RequestBody SysUser user){
         ValidatorUtils.validateEntity(user, AddGroup.class);
 
-        userService.save(user);
+        sysUserService.save(user);
 
         return Result.ok();
     }
 
-    */
-/**
+    /**
      * 修改用户
-     *//*
-
+     */
     @SysLog("修改用户")
     @RequestMapping("/update")
     @RequiresPermissions("sys:user:update")
-    public Result update(@RequestBody User user){
+    @ResponseBody
+    public Result update(@RequestBody SysUser user){
         ValidatorUtils.validateEntity(user, UpdateGroup.class);
 
-        userService.update(user);
+        sysUserService.update(user);
 
         return Result.ok();
     }
 
-    */
-/**
+    /**
      * 删除用户
-     *//*
-
+     */
     @SysLog("删除用户")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:user:delete")
+    @ResponseBody
     public Result delete(@RequestBody Integer[] userIds){
         if(ArrayUtils.contains(userIds, 1)){
             return Result.error("系统管理员不能删除");
@@ -150,9 +138,8 @@ public class UserController extends  AbstractController{
             return Result.error("当前用户不能删除");
         }
 
-        userService.deleteBatchIds(Arrays.asList(userIds));
+        sysUserService.deleteBatchIds(Arrays.asList(userIds));
 
         return Result.ok();
     }
 }
-*/

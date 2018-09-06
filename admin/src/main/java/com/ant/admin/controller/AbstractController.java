@@ -16,7 +16,8 @@
 
 package com.ant.admin.controller;
 
-import com.ant.entity.User;
+import com.ant.admin.common.shiro.ShiroUtils;
+import com.ant.entity.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
-	protected User getUser() {
+	protected SysUser getUser() {
 		//return (User) SecurityUtils.getSubject().getPrincipal();
-		User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+		SysUser user = ShiroUtils.getUser();//(SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
 		return user;
 	}
 

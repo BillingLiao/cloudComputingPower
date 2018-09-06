@@ -24,5 +24,7 @@ public class IncomeServiceImpl extends ServiceImpl<IncomeDao,Income> implements 
         incomeDao.insertCloudInomeList();
         //理财产品
         incomeDao.insertFinancialInomeList();
+        //余额
+        //incomeDao.
     }
 }

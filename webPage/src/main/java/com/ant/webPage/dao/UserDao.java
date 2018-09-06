@@ -9,4 +9,5 @@ import com.ant.entity.User;
 public interface UserDao {
 
     public User findOneById(int userId);
+
 }

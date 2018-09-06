@@ -1,7 +1,7 @@
 package com.ant.admin.common.config;
 
 import com.ant.admin.common.shiro.ShiroUtils;
-import com.ant.entity.User;
+import com.ant.entity.SysUser;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,7 +22,7 @@ public class CredentialsMatcher extends SimpleCredentialsMatcher {
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         UsernamePasswordToken utoken=(UsernamePasswordToken) token;
         //获得用户输入的密码:(可以采用加盐(salt)的方式去检验)
-        User user = (User) info.getPrincipals().getPrimaryPrincipal();
+        SysUser user = (SysUser) info.getPrincipals().getPrimaryPrincipal();
         //用户输入密码
         String inPassword = new String(utoken.getPassword());
         //盐值

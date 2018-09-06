@@ -17,11 +17,15 @@
 package com.ant.admin.common.shiro;
 
 import com.ant.admin.common.exception.RRException;
-import com.ant.entity.User;
+import com.ant.entity.SysUser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+
+import java.io.IOException;
 
 /**
  * Shiro工具类
@@ -48,8 +52,23 @@ public class ShiroUtils {
 		return SecurityUtils.getSubject();
 	}
 
-	public static User getUser() {
-		return (User)SecurityUtils.getSubject().getPrincipal();
+	public static SysUser getUser() {
+		Object obj =  SecurityUtils.getSubject().getSession().getAttribute("sysUser");
+		SysUser user = new SysUser();
+		if (obj instanceof SysUser) {
+			user = (SysUser) obj;
+		} else {
+			ObjectMapper objectMapper = new ObjectMapper();
+			try {
+				String userJson = objectMapper.writeValueAsString(obj);
+				user = objectMapper.readValue(userJson, SysUser.class);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
 	}
 
 	public static Integer getUserId() {

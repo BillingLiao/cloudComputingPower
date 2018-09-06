@@ -196,6 +196,7 @@ $(function () {
         }
     });
 });
+
 var editor;
 var vm = new Vue({
 	el:'#rrapp',

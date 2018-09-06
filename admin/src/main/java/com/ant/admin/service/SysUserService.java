@@ -1,17 +1,18 @@
 package com.ant.admin.service;
 
 import com.ant.admin.common.utils.PageUtils;
-import com.ant.entity.User;
+import com.ant.entity.SysUser;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 import java.util.Map;
 
 /**
+ * 系统用户service
  * @author Billing
- * @date 2018/8/13 19:35
+ * @date 2018/9/6 11:23
  */
-public interface UserService extends IService<User> {
+public interface SysUserService extends IService<SysUser> {
 
     /**
      * 查询用户的所有菜单ID
@@ -24,12 +25,12 @@ public interface UserService extends IService<User> {
     /**
      * 保存用户
      */
-    void save(User user);
+    void save(SysUser sysUser);
 
     /**
      * 修改用户
      */
-    void update(User user);
+    void update(SysUser sysUser);
 
     /**
      * 修改密码
@@ -39,3 +40,4 @@ public interface UserService extends IService<User> {
      */
     boolean updatePassword(Integer userId, String password, String newPassword);
 }
+
