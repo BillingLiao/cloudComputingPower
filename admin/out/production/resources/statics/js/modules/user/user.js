@@ -157,7 +157,7 @@ var vm = new Vue({
 			});
 		},
 		getInfo: function(userId){
-			$.get(baseURL + "user/user/info/"+userId, function(r){
+			$.get(baseURL + "sys/user/info/"+userId, function(r){
                 vm.user = r.user;
             	var birth =$("#test1").val(vm.user.birth );
     			 
