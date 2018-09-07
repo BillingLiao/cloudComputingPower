@@ -37,6 +37,7 @@ public class User implements Serializable {
     /**
      * 手机号码
      */
+    @NotBlank(message="手机号码不能为空", groups = AddGroup.class)
     private String telphone;
 
     /**

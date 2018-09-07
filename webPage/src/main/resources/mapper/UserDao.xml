@@ -6,4 +6,8 @@
     <select id="findOneById" parameterType="Integer" resultType="com.ant.entity.User">
         select * from t_user where userId = #{userId}
     </select>
+
+    <select id="findOneByPhone" parameterType="String" resultType="com.ant.entity.User">
+        select * from t_user where telphone = #{telphone}
+    </select>
 </mapper>

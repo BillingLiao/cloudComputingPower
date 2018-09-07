@@ -168,14 +168,13 @@ $(function () {
 			/*
 			{ label: '更新者', name: 'updateBy', index: 'update_by', width: 80 }, 			
 			{ label: '更新时间', name: 'updateTime', index: 'update_time', width: 80 }, */
-			/*{ label: '', name: 'delFlag', index: 'del_flag', width: 80 }	*/		
         ],
 		viewrecords: true,
         height: 385,
         rowNum: 10,
 		rowList : [10,30,50],
-        //rownumbers: true, 
-        rownumWidth: 25, 
+        //rownumbers: true,
+        rownumWidth: 25,
         autowidth:true,
         multiselect: true,
         pager: "#jqGridPager",
@@ -186,17 +185,16 @@ $(function () {
             records: "page.totalCount"
         },
         prmNames : {
-            page:"page", 
-            rows:"limit", 
+            page:"page",
+            rows:"limit",
             order: "order"
         },
         gridComplete:function(){
         	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
         }
     });
 });
-
 var editor;
 var vm = new Vue({
 	el:'#rrapp',

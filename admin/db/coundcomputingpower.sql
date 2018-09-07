@@ -391,8 +391,8 @@ DROP TABLE IF EXISTS `t_sys_user`;
 CREATE TABLE `t_sys_user` (
   `user_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',
-  `password` VARCHAR(100) DEFAULT NULL COMMENT '密码',
-  `salt` VARCHAR(20) DEFAULT NULL COMMENT '盐',
+  `password` VARCHAR(100) NOT NULL COMMENT '密码',
+  `salt` VARCHAR(20) NOT NULL COMMENT '盐',
   `mobile` VARCHAR(100) DEFAULT NULL COMMENT '手机号',
   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
   `status` TINYINT(4) DEFAULT NULL COMMENT '状态  0：禁用   1：正常',

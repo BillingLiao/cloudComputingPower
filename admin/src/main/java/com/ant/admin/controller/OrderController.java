@@ -2,16 +2,17 @@ package com.ant.admin.controller;
 
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
+import com.ant.admin.common.validator.ValidatorUtils;
+import com.ant.entity.Order;
 import com.ant.entity.User;
 import com.ant.admin.service.OrderService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 /**
@@ -32,7 +33,7 @@ public class OrderController extends  AbstractController{
      * @return
      */
     @RequestMapping("/list")
-    @RequiresPermissions("product:cloud:list")
+    @RequiresPermissions("order:list")
     public Result list(@RequestParam Map<String,Object> params){
         PageUtils page=orderService.queryPage(params);
 /*        EntityWrapper<Order> wrapper = new EntityWrapper<Order>();
@@ -40,6 +41,20 @@ public class OrderController extends  AbstractController{
         PageUtils page = new PageUtils(orderService.queryPage(params, wrapper));*/
         return Result.ok().put("page", page);
     }
+
+    /**
+     * 保存
+     */
+    @RequestMapping("/update")
+    @RequiresPermissions("order:status:update")
+    public Result update(@RequestBody Order order) throws ParseException {
+        //校验类型
+        ValidatorUtils.validateEntity(order);
+        orderService.updateAllColumnById(order);
+        return Result.ok("更新成功");
+    }
+
+
 
     /**
      *  用户下单

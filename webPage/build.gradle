@@ -4,4 +4,6 @@ dependencies{
     compile libs.durid
     compile libs.fastjson
     compile libs.jedis
+    compile libs.aliyun_oss
+    compile libs.mybatisplus
 }

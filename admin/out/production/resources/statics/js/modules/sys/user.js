@@ -6,13 +6,13 @@ $(function () {
 			{ label: '用户ID', name: 'userId', index: "user_id", width: 45, key: true },
 			{ label: '用户名', name: 'userName', index: 'user_name', width: 75 },
 			{ label: '邮箱', name: 'email', width: 90 },
-			{ label: '手机号', name: 'telphone', width: 100 },
+			{ label: '手机号', name: 'mobile', width: 100 },
 			{ label: '状态', name: 'status', width: 60, formatter: function(value, options, row){
 				return value === 0 ? 
 					'<span class="label label-danger">禁用</span>' : 
 					'<span class="label label-success">正常</span>';
 			}},
-			{ label: '创建时间', name: 'registerTime', index: "register_time", width: 85}
+			{ label: '创建时间', name: 'createTime', index: "create_time", width: 85}
         ],
 		viewrecords: true,
         height: 385,
@@ -44,7 +44,6 @@ var setting = {
     data: {
         simpleData: {
             enable: true,
-            idKey: "deptId",
             pIdKey: "parentId",
             rootPId: -1
         },
@@ -59,15 +58,13 @@ var vm = new Vue({
     el:'#rrapp',
     data:{
         q:{
-            username: null
+            userName: null
         },
         showList: true,
         title:null,
         roleList:{},
         user:{
             status:1,
-            deptId:null,
-            deptName:null,
             roleIdList:[]
         }
     },
@@ -79,25 +76,12 @@ var vm = new Vue({
             vm.showList = false;
             vm.title = "新增";
             vm.roleList = {};
-            vm.user = {deptName:null, deptId:null, status:1, roleIdList:[]};
+            vm.user = {status:1, roleIdList:[]};
 
             //获取角色信息
             this.getRoleList();
 
-            //vm.getDept();
         },
-        /*getDept: function(){
-            //加载部门树
-            $.get(baseURL + "sys/dept/list", function(r){
-                ztree = $.fn.zTree.init($("#deptTree"), setting, r);
-                var node = ztree.getNodeByParam("deptId", vm.user.deptId);
-                if(node != null){
-                    ztree.selectNode(node);
-
-                    vm.user.deptName = node.name;
-                }
-            })
-        },*/
         update: function () {
             var userId = getSelectedRow();
             if(userId == null){
@@ -166,32 +150,11 @@ var vm = new Vue({
                 vm.roleList = r.list;
             });
         },
-        /*deptTree: function(){
-            layer.open({
-                type: 1,
-                offset: '50px',
-                skin: 'layui-layer-molv',
-                title: "选择部门",
-                area: ['300px', '450px'],
-                shade: 0,
-                shadeClose: false,
-                content: jQuery("#deptLayer"),
-                btn: ['确定', '取消'],
-                btn1: function (index) {
-                    var node = ztree.getSelectedNodes();
-                    //选择上级部门
-                    vm.user.deptId = node[0].deptId;
-                    vm.user.deptName = node[0].name;
-
-                    layer.close(index);
-                }
-            });
-        },*/
         reload: function () {
             vm.showList = true;
             var page = $("#jqGrid").jqGrid('getGridParam','page');
             $("#jqGrid").jqGrid('setGridParam',{
-                postData:{'username': vm.q.username},
+                postData:{'userName': vm.q.userName},
                 page:page
             }).trigger("reloadGrid");
         }

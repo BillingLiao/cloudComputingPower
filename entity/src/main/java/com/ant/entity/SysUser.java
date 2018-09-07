@@ -33,6 +33,7 @@ public class SysUser implements Serializable {
     /**
      * 用户名
      */
+    @NotBlank(message="用户名不能为空", groups = AddGroup.class)
     private String userName;
 
     /**

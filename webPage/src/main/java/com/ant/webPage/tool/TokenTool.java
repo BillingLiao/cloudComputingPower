@@ -34,13 +34,13 @@ public class TokenTool {
 	 * @param userId
 	 * @return
 	 */
-	public static String create(long userId) {
+	public static String create(Integer userId) {
 //		String str = "{\"id\":"+userId+",\"time\":"+System.currentTimeMillis()+",\"key\":\""+KEY+"\"}";
 		String str = "{\""+getRandomString((int)(Math.random()*10))+"\":\""+getRandomString((int)(Math.random()*10))+"\",\"id\":"+userId+",\"time\":"+System.currentTimeMillis()+",\"key\":\""+KEY+"\"}";
 		return encode(str).replaceAll("\r|\n", "");
 	}
 
-	public static String createWallet(long userId, int amount) {
+	public static String createWallet(Integer userId, int amount) {
 		String money = amount + "";//初始化钱
 		String str = "{\""+getRandomString((int)(Math.random()*4))+"\":\""+getRandomString((int)(Math.random()*4))+"\",\"id\":\""+userId+"\",\""+getRandomString((int)(Math.random()*4))+"\":\""+getRandomString((int)(Math.random()*4))+"\",\"money\":\""+money+"\",\""+getRandomString((int)(Math.random()*4))+"\":\""+getRandomString((int)(Math.random()*4))+"\"}";
 		return encode(str).replaceAll("\r|\n", "");
