@@ -9,6 +9,7 @@ import com.ant.webPage.tool.CodeConstant;
 import com.ant.webPage.util.Constant;
 import com.ant.webPage.util.RedisUtils;
 import com.ant.webPage.util.SMSUtil;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,19 +29,20 @@ public class UserController{
 
     /**
      * 手机登录
-     * @param telphone
-     * @param password
+     * @param user
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Msg login(@RequestParam String telphone, @RequestParam String password){
+    public  Msg login(@RequestBody User user){
+        String telphone = user.getTelphone();
+        String password = user.getPassword();
         msg = userService.login(telphone,password);
         return msg;
     }
 
-    /**
+   /* *//**
      * 发送验证码(修改密码)
-     */
+     *//*
     @GetMapping("sendCodeResetPass")
     public Msg sendCode(Integer userId){
         User user=userService.findOne(userId);
@@ -57,9 +59,9 @@ public class UserController{
         return msg;
     }
 
-    /**
+    *//**
      * 修改密码
-     */
+     *//*
     @PostMapping("resetPass")
     public Msg resetPass(Integer userId,String password,String confirmPassword,String code){
         User user=userService.findOne(userId);
@@ -86,5 +88,5 @@ public class UserController{
         userService.updateAllColumnById(user);
         msg.set("修改密码成功",CodeConstant.SUCCESS,null);
         return msg;
-    }
+    }*/
 }

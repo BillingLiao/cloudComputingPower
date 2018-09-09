@@ -2,7 +2,7 @@
 function startmarquee(lh,speed,delay,index){ 
 var t; 
 var p=false; 
-var o=document.getElementById("marqueebox"+index);
+var o=document.getElementById("marqueebox"+index); 
 o.innerHTML+=o.innerHTML; 
 o.onmouseover=function(){p=true} 
 o.onmouseout=function(){p=false} 

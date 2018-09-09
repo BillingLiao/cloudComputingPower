@@ -9,12 +9,14 @@ import com.ant.webPage.tool.TokenTool;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import sun.security.provider.MD5;
 
 /**
  * @author Billing
  * @date 2018/9/5 15:15
  */
+@Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserService {
 
     @Autowired Msg msg;
@@ -39,13 +41,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             //String password = MD5();
             if(user.getPassword().equals(password)) {
                 String result = TokenTool.create(user.getUserId());
-                msg.set("登录成功", CodeConstant.SUCCESS, result);
+                //msg.set("登录成功", CodeConstant.SUCCESS, result);
+                msg.setCode(CodeConstant.SUCCESS);
+                //msg.setCode
             } else {
-                msg.set("用户名或密码错误", CodeConstant.ERROR, null);
+                //msg.set("用户名或密码错误", CodeConstant.ERROR, null);
+                msg.setCode(CodeConstant.ERROR);
             }
 
         }else{
-            msg.set("用户名或密码错误", CodeConstant.ERROR, null);
+            //msg.set("用户名或密码错误", CodeConstant.ERROR, null);
+            msg.setCode(CodeConstant.ERROR);
         }
         return msg;
     }

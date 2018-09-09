@@ -49,9 +49,9 @@
 		<div class="login_box">
 			<ul class="login_ul">
 				<li><input type="text" class="phone" placeholder="请输入手机号码" /></li>
-				<li><input type="password" class="password" placeholder="登录密码" /></li>
+				<li><input type="password" class="password" id="password" placeholder="登录密码" /></li>
 				<li><input type="checkbox" class="checkbox" name="promise" /><label class="promise">记住我的登录信息</label></li>
-				<li><input class="login_btn wow bounceIn" type="button" value="登 录" onClick="location.href='index.html'" /></li>
+				<li><input class="login_btn wow bounceIn" type="button" value="登 录" /></li>
 				<li><input class="reg_btn_2" type="button" value="忘记密码？" onClick="location.href='forget_password.html'" /><input class="reg_btn_2" type="button" value="没有账号？" onClick="location.href='reg.html'" /></li>
 			</ul>
 		</div>
@@ -92,7 +92,52 @@
 	
 			
 </div>
-	
+<script type="text/javascript">
+	$(function(){
+		$('.login_btn').bind('click',function(){
+			var userphone = $('.phone').val();
+			var userpwd = $('#password').val();
+			var parmas = {
+				telphone:userphone,
+				password:userpwd
+			}
+			$.ajax({
+				url:'http://localhost:8082/user/login',
+				type:'POST',
+				dataType:'json',
+				contentType: 'application/json',
+				data:JSON.stringify(parmas),
+				success:function(res){
+					console.log(res);
+				}
+			})
+		})
+
+		function getUrlParam(name){
+			var obj = {};
+			var url_0=window.location.href;
+			var url;
+			if(url_0.indexOf('?')!=-1){
+				url = url_0.split('?')[1].split('&');
+			}else{
+				return false
+			}
+			var nameList = [];
+			url.forEach(function(item) {
+				let tempArr = item.split('=');
+				let key = decodeURIComponent(tempArr[0]);
+				let val = decodeURIComponent(tempArr[1]);
+				obj[key] = val;
+				nameList.push(key);
+			})
+			if (nameList.indexOf(name) == -1) {
+				return false
+			} else {
+				return obj[name]
+			}
+		}
+	})
+</script>
 		
 </body>
 </html>

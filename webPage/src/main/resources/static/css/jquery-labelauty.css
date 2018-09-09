@@ -28,7 +28,7 @@ input.labelauty + label
 	border-radius: 4px; /* css 3±ê×¼ */
     -moz-border-radius: 4px; /* mozilla */
     -webkit-border-radius: 4px;
-	color: #333333;
+	color: #000;
 	cursor: pointer;
 	transition: background-color 0.25s;
 	-moz-transition: background-color 0.25s;
@@ -40,10 +40,10 @@ input.labelauty + label
 	-webkit-user-select: none;
 	-o-user-select: none;
 	margin-bottom: 10px;
-	line-height: 40px;
-	height: 40px;
-	padding: 4px 0px;
-	text-align: center;
+	line-height: 42px;
+	height: 42px;
+	width: 80%;
+	padding: 0px 10% 0px 10%;
 }
 
 /* Stylish text inside label */
@@ -83,8 +83,8 @@ input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked
 /* When not Checked */
 input.labelauty:not(:checked):not([disabled]) + label:hover
 {
-	background-color: #EFEFEF;
-	color: #a7a7a7;
+	background-color: #FFCC00;
+	color: #fff;
 }
 input.labelauty:not(:checked) + label > span.labelauty-checked-image
 {
@@ -99,16 +99,17 @@ input.labelauty:not(:checked) + label > span.labelauty-checked
 /* When Checked */
 input.labelauty:checked + label
 {
-	background: url(../images/checked.png) no-repeat #14B9FF 10% center;
+	background: url(../images/checked.png) no-repeat #FFCC00 10% center;
 	background-size: 18px 18px;
-	border:1px #14B9FF solid;
+	border:1px #FFCC00 solid;
 	color: #ffffff;
 }
 
 input.labelauty:checked:not([disabled]) + label:hover
 {
-	background-color: #14B9FF;
-	border:1px #14B9FF solid;
+	background-color: #FFCC00;
+	border:1px #FFCC00 solid;
+	color: #ffffff;
 }
 input.labelauty:checked + label > span.labelauty-unchecked-image
 {

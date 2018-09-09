@@ -1991,6 +1991,21 @@ h1.per_t {
 	position: relative;
 	background-color: #FFFFFF;
 }	
+.stats_tx {
+	float: left;
+	padding: 2% 0%;
+	width: 100%;
+	height: auto;
+	clear: both;
+	border-radius: 4px; /* css 3标准 */
+
+
+    -moz-border-radius: 4px; /* mozilla */
+    -webkit-border-radius: 4px;
+	margin: 0% 0% 0% 0%;
+	position: relative;
+	background-color: #FFFFFF;
+}
 .stats_3 .s_one {
 	float: left;
 	width: 100%;
@@ -2395,20 +2410,23 @@ h1.per_t {
 	height: auto;
 	min-height:100px;
 	padding: 0px 0px 10px 0px;
-	color: #333333;
+	
 }
 .tabconbox h1.sh {
 	line-height: 48px;
 	font-size: 20px;
 	margin-bottom: 10px;
+	color: #333333;
 }
 .tabconbox p {
 	line-height: 28px;
 	font-size: 14px;
+	color: #333333;
 }
 .tabconbox img {
 	max-width: 100%;
 }
+
 
 /********记录列表**********/
 .tabconbox .dl {
@@ -2499,7 +2517,7 @@ h1.per_t {
     -moz-border-radius: 4px; /* mozilla */
     -webkit-border-radius: 4px;
 	position: absolute;
-	top: 8px;
+	top: 4px;
 	right: 5%;
 	color: #ce1b25;
 	text-align: right;
@@ -2522,7 +2540,7 @@ h1.per_t {
 .account {
 	font-size:14px;
 	font-family:"Heiti SC", "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
-	line-height: 64px;
+	line-height: 50px;
 	clear: both;
 	font-weight: normal;
 	text-align: center;
@@ -2544,6 +2562,7 @@ h1.per_t {
 	position: relative;
 	margin: 0px 4% 3% 4%;
 }
+
 .drawal .bf {
 	color: #666666;
 	height: auto;
@@ -2571,8 +2590,8 @@ h1.per_t {
 	height: 42px;
 	font-size: 14px;
 	padding-right: 2%;
-	text-align: right;
-	width: 28%;
+	text-align: center;
+	width: 100%;
 	float: left;
 }
 .drawal input{
@@ -2585,9 +2604,9 @@ h1.per_t {
 	height: 22px;
 	padding: 8px 3%;
 	font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
-	width: 20%;
+	width: 54%;
 	float: left;
-	margin: 0px 2%;
+	margin: 0px 20%;
 }
 .drawal input:hover {
 	border: 1px #BD8B5D solid;
@@ -2599,9 +2618,90 @@ h1.per_t {
 	color: #D4D0C8;
 }
 
+
+/**************************/
+.drawal_2 {
+	text-align: left;
+	width: 84%;
+	background-color: #FFFFFF;
+	border-radius: 4px; /* css 3标准 */
+
+    -moz-border-radius: 4px; /* mozilla */
+    -webkit-border-radius: 4px;
+	padding: 2% 4% 6% 4%;
+	border: none;
+	height: auto;
+	float: left;
+	margin: 0px 4% 3% 4%;
+}
+
+.drawal_2 .bf {
+	color: #666666;
+	height: auto;
+	float: left;
+	clear: both;
+	width: 96%;
+	margin: 5px 2%;
+	line-height: 42px;
+	font-size: 14px;
+}
+.drawal_2 .bf label {
+	color: #666666;
+	line-height: 42px;
+	height: 42px;
+	font-size: 14px;
+	padding-right: 2%;
+	text-align: center;
+	width: 100%;
+	float: left;
+}
+.drawal_2 input.box1 {
+	color: #666666;
+	outline: none;
+
+	-webkit-border-radius: 4px;
+	border: 1px #E0E0E0 solid;
+	line-height: 22px;
+	height: 22px;
+	padding: 8px 3%;
+	font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
+	width: 54%;
+	float: left;
+	margin: 0px 20%;
+}
+.drawal_2 input.box1:hover {
+	border: 1px #BD8B5D solid;
+}
+.drawal_2 input.box1:hover{
+	color: #D4D0C8;
+}
+/*******/
+.drawal_2 .txfs {
+	width: 92%;
+	float: left;
+	margin:0px 4%;
+	clear: both;
+}
+.drawal_2 .txfs div {
+	padding:0px 0% 0px 0px;
+	width: 98%;
+	float: left;
+	margin: 0px 1%;
+}
+.drawal_2 .txfs label {
+	font-size: 14px;
+	height: 42px;
+	line-height:42px;
+	text-align: center;
+	float: none;
+}
+
+
+
+
 /*****按钮******/
 .record_btn {
-	width: 40%;
+	width: 90%;
 	text-align: center;
 	margin: 0px auto;
 }
@@ -2609,9 +2709,10 @@ h1.per_t {
 	color: #666666;
 	font-size: 14px;
 	line-height: 42px;
-	width: 100%;
+	width: 47%;
 	float: left;
 	border-radius: 4px; /* css 3标准 */
+
 
 
 
@@ -2621,7 +2722,7 @@ h1.per_t {
 	background-color: #FFFFFF;
 	border: 1px #EBEBEB solid;
 	height: 42px;
-	margin-bottom: 20px;
+	margin: 0px 1% 20px 1%;
 }
 .record_btn a:hover {
 	color: #FFFFFF;
@@ -2650,6 +2751,22 @@ h1.per_t {
 	color: #FFFFFF;
 	background-color: #FFCC00;
 	border: 1px #FFCC00 solid;
+}
+
+.record_btn2 {
+	width: 90%;
+	text-align: center;
+	margin: 0px auto;
+}
+.record_btn2 a {
+	color: #666666;
+	font-size: 14px;
+	line-height: 32px;
+	width: 47%;
+	float: left;
+	background-color: #FFFFFF;
+	height: 32px;
+	margin: 0px 1% 20px 1%;
 }
 
 

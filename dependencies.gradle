@@ -57,6 +57,10 @@ libs = [
         aliyun_oss: [
                 "com.aliyun.oss:aliyun-sdk-oss:2.5.0"
         ],
+        aliyun_dysmsapi: [
+                "com.aliyun:aliyun-java-sdk-core:4.0.6",
+                "com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0"
+        ],
         test   : [
                 "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
 

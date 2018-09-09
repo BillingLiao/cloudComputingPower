@@ -6,4 +6,5 @@ dependencies{
     compile libs.jedis
     compile libs.aliyun_oss
     compile libs.mybatisplus
+    compile libs.aliyun_dysmsapi
 }
