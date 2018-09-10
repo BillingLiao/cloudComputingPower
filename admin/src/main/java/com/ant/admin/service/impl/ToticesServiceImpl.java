@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
-@Service
+@Service("toticesService")
 public class ToticesServiceImpl extends ServiceImpl<ToticesDao, Totices> implements ToticesService{
 
     @Resource

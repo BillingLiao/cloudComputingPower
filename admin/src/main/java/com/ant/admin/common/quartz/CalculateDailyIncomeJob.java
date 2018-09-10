@@ -23,29 +23,27 @@ public class CalculateDailyIncomeJob {
     private OrderService orderService; // 订单Service
 
     /**
-     * 每日凌晨0点定期执行
-     */
-    @Scheduled(cron="0 0 0 * * ?")
-    public void work2(){
-        //判断理财产品是否到期,更改订单状态
-        orderService.updateTypeByTime();
-    }
-
-    /**
      * 每天凌晨2点定期执行
      */
     @Scheduled(cron="0 0 2 * * ?")
     public void work(){
-        //计算每日收益插入
+        /**
+         * 计算购买产品每日收益，全部插入收益表
+         * 将云算力产品每日收益插入用户余额
+         */
         incomeService.insertAllIncome();
     }
 
     /**
-     * 每天凌晨2点01分定期执行
+     * 每日凌晨2点01分定期执行
      */
     @Scheduled(cron="1 0 2 * * ?")
-    public void work3(){
-        //将更新的收益存入余额
+    public void work2(){
+        /**
+         *  判断理财产品是否到期
+         *  到期后将本金收益插入用户余额更改订单状态
+         */
+        orderService.updateTypeByTime();
     }
 
 }

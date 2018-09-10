@@ -1,5 +1,6 @@
 package com.ant.admin.service;
 
+import com.ant.admin.common.utils.PageUtils;
 import com.ant.entity.Tstimate;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -21,5 +22,5 @@ public interface TstimateService extends IService<Tstimate> {
 
     void deleteTstimate(Integer[] productIds);
 
-    Page<Tstimate> queryPage(Map<String, Object> params, Wrapper<Tstimate> wrapper);
+    PageUtils queryPage(Map<String, Object> params);
 }

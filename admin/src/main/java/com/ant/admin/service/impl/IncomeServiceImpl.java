@@ -1,6 +1,7 @@
 package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.IncomeDao;
+import com.ant.admin.dao.UserDao;
 import com.ant.admin.service.IncomeService;
 import com.ant.entity.Income;
 
@@ -18,13 +19,15 @@ public class IncomeServiceImpl extends ServiceImpl<IncomeDao,Income> implements 
     @Autowired
     private IncomeDao incomeDao;
 
+    @Autowired private UserDao userDao;
+
     @Override
     public void insertAllIncome() {
         //云算力产品
         incomeDao.insertCloudInomeList();
         //理财产品
         incomeDao.insertFinancialInomeList();
-        //余额
-        //incomeDao.
+        //运算力产品收益插入余额
+        //userDao.insert
     }
 }

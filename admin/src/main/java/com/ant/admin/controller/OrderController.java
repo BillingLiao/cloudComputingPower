@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
+ * 订单controller
  * @author Billing
  * @date 2018/8/15 11:54
  */
@@ -45,11 +47,14 @@ public class OrderController extends  AbstractController{
     /**
      * 保存
      */
-    @RequestMapping("/update")
+    @RequestMapping("/status")
     @RequiresPermissions("order:status:update")
     public Result update(@RequestBody Order order) throws ParseException {
         //校验类型
         ValidatorUtils.validateEntity(order);
+        if(order.getOrderStatus() == 2){
+            order.setPaymentTime(new Date());
+        }
         orderService.updateAllColumnById(order);
         return Result.ok("更新成功");
     }
@@ -62,7 +67,7 @@ public class OrderController extends  AbstractController{
      * @param user  用户
      * @param productId 产品
      * @param amount    购买数量
-     * @param actualReceipts    实收款
+     * @param actualReceipts  实收款
      * @return
      */
     @RequestMapping("/add")

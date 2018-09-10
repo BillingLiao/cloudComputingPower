@@ -30,9 +30,9 @@ public class User implements Serializable {
     private Integer userId;
 
     /**
-     * 用户编号
+     * 用户姓名
      */
-    private String userNumber;
+    private String userName;
 
     /**
      * 手机号码
@@ -84,11 +84,6 @@ public class User implements Serializable {
     private BigDecimal cny;
 
     /**
-     * 理财本金
-     */
-    private BigDecimal principal;
-
-    /**
      * 邀请码
      */
     private String invitationCode;
@@ -110,6 +105,21 @@ public class User implements Serializable {
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
+    public User(){
+
+    }
+
+    public User(@NotBlank(message = "手机号码不能为空", groups = AddGroup.class) String telphone, @NotBlank(message = "密码不能为空", groups = AddGroup.class) String password, String salt, BigDecimal btc, BigDecimal cny, String invitationCode, Integer status, Date registerTime) {
+        this.telphone = telphone;
+        this.password = password;
+        this.salt = salt;
+        this.btc = btc;
+        this.cny = cny;
+        this.invitationCode = invitationCode;
+        this.status = status;
+        this.registerTime = registerTime;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -118,13 +128,14 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public String getUserNumber() {
-        return userNumber;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserNumber(String userNumber) {
-        this.userNumber = userNumber;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
+
 
     public String getTelphone() {
         return telphone;
@@ -196,14 +207,6 @@ public class User implements Serializable {
 
     public void setCny(BigDecimal cny) {
         this.cny = cny;
-    }
-
-    public BigDecimal getPrincipal() {
-        return principal;
-    }
-
-    public void setPrincipal(BigDecimal principal) {
-        this.principal = principal;
     }
 
     public String getInvitationCode() {

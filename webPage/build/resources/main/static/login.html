@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>登陆-蚂蚁矿业</title>
+	<meta name="keywords" content="蚂蚁矿业" /> 
+	<meta name="description" content="蚂蚁矿业" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="author" content="pennychen" />
+	<meta name="Copyright" content="蚂蚁矿业" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
+	
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<!--动画-->
+	<script src="js/wow.min.js"></script>
+	<link href="css/animate.css" rel='stylesheet' type='text/css' />
+	<script>
+		new WOW().init();
+	</script>
+		
+</head>
+	
+	
+	
+	
+<body>
+<div id="page">
+
+	<!--header-->
+    <div id="header">
+		<div class="logo">蚂蚁云算力</div>
+	</div>
+	<!--header end-->
+
+
+	<!--登录注册-->
+	<div class="conbox_login">
+
+		<!--title-->
+		<div class="t_box wow fadeInRight">
+			<h1>用户登录</h1>
+		</div>
+		<!--end title-->
+	
+		<div class="login_box">
+			<ul class="login_ul">
+				<li><input type="text" class="phone" placeholder="请输入手机号码" /></li>
+				<li><input type="password" class="password" id="password" placeholder="登录密码" /></li>
+				<li><input type="checkbox" class="checkbox" name="promise" /><label class="promise">记住我的登录信息</label></li>
+				<li><input class="login_btn wow bounceIn" type="button" value="登 录" /></li>
+				<li><input class="reg_btn_2" type="button" value="忘记密码？" onClick="location.href='forget_password.html'" /><input class="reg_btn_2" type="button" value="没有账号？" onClick="location.href='reg.html'" /></li>
+			</ul>
+		</div>
+		
+			<!--选择器-->
+			<link href="js/icheck/css/square/yellow.css" rel="stylesheet">
+			<script src="js/icheck/js/icheck.min.js"></script>	
+			<script>
+				$(document).ready(function(){
+				  $('input').iCheck({
+					checkboxClass: 'icheckbox_square-yellow',  // 注意square和blue的对应关系,用于type=checkbox
+					radioClass: 'iradio_square-yellow', // 用于type=radio
+					increaseArea: '20%' // 增大可以点击的区域
+				  });
+				});
+			</script>
+			
+	</div>
+	<!--登录注册 end-->
+	
+	
+		
+	<!--footer-->
+	<div class="footer">
+		<div class="links"></div>
+		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
+	</div>
+	<!--footer end-->
+	
+
+	<!--导航-->
+	<ul class="nav_b">
+		<li><a class="icon_01" href="index.html">首页</a></li>
+		<li><a class="icon_02" href="rent.html">租赁</a></li>
+		<li><a class="icon_03" href="mall.html">购买</a></li>
+		<li><a class="icon_05" href="personal.html">我</a></li>
+	</ul>
+	
+			
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('.login_btn').bind('click',function(){
+			var userphone = $('.phone').val();
+			var userpwd = $('#password').val();
+			var parmas = {
+				telphone:userphone,
+				password:userpwd
+			}
+			$.ajax({
+				url:'http://localhost:8082/user/login',
+				type:'POST',
+				dataType:'json',
+				contentType: 'application/json',
+				data:JSON.stringify(parmas),
+				success:function(res){
+					console.log(res);
+				}
+			})
+		})
+
+		function getUrlParam(name){
+			var obj = {};
+			var url_0=window.location.href;
+			var url;
+			if(url_0.indexOf('?')!=-1){
+				url = url_0.split('?')[1].split('&');
+			}else{
+				return false
+			}
+			var nameList = [];
+			url.forEach(function(item) {
+				let tempArr = item.split('=');
+				let key = decodeURIComponent(tempArr[0]);
+				let val = decodeURIComponent(tempArr[1]);
+				obj[key] = val;
+				nameList.push(key);
+			})
+			if (nameList.indexOf(name) == -1) {
+				return false
+			} else {
+				return obj[name]
+			}
+		}
+	})
+</script>
+		
+</body>
+</html>

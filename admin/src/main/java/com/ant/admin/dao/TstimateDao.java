@@ -24,12 +24,5 @@ public interface TstimateDao extends BaseMapper<Tstimate> {
      * @param wrapper
      * @return
      */
-    //List<CloudProduct> selectProductList(Page<CloudProduct> page, @Param("ew") Wrapper<Product> wrapper);
-
-    /**
-     * 根据产品id查询云算力产品
-     * @param productId
-     * @return
-     */
-   // CloudProduct selectByProductId(Integer productId);
+    List<Tstimate> selectTstimateList(Page<Tstimate> page,@Param("ew") Wrapper<Tstimate> wrapper);
 }

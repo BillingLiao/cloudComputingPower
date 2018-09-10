@@ -146,6 +146,20 @@ INSERT INTO `t_menu` VALUES ('31', '20', '查看', NULL, 'product:financial:list
 INSERT INTO `t_menu` VALUES ('32', '20', '新增', NULL, 'product:financial:save', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('33', '20', '修改', NULL, 'product:financial:update', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('34', '20', '删除', NULL, 'product:financial:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('35', '22', '查看', NULL, 'order:list,order:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES (36,22,'修改',NULL,'order:status:update',2,NULL,0);
+INSERT INTO `t_menu` VALUES (37,0,'更新数据管理',NULL,NULL,0,'fa fa-pencil',4);
+INSERT INTO `t_menu` VALUES (38,37,'预估收益变动','modules/updateData/tstimate.html',NULL,1,'fa fa-credit-card-alt',1);
+INSERT INTO `t_menu` VALUES (39,38,'查看',NULL,'tstimate:list,tstimate:info',2,NULL,0);
+INSERT INTO `t_menu` VALUES (40,38,'新增',NULL,'tstimate:save',2,NULL,0);
+INSERT INTO `t_menu` VALUES (41,38,'修改',NULL,'tstimate:update',2,NULL,0);
+INSERT INTO `t_menu` VALUES (42,38,'删除',NULL,'tstimate:delete',2,NULL,0);
+INSERT INTO `t_menu` VALUES (43,37,'比特币价格变动','modules/updateData/currencyPrice.html',NULL,1,'fa fa-credit-card-alt',1);
+INSERT INTO `t_menu` VALUES (44,43,'查看',NULL,'currencyPrice:list,currencyPrice:info',2,NULL,0);
+INSERT INTO `t_menu` VALUES (45,43,'新增',NULL,'currencyPrice:save',2,NULL,0);
+INSERT INTO `t_menu` VALUES (46,43,'修改',NULL,'currencyPrice:update',2,NULL,0);
+INSERT INTO `t_menu` VALUES (47,43,'删除',NULL,'currencyPrice:delete',2,NULL,0);
+
 
 /*Table structure for table `t_order` */
 
@@ -361,17 +375,16 @@ DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
-  `user_number` VARCHAR(50) DEFAULT NULL COMMENT '用户编号',
-  `telphone` VARCHAR(20) DEFAULT NULL COMMENT '手机号码',
+  `user_name` VARCHAR(20) DEFAULT NULL COMMENT '用户姓名',
+  `telphone` VARCHAR(20) NOT NULL COMMENT '手机号码',
   `password` VARCHAR(100) NOT NULL COMMENT '登陆密码',
-  `salt` VARCHAR(20) DEFAULT NULL COMMENT '盐',
+  `salt` VARCHAR(20) NOT NULL COMMENT '盐',
   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
   `btc_addr` VARCHAR(50) DEFAULT NULL COMMENT 'BTC地址',
   `card_number` VARCHAR(50) DEFAULT NULL COMMENT '银行卡号',
   `alipay` VARCHAR(50) DEFAULT NULL COMMENT '支付宝账号',
-  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力余额(比特币)',
-  `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财余额(人民币)',
-  `principal` DECIMAL(15,3) DEFAULT NULL COMMENT '理财本金',
+  `btc` DECIMAL(25,11) DEFAULT '0' COMMENT '云算力余额(比特币)',
+  `cny` DECIMAL(15,3) DEFAULT '0' COMMENT '理财余额(人民币)',
   `register_time` DATETIME DEFAULT NULL COMMENT '注册时间',
   `update_time` DATETIME DEFAULT NULL COMMENT '修改时间',
   `invitation_code` VARCHAR(100) DEFAULT NULL COMMENT '邀请码',
@@ -381,7 +394,7 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user` VALUES (1,'liaobilin','15012015410','e1153123d7d180ceeb820d577ff119876678732a68eef4e6ffc0b1f06a01f91b', 'YzcmCZNvbXocrsz9dm8e','root@cnadmart.com','root@cn','6213540045411444','136000001',NULL,NULL,NULL,'2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
+INSERT  INTO `t_user` VALUES (1,'Billing','15012920449','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','root@cn','6213540045411444','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -461,16 +474,19 @@ DROP TABLE IF EXISTS `t_put_forward`;
 
 CREATE TABLE `t_put_forward` (
   `put_forward_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `forward_no` VARCHAR(50) NOT NULL COMMENT '提现单号',
   `user_id` INT(11) NOT NULL COMMENT '用户编号',
-  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力余额(比特币)',
-  `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财余额(人民币)',
+  `forward_type` INT(11) NOT NULL COMMENT '提现类型 1:矿机 2:运算力产品 3:理财产品',
+  `forward_status` INT(11) NOT NULL COMMENT '提现状态 0:已提交 1:提现关闭 2:提现失败  3:提现成功',
+  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力提现(比特币)',
+  `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财提现(人民币)',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`put_forward_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='提现记录表';
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'2','0','0','2017-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','100','2017-03-24 15:23:13');
 
 
 

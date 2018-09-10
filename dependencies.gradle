@@ -9,7 +9,6 @@ libs = [
         common : [
                 "org.springframework.boot:spring-boot-starter-web:${versions.springBootVersion}",
                 "org.springframework.boot:spring-boot-starter-data-jpa:${versions.springBootVersion}",
-                "org.springframework.boot:spring-boot-starter-data-redis:${versions.springBootVersion}",
                 "org.springframework.boot:spring-boot-devtools:${versions.springBootVersion}",
                 "org.apache.commons:commons-lang3:3.5",
                 "commons-lang:commons-lang:2.6"
@@ -31,12 +30,12 @@ libs = [
         durid : [
                 "com.alibaba:druid-spring-boot-starter:1.1.9"
         ],
-        jedis   : [
+        redis: [
+                "org.springframework.boot:spring-boot-starter-data-redis:${versions.springBootVersion}",
                 "redis.clients:jedis:2.9.0"
         ],
         shiro   : [
                 "org.apache.shiro:shiro-spring:${versions.shiroVersion}",
-                // https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache
                 "org.apache.shiro:shiro-ehcache:${versions.shiroVersion}"
         ],
         kaptcha: [
@@ -54,9 +53,6 @@ libs = [
         fastjson: [
                 "com.alibaba:fastjson:1.2.47"
         ],
-        aliyun_oss: [
-                "com.aliyun.oss:aliyun-sdk-oss:2.5.0"
-        ],
         aliyun_dysmsapi: [
                 "com.aliyun:aliyun-java-sdk-core:4.0.6",
                 "com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0"
@@ -70,14 +66,6 @@ libs = [
         swagger: [
                 "io.springfox:springfox-swagger2:2.7.0",
                 "io.springfox:springfox-swagger-ui:2.7.0"
-        ],
-        shiro : [
-                "org.apache.shiro:shiro-core:${versions.shiroVersion}",
-                "org.apache.shiro:shiro-spring:${versions.shiroVersion}"
-        ],
-        redis: [
-                "org.springframework.boot:spring-boot-starter-data-redis:1.5.7.RELEASE",
-                "redis.clients:jedis:2.9.0"
         ],
         cache: [
                 "net.oschina.j2cache:j2cache-spring-boot2-starter:2.3.21-release"

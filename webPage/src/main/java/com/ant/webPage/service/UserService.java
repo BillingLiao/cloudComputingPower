@@ -1,7 +1,7 @@
 package com.ant.webPage.service;
 
 import com.ant.entity.User;
-import com.ant.webPage.model.Msg;
+import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -17,5 +17,7 @@ public interface UserService extends IService<User> {
      */
     public User findOne(int userId);
 
-    public Msg login(String telphone,String password);
+    public Result login(String telphone, String password);
+
+    public User findByPhone(String phone);
 }

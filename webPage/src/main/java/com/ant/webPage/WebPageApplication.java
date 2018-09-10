@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = {"com.ant.webPage.dao"})
 public class WebPageApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(WebPageApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(WebPageApplication.class, args);
+	}
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(WebPageApplication.class);
-    }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(WebPageApplication.class);
+	}
 }

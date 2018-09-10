@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @author Billing
@@ -38,7 +39,7 @@ public class CurrencyPrice implements Serializable {
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
-    private BigDecimal createTime;
+    private Date createTime;
 
     public Integer getPriceId() {
         return priceId;
@@ -64,11 +65,11 @@ public class CurrencyPrice implements Serializable {
         this.btcUsd = btcUsd;
     }
 
-    public BigDecimal getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(BigDecimal createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

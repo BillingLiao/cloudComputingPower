@@ -1,14 +1,18 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.utils.PageUtils;
+import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.TstimateDao;
 import com.ant.admin.service.TstimateService;
 import com.ant.entity.Tstimate;
-import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -20,30 +24,36 @@ public class TstimateServiceImpl extends ServiceImpl<TstimateDao,Tstimate> imple
 
 
     @Autowired
-    private TstimateService tstimateService;
+    private TstimateDao tstimateDao ;
 
     @Override
     public Tstimate infoTstimate(Integer tstimateId) {
-        return null;
+        Tstimate tstimate = tstimateDao.selectById(tstimateId);
+        return tstimate;
     }
 
     @Override
-    public void insertTstimate(Tstimate tstimate) {
-
+    public void insertTstimate(Tstimate tstimate){
+        tstimate.setCreateTime(new Date());
+        tstimateDao.insert(tstimate);
     }
 
     @Override
     public void updateTstimate(Tstimate tstimate) {
-
+        tstimateDao.updateAllColumnById(tstimate);
     }
 
     @Override
-    public void deleteTstimate(Integer[] productIds) {
-
+    public void deleteTstimate(Integer[] tstimateIds) {
+        tstimateDao.deleteBatchIds(Arrays.asList(tstimateIds));
     }
 
     @Override
-    public Page<Tstimate> queryPage(Map<String, Object> params, Wrapper<Tstimate> wrapper) {
-        return null;
+    public PageUtils queryPage(Map<String, Object> params) {
+        Page<Tstimate> page = this.selectPage(
+                new Query<Tstimate>(params).getPage(),
+                new EntityWrapper<Tstimate>()
+        );
+        return new PageUtils(page);
     }
 }

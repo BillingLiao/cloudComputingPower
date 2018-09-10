@@ -97,11 +97,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 
     @Override
     public void updateTypeByTime() {
-
-        //发钱
-            //  查询所有今天到期  需要发钱
-                //遍历 拿到订单   算出钱  找到人 发余额
-        //改过期
         orderDao.updateTypeByTime();
     }
 }

@@ -1,10 +1,10 @@
 dependencies{
     compile project(":entity")
+    compile libs.common
     compile libs.mysql
     compile libs.durid
     compile libs.fastjson
-    compile libs.jedis
-    compile libs.aliyun_oss
-    compile libs.mybatisplus
+    compile libs.redis
     compile libs.aliyun_dysmsapi
+    compile libs.mybatisplus
 }
