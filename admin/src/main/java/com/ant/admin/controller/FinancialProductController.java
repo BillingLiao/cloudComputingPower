@@ -81,6 +81,7 @@ public class FinancialProductController extends AbstractController{
     @RequestMapping("/update")
     @RequiresPermissions("product:financial:update")
     public Result update(@RequestBody FinancialProduct financialProduct){
+        logger.info("保存请求参数：{}", financialProduct.toString());
         ValidatorUtils.validateEntity(financialProduct);
         financialProductService.updateProduct(financialProduct);
         return Result.ok();

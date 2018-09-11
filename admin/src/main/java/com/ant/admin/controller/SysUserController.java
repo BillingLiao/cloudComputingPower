@@ -51,7 +51,7 @@ public class SysUserController extends  AbstractController{
      */
     @RequestMapping("/info")
     public Result info(){
-        return Result.ok().put("user", getUser());
+        return Result.ok().put("sysUser", getUser());
     }
 
     /**
@@ -83,13 +83,13 @@ public class SysUserController extends  AbstractController{
     @RequiresPermissions("sys:user:info")
     @ResponseBody
     public Result info(@PathVariable("userId") Integer userId){
-        SysUser user = sysUserService.selectById(userId);
+        SysUser sysUser = sysUserService.selectById(userId);
 
         //获取用户所属的角色列表
         List<Integer> roleIdList = userRoleService.queryRoleIdList(userId);
-        user.setRoleIdList(roleIdList);
+        sysUser.setRoleIdList(roleIdList);
 
-        return Result.ok().put("user", user);
+        return Result.ok().put("sysUser", sysUser);
     }
 
     /**
@@ -99,10 +99,10 @@ public class SysUserController extends  AbstractController{
     @RequestMapping("/save")
     @RequiresPermissions("sys:user:save")
     @ResponseBody
-    public Result save(@RequestBody SysUser user){
-        ValidatorUtils.validateEntity(user, AddGroup.class);
+    public Result save(@RequestBody SysUser sysUser){
+        ValidatorUtils.validateEntity(sysUser, AddGroup.class);
 
-        sysUserService.save(user);
+        sysUserService.save(sysUser);
 
         return Result.ok();
     }
@@ -114,10 +114,10 @@ public class SysUserController extends  AbstractController{
     @RequestMapping("/update")
     @RequiresPermissions("sys:user:update")
     @ResponseBody
-    public Result update(@RequestBody SysUser user){
-        ValidatorUtils.validateEntity(user, UpdateGroup.class);
+    public Result update(@RequestBody SysUser sysUser){
+        ValidatorUtils.validateEntity(sysUser, UpdateGroup.class);
 
-        sysUserService.update(user);
+        sysUserService.update(sysUser);
 
         return Result.ok();
     }

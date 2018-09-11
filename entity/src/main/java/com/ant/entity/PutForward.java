@@ -62,6 +62,13 @@ public class PutForward implements Serializable {
     @DateTimeFormat
     private Date createTime;
 
+    /**
+     * 完成时间(提现成功)
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    private Date completionTime;
+
     public Integer getPutForwardId() {
         return putForwardId;
     }
@@ -124,5 +131,13 @@ public class PutForward implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Date getCompletionTime() {
+        return completionTime;
+    }
+
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 }

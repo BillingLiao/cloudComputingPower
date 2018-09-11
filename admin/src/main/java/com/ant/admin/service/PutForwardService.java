@@ -18,7 +18,7 @@ public interface PutForwardService extends IService<PutForward> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    Page<PutForward> queryPage(Map<String, Object> params, Wrapper<PutForward> wrapper);
+    //Page<PutForward> queryPage(Map<String, Object> params, Wrapper<PutForward> wrapper);
 
     //void add(User user, Integer productId, BigDecimal amount, BigDecimal actualReceipts);
 

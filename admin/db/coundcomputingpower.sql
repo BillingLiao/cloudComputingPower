@@ -147,7 +147,7 @@ INSERT INTO `t_menu` VALUES ('32', '20', '新增', NULL, 'product:financial:save
 INSERT INTO `t_menu` VALUES ('33', '20', '修改', NULL, 'product:financial:update', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('34', '20', '删除', NULL, 'product:financial:delete', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('35', '22', '查看', NULL, 'order:list,order:info', '2', NULL, '0');
-INSERT INTO `t_menu` VALUES (36,22,'修改',NULL,'order:status:update',2,NULL,0);
+INSERT INTO `t_menu` VALUES (36,22,'更新状态',NULL,'order:status:update',2,NULL,0);
 INSERT INTO `t_menu` VALUES (37,0,'更新数据管理',NULL,NULL,0,'fa fa-pencil',4);
 INSERT INTO `t_menu` VALUES (38,37,'预估收益变动','modules/updateData/tstimate.html',NULL,1,'fa fa-credit-card-alt',1);
 INSERT INTO `t_menu` VALUES (39,38,'查看',NULL,'tstimate:list,tstimate:info',2,NULL,0);
@@ -159,6 +159,10 @@ INSERT INTO `t_menu` VALUES (44,43,'查看',NULL,'currencyPrice:list,currencyPri
 INSERT INTO `t_menu` VALUES (45,43,'新增',NULL,'currencyPrice:save',2,NULL,0);
 INSERT INTO `t_menu` VALUES (46,43,'修改',NULL,'currencyPrice:update',2,NULL,0);
 INSERT INTO `t_menu` VALUES (47,43,'删除',NULL,'currencyPrice:delete',2,NULL,0);
+INSERT INTO `t_menu` VALUES ('48', '0', '提现管理', NULL, NULL, '0', 'fa fa-bars', '3');
+INSERT INTO `t_menu` VALUES ('49', '48', '提现记录', 'modules/putForward/putForwardList.html', NULL, '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('50', '49', '查看', NULL, 'putForward:list,putForward:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('51', '49', '更新状态', NULL, 'putForward:status:update', '2', NULL, '0');
 
 
 /*Table structure for table `t_order` */
@@ -174,19 +178,26 @@ CREATE TABLE `t_order` (
   `order_status` INT(11) NOT NULL  COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货  3:待收货 4:已收货 5:已完成订单',
   `amount` DECIMAL(15,3) DEFAULT NULL COMMENT '购买数量',
   `actual_receipts` DECIMAL(15,3) DEFAULT NULL COMMENT '实收款',
+  `maturity_income` DECIMAL(15,3) DEFAULT NULL COMMENT '到期收益',
   `memo` VARCHAR(200) DEFAULT NULL COMMENT '备注',
   `create_time` DATE DEFAULT NULL COMMENT '订单提交时间',
   `payment_time` DATE DEFAULT NULL COMMENT '支付时间',
   `delivery_time` DATETIME DEFAULT NULL COMMENT '发货时间',
   `receiving_time` DATETIME DEFAULT NULL COMMENT '收货时间',
+  `completion_time` DATE DEFAULT NULL COMMENT '完成时间',
   `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
   PRIMARY KEY (`order_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
 /*Data for the table `t_order` */
 
-INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2','3','2','1','5000', '理财产品', '2018-06-27', '2018-09-02', NULL, NULL, '0');
-INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2','2','2','12','8000', '云算力',  '2018-06-27', '2018-09-01', NULL, NULL, '0');
+INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2','3','2','1','5000','21', '理财产品', '2018-06-27', '2018-09-02', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2','2','2','12','8000',NULL, '云算力',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('3', 'LC20180627020113', '7', '2','3','2','1','5000', '21','理财产品', '2018-06-27', '2018-07-10', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('4', 'LC20180627020123', '8', '2','3','2','1','8000', '31','理财产品',  '2018-06-27', '2018-08-10', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('5', 'LC20180627020133', '9', '2','3','2','1','5000', '22','理财产品', '2018-06-27', '2018-08-11', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('6', 'LC20180627020143', '10', '2','3','2','1','8000', '34','理财产品',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
+
 
 
 /*Table structure for table `t_product` */
@@ -215,6 +226,10 @@ INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号', '1. 扫描玛雅�
 INSERT INTO `t_product` VALUES ('4', '1', '矿机产品2号', '这款打造的,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('5', '2', '云算力产品1号', '这优惠,dfkjkj1dfdfad1', '1', NULL,'2018-06-11 14:09:31',NULL, NULL,'0');
 INSERT INTO `t_product` VALUES ('6', '2', '云算力产品2号', '这价格,dfkjkj1dfdfad1', '1', NULL,'2018-08-11 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('7', '3', '理财产品3号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('8', '3', '理财产品4号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('9', '3', '理财产品5号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('10', '3', '理财产品6号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
 
 /*Table structure for table `t_product_cloud` */
 
@@ -224,15 +239,15 @@ CREATE TABLE t_cloud_product
 (
    cloud_id             INT(11) NOT NULL AUTO_INCREMENT COMMENT '云算力明细id',
    product_id           INT(11) NOT NULL COMMENT '产品id',
-   total_stock          DECIMAL(13,2) NOT NULL COMMENT '本期总算力',
-   stock                DECIMAL(13,2) NOT NULL COMMENT '剩余算力',
+   sell_out          	DECIMAL(15,3) DEFAULT NULL COMMENT '售出算力',
+   stock                DECIMAL(15,3) NOT NULL COMMENT '剩余算力',
    electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
-   retail_price		DECIMAL(15,3) NOT NULL COMMENT '售价',
+   retail_price		DECIMAL(15,3) DEFAULT NULL COMMENT '售价',
    price                DECIMAL(15,3) NOT NULL COMMENT '单价',
    sale_time            VARCHAR(50) DEFAULT NULL COMMENT '本期售卖时间',
    model                VARCHAR(50) NOT NULL COMMENT '机型',
-   rated                DECIMAL(13,2) NOT NULL COMMENT '额定算力/T',
-   power_waste		DECIMAL(13,2) NOT NULL COMMENT '功耗',
+   rated                DECIMAL(15,3) NOT NULL COMMENT '额定算力/T',
+   power_waste		DECIMAL(15,3) NOT NULL COMMENT '功耗',
    remark               VARCHAR(200) DEFAULT NULL COMMENT '参考收益',
    start_step           INT(11) DEFAULT '0' COMMENT '起投单位',
    `power`              VARCHAR(50) COMMENT '电源',
@@ -260,15 +275,19 @@ CREATE TABLE t_financial_product
    lock_amount          INT DEFAULT NULL COMMENT '锁定期',
    reward_rate          DECIMAL(15,3) NOT NULL COMMENT '年化收益率',
    cycle          	DECIMAL(15,3) NOT NULL COMMENT '投资周期',
-   sales_status         INT(11) DEFAULT '0' COMMENT '状态,0:审核中,1:销售中,2:暂停销售,3:已结束',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (financial_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='理财明细表';
 
 /*Data for the table `t_financial_product */
 
-INSERT INTO `t_financial_product` VALUES ('1', '1', '10000.0', '1000', '0', '5','30', '0', '0');
-INSERT INTO `t_financial_product` VALUES ('2', '2', '20000.0', '2000', '0', '7', '90','0', '0');
+INSERT INTO `t_financial_product` VALUES ('1', '1', '10000.0', '1000', '0', '5','30','0');
+INSERT INTO `t_financial_product` VALUES ('2', '2', '20000.0', '2000', '0', '7', '90','0');
+INSERT INTO `t_financial_product` VALUES ('3', '7', '10000.0', '1000', '0', '5','30', '0');
+INSERT INTO `t_financial_product` VALUES ('4', '8', '20000.0', '2000', '0', '6', '30','0');
+INSERT INTO `t_financial_product` VALUES ('5', '9', '10000.0', '1000', '0', '7','30', '0');
+INSERT INTO `t_financial_product` VALUES ('6', '10', '20000.0', '2000', '0', '8', '30','0');
+
 
 /*Table structure for table `t_miner_product` */
 
@@ -402,7 +421,7 @@ INSERT  INTO `t_user` VALUES (1,'Billing','15012920449','f651b74e526731fd6ea45c9
 DROP TABLE IF EXISTS `t_sys_user`;
 
 CREATE TABLE `t_sys_user` (
-  `user_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(50) NOT NULL COMMENT '用户名',
   `password` VARCHAR(100) NOT NULL COMMENT '密码',
   `salt` VARCHAR(20) NOT NULL COMMENT '盐',
@@ -410,9 +429,8 @@ CREATE TABLE `t_sys_user` (
   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
   `status` TINYINT(4) DEFAULT NULL COMMENT '状态  0：禁用   1：正常',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_name` (`user_name`) USING BTREE
-) ENGINE=INNODB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='系统用户';
+  PRIMARY KEY (`user_id`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 /*Data for the table `t_user` */
 
@@ -481,12 +499,13 @@ CREATE TABLE `t_put_forward` (
   `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力提现(比特币)',
   `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财提现(人民币)',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  `completion_time` DATETIME DEFAULT NULL COMMENT '提现时间',
   PRIMARY KEY (`put_forward_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='提现记录表';
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','100','2017-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
 
 
 

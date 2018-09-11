@@ -1,10 +1,12 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.MinerProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.entity.MinerProduct;
 import com.ant.entity.Product;
+import com.ant.entity.SysUser;
 import com.ant.entity.User;
 import com.ant.admin.service.MinerProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -55,9 +57,11 @@ public class MinerProductServiceImpl extends ServiceImpl<MinerProductDao,MinerPr
         //设置创建日期
         product.setCreateAt(new Date());
         //获取登录用户信息
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser sysUser  = ShiroUtils.getUser();
         //设置插入产品的管理员id
-        product.setCreateUser(user.getUserId());
+        if(sysUser != null){
+            product.setCreateUser(sysUser.getUserId());
+        }
         productDao.insert(product);
         minerProduct.setProductId(product.getProductId());
         minerProductDao.insert(minerProduct);
@@ -71,8 +75,10 @@ public class MinerProductServiceImpl extends ServiceImpl<MinerProductDao,MinerPr
     @Transactional
     public void updateProduct(MinerProduct minerProduct) {
         Product product = new Product(minerProduct);
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
-        product.setUpdateUser(user.getUserId());
+        SysUser sysUser  = ShiroUtils.getUser();
+        if(sysUser != null){
+            product.setUpdateUser(sysUser.getUserId());
+        }
         product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);

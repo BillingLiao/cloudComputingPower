@@ -1,139 +1,5 @@
-function picImg(goodId){
-	$('#input-702').fileinput('destroy');
-
- 	//$('#input-702').fileinput('refresh')
-	 getImage(goodId);
-	 layer.open({
-         type: 1,
-         offset: '50px',
-         skin: 'layui-layer-molv',
-         title: "图片预览",
-         area: ['800px', '550px'],
-         shade: 0,
-         shadeClose: false,
-         content: jQuery("#imgLayer"),
-         btn: ['规格删除','重新生成规格', '取消'],
-         btn1: function (index) {
-        	 
-             layer.close(index);
-         },
-         zIndex : 100
-     });
-}
-
-function getInitialPreviewConfig(){
- 	var goodImage = vm.goodImage;
-	var goodImageIds = vm.goodImageIds;
-	vm.initialPreviewConfig=[];
-	for(var index in goodImage){
-		 var jsonStr = '{"filePath[]":"['+goodImage[index]+']","picImgIds":['+goodImageIds[index]+']}';
-		 $.parseJSON(jsonStr);
-		vm.initialPreviewConfig.push(new Object());
-		vm.initialPreviewConfig[index].url=baseURL +"good/goodimage/delete";
-		vm.initialPreviewConfig[index].width="120px";
-		vm.initialPreviewConfig[index].extra=$.parseJSON(jsonStr);
-		vm.initialPreviewConfig[index].key=goodImage[index];
-	}
-}
-
-
-function getImage(goodId){
-	//$('#input-id').fileinput('refresh');
-
- 	 vm.goodImage=[];
-	 vm.goodImageIds=[];
-	$.get(baseURL + "good/goodimage/goodImageList",{goodId:goodId}, function(r){
-		$(r.goodImage).each(function(i,n){
-			
-			 vm.goodImage.push(n.picImg);
-			 vm.goodImageIds.push(n.picImgId);
-	 	})
- 		getInitialPreviewConfig();
-	 	  // 图片上传star
-	    $("#input-702").fileinput({
-	        theme: 'fa',
-	        uploadUrl: baseURL + "good/goodimage/saveGoodImage",
-	        uploadAsync: false,
-	        minFileCount: 1,
-	        maxFileCount: 5,
-	        overwriteInitial: false,
-	        showRemove:false,
-	        showUpload: false, 
-	        language : 'zh',
-	        initialPreview: vm.goodImage,
-	        initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
-	        initialPreviewFileType: 'image', // image is the default and can be overridden in config below
-	        initialPreviewConfig: vm.initialPreviewConfig,
-	        uploadExtraData: {
-	            goodId: goodId
- 	        }
-	    }).on('filesorted', function(e, params) {
-	        console.log('file sorted', e, params);
-	    }).on('fileuploaded', function(e, params) {
-	     
-	        console.log('file uploaded', e, params);
-	    }).on('filebatchuploadsuccess', function(event, data, previewId, index) {
-	   	 
-	    	  getImage();
-	    	   console.log('filebatchuploadsuccess', event, data, previewId, index);
-	    }).on('filesuccessremove', function(event, data, index,e) {
-	    	console.log(event, data, index,e);
-	    	console.log("filesuccessremove");
-	    	 
-	    		index = jQuery.inArray(data, vm.goodImageIds)
-	    		
-	     
-	    		var filePath = [];
-	    		filePath.push(vm.goodImage[index]);
-	    		deleteFiles(filePath);
-	    		vm.goodImageIds.splice(index,1); 
-	    		vm.goodImage.splice(index,1); 
-
-	    	//return false;
-	    }).on('filecleared', function(event, data, previewId, index) {
-	    	console.log(event, data, previewId,index);
-	    	console.log("filecleared");
-	    	deleteFiles(vm.goodImage);
-	    	vm.goodImage=[];
-	    	vm.goodImageIds=[];
-	    }).on('filedeleted', function(event, data, previewId, index) {
-	    	console.log(event, data, previewId,index);
-	    	console.log("filedeleted");
-	    }).on('filepreremove', function(event, data, previewId, index) {
-	    	console.log(event, data, previewId,index);
-	    	console.log("filepreremove");
-	    }).on('fileclear', function(event, data, previewId, index) {
-	    	console.log(event, data);
-	    	console.log("fileclear");
-	    }).on('filepreupload', function(event, data, previewId, index) {
-	    	console.log(event, data);
-	    	console.log("filepreupload");
-	    }).on('filebatchuploadcomplete', function(event, data, previewId, index) {
-	    	getImage();
-	    	console.log(event, data);
-	    	console.log("filebatchuploadcomplete");
-	    }).on('beforeSend', function(event, data, previewId, index) {
-	    	console.log(event, data);
-	    	console.log("beforeSend");
-	    }).on('filebatchselected', function(event, data, previewId, index) {
-	    	console.log("filebatchselected");
-	     
-	    }).on('fileselect', function(event, data, previewId, index) {
-	    }).on('fileimagesloaded', function(event) {
-	        console.log("fileimagesloaded");
-	    }).on('fileloaded', function(event, file, previewId, index, reader) {
-	        console.log("fileloaded");
-	    }).on('fileimageloaded', function(event, file, previewId, index, reader) {
-	        console.log("fileimageloaded");
-	    });
-	    // 图片上传end
-      });
-	//$('#input-702').fileinput('refresh');
-
-}
 $(function () {
 
-	//getImage();
     $("#jqGrid").jqGrid({
         url: baseURL + 'financial/list',
         datatype: "json",
@@ -149,26 +15,11 @@ $(function () {
 	           
 	        }},
 	        //{ label: '产品介绍', name: 'introduction', index: 'introduction', width: 150 },
-	        { label: '起投金额', name: 'thresholdAmount', index: 'threshold_amount', width: 120 },
-	        { label: '投资步长', name: 'stepTerm', index: 'step_term', width: 120 },
-	        { label: '锁定期', name: 'lockAmount', index: 'lock_amount', width: 120 },
-	        { label: '年化收益率', name: 'rewardRate', index: 'reward_rate', width: 120 },
-	        { label: '状态 ', name: 'salesStatus', index: 'sales_status', width: 120 ,formatter: function(cellvalue, options, rowObject){
-                if(cellvalue == 0){
-                    return '<span class="label label-primary">审核中</span>';
-                }
-                if(cellvalue == 1){
-                    return '<span class="label label-success">销售中</span>';
-                }
-                if(cellvalue == 2){
-                    return '<span class="label label-success">暂停销售</span>';
-                }
-                if(cellvalue == 3){
-                    return '<span class="label label-success">已结束</span>';
-                }
-                return '<span class="label label-primary">审核中</span>';
-
-             }},
+	        { label: '起投金额(元)', name: 'thresholdAmount', index: 'threshold_amount', width: 120 },
+	        { label: '投资步长(元)', name: 'stepTerm', index: 'step_term', width: 120 },
+	        { label: '锁定期(天)', name: 'lockAmount', index: 'lock_amount', width: 120 },
+	        { label: '年化收益率(%)', name: 'rewardRate', index: 'reward_rate', width: 120 },
+	        { label: '投资周期(天)', name: 'cycle', index: 'cycle', width: 120 },
             { label: '上架', name: 'showInShelve', index: 'show_in_shelve', width: 120 ,formatter: function(cellvalue, options, rowObject){
 				if(cellvalue == 0){
 	                return '<span class="label label-primary">下架</span>';
@@ -190,7 +41,7 @@ $(function () {
         height: 385,
         rowNum: 10,
 		rowList : [10,30,50],
-        //rownumbers: true, 
+        rownumbers: true,
         rownumWidth: 25, 
         autowidth:true,
         multiselect: true,
@@ -202,15 +53,15 @@ $(function () {
             records: "page.totalCount"
         },
         prmNames : {
-            page:"page", 
-            rows:"limit", 
+            page:"page",
+            rows:"limit",
             order: "order"
         },
         gridComplete:function(){
-        	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+            //隐藏grid底部滚动条
+            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
         }
-    });
+});
 });
 var editor;
 var vm = new Vue({
@@ -220,10 +71,7 @@ var vm = new Vue({
 		title: null,
 		financialProduct: {},
 		introduction:true,
-		search:{},
-		goodImage:[],
-		goodImageIds:[],
-		initialPreviewConfig:[],
+		search:{}
 	},
 	created:function() {
       	   Vue.nextTick(function () {
@@ -247,7 +95,6 @@ var vm = new Vue({
 		    vm.showList = false;
             vm.title = "新增";
             vm.financialProduct = {};
-            vm.financialProduct = {salesStatus:0};
             if(editor){
                 editor.txt.html('');
             }
@@ -366,6 +213,7 @@ var vm = new Vue({
 		},
 		getInfo: function(productId){
 			$.get(baseURL + "financial/info/"+productId, function(r){
+			    console.log(r);
                 vm.financialProduct = r.financialProduct;
             });
 		},

@@ -4,6 +4,7 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.OrderDao;
 import com.ant.admin.dao.ProductDao;
+import com.ant.admin.dao.UserDao;
 import com.ant.entity.Order;
 import com.ant.entity.Product;
 import com.ant.entity.User;
@@ -18,8 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,6 +35,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 
     @Autowired
     private ProductDao productDao;
+
+    @Autowired
+    private UserDao userDao;
 
     /**
      * 分页查询
@@ -54,49 +58,32 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         return pageUtil;
     }
 
-    @Override
+   /* @Override
     public Page<Order> queryPage(Map<String, Object> params, Wrapper<Order> wrapper) {
         Page<Order> page =new Query<Order>(params).getPage();
         return page.setRecords(baseMapper.selectOrderList(page,wrapper));
-    }
+    }*/
 
-    /**
-     * 用户下单
-     *
-     * @param user
-     * @param productId
-     * @param amount
-     * @param actualReceipts
-     */
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void add(User user, Integer productId, BigDecimal amount , BigDecimal actualReceipts) {
-        SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
-        Product product = productDao.selectById(productId);
-        Integer categoryId =  product.getCategoryId();
-        String orderNo;
-        Integer orderType;
-        if(categoryId == 1){
-            orderType = 1;  //设置订单类型
-            orderNo = "KJ" + s.format(new Date());  //生成订单号
-        }else if(categoryId == 2){
-            orderType = 2;
-            orderNo = "YSL"+ s.format(new Date());
-        }else if(categoryId == 3){
-            orderType = 3;
-            orderNo = "LC" + s.format(new Date());
-        }else{
-            orderType = 0;
-            orderNo = "-";
-        }
-        Integer userId = user.getUserId();
-        Date createTime = new Date();
-        Order order = new Order(orderNo, productId, userId, orderType,0, amount,actualReceipts,createTime, 0);
-        orderDao.insert(order);
-    }
-
+    @Transactional(rollbackFor=Exception.class)
     @Override
     public void updateTypeByTime() {
+        /**
+         *  判断理财产品是否到期
+         *  将今日到期产品的本金与收益插入用户余额
+         */
+        List<Order> orderList =  orderDao.selectByTime();
+        Iterator<Order> iter = orderList.iterator();
+        while(iter.hasNext()){  //执行过程中会执行数据锁定，性能稍差，若在循环过程中要去掉某个元素只能调用iter.remove()方法。
+            Order order = iter.next();
+            User user = userDao.selectById(order.getUserId());
+            BigDecimal actualReceipts =  order.getActualReceipts(); //订单实付款(本金)
+            BigDecimal maturityIncome = order.getMaturityIncome(); //到期收益
+            BigDecimal cny = user.getCny().add(actualReceipts.add(maturityIncome));
+            user.setCny(cny);
+        }
+        /**
+         * 到期后更改订单状态
+         */
         orderDao.updateTypeByTime();
     }
 }

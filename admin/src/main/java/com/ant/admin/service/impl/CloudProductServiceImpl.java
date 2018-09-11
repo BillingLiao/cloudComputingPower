@@ -1,10 +1,12 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.CloudProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.entity.CloudProduct;
 import com.ant.entity.Product;
+import com.ant.entity.SysUser;
 import com.ant.entity.User;
 import com.ant.admin.service.CloudProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -56,9 +58,11 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao,CloudPr
         //设置创建日期
         product.setCreateAt(new Date());
         //获取登录用户信息
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser sysUser  = ShiroUtils.getUser();
         //设置插入产品的管理员id
-        product.setCreateUser(user.getUserId());
+        if(sysUser != null){
+            product.setCreateUser(sysUser.getUserId());
+        }
         productDao.insert(product);
         //插入云算力产品明细表数据
         cloudProduct.setProductId(product.getProductId());
@@ -73,8 +77,10 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao,CloudPr
     @Transactional
     public void updateProduct(CloudProduct cloudProduct) {
         Product product = new Product(cloudProduct);
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
-        product.setUpdateUser(user.getUserId());
+        SysUser sysUser  = ShiroUtils.getUser();
+        if(sysUser != null){
+            product.setUpdateUser(sysUser.getUserId());
+        }
         product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);

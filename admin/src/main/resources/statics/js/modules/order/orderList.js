@@ -110,40 +110,41 @@ var vm = new Vue({
             if(orderId == null){
                 return ;
             }
-             vm.getInfo(orderId)
-             layer.open({
-                    type: 1,
-                    offset: '50px',
-                    skin: 'layui-layer-molv',
-                    title: "设置状态",
-                    area: ['300px', '300px'],
-                    shade: 0,
-                    shadeClose: false,
-                    content: jQuery("#statusLayer"),
-                    btn: ['确定', '取消'],
-                    btn1: function (index) {
-                        $.ajax({
-                            type: "POST",
-                            url: baseURL + "order/status",
-                            contentType: "application/json",
-                            data: JSON.stringify(vm.order),
-                            success: function(r){
-                                if(r.code === 0){
-                                    alert('操作成功', function(data){
-                                         layer.close(index);
-                                    });
-                                }else{
-                                    alert(r.msg, function(data){
+            vm.getInfo(orderId);
+
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "设置状态",
+                area: ['300px', '300px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#statusLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    $.ajax({
+                        type: "POST",
+                        url: baseURL + "order/status",
+                        contentType: "application/json",
+                        data: JSON.stringify(vm.order),
+                        success: function(r){
+                            if(r.code === 0){
+                                alert('操作成功', function(data){
                                      layer.close(index);
-                                    });
-                                }
-                                vm.reload();
+                                });
+                            }else{
+                                alert(r.msg, function(data){
+                                 layer.close(index);
+                                });
                             }
-                        });
+                            vm.reload();
+                        }
+                    });
 
-                    }
+                }
 
-                });
+            });
         },
 
 		saveOrUpdate: function (event) {

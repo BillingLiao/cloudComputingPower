@@ -18,12 +18,9 @@ public interface OrderService extends IService<Order> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    Page<Order> queryPage(Map<String,Object> params, Wrapper<Order> wrapper);
-
-    void add(User user, Integer productId, BigDecimal amount, BigDecimal actualReceipts);
-
     /**
-     * 根据产品周期是否到期更改订单状态
+     *  判断理财产品是否到期
+     *  到期后将本金收益插入用户余额更改订单状态
      */
     void updateTypeByTime();
 }

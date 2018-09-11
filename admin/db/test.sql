@@ -23,17 +23,35 @@ FROM t_order o
 LEFT JOIN t_financial_product f ON f.product_id = o.product_id
 WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)<f.cycle+2;
 
+/*
+	查询理财产品今日到期所有订单
+*/
+SELECT o.*
+FROM
+t_order o
+LEFT JOIN t_financial_product f ON f.product_id = o.product_id
+WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
 
 /*
 	理财产品到期后更改状态为已完成
 */
 UPDATE t_order o LEFT JOIN t_financial_product f ON f.product_id = o.product_id
-SET order_status = 5 
-WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) &lt; f.cycle;
+SET o.order_status = 5 
+WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
 
 
+/*
+	云算力产品昨日收益余额
+*/
+SELECT *
+FROM
+t_income
+ WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(create_time) = 1
+ 
+ 
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
 WHERE o.order_status = 2;
+
 
 SELECT c.electricity_fees*c.power_waste*24/c.rated/cp.btc_cny AS e
 FROM t_cloud_product c,t_currency_price cp
@@ -49,4 +67,14 @@ SELECT TO_DAYS(SELECT DATE_FORMAT(create_time,'%y-%m-%d') FROM t_order WHERE ord
 WHERE datediff（day，getdate（），生产日期）<30
 
 SELECT * form t_order WHERE TO_DAYS('2018-09-04')-TO_DAYS(CURRENT_DATE)>=1
+
+SELECT * FROM t_income
+WHERE income_type = 3 AND TO_DAYS(create_time) = TO_DAYS(CURRENT_DATE)
+
+SELECT u.*, i.* FROM t_income i  LEFT JOIN t_user u ON u.user_id = i.user_id WHERE i.income_type = 2 AND TO_DAYS(i.create_time) = TO_DAYS(CURRENT_DATE)
+SELECT DATE_ADD(CURDATE(), INTERVAL -1 DAY)
+
+UPDATE t_user u SET u.cny = u.cny + (SELECT SUM(settlement_income) FROM t_income i WHERE u.user_id =  i.user_id AND i.income_type = 3 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(i.create_time) = 1);
+
+SELECT u.user_id,u.cny, i.`settlement_income` FROM t_user u,t_income i WHERE u.user_id =  i.user_id AND i.income_type = 3 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(i.create_time) = 1
 

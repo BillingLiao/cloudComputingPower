@@ -37,12 +37,12 @@ public class CloudProduct extends Product implements Serializable {
 
 
     /**
-     * 本期总算力
+     * 售出算力
      */
-    private BigDecimal totalStock;
+    private BigDecimal sellOut;
 
     /**
-     * 剩余算力
+     * 剩余算力(库存)
      */
     private BigDecimal stock;
 
@@ -187,12 +187,12 @@ public class CloudProduct extends Product implements Serializable {
         this.productId = productId;
     }
 
-    public BigDecimal getTotalStock() {
-        return totalStock;
+    public BigDecimal getSellOut() {
+        return sellOut;
     }
 
-    public void setTotalStock(BigDecimal totalStock) {
-        this.totalStock = totalStock;
+    public void setSellOut(BigDecimal sellOut) {
+        this.sellOut = sellOut;
     }
 
     public BigDecimal getStock() {

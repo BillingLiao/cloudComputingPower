@@ -12,7 +12,8 @@ import com.baomidou.mybatisplus.service.IService;
 public interface IncomeService extends IService<Income> {
 
     /**
-     * 插入所有订单每日收益
+     * 计算购买产品每日收益，全部插入收益表
+     * 将云算力产品每日收益插入用户余额
      */
-    void insertAllIncome();
+    public void insertAllIncome();
 }

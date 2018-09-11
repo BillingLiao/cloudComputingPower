@@ -1,10 +1,12 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.FinancialProductDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.entity.FinancialProduct;
 import com.ant.entity.Product;
+import com.ant.entity.SysUser;
 import com.ant.entity.User;
 import com.ant.admin.service.FinancialProductService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -52,8 +54,12 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
     @Transactional
     public void updateProduct(FinancialProduct financialProduct) {
         Product product = new Product(financialProduct);
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
-        product.setUpdateUser(user.getUserId());
+        //SysUser sysUser = (SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
+        SysUser sysUser  = ShiroUtils.getUser();
+        System.out.println(sysUser + "wowo" + sysUser);
+        if(sysUser != null){
+            product.setUpdateUser(sysUser.getUserId());
+        }
         product.setUpdateAt(new Date());
         //全部更新
         productDao.updateAllColumnById(product);
@@ -74,9 +80,11 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
         //设置创建日期
         product.setCreateAt(new Date());
         //获取登录用户信息
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser sysUser  = ShiroUtils.getUser();
         //设置插入产品的管理员id
-        product.setCreateUser(user.getUserId());
+        if(sysUser != null){
+            product.setUpdateUser(sysUser.getUserId());
+        }
         productDao.insert(product);
         financialProduct.setProductId(product.getProductId());
         financialProductDao.insert(financialProduct);

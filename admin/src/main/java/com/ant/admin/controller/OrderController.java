@@ -3,8 +3,10 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.entity.Order;
-import com.ant.entity.User;
+import com.ant.admin.service.CloudProductService;
+import com.ant.admin.service.FinancialProductService;
+import com.ant.admin.service.ProductService;
+import com.ant.entity.*;
 import com.ant.admin.service.OrderService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class OrderController extends  AbstractController{
     @Autowired
     private OrderService orderService;
 
+    @Autowired private ProductService productService;
+
     /**
      * 列表
      * 产品订单
@@ -45,37 +49,32 @@ public class OrderController extends  AbstractController{
     }
 
     /**
-     * 保存
+     * 更新订单状态
      */
     @RequestMapping("/status")
     @RequiresPermissions("order:status:update")
     public Result update(@RequestBody Order order) throws ParseException {
         //校验类型
         ValidatorUtils.validateEntity(order);
+        //更新付款时间
         if(order.getOrderStatus() == 2){
             order.setPaymentTime(new Date());
+        }else if(order.getOrderStatus() == 5){ //更新完成时间
+            order.setCompletionTime(new Date());
         }
         orderService.updateAllColumnById(order);
         return Result.ok("更新成功");
     }
 
-
-
     /**
-     *  用户下单
-     *
-     * @param user  用户
-     * @param productId 产品
-     * @param amount    购买数量
-     * @param actualReceipts  实收款
+     * 根据id查询单条记录
+     * @param orderId
      * @return
      */
-    @RequestMapping("/add")
-    public Result add(@SessionAttribute User user, @RequestParam Integer productId, @RequestParam(required = false) BigDecimal amount,@RequestParam BigDecimal actualReceipts){
-        if(amount == null){
-            amount = new BigDecimal("1");
-        }
-        orderService.add(user,productId,amount,actualReceipts);
-        return Result.ok();
+    @RequestMapping("/info/{orderId}")
+    @RequiresPermissions("order:info")
+    public Result info(@PathVariable("orderId") Integer orderId){
+        Order order =  orderService.selectById(orderId);
+        return Result.ok().put("order",order);
     }
 }

@@ -13,7 +13,7 @@
         CURRENT_DATE AS create_time
         FROM t_order o
         LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
-        WHERE o.order_type = 2 AND o.order_status = 2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=2
+        WHERE o.order_type = 2 AND o.order_status = 2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=1
     </insert>
 
     <insert id="insertFinancialInomeList">
@@ -23,7 +23,14 @@
         CURRENT_DATE AS create_time
         FROM t_order o
         LEFT JOIN t_financial_product f ON f.product_id = o.product_id
-        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>f.cycle+2
+        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>f.cycle+1
     </insert>
+
+    <select id="selectCloudIncomeList" resultType="com.ant.entity.Income">
+        SELECT *
+        FROM
+        t_income
+        WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(create_time) = 1
+    </select>
 
 </mapper>

@@ -5,7 +5,6 @@ import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.service.CurrencyPriceService;
 import com.ant.entity.CurrencyPrice;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +41,7 @@ public class CurrencyPriceController extends AbstractController{
      * @param priceId
      * @return
      */
-    @RequestMapping("/info/{tstimateId}")
+    @RequestMapping("/info/{priceId}")
     @RequiresPermissions("currencyPrice:info")
     public Result info(@PathVariable("priceId") Integer priceId){
         CurrencyPrice currencyPrice =  currencyPriceService.infoCurrencyPrice(priceId);
@@ -57,6 +56,9 @@ public class CurrencyPriceController extends AbstractController{
     @RequiresPermissions("currencyPrice:save")
     public Result save(@RequestBody(required = false) CurrencyPrice currencyPrice){
         ValidatorUtils.validateEntity(currencyPrice);
+        if(currencyPrice.getBtcCny() == null){
+            return Result.error("数据不能为空");
+        }
         currencyPriceService.insertCurrencyPrice(currencyPrice);
         return Result.ok();
     }

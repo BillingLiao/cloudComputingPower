@@ -58,9 +58,9 @@ public class FinancialProduct extends Product implements Serializable {
 
 
     /**
-     * 销售状态
+     * 投资周期
      */
-    private Integer salesStatus;
+    private BigDecimal cycle;
 
     /**
      * 假删除 0：未删除 1：删除
@@ -177,12 +177,12 @@ public class FinancialProduct extends Product implements Serializable {
         this.rewardRate = rewardRate;
     }
 
-    public Integer getSalesStatus() {
-        return salesStatus;
+    public BigDecimal getCycle() {
+        return cycle;
     }
 
-    public void setSalesStatus(Integer salesStatus) {
-        this.salesStatus = salesStatus;
+    public void setCycle(BigDecimal cycle) {
+        this.cycle = cycle;
     }
 
     public String getCategoryName() {
@@ -292,7 +292,7 @@ public class FinancialProduct extends Product implements Serializable {
                 ", stepTerm=" + stepTerm +
                 ", lockAmount=" + lockAmount +
                 ", rewardRate=" + rewardRate +
-                ", salesStatus=" + salesStatus +
+                ", cycle=" + cycle +
                 ", delFlag=" + delFlag +
                 ", categoryName='" + categoryName + '\'' +
                 ", categoryId=" + categoryId +

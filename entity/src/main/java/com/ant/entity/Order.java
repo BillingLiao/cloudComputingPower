@@ -24,7 +24,7 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(String orderNo, Integer productId, Integer userId, Integer orderType,Integer orderStatus, BigDecimal amount,BigDecimal actualReceipts, Date createTime, Integer delFlag) {
+    public Order(String orderNo, Integer productId, Integer userId, Integer orderType,Integer orderStatus, BigDecimal amount,BigDecimal actualReceipts, BigDecimal maturityIncome, Date createTime, Integer delFlag) {
         this.orderNo = orderNo;
         this.productId = productId;
         this.userId = userId;
@@ -32,6 +32,7 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
         this.amount = amount;
         this.actualReceipts = actualReceipts;
+        this.maturityIncome = maturityIncome;
         this.createTime = createTime;
         this.delFlag = delFlag;
     }
@@ -78,6 +79,11 @@ public class Order implements Serializable {
     private BigDecimal actualReceipts;
 
     /**
+     * 到期收益
+     */
+    private BigDecimal maturityIncome;
+
+    /**
      * 备注
      */
     private String memo;
@@ -109,6 +115,13 @@ public class Order implements Serializable {
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
     private Date receivingTime;
+
+    /**
+     * 完成时间(订单完成)
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    private Date completionTime;
 
     /**
      * 假删除 0：未删除 1：删除
@@ -177,6 +190,14 @@ public class Order implements Serializable {
         this.amount = amount;
     }
 
+    public BigDecimal getMaturityIncome() {
+        return maturityIncome;
+    }
+
+    public void setMaturityIncome(BigDecimal maturityIncome) {
+        this.maturityIncome = maturityIncome;
+    }
+
     public BigDecimal getActualReceipts() {
         return actualReceipts;
     }
@@ -223,6 +244,14 @@ public class Order implements Serializable {
 
     public void setReceivingTime(Date receivingTime) {
         this.receivingTime = receivingTime;
+    }
+
+    public Date getCompletionTime() {
+        return completionTime;
+    }
+
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 
     public Integer getDelFlag() {
