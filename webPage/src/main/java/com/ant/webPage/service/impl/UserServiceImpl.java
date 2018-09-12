@@ -41,11 +41,11 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
                 String result = TokenTool.create(user.getUserId());
                 return Result.ok("登录成功").put("result",result);
             } else {
-                return Result.error("用户名或密码错误");
+                return Result.error("密码错误，请重新输入");
             }
 
         }else{
-            return Result.error("用户名或密码错误");
+            return Result.error("该手机号还未注册");
         }
     }
 

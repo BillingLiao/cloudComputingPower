@@ -163,6 +163,12 @@ INSERT INTO `t_menu` VALUES ('48', '0', '提现管理', NULL, NULL, '0', 'fa fa-
 INSERT INTO `t_menu` VALUES ('49', '48', '提现记录', 'modules/putForward/putForwardList.html', NULL, '1', NULL, '0');
 INSERT INTO `t_menu` VALUES ('50', '49', '查看', NULL, 'putForward:list,putForward:info', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('51', '49', '更新状态', NULL, 'putForward:status:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('52', '0', '公告管理', NULL, NULL, '0', 'fa fa-bars', '3');
+INSERT INTO `t_menu` VALUES ('53', '52', '公告列表', 'modules/totices/toticesList.html', NULL, '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('54', '53', '查看', NULL, 'totices:list,totices:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('55', '53', '新增', NULL, 'totices:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('56', '53', '修改', NULL, 'totices:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('57', '53', '删除', NULL, 'totices:delete', '2', NULL, '0');
 
 
 /*Table structure for table `t_order` */

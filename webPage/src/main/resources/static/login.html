@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
@@ -92,24 +92,44 @@
 	
 			
 </div>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
 		$('.login_btn').bind('click',function(){
 			var userphone = $('.phone').val();
 			var userpwd = $('.password').val();
-			$.ajax({
-				url:'http://localhost:8082/user/login',
-				type:'POST',
-				dataType:'json',
-				data:{
-					telphone:userphone,
-					password:userpwd
-				},
-				success:function(res){
-					console.log(res);
+			if(isString(userphone) && isString(userpwd)) {
+				if (!isPhone(userphone)) {
+					alert("请输入正确的手机号码！");
+					return;
 				}
-			})
-		})
+				$.ajax({
+					url: api + 'user/login',
+					type:'POST',
+					dataType:'json',
+					data:{
+						telphone:userphone,
+						password:userpwd
+					},
+					success:function(res){
+						if(res.code==0){
+							window.localStorage.setItem('token',res.result);
+							window.location.href='index.html'
+						}else{
+							alert(res.msg);
+							console.log(res);
+						}
+					},
+					error: function(res) {
+						console.log(res);
+					}
+				});
+
+			}else{
+				alert("数据不能为空");
+			}
+		});
+
 
 		function getUrlParam(name){
 			var obj = {};

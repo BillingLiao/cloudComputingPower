@@ -66,7 +66,7 @@ var vm = new Vue({
             vm.title = "新增";
             vm.totices = {};
             if(editor){
-                            editor.txt.html('');
+                  editor.txt.html('');
             }
 		},
 

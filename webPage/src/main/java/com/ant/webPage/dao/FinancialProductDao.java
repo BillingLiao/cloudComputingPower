@@ -3,6 +3,8 @@ package com.ant.webPage.dao;
 import com.ant.entity.FinancialProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
+import java.util.List;
+
 
 /**
  * 理财产品明细
@@ -17,4 +19,6 @@ public interface FinancialProductDao extends BaseMapper<FinancialProduct> {
      * @return
      */
     FinancialProduct selectByProductId(Integer productId);
+
+    List<FinancialProduct> findList();
 }

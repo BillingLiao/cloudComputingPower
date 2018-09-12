@@ -137,13 +137,12 @@ public class Alimsg {
     public static void main(String[] args) throws ClientException, InterruptedException {
 
         //发短信
-        //SendSmsResponse response = sendNotice("15012920449", "SMS_135025530", "王小顺", "001", "开天窗");
-        SendSmsResponse response = sendNotice("15012920449", "SMS_135025530", "王小顺", "001", "开天窗");
+         /* SendSmsResponse response = sendNotice("15012920449", "SMS_135025530", "王小顺", "001", "开天窗");
         System.out.println("短信接口返回的数据----------------");
         System.out.println("Code=" + response.getCode());
         System.out.println("Message=" + response.getMessage());
         System.out.println("RequestId=" + response.getRequestId());
-        System.out.println("BizId=" + response.getBizId());
+        System.out.println("BizId=" + response.getBizId());*/
 
         //发送验证码
         SendSmsResponse response2 = sendSms("15012920449","SMS_144375029","124154");

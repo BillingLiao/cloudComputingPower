@@ -3,6 +3,8 @@ package com.ant.webPage.dao;
 import com.ant.entity.CloudProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * 云算力
  *
@@ -13,4 +15,5 @@ public interface CloudProductDao extends BaseMapper<CloudProduct> {
 
     CloudProduct selectByProductId(Integer productId);
 
+    List<CloudProduct> findList();
 }

@@ -3,6 +3,8 @@ package com.ant.webPage.dao;
 import com.ant.entity.MinerProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * 矿机
  * @author Billing
@@ -16,4 +18,6 @@ public interface MinerProductDao extends BaseMapper<MinerProduct> {
      * @return
      */
     MinerProduct selectByProductId(Integer productId);
+
+    List<MinerProduct> findList();
 }
