@@ -70,7 +70,7 @@
 			<script type="text/template" id="toticesList">
 				<% if(model && model.length>0){ %>
 					<% for(var i=0;i<model.length;i++) { %>
-						<li><a href="news_info.html?id="+<%=model[i].toticesId%>  target="_blank"><%=model[i].toticesTitle%></a></li>
+						<li><a href="news_info.html?toticesId=<%=model[i].toticesId%>" target="_blank"><%=model[i].toticesTitle%></a></li>
 					<% } %>
 				<% } %>
 			</script>
@@ -163,16 +163,41 @@
 	<!--定期-->		
 	<div class="pro_hot">
 		<div class="dingqi_hot">
-		
-			<div class="dingqi"><a href="rent_detail.html">定期30天<h1>年化收益10%</h1></a></div>
-			<div class="dingqi"><a href="rent_detail.html">定期90天<h1>年化收益10%</h1></a></div>
-			<div class="dingqi"><a href="rent_detail.html">定期60天<h1>年化收益10%</h1></a></div>
-			<div class="dingqi"><a href="rent_detail.html">定期30天<h1>年化收益10%</h1></a></div>
 					
 		</div>
-	</div>			
+	</div>
+
+	<script type="text/template" id="financialProductList">
+		<% if(model && model.length>0){ %>
+		<% for(var i=0;i<model.length;i++) { %>
+			<div class="dingqi"><a href="rent_detail.html?id=<%=model[i].productId%>">定期<%=model[i].cycle%>天<h1>年化收益<%=model[i].rewardRate%>%</h1></a></div>
+		<% } %>
+		<% } %>
+	</script>
+
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url: api + 'financial/findList',
+				type:'GET',
+				dataType:'json',
+				success:function(res){
+					if(res.code==0){
+						var data = res.financialProductList;
+						$('.dingqi_hot').html(template('financialProductList',{model:data}));
+					}else{
+						alert(res.msg);
+						console.log(res);
+					}
+				},
+				error: function(res) {
+					console.log(res);
+				}
+			});
+		});
+	</script>
 	<!-- end 定期-->
-		
+
 		
 
 	<h1 class="hot_t"><span></span>了解蚂蚁云算力<span></span></h1>
