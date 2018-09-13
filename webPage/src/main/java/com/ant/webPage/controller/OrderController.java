@@ -6,10 +6,7 @@ import com.ant.webPage.service.OrderService;
 import com.ant.webPage.service.ProductService;
 import com.ant.webPage.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -20,6 +17,7 @@ import java.math.BigDecimal;
  */
 @RestController
 @RequestMapping("/order")
+@CrossOrigin
 public class OrderController{
 
     @Autowired

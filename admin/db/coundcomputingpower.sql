@@ -327,8 +327,9 @@ DROP TABLE IF EXISTS `t_proxy`;
 
 CREATE TABLE `t_proxy` (
   `proxy_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '代理编号',
-  `user_id` INT(11) DEFAULT NULL COMMENT '代理人编号',
-  `subordinate_id` INT(11) DEFAULT NULL COMMENT '被代理人编号',
+  `user_id` INT(11) NOT NULL COMMENT '代理人编号',
+  `father_id` INT(11) DEFAULT NULL COMMENT '父代理人编号',
+  `son_id` INT(11) DEFAULT NULL COMMENT '子代理人编号',
   `level` INT(11) DEFAULT NULL COMMENT '代理级别',
   PRIMARY KEY (`proxy_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='代理表';

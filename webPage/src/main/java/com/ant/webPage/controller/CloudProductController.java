@@ -16,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/cloud")
+@CrossOrigin
 public class CloudProductController {
 
     @Autowired

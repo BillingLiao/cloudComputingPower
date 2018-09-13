@@ -17,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/miner")
+@CrossOrigin
 public class MinerProductController{
 
     @Autowired

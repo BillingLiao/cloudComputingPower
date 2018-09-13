@@ -16,6 +16,15 @@ public class Proxy implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Proxy(){
+
+    }
+
+    public Proxy(Integer userId, Integer level) {
+        this.userId = userId;
+        this.level = level;
+    }
+
     /**
      * 代理编号
      */
@@ -28,9 +37,14 @@ public class Proxy implements Serializable {
     private Integer userId;
 
     /**
-     * 被代理人编号
+     * 父代理人编号
      */
-    private Integer subordinateId;
+    private Integer fatherId;
+
+    /**
+     * 子代理人编号
+     */
+    private Integer sonId;
 
     /**
      * 代理等级
@@ -53,12 +67,20 @@ public class Proxy implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getSubordinateId() {
-        return subordinateId;
+    public Integer getFatherId() {
+        return fatherId;
     }
 
-    public void setSubordinateId(Integer subordinateId) {
-        this.subordinateId = subordinateId;
+    public void setFatherId(Integer fatherId) {
+        this.fatherId = fatherId;
+    }
+
+    public Integer getSonId() {
+        return sonId;
+    }
+
+    public void setSonId(Integer sonId) {
+        this.sonId = sonId;
     }
 
     public Integer getLevel() {

@@ -53,4 +53,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
     public User findByPhone(String phone) {
         return userDao.findOneByPhone(phone);
     }
+
+    @Override
+    public User selectByInvitationCode(String invitationCode) {
+        return userDao.selectByInvitationCode(invitationCode);
+    }
 }

@@ -20,4 +20,6 @@ public interface UserService extends IService<User> {
     public Result login(String telphone, String password);
 
     public User findByPhone(String phone);
+
+    public User selectByInvitationCode(String invitationCode);
 }

@@ -12,4 +12,6 @@ public interface UserDao extends BaseMapper<User> {
     public User findOneById(int userId);
 
     public User findOneByPhone(String telphone);
+
+    public User selectByInvitationCode(String invitationCode);
 }
