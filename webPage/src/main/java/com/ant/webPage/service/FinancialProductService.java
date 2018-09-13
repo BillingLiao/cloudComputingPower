@@ -18,4 +18,6 @@ public interface FinancialProductService extends IService<FinancialProduct> {
     public List<FinancialProduct> findList();
 
     public FinancialProduct findOne(Integer productId);
+
+    public List<FinancialProduct> findFour();
 }

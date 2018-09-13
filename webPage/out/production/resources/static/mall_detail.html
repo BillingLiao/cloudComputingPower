@@ -13,8 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -28,7 +30,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -37,7 +39,7 @@
 	<!--header end-->
 
 
-	<h1 class="mall_t">蚂蚁S9i云算力 第一期待价</h1>
+	<h1 class="mall_t">{{cloudProduct.productName}}</h1>
 	
 	<div class="index_banner">
 		
@@ -47,7 +49,7 @@
 		
 		<div class="post_box wow fadeInUp">
 			<div class="post_info">
-				<p><strong>¥450</strong>已售520T</p>	
+				<p><strong>¥{{cloudProduct.retailPrice}}</strong>已售{{cloudProduct.sellOut}}T</p>
 				<div class="deadline">距结束仅剩<span>12</span>小时<span>18</span>分<span>19</span>秒</div>	
 			</div>
 		</div>
@@ -66,24 +68,24 @@
 		<!--主要参数-->
 		<ul class="c_info" id="car_two">
 	
-			<li>售价：	 <span>¥450元</span></li>
-			<li>价格： <span>400元</span></li>
-			<li>本期云算力库存：	 <span>60000T</span></li>
+			<li>售价：	 <span>¥{{cloudProduct.sellOut}}元</span></li>
+			<li>价格： <span>{{cloudProduct.price}}元</span></li>
+			<li>本期云算力库存：	 <span>{{cloudProduct.stock}}T</span></li>
 			<li>收益计算时间：	 <span>购买次日起 - 长期</span></li>
-			<li>机型：	 <span>蚂蚁S9i</span></li>
-			<li>额定算力：	  <span>4,691 立方厘米</span>	  </li>
-			<li>功耗：	 <span>331 千瓦 (450 马力)</span></li>
-			<li>电源：	 <span>7,000 转/分</span></li>
-			<li>服务费：	 <span>510 元</span></li>
-			<li>合同周期：	 <span></span></li>
-			<li>预估日收益：	 <span></span></li>
+			<li>机型：	 <span>{{cloudProduct.model}}</span></li>
+			<li>额定算力：	  <span>{{cloudProduct.rated}}T</span>	  </li>
+			<li>功耗：	 <span>{{cloudProduct.powerWaste}}千瓦</span></li>
+			<li>电源：	 <span>{{cloudProduct.power}}</span></li>
+			<li>服务费：	 <span>{{cloudProduct.managementExpense}}元</span></li>
+			<li>合同周期：	 <span>{{cloudProduct.contractCycle}}</span></li>
+			<li>预估日收益：	 <span>{{cloudProduct.remark}}元</span></li>
 			<li class="last">购买数量：	 <span></span></li>
 			
 			
 			<script type="text/javascript" src="js/payfor.js"></script>
 			<div class="p_number">
 			
-				<div style="height:36px;font-size:16px;">单价：<strong id="price_item_1">￥ 400.00</strong></div>
+				<div style="height:36px;font-size:16px;">单价：<strong id="price_item_1">￥ {{cloudProduct.price}}</strong></div>
 				<div class="f_l add_chose">
 					<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
 					<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
@@ -101,7 +103,7 @@
 		<li><input type="checkbox" class="checkbox" name="promise" /><label class="promise"> 同意签约云算力服务协议</label></li>
 		
 		
-		<div class="index_reg"><a class="yew" href="order_detail_2.html">点击购买</a></div>
+		<div class="index_reg"><a class="yew" href="mall_detail.html?productId={{cloudProduct.productId}}">点击购买</a></div>
 		
 		
 			<!--选择器-->
@@ -116,12 +118,7 @@
 				  });
 				});
 			</script>
-			
-			
 	</div>
-	
-	
-		
 		
 	<!--footer-->
 	<div class="footer">
@@ -142,7 +139,8 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/mall_detail.js"></script>
+
 </body>
 </html>

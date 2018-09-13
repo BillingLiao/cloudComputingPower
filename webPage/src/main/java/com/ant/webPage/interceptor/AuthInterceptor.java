@@ -13,6 +13,7 @@ import com.ant.webPage.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,13 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Billing
  *
  */
+@Component
 public class AuthInterceptor implements HandlerInterceptor {
-
-	@Autowired
-	private Result result;
 	
 	@Autowired private UserService userService;
-	
+
 	@Autowired
 	private RedisTemplate redisTemplate;
 	
@@ -47,8 +46,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 					//被锁定的情况，从数据库中确认
 					user = userService.findOne(userId);
 					operations.set("user:"+userId, user);
-					result.error("您被管理员锁定，请联系管理员处理");
-					//msg.set("您被管理员锁定，请联系管理员处理", CodeConstant.LOCK, null);
+					HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));
 				} else {
 					request.getSession().setAttribute("user", user);
 					return true;
@@ -61,31 +59,25 @@ public class AuthInterceptor implements HandlerInterceptor {
 						
 						if(user.getStatus() == 0) {
 							//被锁定的情况
-							result.error("您被管理员锁定，请联系管理员处理");
-							//msg.set("您被管理员锁定，请联系管理员处理", CodeConstant.LOCK, null);
+							HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));
 						} else {
 							request.getSession().setAttribute("user", user);
 							operations.set("user:"+userId, user);
 							return true;
 						}
 					} else {
-						result.error("没有找到指定用户");
-						//msg.set("没有找到指定用户", CodeConstant.ERR_AUTH, null);
+						HttpTool.jsonMsg(response, Result.error("没有找到指定用户"));
 					}
 				} else if(userId == 0) {
-					result.error("token超时，请重新登录");
-					//msg.set("token超时，请重新登录", CodeConstant.ERR_AUTH, null);
+					HttpTool.jsonMsg(response, Result.error("token超时，请重新登录"));
 				} else {
-					result.error("token有误");
-					//msg.set("token有误", CodeConstant.ERR_AUTH, null);
+					HttpTool.jsonMsg(response, Result.error("token有误"));
 				}
 			}
 		}else {
 			//没有带token的情况
-			result.error("请先登录");
-			//msg.set("请先登录", CodeConstant.ERR_AUTH, null);
+			HttpTool.jsonMsg(response, Result.error("请先登录"));
 		}
-		HttpTool.jsonMsg(response, result);
 		return false;
 	}
 
@@ -96,14 +88,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 			//访问正常的情况
 			return ;
 		} else if(response.getStatus() == 500) {
-			result.error("Server Error");
-			//msg.set("Server Error by wenxi", CodeConstant.ERROR, null);
+			Result.error("Server Error");
+			//msg.set("Server Error", CodeConstant.ERROR, null);
 		} else if(response.getStatus() == 404) {
-			result.error("URL Error");
-			//msg.set("URL Error by wenxi", CodeConstant.ERROR, null);
+			Result.error("URL Error");
+			//msg.set("URL Error", CodeConstant.ERROR, null);
 		} else {
-			result.error("Nuknow Error:" + response.getStatus());
-			//msg.set("Nuknow Error:" + response.getStatus() + " by wenxi", CodeConstant.ERROR, null);
+			Result.error("Nuknow Error:" + response.getStatus());
+			//msg.set("Nuknow Error:" + response.getStatus(), CodeConstant.ERROR, null);
 		}
 //		modelAndView.addObject(msg);
 //		HttpTool.jsonMsg(response, msg);

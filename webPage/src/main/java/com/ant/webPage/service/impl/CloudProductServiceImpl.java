@@ -31,4 +31,9 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao, CloudP
     public CloudProduct findOne(Integer productId) {
         return cloudProductDao.selectByProductId(productId);
     }
+
+    @Override
+    public CloudProduct findFirst() {
+        return cloudProductDao.findFirst();
+    }
 }

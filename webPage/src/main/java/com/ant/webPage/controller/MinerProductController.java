@@ -30,7 +30,7 @@ public class MinerProductController{
      * 矿机产品
      * @return
      */
-    @RequestMapping("/findList")
+    @GetMapping("/findList")
     public Result list(){
         List<MinerProduct> minerProductList = minerproductService.findList();
         return Result.ok().put("minerProductList", minerProductList);
@@ -42,7 +42,7 @@ public class MinerProductController{
      * @return
      * @throws Exception
      */
-    @RequestMapping("/findOne/{productId}")
+    @GetMapping("/findOne/{productId}")
     public Result info(@PathVariable("productId") Integer productId) throws Exception {
         MinerProduct minerProduct =  minerproductService.findOne(productId);
         return Result.ok().put("minerProduct",minerProduct);

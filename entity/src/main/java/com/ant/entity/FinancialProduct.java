@@ -63,6 +63,11 @@ public class FinancialProduct extends Product implements Serializable {
     private BigDecimal cycle;
 
     /**
+     * 排序
+     */
+    private Integer sort;
+
+    /**
      * 假删除 0：未删除 1：删除
      */
     @TableLogic
@@ -191,6 +196,14 @@ public class FinancialProduct extends Product implements Serializable {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 
     @Override

@@ -29,17 +29,28 @@ public class CloudProductController {
      * 云算力产品
      * @return
      */
-    @RequestMapping("/findList")
+    @GetMapping("/findList")
     public Result list(){
         List<CloudProduct> cloudProductList = cloudProductService.findList();
         return Result.ok().put("cloudProductList", cloudProductList);
     }
 
     /**
-     *
+     * 查找最新的一条产品
+     * @return
+     */
+    @GetMapping("/findFirst")
+    public Result findOne(){
+        CloudProduct cloudProductList = cloudProductService.findFirst();
+        return Result.ok().put("cloudProductList", cloudProductList);
+    }
+
+    /**
+     * 根据id查找产品
      * @param productId
      * @return
      */
+    @GetMapping("/findOne/{productId}")
     public Result info(@PathVariable("productId") Integer productId){
         CloudProduct cloudProduct =  cloudProductService.findOne(productId);
         return Result.ok().put("cloudProduct",cloudProduct);

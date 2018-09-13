@@ -18,4 +18,6 @@ public interface CloudProductService extends IService<CloudProduct> {
     public List<CloudProduct> findList();
 
     public CloudProduct findOne(Integer productId);
+
+    public CloudProduct findFirst();
 }

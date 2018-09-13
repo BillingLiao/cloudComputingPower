@@ -106,6 +106,11 @@ public class CloudProduct extends Product implements Serializable {
     private String contractCycle;
 
     /**
+     * 排序
+     */
+    private Integer sort;
+
+    /**
      * 假删除 0：未删除 1：删除
      */
     private Integer delFlag;
@@ -297,6 +302,14 @@ public class CloudProduct extends Product implements Serializable {
 
     public void setContractCycle(String contractCycle) {
         this.contractCycle = contractCycle;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 
     @Override

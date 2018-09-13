@@ -1,5 +1,7 @@
 package com.ant.webPage.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 

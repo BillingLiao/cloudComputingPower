@@ -30,9 +30,19 @@ public class FinancialProductController{
      * 理财产品
      * @return
      */
-    @RequestMapping("/findList")
+    @GetMapping("/findList")
     public Result List(){
         List<FinancialProduct> financialProductList = financialProductService.findList();
+        return Result.ok().put("financialProductList", financialProductList);
+    }
+
+    /**
+     * 首页展示排序最小的四条
+     * @return
+     */
+    @GetMapping("/findFour")
+    public Result findFour(){
+        List<FinancialProduct> financialProductList = financialProductService.findFour();
         return Result.ok().put("financialProductList", financialProductList);
     }
 
@@ -41,7 +51,7 @@ public class FinancialProductController{
      * @param productId
      * @return
      */
-    @RequestMapping("/findOne/{productId}")
+    @GetMapping("/findOne/{productId}")
     public Result info(@PathVariable("productId") Integer productId){
         FinancialProduct financialProduct =  financialProductService.findOne(productId);
         return Result.ok().put("financialProduct",financialProduct);

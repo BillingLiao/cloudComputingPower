@@ -15,5 +15,7 @@ public interface CloudProductDao extends BaseMapper<CloudProduct> {
 
     CloudProduct selectByProductId(Integer productId);
 
+    CloudProduct findFirst();
+
     List<CloudProduct> findList();
 }

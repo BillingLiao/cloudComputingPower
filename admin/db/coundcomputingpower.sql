@@ -259,14 +259,15 @@ CREATE TABLE t_cloud_product
    `power`              VARCHAR(50) COMMENT '电源',
    management_expense   DECIMAL(15,3) COMMENT '管理费',
    contract_cycle       VARCHAR(100) DEFAULT NULL COMMENT '合同周期',
+   `sort` 		INT(11) DEFAULT '0' COMMENT '排序',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (cloud_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='云算力明细表';
 
 /*Data for the table `t_cloud_product` */
 
-INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570','400', '9月20号-10月10号', 'A9', '14','1.34','100','1','test','500','一年签','0');
-INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630','570', '9月10号-10月1号', '蚂蚁M9', '13.5','1.35','200','1','test','600', '永久','0');
+INSERT INTO `t_cloud_product` VALUES ('1', '5', '1000', '300', '0.4', '570','400', '9月20号-10月10号', 'A9', '14','1.34','100','1','test','500','一年签','1','0');
+INSERT INTO `t_cloud_product` VALUES ('2', '6', '1200', '500', '0.35', '630','570', '9月10号-10月1号', '蚂蚁M9', '13.5','1.35','200','1','test','600', '永久','2','0');
 
 /*Table structure for table `t_financial_product` */
 
@@ -281,18 +282,19 @@ CREATE TABLE t_financial_product
    lock_amount          INT DEFAULT NULL COMMENT '锁定期',
    reward_rate          DECIMAL(15,3) NOT NULL COMMENT '年化收益率',
    cycle          	DECIMAL(15,3) NOT NULL COMMENT '投资周期',
+   `sort` 		INT(11) DEFAULT '0' COMMENT '排序',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (financial_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='理财明细表';
 
 /*Data for the table `t_financial_product */
 
-INSERT INTO `t_financial_product` VALUES ('1', '1', '10000.0', '1000', '0', '5','30','0');
-INSERT INTO `t_financial_product` VALUES ('2', '2', '20000.0', '2000', '0', '7', '90','0');
-INSERT INTO `t_financial_product` VALUES ('3', '7', '10000.0', '1000', '0', '5','30', '0');
-INSERT INTO `t_financial_product` VALUES ('4', '8', '20000.0', '2000', '0', '6', '30','0');
-INSERT INTO `t_financial_product` VALUES ('5', '9', '10000.0', '1000', '0', '7','30', '0');
-INSERT INTO `t_financial_product` VALUES ('6', '10', '20000.0', '2000', '0', '8', '30','0');
+INSERT INTO `t_financial_product` VALUES ('1', '1', '10000.0', '1000', '0', '5','30','1','0');
+INSERT INTO `t_financial_product` VALUES ('2', '2', '20000.0', '2000', '0', '7', '90','2','0');
+INSERT INTO `t_financial_product` VALUES ('3', '7', '10000.0', '1000', '0', '5','30', '3','0');
+INSERT INTO `t_financial_product` VALUES ('4', '8', '20000.0', '2000', '0', '6', '30','4','0');
+INSERT INTO `t_financial_product` VALUES ('5', '9', '10000.0', '1000', '0', '7','30', '5','0');
+INSERT INTO `t_financial_product` VALUES ('6', '10', '20000.0', '2000', '0', '8', '30','6','0');
 
 
 /*Table structure for table `t_miner_product` */
@@ -310,13 +312,14 @@ CREATE TABLE t_miner_product
    `power`              VARCHAR(50) DEFAULT NULL COMMENT '电源',
    electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
    management_expense   DECIMAL(15,3) DEFAULT NULL COMMENT '管理费',
+   `sort` 		INT(11) DEFAULT '0' COMMENT '排序',
    `del_flag` INT(11) DEFAULT '0' COMMENT '活动状态：0-未删除,1-已删除',
    PRIMARY KEY (miner_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='矿机明细表';
 
 /*Data for the table `t_miner_product */
-INSERT INTO `t_miner_product` VALUES ('1', '3', '12000.0', '13.5', '蚂蚁M9', '这样哪有', NULL, NULL, NULL, '0');
-INSERT INTO `t_miner_product` VALUES ('2', '4', '23000.0', '14', 'A9', '很火', NULL, NULL, NULL, '0');
+INSERT INTO `t_miner_product` VALUES ('1', '3', '12000.0', '13.5', '蚂蚁M9', '这样哪有', NULL, NULL, NULL, '1','0');
+INSERT INTO `t_miner_product` VALUES ('2', '4', '23000.0', '14', 'A9', '很火', NULL, NULL, NULL,'2', '0');
 
 /*Table structure for table `t_proxy` */
 

@@ -21,4 +21,6 @@ public interface FinancialProductDao extends BaseMapper<FinancialProduct> {
     FinancialProduct selectByProductId(Integer productId);
 
     List<FinancialProduct> findList();
+
+    List<FinancialProduct> findFour();
 }

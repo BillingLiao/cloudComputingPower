@@ -67,6 +67,10 @@ public class MinerProduct extends Product implements Serializable {
      */
     private BigDecimal managementExpense;
 
+    /**
+     * 排序
+     */
+    private Integer sort;
 
     /**
      * 假删除 0：未删除 1：删除
@@ -214,6 +218,14 @@ public class MinerProduct extends Product implements Serializable {
         this.categoryName = categoryName;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     @Override
     public Integer getDelFlag() {
         return delFlag;
@@ -222,5 +234,85 @@ public class MinerProduct extends Product implements Serializable {
     @Override
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    @Override
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    @Override
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    @Override
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    @Override
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    @Override
+    public Integer getShowInShelve() {
+        return showInShelve;
+    }
+
+    @Override
+    public void setShowInShelve(Integer showInShelve) {
+        this.showInShelve = showInShelve;
+    }
+
+    @Override
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    @Override
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    @Override
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    @Override
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    @Override
+    public Integer getCreateUser() {
+        return createUser;
+    }
+
+    @Override
+    public void setCreateUser(Integer createUser) {
+        this.createUser = createUser;
+    }
+
+    @Override
+    public Integer getUpdateUser() {
+        return updateUser;
+    }
+
+    @Override
+    public void setUpdateUser(Integer updateUser) {
+        this.updateUser = updateUser;
     }
 }

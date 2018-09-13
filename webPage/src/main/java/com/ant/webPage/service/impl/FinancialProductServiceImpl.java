@@ -28,4 +28,9 @@ public class FinancialProductServiceImpl extends ServiceImpl<FinancialProductDao
     public FinancialProduct findOne(Integer productId) {
         return financialProductDao.selectByProductId(productId);
     }
+
+    @Override
+    public List<FinancialProduct> findFour() {
+        return financialProductDao.findFour();
+    }
 }

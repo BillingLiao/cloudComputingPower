@@ -133,7 +133,7 @@ public class UserController{
     /**
      * 退出
      */
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout() {
         //ShiroUtils.logout();
         return "redirect:login.html";
