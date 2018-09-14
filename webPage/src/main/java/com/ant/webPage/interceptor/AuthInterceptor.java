@@ -44,7 +44,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 				User user = operations.get("user:" + userId);
 				if(user.getStatus() == 0) {
 					//被锁定的情况，从数据库中确认
-					user = userService.findOne(userId);
+					user = userService.selectById(userId);
 					operations.set("user:"+userId, user);
 					HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));
 				} else {
@@ -54,9 +54,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			} else {
 				//没有缓存的情况，从数据库中取
 				if(userId > 0) {
-					User user = userService.findOne(userId);
+					User user = userService.selectById(userId);
 					if(user != null) {
-						
 						if(user.getStatus() == 0) {
 							//被锁定的情况
 							HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));

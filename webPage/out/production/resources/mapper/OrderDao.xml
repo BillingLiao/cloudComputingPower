@@ -3,5 +3,8 @@
 
 <mapper namespace="com.ant.webPage.dao.OrderDao">
 
+    <select id="selectAmountByUser" resultType="BigDecimal">
+        SELECT SUM(amount) FROM t_order WHERE order_type = 2 AND order_status = 2 AND user_id = #{userId}
+    </select>
 
 </mapper>

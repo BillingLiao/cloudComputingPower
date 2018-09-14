@@ -18,6 +18,7 @@
 
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/template-native.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' charse="utf-8"/>
@@ -98,16 +99,16 @@
 	<h1 class="hot_t"><span></span>为您推荐<span></span></h1>
 	
 	<!--热门-->
-	<div class="hotpro">
+	<div class="hotpro" v-cloak>
 		<div class="hotpro_con">
 	        <div class="j_list">
-				<div class="jimg"><a href="mall_detail.html"><img class="lazy"  data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
+				<div class="jimg"><a href="mall_detail.html?productId="+{{cloudProduct.productId}}><img class="lazy" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
 				<div class="jtx">
-					<h1><a href="mall_detail.html">蚂蚁S9i云算力 第一期</a></h1>
-					<p>售价：650元/T</p>
-					<p>库存：9999T</p>
+					<h1><a href="mall_detail.html">{{cloudProduct.productName}}</a></h1>
+					<p>售价：{{cloudProduct.sellOut}}元/T</p>
+					<p>库存：{{cloudProduct.stock}}T</p>
 				</div>
-				<div class="salary"><a href="mall_detail.html">购买</a></div>
+				<div class="salary"><a href="mall_detail.html?productId="+{{cloudProduct.productId}}>购买</a></div>
 			</div>
 			<div class="page">
 				<div class="next"><a href="mall.html">查看更多</a></div>
@@ -115,8 +116,9 @@
 			
 			
 		</div>
-	</div>	
-	<!--热门 end-->	
+	</div>
+	<!--热门 end-->
+	<script stype="text/javascript" src="js/modules/index.js"></script>
 	
 	
 			<!--瀑布流JS-->
@@ -287,7 +289,5 @@
 	
 			
 </div>
-	
-		
 </body>
 </html>

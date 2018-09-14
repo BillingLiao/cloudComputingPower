@@ -22,15 +22,26 @@ function getUrlParam(name){
     }
 }
 var vm = new Vue({
-	el:'#page',
+	el:'#hotpro',
 	data:{
 		cloudProduct :{}
 	},
 	created: function(){
-       var productId = getUrlParam('productId');
-        $.get(api + 'cloud/findOne/'+productId, function(r){
-            console.log(r);
-            vm.cloudProduct = r.cloudProduct;
+	    $.ajax({
+            url: api + 'cloud/findFirst',
+            type:'POST',
+            dataType:'json',
+            success:function(res){
+                console.log(res);
+                if(res.code==0){
+                    vm.cloudProduct = res.cloudProduct;
+                }else{
+                    console.log(res);
+                }
+            },
+            error: function(res) {
+                console.log(res);
+            }
         });
     }
 });

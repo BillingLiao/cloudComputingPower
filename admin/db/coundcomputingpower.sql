@@ -197,12 +197,15 @@ CREATE TABLE `t_order` (
 
 /*Data for the table `t_order` */
 
-INSERT INTO `t_order` VALUES ('1', 'LC20180627020103', '1', '2','3','2','1','5000','21', '理财产品', '2018-06-27', '2018-09-02', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('2', 'YSL20180627020101', '5', '2','2','2','12','8000',NULL, '云算力',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('3', 'LC20180627020113', '7', '2','3','2','1','5000', '21','理财产品', '2018-06-27', '2018-07-10', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('4', 'LC20180627020123', '8', '2','3','2','1','8000', '31','理财产品',  '2018-06-27', '2018-08-10', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('5', 'LC20180627020133', '9', '2','3','2','1','5000', '22','理财产品', '2018-06-27', '2018-08-11', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('6', 'LC20180627020143', '10', '2','3','2','1','8000', '34','理财产品',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('1', 'LC20103', '1', '2','3','2','1','5000','21', '理财产品', '2018-06-27', '2018-09-02', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('2', 'YSL20101', '5', '2','2','2','12','8000',NULL, '云算力',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('3', 'LC20113', '7', '2','3','2','1','5000', '21','理财产品', '2018-06-27', '2018-07-10', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('4', 'LC20123', '8', '2','3','2','1','8000', '31','理财产品',  '2018-06-27', '2018-08-10', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('5', 'LC20133', '9', '2','3','2','1','5000', '22','理财产品', '2018-06-27', '2018-08-11', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('6', 'LC20143', '10', '2','3','2','1','8000', '34','理财产品',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('7', 'YSL20102', '6', '2','2','2','14','10000',NULL, '云算力',  '2018-09-12', '2018-09-12', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('8', 'YSL20103', '5', '2','2','2','15','11000',NULL, '云算力',  '2018-09-13', '2018-09-13', NULL, NULL,NULL, '0');
+INSERT INTO `t_order` VALUES ('9', 'YSL20104', '6', '2','2','2','20','15000',NULL, '云算力',  '2018-09-14', '2018-09-14', NULL, NULL,NULL, '0');
 
 
 
@@ -423,7 +426,8 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user` VALUES (1,'Billing','15012920449','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','root@cn','6213540045411444','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
+INSERT  INTO `t_user` VALUES (1,'李定韬','17620895280','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','root@cn','6213540045411444','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','1342f',1);
+INSERT  INTO `t_user` VALUES (2,'Billing','15012920449','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','root@cn','6213540045411444','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
 
 -- ----------------------------
 -- Table structure for sys_user

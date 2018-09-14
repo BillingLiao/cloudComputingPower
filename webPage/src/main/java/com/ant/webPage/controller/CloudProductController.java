@@ -40,10 +40,10 @@ public class CloudProductController {
      * 查找最新的一条产品
      * @return
      */
-    @GetMapping("/findFirst")
+    @PostMapping("/findFirst")
     public Result findOne(){
-        CloudProduct cloudProductList = cloudProductService.findFirst();
-        return Result.ok().put("cloudProductList", cloudProductList);
+        CloudProduct cloudProduct = cloudProductService.findFirst();
+        return Result.ok().put("cloudProduct", cloudProduct);
     }
 
     /**

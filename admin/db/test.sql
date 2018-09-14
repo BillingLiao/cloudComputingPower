@@ -46,7 +46,30 @@ WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cyc
 SELECT *
 FROM
 t_income
- WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(create_time) = 1
+ WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time)
+ 
+ 
+ /*
+	统计云算力产品昨日收益总额
+ */
+SELECT SUM(settlement_income)
+FROM
+t_income
+WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time) AND user_id = 2
+
+ /*
+	统计理财产品昨日收益总额
+ */
+SELECT SUM(money)
+FROM
+t_income
+WHERE income_type = 3 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time) AND user_id = 2
+
+/*
+	统计用户持有算力（订单状态为已付款的）
+*/
+SELECT SUM(amount) FROM t_order WHERE order_type = 2 AND order_status = 2 AND user_id = 2
+
  
  
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
@@ -77,4 +100,7 @@ SELECT DATE_ADD(CURDATE(), INTERVAL -1 DAY)
 UPDATE t_user u SET u.cny = u.cny + (SELECT SUM(settlement_income) FROM t_income i WHERE u.user_id =  i.user_id AND i.income_type = 3 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(i.create_time) = 1);
 
 SELECT u.user_id,u.cny, i.`settlement_income` FROM t_user u,t_income i WHERE u.user_id =  i.user_id AND i.income_type = 3 AND TO_DAYS(CURRENT_DATE) - TO_DAYS(i.create_time) = 1
+
+
+
 

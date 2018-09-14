@@ -18,4 +18,11 @@ public interface OrderService extends IService<Order> {
     Result addCloudOrder(User user, Product product, BigDecimal amount, BigDecimal actualReceipts);
 
     Result addFinancialOrder(User user, Product product, BigDecimal actualReceipts, BigDecimal maturityIncome);
+
+    /**
+     * 通过用户id 查询当前持有算力
+     * @param userId
+     * @return
+     */
+    BigDecimal selectAmountByUser(Integer userId);
 }

@@ -80,6 +80,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
             BigDecimal maturityIncome = order.getMaturityIncome(); //到期收益
             BigDecimal cny = user.getCny().add(actualReceipts.add(maturityIncome));
             user.setCny(cny);
+            userDao.updateAllColumnById(user);
         }
         /**
          * 到期后更改订单状态

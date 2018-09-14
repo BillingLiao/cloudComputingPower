@@ -53,10 +53,7 @@ public class IncomeServiceImpl extends ServiceImpl<IncomeDao,Income> implements 
             BigDecimal settlementIncome =  income.getSettlementIncome(); //每日结算收益
             BigDecimal btc = user.getBtc().add(settlementIncome);
             user.setBtc(btc);
+            userDao.updateAllColumnById(user);
         }
-
-        //运算力产品收益插入余额
-        //userDao.insertBtc();
-
     }
 }

@@ -1,5 +1,6 @@
 package com.ant.webPage.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.ant.entity.*;
 import com.ant.webPage.dao.*;
 import com.ant.webPage.service.OrderService;
@@ -32,14 +33,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     @Autowired
     private FinancialProductDao financialProductDao;
 
-
-
     /**
      * 添加云算力产品订单
-     * @param user
-     * @param product
-     * @param amount
-     * @param actualReceipts
+     * @param user 用户
+     * @param product 产品
+     * @param amount  数量
+     * @param actualReceipts 实收款
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -55,16 +54,16 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
                 return Result.error("不能大于库存");
             }
         }
-        SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
+        String orderCode = RandomUtil.randomString(5);
         Integer categoryId =  product.getCategoryId();
         String orderNo;
         Integer orderType;
         if(categoryId == 1){
             orderType = 1;  //设置订单类型
-            orderNo = "KJ" + s.format(new Date());  //生成订单号
+            orderNo = "KJ" + orderCode;  //生成订单号
         }else if(categoryId == 2){
             orderType = 2;
-            orderNo = "YSL"+ s.format(new Date());
+            orderNo = "YSL"+ orderCode;
         }else{
             return Result.error();
         }
@@ -76,10 +75,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 
     /**
      * 添加理财产品订单
-     * @param user
-     * @param product
-     * @param actualReceipts
-     * @param maturityIncome
+     * @param user 用户
+     * @param product 产品
+     * @param actualReceipts 实付款（本金）
+     * @param maturityIncome 总收益
      * @return
      */
     @Override
@@ -90,19 +89,23 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         if(num == 1){
             return Result.error("请填入正确的金额");
         }
-        SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
-        Integer categoryId =  product.getCategoryId();
+        String orderCode = RandomUtil.randomString(5);
+        //生成订单号
         String orderNo;
-        Integer orderType;
-        if(categoryId == 3){
-            orderType = 3;
-            orderNo = "LC" + s.format(new Date());
-        }else{
-            return Result.error();
-        }
+        orderNo = "LC" + orderCode;
         Date createTime = new Date();
-        Order order = new Order(orderNo, product.getProductId(), user.getUserId(), orderType,0, null,actualReceipts,maturityIncome,createTime, 0);
+        Order order = new Order(orderNo, product.getProductId(), user.getUserId(), 3,0, null,actualReceipts,maturityIncome,createTime, 0);
         orderDao.insert(order);
         return Result.ok("下单成功");
+    }
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public BigDecimal selectAmountByUser(Integer userId) {
+        return orderDao.selectAmountByUser(userId);
     }
 }

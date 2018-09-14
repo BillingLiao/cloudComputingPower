@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * 检测输入字串是否正确的工具类
- * @author Slience
+ * @author Billing
  *
  */
 public class CheckTool {
@@ -107,7 +107,6 @@ public class CheckTool {
 //				Matcher m = p.matcher(str);  
 //				return !m.matches();
 //			}
-			
 			Pattern pattern = Pattern.compile("^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$");
 			Matcher matcher = pattern.matcher(str);
 			return matcher.matches();
@@ -118,7 +117,7 @@ public class CheckTool {
 
 	/**验证验证码
 	 * 
-	 * @param code
+	 * @param //code
 	 * @return
 	 */
 	public static boolean Code(String str) {
@@ -133,7 +132,8 @@ public class CheckTool {
 
 	/**
 	 * 检测通过就报false
-	 * @param str待检测的字符串
+	 * @param
+	 * //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean Long(String str) {
@@ -151,7 +151,7 @@ public class CheckTool {
 
 	/**
 	 * 检测通过就报false
-	 * @param str待检测的字符串
+	 * @param //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean Integer(String str) {
@@ -169,7 +169,7 @@ public class CheckTool {
 	
 	/**
 	 * 检测通过就报false
-	 * @param str待检测的字符串
+	 * @param //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean isInt(String str) {
@@ -227,7 +227,7 @@ public class CheckTool {
 
 	/**
 	 * 检测通过就报false
-	 * @param str待检测的字符串
+	 * @param //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean Double(String str) {
@@ -245,7 +245,7 @@ public class CheckTool {
 
 	/**
 	 * 检测通过就报false
-	 * @param str待检测的字符串
+	 * @param //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean Float(String str) {
@@ -263,7 +263,7 @@ public class CheckTool {
 
 	/**
 	 * 检测String是否为空
-	 * @param str待检测的字符串
+	 * @param //str待检测的字符串
 	 * @return 检测不通过就报true
 	 */
 	public static boolean isString(String str) {

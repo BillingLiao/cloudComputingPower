@@ -24,13 +24,29 @@ function getUrlParam(name){
 var vm = new Vue({
 	el:'#page',
 	data:{
-		cloudProduct :{}
+		account :{}
 	},
 	created: function(){
-       var productId = getUrlParam('productId');
-        $.get(api + 'cloud/findOne/'+productId, function(r){
-            console.log(r);
-            vm.cloudProduct = r.cloudProduct;
+	    var token = window.localStorage.getItem('token');
+	    $.ajax({
+            url: api + 'user/my',
+            type:'POST',
+            dataType:'json',
+            data:{
+                token:token
+            },
+            success:function(res){
+                console.log(res);
+                if(res.code==0){
+                    console.log(res.account);
+                    vm.account = res.account;
+                }else{
+                    console.log(res);
+                }
+            },
+            error: function(res) {
+                console.log(res);
+            }
         });
     }
 });
