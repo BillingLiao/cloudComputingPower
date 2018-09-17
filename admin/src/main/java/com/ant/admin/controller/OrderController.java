@@ -3,6 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
+import com.ant.admin.dao.OrderRecordDao;
 import com.ant.admin.service.CloudProductService;
 import com.ant.admin.service.FinancialProductService;
 import com.ant.admin.service.ProductService;
@@ -10,6 +11,7 @@ import com.ant.entity.*;
 import com.ant.admin.service.OrderService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -29,6 +31,9 @@ public class OrderController extends  AbstractController{
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private OrderRecordDao orderRecordDao;
 
     @Autowired private ProductService productService;
 
@@ -53,16 +58,20 @@ public class OrderController extends  AbstractController{
      */
     @RequestMapping("/status")
     @RequiresPermissions("order:status:update")
+    @Transactional(rollbackFor = Exception.class)
     public Result update(@RequestBody Order order) throws ParseException {
         //校验类型
         ValidatorUtils.validateEntity(order);
+        Date createTime = new Date();
         //更新付款时间
         if(order.getOrderStatus() == 2){
-            order.setPaymentTime(new Date());
+            order.setPaymentTime(createTime);
         }else if(order.getOrderStatus() == 5){ //更新完成时间
-            order.setCompletionTime(new Date());
+            order.setCompletionTime(createTime);
         }
         orderService.updateAllColumnById(order);
+        OrderRecord orderRecord = new OrderRecord(order.getOrderId(),order.getOrderStatus(),createTime);
+        orderRecordDao.insert(orderRecord);
         return Result.ok("更新成功");
     }
 

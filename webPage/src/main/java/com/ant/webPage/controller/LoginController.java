@@ -2,6 +2,7 @@ package com.ant.webPage.controller;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.RandomUtil;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.ant.common.validator.ValidatorUtils;
 import com.ant.entity.Proxy;
@@ -50,18 +51,28 @@ public class LoginController {
     public Result sendCode(@RequestParam String phone,@RequestParam Integer msgType) throws ClientException {
         ValidatorUtils.validateEntity(phone);
         //注册发送验证码时，要判断用户是否有账号
-        if(msgType == 1){
+        if(msgType == 0){
             User user = userService.findByPhone(phone);
             if(user != null){
                 return Result.error("您已经注册过账号，请登录");
             }
         }
-        String tempCode = "SMS_144375029";
+        else if(msgType == 1){
+            User user = userService.findByPhone(phone);
+            if(user == null){
+                return Result.error("您还未注册过账号，请先注册");
+            }
+        }
+        //String tempCode = "SMS_144375029";
         if( redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone)!= null) {
             return Result.error("发送验证码比较频繁，等一分钟之后再试试");
         }
         String code = RandomUtil.randomNumbers(6);
-        Alimsg.sendSms(phone,tempCode,code);
+        //SendSmsResponse response = Alimsg.sendSms(phone,tempCode,code);
+        /*String resultCode = response.getCode();
+        if(!resultCode.equals("OK")){
+            return Result.error("获取验证码失败，请重新获取");
+        }*/
         redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, code, 60 * 15);
         redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, code, 60 * 1);
         return Result.ok("验证码获取成功").put("code",code);
@@ -82,7 +93,7 @@ public class LoginController {
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
-        if(code.equals(codeRedis)) {
+        if(! code.equals(codeRedis)) {
             return Result.error("输入验证码有误，请重新填写");
         }
         if(password==null || "".equals(password)){
@@ -93,10 +104,14 @@ public class LoginController {
         String psw = encoderMd5.encode(password);
         BigDecimal btc = new BigDecimal(0);
         BigDecimal cny = new BigDecimal(0);
-        //设置邀请码 5位随机数
-        String invitationCodeNew = RandomUtil.randomString(5);
+
         Date createTime = new Date();
-        User user = new User(phone,psw,salt,btc,cny,invitationCodeNew,1,createTime);
+        User user = new User(phone,psw,salt,btc,cny,1,createTime);
+        userService.insert(user);
+        //设置邀请码 5位随机数
+        String invitationCodeNew = SerialNumberUtil.toSerialNumber(user.getUserId());
+        user.setInvitationCode(invitationCodeNew);
+        userService.updateAllColumnById(user);
         //判断有无邀请码
         if(invitationCode != null) {
             //判断能否找到邀请用户
@@ -109,13 +124,11 @@ public class LoginController {
                 //设置代理
                 fatherProxy.setSonId(user.getUserId());
                 proxy.setFatherId(fatherUser.getUserId());
-                userService.insert(fatherUser);
                 proxyService.insert(proxy);
                 proxyService.insert(fatherProxy);
             }
 
         }
-        userService.insert(user);
         return Result.ok();
     }
 
@@ -136,7 +149,7 @@ public class LoginController {
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
-        if(code.equals(codeRedis)) {
+        if(!code.equals(codeRedis)) {
             return Result.error("输入验证码有误，请重新填写");
         }
 
@@ -175,15 +188,23 @@ public class LoginController {
         if(password==null || "".equals(password)){
             return Result.error("密码不能为空");
         }
+        User invitationUser = userService.findByPhone(phone);
+        if(invitationUser != null){
+            return Result.error("您已经注册过账号，请登录");
+        }
         String salt = RandomUtil.randomString(20);
         Md5Util encoderMd5 = new Md5Util(salt, "MD5");
         String psw = encoderMd5.encode(password);
         BigDecimal btc = new BigDecimal(0);
         BigDecimal cny = new BigDecimal(0);
-        //设置邀请码 5位随机数
-        String invitationCodeNew = RandomUtil.randomString(5);
+
         Date createTime = new Date();
-        User user = new User(phone,psw,salt,btc,cny,invitationCodeNew,1,createTime);
+        User user = new User(phone,psw,salt,btc,cny,1,createTime);
+        userService.insert(user);
+        //设置邀请码 6位随机数
+        String invitationCodeNew = SerialNumberUtil.toSerialNumber(user.getUserId());
+        user.setInvitationCode(invitationCodeNew);
+        userService.updateAllColumnById(user);
         //判断有无邀请码
         if(invitationCode != null) {
             //判断能否找到邀请用户
@@ -196,13 +217,11 @@ public class LoginController {
                 //设置代理
                 fatherProxy.setSonId(user.getUserId());
                 proxy.setFatherId(fatherUser.getUserId());
-                userService.insert(fatherUser);
                 proxyService.insert(proxy);
                 proxyService.insert(fatherProxy);
             }
 
         }
-        userService.insert(user);
         return Result.ok();
     }
 
@@ -230,6 +249,9 @@ public class LoginController {
             return Result.error("二次密码输入不一致,请重新输入新密码");
         }
         User user = userService.findByPhone(phone);
+        if(user == null){
+            return Result.error("您还未注册过账号，请先注册");
+        }
         String salt = user.getSalt();
         Md5Util encoderMd5 = new Md5Util(salt, "MD5");
         String psw = encoderMd5.encode(password);

@@ -70,6 +70,24 @@ WHERE income_type = 3 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time) AND user_
 */
 SELECT SUM(amount) FROM t_order WHERE order_type = 2 AND order_status = 2 AND user_id = 2
 
+/*
+	查询用户订单记录
+*/
+SELECT odr.*,o.order_no,o.order_type,o.amount,o.actual_receipts,p.product_name
+FROM t_order_record odr
+LEFT JOIN t_order o ON o.order_id = odr.order_id
+LEFT JOIN t_product p ON p.product_id = o.product_id
+WHERE o.user_id = 2
+
+/*
+	查询提现订单记录
+*/
+SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.cny
+FROM t_present_record pr
+LEFT JOIN t_put_forward pf ON pf.put_forward_id = pr.put_forward_id
+WHERE pf.user_id = 2
+
+
  
  
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id

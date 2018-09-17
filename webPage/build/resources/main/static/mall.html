@@ -13,8 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/template-native.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -40,21 +42,48 @@
 	<!--热门-->
 	<div class="hotpro">
 		<div class="rent_con">		
-			
-	        <div class="j_list">
-				<div class="jimg"><a href="mall_mall_detail.html"><img class="lazy" src="images/default.png" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
-				<div class="jtx">
-					<h1><a href="mall_mall_detail.html">蚂蚁S9i云算力 第一期</a></h1>
-					<p>售价：650元/T</p>
-					<p>库存：9999T</p>
-				</div>
-				<div class="salary"><a href="mall_detail.html">购买</a></div>
-			</div>
 
-			<div class="page">
-				<div class="next"><a href="#">查看更多</a></div>
-			</div>
-			
+		</div>
+		<script TYPE="text/template" id="cloudProductList">
+			<% if(model && model.length>0){ %>
+			<% for(var i=0;i<model.length;i++) { %>
+				<div class="j_list">
+					<div class="jimg"><a href="mall_mall_detail.html?productId=<%=model[i].productId%>"><img class="lazy"  src="images/bit_1.jpg" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
+					<div class="jtx">
+						<h1><a href="mall_mall_detail.html?productId=<%=model[i].productId%>"><%=model[i].productName%></a></h1>
+						<p>售价：<%=model[i].retailPrice%>元/T</p>
+						<p>库存：<%=model[i].stock%>T</p>
+					</div>
+					<div class="salary"><a href="mall_detail.html?productId=<%=model[i].productId%>">购买</a></div>
+				</div>
+			<% } %>
+			<% } %>
+		</script>
+
+		<script TYPE="text/javascript">
+			$(function(){
+				$.ajax({
+					url: api + 'cloud/findList',
+					type:'GET',
+					dataType:'json',
+					success:function(res){
+						if(res.code==0){
+							var data = res.cloudProductList;
+							$('.rent_con').html(template('cloudProductList',{model:data}));
+						}else{
+							alert(res.msg);
+							console.log(res);
+						}
+					},
+					error: function(res) {
+						console.log(res);
+					}
+				});
+			});
+		</script>
+
+		<div class="page">
+			<div class="next"><a href="#">查看更多</a></div>
 		</div>
 	</div>	
 	<!--热门 end-->	

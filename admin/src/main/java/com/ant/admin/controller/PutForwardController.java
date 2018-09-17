@@ -3,13 +3,16 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
+import com.ant.admin.dao.PresentRecordDao;
 import com.ant.admin.service.OrderService;
 import com.ant.admin.service.PutForwardService;
 import com.ant.entity.Order;
+import com.ant.entity.PresentRecord;
 import com.ant.entity.PutForward;
 import com.ant.entity.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -29,6 +32,9 @@ public class PutForwardController extends  AbstractController{
     @Autowired
     private PutForwardService putForwardService;
 
+    @Autowired
+    private PresentRecordDao presentRecordDao;
+
     /**
      * 列表
      * @param params
@@ -46,13 +52,17 @@ public class PutForwardController extends  AbstractController{
      */
     @RequestMapping("/status")
     @RequiresPermissions("putForward:status:update")
+    @Transactional(rollbackFor = Exception.class)
     public Result update(@RequestBody PutForward putForward) throws ParseException {
         //校验类型
         ValidatorUtils.validateEntity(putForward);
+        Date createTime = new Date();
         if(putForward.getForwardStatus() == 3){
-            putForward.setCompletionTime(new Date());
+            putForward.setCompletionTime(createTime);
         }
         putForwardService.updateAllColumnById(putForward);
+        PresentRecord presentRecord = new PresentRecord(putForward.getPutForwardId(),putForward.getForwardStatus(),createTime);
+        presentRecordDao.insert(presentRecord);
         return Result.ok("更新成功");
     }
 

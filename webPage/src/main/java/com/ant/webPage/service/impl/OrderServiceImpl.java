@@ -5,6 +5,7 @@ import com.ant.entity.*;
 import com.ant.webPage.dao.*;
 import com.ant.webPage.service.OrderService;
 import com.ant.webPage.util.Result;
+import com.ant.webPage.util.SerialNumberUtil;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private OrderRecordDao orderRecordDao;
 
     @Autowired
     private ProductDao productDao;
@@ -54,7 +57,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
                 return Result.error("不能大于库存");
             }
         }
-        String orderCode = RandomUtil.randomString(5);
+        String orderCode = SerialNumberUtil.toSerialNumber(user.getUserId());
         Integer categoryId =  product.getCategoryId();
         String orderNo;
         Integer orderType;
@@ -70,6 +73,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         Date createTime = new Date();
         Order order = new Order(orderNo, product.getProductId(), user.getUserId(), orderType,0, amount,actualReceipts,null,createTime, 0);
         orderDao.insert(order);
+        OrderRecord orderRecord = new OrderRecord(order.getOrderId(),0,createTime);
+        orderRecordDao.insert(orderRecord);
         return Result.ok("下单成功");
     }
 
@@ -89,18 +94,20 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         if(num == 1){
             return Result.error("请填入正确的金额");
         }
-        String orderCode = RandomUtil.randomString(5);
+        String orderCode = SerialNumberUtil.toSerialNumber(user.getUserId());
         //生成订单号
         String orderNo;
         orderNo = "LC" + orderCode;
         Date createTime = new Date();
         Order order = new Order(orderNo, product.getProductId(), user.getUserId(), 3,0, null,actualReceipts,maturityIncome,createTime, 0);
         orderDao.insert(order);
+        OrderRecord orderRecord = new OrderRecord(order.getOrderId(),0,createTime);
+        orderRecordDao.insert(orderRecord);
         return Result.ok("下单成功");
     }
 
     /**
-     *
+     * 通过用户id 查询当前持有算力
      * @param userId
      * @return
      */

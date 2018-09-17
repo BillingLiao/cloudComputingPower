@@ -59,16 +59,6 @@ public class User implements Serializable {
     private String email;
 
     /**
-     * BTC地址
-     */
-    private String btc_addr;
-
-    /**
-     * 银行卡号
-     */
-    private String cardNumber;
-
-    /**
      * 支付宝账号
      */
     private String Alipay;
@@ -109,13 +99,12 @@ public class User implements Serializable {
 
     }
 
-    public User(@NotBlank(message = "手机号码不能为空", groups = AddGroup.class) String telphone, @NotBlank(message = "密码不能为空", groups = AddGroup.class) String password, String salt, BigDecimal btc, BigDecimal cny, String invitationCode, Integer status, Date registerTime) {
+    public User(@NotBlank(message = "手机号码不能为空", groups = AddGroup.class) String telphone, @NotBlank(message = "密码不能为空", groups = AddGroup.class) String password, String salt, BigDecimal btc, BigDecimal cny, Integer status, Date registerTime) {
         this.telphone = telphone;
         this.password = password;
         this.salt = salt;
         this.btc = btc;
         this.cny = cny;
-        this.invitationCode = invitationCode;
         this.status = status;
         this.registerTime = registerTime;
     }
@@ -167,22 +156,6 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getBtc_addr() {
-        return btc_addr;
-    }
-
-    public void setBtc_addr(String btc_addr) {
-        this.btc_addr = btc_addr;
-    }
-
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
     }
 
     public String getAlipay() {

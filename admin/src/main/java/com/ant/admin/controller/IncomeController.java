@@ -15,14 +15,4 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @RequestMapping("/income")
 public class IncomeController extends AbstractController{
 
-    /**
-     *
-     * @return
-     */
-    @RequestMapping("/my")
-    public Result my(@SessionAttribute User user){
-
-        return Result.ok();
-    }
-
 }

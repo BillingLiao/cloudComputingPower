@@ -13,13 +13,19 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
 		new WOW().init();
+
+		if(window.localStorage.getItem('token')==null){
+            window.location.href='login.html'
+		}
 	</script>
 		
 </head>
@@ -28,7 +34,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -40,7 +46,7 @@
 	<div class="head">
 		<div class="head_box">
 			<div class="head_img"><img src="images/imghead.png" /></div>
-			<h1>中午好，138889989898</h1>
+			<h1>中午好，{{account.phone}}</h1>
 		</div>
 	</div>
 
@@ -49,8 +55,8 @@
 		
 		<div class="stats">
 			<div class="triangle"></div>
-			<h2><p>持有算力</p>1.25T</h2><h2><p>持有金额（BTC钱包）</p>0.00005</h2><h2><p>昨日收益（BTC）</p>+0.000000</h2>
-			<h2><a href="financial.html">云算<br />理财</a></h2><h2><p>持有金额（CNY钱包）</p>0.00005</h2><h2><p>昨日收益CNY）</p>+6.22</h2>
+			<h2><p>持有算力</p>{{account.amount}}T</h2><h2><p>持有金额（BTC钱包）</p>{{account.btcBalance}}</h2><h2><p>昨日收益（BTC）</p>+{{account.btcYesterday}}</h2>
+			<h2><a href="financial.html">云算<br />理财</a></h2><h2><p>持有金额（CNY钱包）</p>{{account.cnyBalance}}</h2><h2><p>昨日收益CNY）</p>+{{account.cnyYesterday}}</h2>
 		</div>
 		
 		<!--定期-->		
@@ -89,7 +95,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/personal.js"></script>
 </body>
 </html>

@@ -65,24 +65,6 @@ public class Bank implements Serializable {
     @TableField(fill = FieldFill.INSERT)
     private Date createAt;
 
-    /**
-     * 更新时间
-     */
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat
-    @TableField(fill = FieldFill.UPDATE)
-    private Date updateAt;
-
-    /**
-     * 创建者
-     */
-    private Integer createUser;
-
-    /**
-     * 更新者
-     */
-    private Integer updateUser;
-
     public Integer getBankId() {
         return bankId;
     }
@@ -147,27 +129,4 @@ public class Bank implements Serializable {
         this.createAt = createAt;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Integer getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
 }

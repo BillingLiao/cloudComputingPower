@@ -20,7 +20,7 @@ public class Alimsg {
     static final String domain = "dysmsapi.aliyuncs.com";
 
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-    //static final String accessKeyId = "LTAIZKVYRbZL1RQ8";
+   // static final String accessKeyId = "LTAIZKVYRbZL1RQ8";
     //static final String accessKeySecret = "yTPKzdIDSwXLgB7irXc7DLSUW8vO03";
     static final String accessKeyId = "LTAI2H9nuvov26B0";
     static final String accessKeySecret = "vAig4vO9hs0hlnclMbfZM3Obf8OJ6S";
@@ -41,7 +41,7 @@ public class Alimsg {
         //必填:待发送手机号
         request.setPhoneNumbers(phone);
         //必填:短信签名-可在短信控制台中找到
-        request.setSignName("麒麟云算");
+        request.setSignName("70pool");
         //必填:短信模板-可在短信控制台中找到
         request.setTemplateCode(tempCode);
         //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
@@ -136,20 +136,16 @@ public class Alimsg {
 
     public static void main(String[] args) throws ClientException, InterruptedException {
 
-        //发短信
-         /* SendSmsResponse response = sendNotice("15012920449", "SMS_135025530", "王小顺", "001", "开天窗");
-        System.out.println("短信接口返回的数据----------------");
+        //发送验证码
+        //SendSmsResponse response = sendNotice("15012920449", "SMS_135025530", "王小顺", "001", "开天窗");
+        SendSmsResponse response = sendSms("15012920449","SMS_144375029","124154");
+        System.out.println("验证码返回的数据----------------");
+        if(!response.getCode().equals("OK")){
+            System.out.println("获取验证码失败");
+        }
         System.out.println("Code=" + response.getCode());
         System.out.println("Message=" + response.getMessage());
         System.out.println("RequestId=" + response.getRequestId());
-        System.out.println("BizId=" + response.getBizId());*/
-
-        //发送验证码
-        SendSmsResponse response2 = sendSms("15012920449","SMS_144375029","124154");
-        System.out.println("验证码返回的数据----------------");
-        System.out.println("Code=" + response2.getCode());
-        System.out.println("Message=" + response2.getMessage());
-        System.out.println("RequestId=" + response2.getRequestId());
-        System.out.println("BizId=" + response2.getBizId());
+        System.out.println("BizId=" + response.getBizId());
     }
 }

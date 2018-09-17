@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 提现记录表
+ * 提现表
  * @author Billing
  * @date 2018/9/5 18:05
  */
@@ -18,6 +18,28 @@ import java.util.Date;
 public class PutForward implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public PutForward() {
+    }
+
+    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal cny, Date createTime) {
+        this.forwardNo = forwardNo;
+        this.userId = userId;
+        this.forwardType = forwardType;
+        this.forwardStatus = forwardStatus;
+        this.cny = cny;
+        this.createTime = createTime;
+    }
+
+    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal btc, BigDecimal btcTrue, Date createTime) {
+        this.forwardNo = forwardNo;
+        this.userId = userId;
+        this.forwardType = forwardType;
+        this.forwardStatus = forwardStatus;
+        this.btc = btc;
+        this.btcTrue = btcTrue;
+        this.createTime = createTime;
+    }
 
     /**
      * 编号
@@ -49,6 +71,11 @@ public class PutForward implements Serializable {
      * 提现比特币(云算力)
      */
     private BigDecimal btc;
+
+    /**
+     * 提现比特币(云算力)
+     */
+    private BigDecimal btcTrue;
 
     /**
      * 提现人民币(理财)
