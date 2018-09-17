@@ -2,6 +2,7 @@ package com.ant.webPage.controller;
 
 import com.ant.entity.Product;
 import com.ant.entity.User;
+import com.ant.webPage.model.Profit;
 import com.ant.webPage.service.OrderService;
 import com.ant.webPage.service.ProductService;
 import com.ant.webPage.util.Result;
@@ -45,5 +46,15 @@ public class OrderController{
             return orderService.addFinancialOrder(user, product, actualReceipts, maturityIncome);
         }
         return Result.ok();
+    }
+
+    @PostMapping("/profit")
+    public Result profit(@RequestParam BigDecimal actualReceipts,@RequestParam BigDecimal rewardRate,@RequestParam BigDecimal cycle){
+        Profit profit = new Profit();
+        BigDecimal daily = actualReceipts.multiply(rewardRate).divide(new BigDecimal(100), 4, BigDecimal.ROUND_HALF_UP)
+                .divide(new BigDecimal(360), 4, BigDecimal.ROUND_HALF_UP);
+        BigDecimal monthly = daily.multiply(new BigDecimal(30));
+        BigDecimal maturityIncome = daily.multiply(cycle);
+        return Result.ok().put("profit",profit);
     }
 }

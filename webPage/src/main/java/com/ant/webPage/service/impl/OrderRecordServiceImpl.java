@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Billing
  * @date 2018/8/13 19:37
@@ -18,8 +20,8 @@ public class OrderRecordServiceImpl extends ServiceImpl<OrderRecordDao, OrderRec
     private OrderRecordDao orderRecordDao;
 
     @Override
-    public OrderRecord selectOrderRecord(Integer userId) {
-        OrderRecord orderRecord = orderRecordDao.selectOrderRecord(userId);
-        return orderRecord;
+    public List<OrderRecord> selectOrderRecord(Integer userId) {
+        List<OrderRecord> orderRecordList = orderRecordDao.selectOrderRecord(userId);
+        return orderRecordList;
     }
 }

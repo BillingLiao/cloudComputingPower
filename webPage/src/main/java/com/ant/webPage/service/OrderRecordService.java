@@ -3,6 +3,8 @@ package com.ant.webPage.service;
 import com.ant.entity.OrderRecord;
 import com.baomidou.mybatisplus.service.IService;
 
+import java.util.List;
+
 /**
  * 订单service
  * @author Billing
@@ -10,5 +12,5 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface OrderRecordService extends IService<OrderRecord> {
 
-    OrderRecord selectOrderRecord(Integer userId);
+    List<OrderRecord> selectOrderRecord(Integer userId);
 }

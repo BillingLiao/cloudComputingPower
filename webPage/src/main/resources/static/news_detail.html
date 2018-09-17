@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>持有算力-蚂蚁矿业</title>
+	<title>新闻-蚂蚁矿业</title>
 	<meta name="keywords" content="蚂蚁矿业" /> 
 	<meta name="description" content="蚂蚁矿业" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -30,34 +30,41 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
-		<div class="logo">持有算力</div>
+		<div class="logo">最新动态</div>
 	</div>
 	<!--header end-->
 
-
-	<!--个人信息-->
-	<div class="conbox">
-		
-		<div class="stats_3">
-			<h2><p>持有算力</p>{{account.amount}}T<a href="">卖出/转赠</a></h2>
-			<h2><p>持有金额（BTC钱包）</p>{{account.cnyBalance}}<a href="record_tx.html">提现</a></h2>
-			<h2><p>昨日收益（BTC）</p>+{{account.btcYesterday}}<a href="">买入</a></h2>
-			<h2><p>累计收益（BTC）</p>+{{account.cnyYesterday}}<a href="record.html">交易记录</a></h2>
-		</div>
-		
-		<div class="cy_btn"><a href="income.html">收益记录</a></div>
-		
-		<div class="stats_img"><img src="images/a_3.jpg" alt="" /></div>
 		
 			
+	<div class="de_con">
+	
+		<div class="newshead">
+			<h1>{{totices.toticesTitle}}</h1>
+			<p><span>发布时间：{{totices.publishDate}}</span><span>发布人：{{totices.userName}}</span></p>
+		</div>
+	
+  
+		<div class="info_p">
+
+			{{totices.content}}
+			
+		</div>
+	
+	
+	
+	<!--微信-->
+	<div class="index_wx">
+		<h1>蚂蚁云算力</h1>
+		<img src="images/wx.png" alt="" />
+		<div class="index_reg"><a href="reg.html">立即注册</a></div>
 	</div>
-	<!--个人信息 end-->
+	<!--end 微信-->
 	
-	
+		
 		
 	<!--footer-->
 	<div class="footer">
@@ -77,7 +84,7 @@
 	
 			
 </div>
-
-<script stype="text/javascript" src="js/modules/hold.js"></script>
+</div>
+	<script stype="text/javascript" src="js/modules/news_detail.js"></script>
 </body>
 </html>

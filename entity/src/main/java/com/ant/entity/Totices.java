@@ -1,5 +1,6 @@
 package com.ant.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -54,7 +55,14 @@ public class Totices implements Serializable {
     /**
      * 更新人
      */
+
     private Integer updateUser;
+
+    /**
+     * 管理员姓名
+     */
+    @TableField(exist = false)
+    private String userName;
 
     public Integer getToticesId() {
         return toticesId;
@@ -110,5 +118,13 @@ public class Totices implements Serializable {
 
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

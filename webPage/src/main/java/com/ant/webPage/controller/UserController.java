@@ -38,6 +38,12 @@ public class UserController{
         String phone = selectUser.getTelphone();
         BigDecimal btcYesterday = incomeService.selectCloudIncomeUser(userId);
         BigDecimal cnyYesterday = incomeService.selectFinancialIncomeUser(userId);
+        if(btcYesterday == null){
+            btcYesterday = new BigDecimal(0.00);
+        }
+        if(cnyYesterday == null){
+            cnyYesterday = new BigDecimal(0.00);
+        }
         Account account = new Account(amount,phone,btcBalance,cnyBalance,btcYesterday,cnyYesterday);
         return Result.ok().put("account",account);
     }

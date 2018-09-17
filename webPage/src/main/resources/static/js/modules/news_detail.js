@@ -24,20 +24,14 @@ function getUrlParam(name){
 var vm = new Vue({
 	el:'#page',
 	data:{
-		cloudProduct :{}
+		totices :{}
 	},
 	created: function(){
-       var productId = getUrlParam('productId');
-        $.get(api + 'cloud/findOne/'+productId, function(r){
+       var productId = getUrlParam('toticesId');
+       debugger;
+        $.get(api + 'totices/findOne/'+productId, function(r){
             console.log(r);
-            vm.cloudProduct = r.cloudProduct;
+            vm.totices = r.totices;
         });
-    },
-    methods:{
-        clickBuy: function(){
-            var productId = getUrlParam('productId');
-            window.location.href='order_detail_2.html?productId='+productId;
-        }
     }
-
 });

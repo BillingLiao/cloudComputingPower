@@ -75,7 +75,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         orderDao.insert(order);
         OrderRecord orderRecord = new OrderRecord(order.getOrderId(),0,createTime);
         orderRecordDao.insert(orderRecord);
-        return Result.ok("下单成功");
+        return Result.ok("下单成功").put("order",order);
     }
 
     /**
@@ -103,7 +103,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         orderDao.insert(order);
         OrderRecord orderRecord = new OrderRecord(order.getOrderId(),0,createTime);
         orderRecordDao.insert(orderRecord);
-        return Result.ok("下单成功");
+        return Result.ok("下单成功").put("order",order);
     }
 
     /**

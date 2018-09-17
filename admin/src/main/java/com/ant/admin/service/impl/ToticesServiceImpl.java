@@ -1,7 +1,9 @@
 package com.ant.admin.service.impl;
 
+import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.ToticesDao;
+import com.ant.entity.SysUser;
 import com.ant.entity.Totices;
 import com.ant.entity.User;
 import com.ant.admin.service.ToticesService;
@@ -37,14 +39,16 @@ public class ToticesServiceImpl extends ServiceImpl<ToticesDao, Totices> impleme
         //设置创建日期
         totices.setPublishDate(new Date());
         //获取登录用户信息
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser user = ShiroUtils.getUser();
+        //SysUser user = (SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
         totices.setPublishUser(user.getUserId());
         toticesDao.insert(totices);
     }
 
     @Override
     public void updateTotices(Totices totices) {
-        User user = (User) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SysUser user = ShiroUtils.getUser();
+        //SysUser user = (SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
         totices.setUpdateUser(user.getUserId());
         totices.setUpdateDate(new Date());
         toticesDao.updateAllColumnById(totices);

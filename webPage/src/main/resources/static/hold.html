@@ -13,8 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -41,10 +43,10 @@
 	<div class="conbox">
 		
 		<div class="stats_3">
-			<h2><p>持有算力</p>1.25T<a href="">卖出/转赠</a></h2>
-			<h2><p>持有金额（BTC钱包）</p>0.00005<a href="record_tx.html">提现</a></h2>
-			<h2><p>昨日收益（BTC）</p>+0.000000<a href="">买入</a></h2>
-			<h2><p>累计收益（BTC）</p>+0.000000<a href="record.html">交易记录</a></h2>
+			<h2><p>持有算力</p>{{account.amount}}T<a href="">卖出/转赠</a></h2>
+			<h2><p>持有金额（BTC钱包）</p>{{account.cnyBalance}}<a href="record_tx.html">提现</a></h2>
+			<h2><p>昨日收益（BTC）</p>+{{account.btcYesterday}}<a href="">买入</a></h2>
+			<h2><p>累计收益（BTC）</p>+{{account.cnyYesterday}}<a href="record.html">交易记录</a></h2>
 		</div>
 		
 		<div class="cy_btn"><a href="income.html">收益记录</a></div>
@@ -75,7 +77,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/hold.js"></script>
 </body>
 </html>

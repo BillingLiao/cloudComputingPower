@@ -22,19 +22,24 @@ function getUrlParam(name){
     }
 }
 var vm = new Vue({
-	el:'#cloudPage',
+	el:'#page',
 	data:{
-		cloudProduct :{}
+		account :{}
 	},
 	created: function(){
+	    var token = window.localStorage.getItem('token');
 	    $.ajax({
-            url: api + 'cloud/findFirst',
+            url: api + 'user/my',
             type:'POST',
             dataType:'json',
+            data:{
+                token:token
+            },
             success:function(res){
                 console.log(res);
                 if(res.code==0){
-                    vm.cloudProduct = res.cloudProduct;
+                    console.log(res.account);
+                    vm.account = res.account;
                 }else{
                     console.log(res);
                 }
@@ -43,11 +48,5 @@ var vm = new Vue({
                 console.log(res);
             }
         });
-    },
-    methods:{
-        clickBuy: function(){
-            var productId = vm.cloudProduct.productId;
-            window.location.href='mall_detail.html?productId='+productId;
-        }
     }
 });

@@ -32,6 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
             "/totices/**",  //公告相关接口
             "/cloud/**",  //云算力列表相关接口
             "/financial/**", //理财列表相关接口
+            "/miner/**", //矿机列表相关接口
     };
 
     /**

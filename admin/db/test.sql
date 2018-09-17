@@ -87,6 +87,12 @@ FROM t_present_record pr
 LEFT JOIN t_put_forward pf ON pf.put_forward_id = pr.put_forward_id
 WHERE pf.user_id = 2
 
+/*
+	查询出公告，加管理员姓名
+*/
+SELECT t.*,s.user_name FROM t_totices t
+LEFT JOIN t_sys_user s ON s.user_id = t.publish_user
+
 
  
  

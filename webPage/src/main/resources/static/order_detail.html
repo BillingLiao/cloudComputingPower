@@ -13,8 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -28,7 +30,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -44,16 +46,19 @@
 
 			<ul class="ord_info" id="car_two">
 		
-				<li>合约名称：	 <span>矿场合约一个月</span></li>
-				<li>年化利率： <span>5%</span></li>
-				<li>周期：	 <span>30天，每月按30天计算</span></li>
-				<li>投入金额：	 <span>￥ 10000</span></li>
-				<li>订单号：	 <span>VSDF145524</span></li>
-				<li class="shouyi">收益计算：	 <span>每日收益：1.61CNY</span><span>每月收益：37.61CNY</span><span>到期收益：37.61CNY</span></li>
+				<li>合约名称：	 <span>{{financialProduct.productName}}</span></li>
+				<li>年化利率： <span>{{financialProduct.rewardRate}}%</span></li>
+				<li>周期：	 <span>{{financialProduct.cycle}}天，每月按30天计算</span></li>
+				<li>投入金额：	 <span>￥  <input type="number" name="actualReceipts" class="box1" v-model="actualReceipts"/></span></li>
+				<li class="shouyi">收益计算：
+					<span>每日收益：<input type="number" name="Daily" class="box1" v-model="daily" readonly="readonly"/></span>
+					<span>每月收益：<input type="number" name="Monthly" class="box1" v-model="monthly" readonly="readonly"/></span>
+					<span>到期收益：<input type="number" name="maturityIncome" class="box1" v-model="maturityIncome" readonly="readonly"/></span>
+				</li>
 			
 			</ul>
 			
-			<div class="index_reg"><a class="yew" href="pay.html">去支付</a></div>
+			<div class="index_reg"><a class="yew" @click="goToPay">去支付</a></div>
 			
 			<div class="tips">
 				<p><a href="">对订单有疑问？</a></p>
@@ -84,7 +89,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/order_detail.js"></script>
 </body>
 </html>

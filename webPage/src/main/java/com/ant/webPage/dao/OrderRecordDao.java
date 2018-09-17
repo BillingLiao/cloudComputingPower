@@ -3,6 +3,8 @@ package com.ant.webPage.dao;
 import com.ant.entity.OrderRecord;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * 订单dao
  * @author Billing
@@ -10,5 +12,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface OrderRecordDao extends BaseMapper<OrderRecord> {
 
-    OrderRecord selectOrderRecord(Integer userId);
+    List<OrderRecord> selectOrderRecord(Integer userId);
 }

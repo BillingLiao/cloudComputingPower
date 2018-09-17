@@ -13,4 +13,6 @@ import java.util.List;
 public interface ToticesDao extends BaseMapper<Totices> {
 
     public List<Totices> findList();
+
+    Totices selectOneById(Integer toticesId);
 }

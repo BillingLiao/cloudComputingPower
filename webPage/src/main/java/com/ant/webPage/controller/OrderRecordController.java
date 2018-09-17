@@ -7,6 +7,8 @@ import com.ant.webPage.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 订单controller
  * @author Billing
@@ -28,7 +30,7 @@ public class OrderRecordController {
     @RequestMapping("/my")
     public Result record(@SessionAttribute User user){
         Integer userId = user.getUserId();
-        OrderRecord orderRecord = orderRecordService.selectOrderRecord(userId);
-        return Result.ok().put("orderRecord",orderRecord);
+        List<OrderRecord> orderRecordList = orderRecordService.selectOrderRecord(userId);
+        return Result.ok().put("orderRecordList",orderRecordList);
     }
 }

@@ -23,4 +23,9 @@ public class ToticesServiceImpl extends ServiceImpl<ToticesDao, Totices> impleme
     public List<Totices> findList() {
         return toticesDao.findList();
     }
+
+    @Override
+    public Totices selectOneById(Integer toticesId) {
+        return toticesDao.selectOneById(toticesId);
+    }
 }

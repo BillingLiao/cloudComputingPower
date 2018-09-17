@@ -23,20 +23,10 @@ function getUrlParam(name){
 }
 var vm = new Vue({
 	el:'#page',
-	data:{
-		cloudProduct :{}
-	},
-	created: function(){
-       var productId = getUrlParam('productId');
-        $.get(api + 'cloud/findOne/'+productId, function(r){
-            console.log(r);
-            vm.cloudProduct = r.cloudProduct;
-        });
-    },
     methods:{
         clickBuy: function(){
             var productId = getUrlParam('productId');
-            window.location.href='order_detail_2.html?productId='+productId;
+            window.location.href='order_detail.html?productId='+productId;
         }
     }
 

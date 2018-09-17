@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
 /**
- * 订单controller
+ * 提现记录controller
  * @author Billing
  * @date 2018/9/11 20:24
  */

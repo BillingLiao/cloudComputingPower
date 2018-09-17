@@ -38,7 +38,7 @@ public class ToticesController {
      */
     @RequestMapping("/findOne/{toticesId}")
     public Result info(@PathVariable("toticesId") Integer toticesId){
-        Totices totices =  toticesService.selectById(toticesId);
+        Totices totices =  toticesService.selectOneById(toticesId);
         return Result.ok().put("totices",totices);
     }
 

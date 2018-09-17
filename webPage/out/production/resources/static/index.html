@@ -29,7 +29,7 @@
 </head>
 
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page"  v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -64,7 +64,7 @@
 			<script type="text/template" id="toticesList">
 				<% if(model && model.length>0){ %>
 					<% for(var i=0;i<model.length;i++) { %>
-						<li><a href="news_info.html?toticesId=<%=model[i].toticesId%>" target="_blank"><%=model[i].toticesTitle%></a></li>
+						<li><a href="news_info.html?toticesId=<%=model[i].toticesId%>"><%=model[i].toticesTitle%></a></li>
 					<% } %>
 				<% } %>
 			</script>
@@ -99,16 +99,16 @@
 	<h1 class="hot_t"><span></span>为您推荐<span></span></h1>
 	
 	<!--热门-->
-	<div class="hotpro" v-cloak>
+	<div class="hotpro" id="cloudPage" v-cloak>
 		<div class="hotpro_con">
 	        <div class="j_list">
-				<div class="jimg"><a href="mall_detail.html?productId="+{{cloudProduct.productId}}><img class="lazy" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
+				<div class="jimg"><a @click="clickBuy"><img class="lazy" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
 				<div class="jtx">
 					<h1><a href="mall_detail.html">{{cloudProduct.productName}}</a></h1>
 					<p>售价：{{cloudProduct.sellOut}}元/T</p>
 					<p>库存：{{cloudProduct.stock}}T</p>
 				</div>
-				<div class="salary"><a href="mall_detail.html?productId="+{{cloudProduct.productId}}>购买</a></div>
+				<div class="salary"><a @click="clickBuy">购买</a></div>
 			</div>
 			<div class="page">
 				<div class="next"><a href="mall.html">查看更多</a></div>
@@ -119,8 +119,7 @@
 	</div>
 	<!--热门 end-->
 	<script stype="text/javascript" src="js/modules/index.js"></script>
-	
-	
+
 			<!--瀑布流JS-->
 			<script src="js/pubu/jquery.lazyload.min.js"></script>
 			<script src="js/pubu/blocksit.min.js"></script>
@@ -289,5 +288,6 @@
 	
 			
 </div>
+
 </body>
 </html>
