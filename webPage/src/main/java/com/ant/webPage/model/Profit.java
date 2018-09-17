@@ -30,4 +30,27 @@ public class Profit implements Serializable {
     public Profit() {
     }
 
+    public BigDecimal getDaily() {
+        return daily;
+    }
+
+    public void setDaily(BigDecimal daily) {
+        this.daily = daily;
+    }
+
+    public BigDecimal getMonthly() {
+        return monthly;
+    }
+
+    public void setMonthly(BigDecimal monthly) {
+        this.monthly = monthly;
+    }
+
+    public BigDecimal getMaturityIncome() {
+        return maturityIncome;
+    }
+
+    public void setMaturityIncome(BigDecimal maturityIncome) {
+        this.maturityIncome = maturityIncome;
+    }
 }

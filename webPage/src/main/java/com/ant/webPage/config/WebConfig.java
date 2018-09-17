@@ -33,6 +33,8 @@ public class WebConfig implements WebMvcConfigurer {
             "/cloud/**",  //云算力列表相关接口
             "/financial/**", //理财列表相关接口
             "/miner/**", //矿机列表相关接口
+            "/order/profit", //查询理财产品收益
+            "/order/actualReceipts", //查询云算力总价
     };
 
     /**

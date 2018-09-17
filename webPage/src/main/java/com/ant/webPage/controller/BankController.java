@@ -1,5 +1,6 @@
 package com.ant.webPage.controller;
 
+import com.ant.entity.Bank;
 import com.ant.entity.User;
 import com.ant.webPage.service.BankService;
 import com.ant.webPage.util.Result;
@@ -27,5 +28,16 @@ public class BankController {
             return bankService.updateBank(user,cardNumber,openingBank,trueName,bankId);
         }
 
+    }
+
+    /**
+     * 查找有无bankId
+     * @return
+     */
+    @PostMapping("/find")
+    public Result find(@SessionAttribute User user){
+        Integer userId = user.getUserId();
+        Bank bank = bankService.selectBank(userId);
+        return Result.ok().put("bank", bank);
     }
 }

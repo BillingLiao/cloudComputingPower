@@ -24,19 +24,78 @@ function getUrlParam(name){
 var vm = new Vue({
 	el:'#page',
 	data:{
-		cloudProduct :{}
+		cloudProduct :{},
+		amount: null,
+		actualReceipts:null
 	},
+	watch: {
+        amount: function(newAmount, oldAmount){
+            this.debouncedGetActualReceipts();
+        }
+     },
 	created: function(){
        var productId = getUrlParam('productId');
         $.get(api + 'cloud/findOne/'+productId, function(r){
             console.log(r);
             vm.cloudProduct = r.cloudProduct;
         });
+        this.debouncedGetActualReceipts = _.debounce(this.getActualReceipts, 500)
     },
     methods:{
-        clickBuy: function(){
+        getActualReceipts: function(){
+            $.ajax({
+                url: api + 'order/actualReceipts',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    amount: vm.amount,
+                    price: vm.cloudProduct.price
+                },
+                success:function(res){
+                    console.log(res);
+                    if(res.code==0){
+                        vm.actualReceipts = res.actualReceipts;
+                    }else{
+                        console.log(res);
+                    }
+                },
+                error: function(res) {
+                    console.log(res);
+                }
+            });
+        },
+        goToPay: function(){
+            var token = window.localStorage.getItem('token');
             var productId = getUrlParam('productId');
-            window.location.href='order_detail_2.html?productId='+productId;
+            if(token == null){
+                alert('请先登录再购买');
+                window.location.href='login.html'
+            }else{
+                var productId = getUrlParam('productId');
+                $.ajax({
+                    url: api + 'order/add',
+                    type:'POST',
+                    dataType:'json',
+                    data:{
+                        token: token,
+                        productId:productId,
+                        actualReceipts:vm.actualReceipts,
+                        amount:vm.amount
+                    },
+                    success:function(res){
+                        if(res.code==0){
+                            var orderId = res.order.orderId;
+                            window.location.href='pay.html?orderId='+orderId;
+                        }else{
+                            console.log(res);
+                        }
+                    },
+                    error: function(res) {
+                        console.log(res);
+                    }
+                });
+            }
+
         }
     }
 

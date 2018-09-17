@@ -55,6 +55,15 @@ public class OrderController{
                 .divide(new BigDecimal(360), 4, BigDecimal.ROUND_HALF_UP);
         BigDecimal monthly = daily.multiply(new BigDecimal(30));
         BigDecimal maturityIncome = daily.multiply(cycle);
+        profit.setMaturityIncome(maturityIncome);
+        profit.setDaily(daily);
+        profit.setMonthly(monthly);
         return Result.ok().put("profit",profit);
+    }
+
+    @PostMapping("/actualReceipts")
+    public Result profit(@RequestParam BigDecimal amount,@RequestParam BigDecimal price){
+        BigDecimal actualReceipts = amount.multiply(price);
+        return Result.ok().put("actualReceipts",actualReceipts);
     }
 }

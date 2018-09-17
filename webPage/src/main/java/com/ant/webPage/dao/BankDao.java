@@ -8,4 +8,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @date 2018/9/15 18:48
  */
 public interface BankDao extends BaseMapper<Bank> {
+    Bank selectBank(Integer userId);
 }

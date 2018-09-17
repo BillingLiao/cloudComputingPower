@@ -13,4 +13,6 @@ public interface BankService extends IService<Bank> {
     Result addBank(User user, String cardNumber, String openingBank, String trueName);
 
     Result updateBank(User user, String cardNumber, String openingBank, String trueName,Integer bankId);
+
+    Bank selectBank(Integer userId);
 }

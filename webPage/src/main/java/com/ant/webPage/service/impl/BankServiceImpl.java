@@ -34,7 +34,7 @@ public class BankServiceImpl extends ServiceImpl<BankDao, Bank> implements BankS
         bank.setTrueName(trueName);
         bank.setCreateAt(new Date());
         bankDao.insert(bank);
-        return Result.ok("操作成功");
+        return Result.ok("操作成功").put("bank",bank);
     }
 
     @Override
@@ -47,11 +47,17 @@ public class BankServiceImpl extends ServiceImpl<BankDao, Bank> implements BankS
             return Result.error("修改的信息不存在");
         }
         Bank bankUpdate = new Bank();
+        bankUpdate.setUserId(user.getUserId());
         bankUpdate.setBankId(bankId);
         bankUpdate.setCardNumber(cardNumber);
         bankUpdate.setOpeningBank(openingBank);
         bankUpdate.setTrueName(trueName);
         bankDao.updateAllColumnById(bankUpdate);
-        return Result.ok("操作成功");
+        return Result.ok("操作成功").put("bank",bank);
+    }
+
+    @Override
+    public Bank selectBank(Integer userId) {
+        return bankDao.selectBank(userId);
     }
 }

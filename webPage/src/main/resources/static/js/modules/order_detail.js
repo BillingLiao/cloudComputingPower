@@ -30,7 +30,7 @@ var vm = new Vue({
 		daily:null,
 		monthly:null
 	},
-    watch: function(){
+    watch: {
         actualReceipts: function(newActualReceipts, oldActualReceipts){
             this.debouncedGetProfit();
         }
@@ -41,7 +41,7 @@ var vm = new Vue({
             console.log(r);
             vm.financialProduct = r.financialProduct;
         });
-        this.debouncedGetProfit() = _.debounce(this.getProfit, 500)
+        this.debouncedGetProfit = _.debounce(this.getProfit, 500)
     },
     methods:{
         getProfit: function(){
@@ -50,16 +50,17 @@ var vm = new Vue({
                 type:'POST',
                 dataType:'json',
                 data:{
-                    actualReceipts: actualReceipts,
-                    rewardRate: financialProduct.rewardRate,
-                    cycle: financialProduct.cycle
+                    actualReceipts: this.actualReceipts,
+                    rewardRate: this.financialProduct.rewardRate,
+                    cycle: this.financialProduct.cycle
                 },
                 success:function(res){
+                    console.log(res);
                     if(res.code==0){
                         var profit = res.profit;
-                        this.maturityIncome = profit.maturityIncome;
-                        this.daily = profit.Daily;
-                        this.monthly = profit.monthly
+                        vm.maturityIncome = profit.maturityIncome;
+                        vm.daily = profit.daily;
+                        vm.monthly = profit.monthly
                     }else{
                         console.log(res);
                     }
@@ -84,13 +85,13 @@ var vm = new Vue({
                     data:{
                         token: token,
                         productId:productId,
-                        actualReceipts:actualReceipts,
-                        maturityIncome:maturityIncome
+                        actualReceipts:vm.actualReceipts,
+                        maturityIncome:vm.maturityIncome
                     },
                     success:function(res){
                         if(res.code==0){
                             var orderId = res.order.orderId;
-                            window.location.href='pay.html?orderId'+orderId;
+                            window.location.href='pay.html?orderId='+orderId;
                         }else{
                             console.log(res);
                         }

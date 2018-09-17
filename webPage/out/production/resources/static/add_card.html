@@ -13,13 +13,19 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
 		new WOW().init();
+
+		if(window.localStorage.getItem('token')==null){
+            window.location.href='login.html'
+		}
 	</script>
 		
 </head>
@@ -28,7 +34,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -49,14 +55,13 @@
 	
 					<div class="re_box personal">
 						<p class="tips">请仔细核对输入的银行账号信息。</p>
-						<li><label>真实姓名：</label><input type="text" placeholder="未填写" /></li>
-						<li><label>卡户银行：</label><input type="text" placeholder="未填写" /></li>
-						<li><label>银行卡号：</label><input type="text" placeholder="未填写" /></li>
-						<li><label>提醒手机：</label><input type="text" placeholder="未填写" /></li>
+						<li><label>真实姓名：</label><input type="text" placeholder="未填写" v-model="bank.trueName"/></li>
+						<li><label>开户行：</label><input type="text" placeholder="未填写" v-model="bank.openingBank"/></li>
+						<li><label>银行卡号：</label><input type="text" placeholder="未填写" v-model="bank.cardNumber"/></li>
 						</li>
 					</div>
 					
-					<div class="index_reg"><a href="#">确定保存</a></div>
+					<div class="index_reg"><a @click="save">确定保存</a></div>
 					
 				</ul>
 				
@@ -88,7 +93,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/add_card.js"></script>
 </body>
 </html>
