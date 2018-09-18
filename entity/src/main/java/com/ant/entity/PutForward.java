@@ -19,28 +19,6 @@ public class PutForward implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public PutForward() {
-    }
-
-    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal cny, Date createTime) {
-        this.forwardNo = forwardNo;
-        this.userId = userId;
-        this.forwardType = forwardType;
-        this.forwardStatus = forwardStatus;
-        this.cny = cny;
-        this.createTime = createTime;
-    }
-
-    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal btc, BigDecimal btcTrue, Date createTime) {
-        this.forwardNo = forwardNo;
-        this.userId = userId;
-        this.forwardType = forwardType;
-        this.forwardStatus = forwardStatus;
-        this.btc = btc;
-        this.btcTrue = btcTrue;
-        this.createTime = createTime;
-    }
-
     /**
      * 编号
      */
@@ -95,6 +73,28 @@ public class PutForward implements Serializable {
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
     private Date completionTime;
+
+    public PutForward() {
+    }
+
+    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal cny, Date createTime) {
+        this.forwardNo = forwardNo;
+        this.userId = userId;
+        this.forwardType = forwardType;
+        this.forwardStatus = forwardStatus;
+        this.cny = cny;
+        this.createTime = createTime;
+    }
+
+    public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal btc, BigDecimal btcTrue, Date createTime) {
+        this.forwardNo = forwardNo;
+        this.userId = userId;
+        this.forwardType = forwardType;
+        this.forwardStatus = forwardStatus;
+        this.btc = btc;
+        this.btcTrue = btcTrue;
+        this.createTime = createTime;
+    }
 
     public Integer getPutForwardId() {
         return putForwardId;

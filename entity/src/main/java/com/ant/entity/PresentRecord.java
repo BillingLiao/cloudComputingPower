@@ -23,9 +23,9 @@ public class PresentRecord implements Serializable {
     public PresentRecord() {
     }
 
-    public PresentRecord(Integer putForwardId, Integer forwardStatus, Date createTime) {
+    public PresentRecord(Integer putForwardId, Integer presentStatus, Date createTime) {
         this.putForwardId = putForwardId;
-        this.forwardStatus = forwardStatus;
+        this.presentStatus = presentStatus;
         this.createTime = createTime;
     }
 
@@ -43,7 +43,7 @@ public class PresentRecord implements Serializable {
     /**
      * 提现状态 0:待处理 1:待处理关闭(取消提现) 2:提现失败 3:提现成功
      */
-    private Integer forwardStatus;
+    private Integer presentStatus;
 
     /**
      * 记录日期
@@ -92,12 +92,12 @@ public class PresentRecord implements Serializable {
         this.putForwardId = putForwardId;
     }
 
-    public Integer getForwardStatus() {
-        return forwardStatus;
+    public Integer getPresentStatus() {
+        return presentStatus;
     }
 
-    public void setForwardStatus(Integer forwardStatus) {
-        this.forwardStatus = forwardStatus;
+    public void setPresentStatus(Integer presentStatus) {
+        this.presentStatus = presentStatus;
     }
 
     public Date getCreateTime() {

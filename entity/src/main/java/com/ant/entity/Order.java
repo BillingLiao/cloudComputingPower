@@ -65,7 +65,7 @@ public class Order implements Serializable {
     private Integer orderType;
 
     /**
-     * 订单状态 0:待支付 1:待支付关闭(取消订单) 2:已付款，待发货(产品开始计算收益)  3:待收货 4:已收货 5:已完成订单
+     *  订单状态 0:待支付 1:待支付关闭 2:已付款，待发货 ,3:订单关闭,4:待收货 5:已完成订单
      */
     private Integer orderStatus;
 

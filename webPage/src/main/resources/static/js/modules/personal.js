@@ -1,3 +1,7 @@
+if(window.localStorage.getItem('token')==null){
+     window.location.href='login.html'
+}
+
 function getUrlParam(name){
     var obj = {};
     var url_0=window.location.href;

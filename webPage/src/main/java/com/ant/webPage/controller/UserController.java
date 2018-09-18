@@ -2,6 +2,7 @@ package com.ant.webPage.controller;
 
 import com.ant.entity.User;
 import com.ant.webPage.model.Account;
+import com.ant.webPage.model.UserFinancial;
 import com.ant.webPage.service.IncomeService;
 import com.ant.webPage.service.OrderService;
 import com.ant.webPage.service.UserService;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Billing
  * @date 2018/9/5 15:09
@@ -20,32 +24,32 @@ import java.math.BigDecimal;
 public class UserController{
 
     @Autowired
-    private IncomeService incomeService;
-
-    @Autowired
     private OrderService orderService;
 
     @Autowired
     private UserService userService;
 
+    /**
+     *  查询用户账户信息
+     * @param user
+     * @return
+     */
     @RequestMapping("/my")
     public Result my(@SessionAttribute User user){
         Integer userId = user.getUserId();
-        User selectUser = userService.selectById(userId);
-        BigDecimal amount = orderService.selectAmountByUser(userId);
-        BigDecimal btcBalance = selectUser.getBtc();
-        BigDecimal cnyBalance = selectUser.getCny();
-        String phone = selectUser.getTelphone();
-        BigDecimal btcYesterday = incomeService.selectCloudIncomeUser(userId);
-        BigDecimal cnyYesterday = incomeService.selectFinancialIncomeUser(userId);
-        if(btcYesterday == null){
-            btcYesterday = new BigDecimal(0.00);
-        }
-        if(cnyYesterday == null){
-            cnyYesterday = new BigDecimal(0.00);
-        }
-        Account account = new Account(amount,phone,btcBalance,cnyBalance,btcYesterday,cnyYesterday);
+        Account account = userService.selectAccountByUserId(userId);
         return Result.ok().put("account",account);
+    }
+
+    @RequestMapping("/detailed")
+    private Result detailed(@SessionAttribute User user){
+        Integer userId = user.getUserId();
+        Account account = userService.selectAccountByUserId(userId);
+        UserFinancial userFinancial = orderService.selectUserFinancial(userId);
+        Map<String, Object> result = new HashMap<>();
+        result.put("account",account);
+        result.put("userFinancial",userFinancial);
+        return Result.ok().put("result",result);
     }
 
 

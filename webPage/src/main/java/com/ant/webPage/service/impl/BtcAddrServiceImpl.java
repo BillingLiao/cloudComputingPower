@@ -54,6 +54,7 @@ public class BtcAddrServiceImpl extends ServiceImpl<BtcAddrDao, BtcAddr> impleme
             return Result.error("修改的信息不存在");
         }
         BtcAddr btcAddrUpade = new BtcAddr();
+        btcAddrUpade.setUserId(user.getUserId());
         btcAddrUpade.setBtc_addr(btcAddr);
         btcAddrUpade.setBtcAddrId(btcAddrId);
         btcAddrDao.updateAllColumnById(btcAddrUpade);

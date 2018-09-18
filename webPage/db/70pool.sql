@@ -546,7 +546,7 @@ CREATE TABLE `t_put_forward` (
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
 
 DROP TABLE IF EXISTS `t_present_record`;
 

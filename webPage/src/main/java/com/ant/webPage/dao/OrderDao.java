@@ -1,6 +1,7 @@
 package com.ant.webPage.dao;
 
 import com.ant.entity.Order;
+import com.ant.webPage.model.UserFinancial;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.math.BigDecimal;
@@ -18,4 +19,11 @@ public interface OrderDao extends BaseMapper<Order> {
      * @return
      */
     BigDecimal selectAmountByUser(Integer userId);
+
+    /**
+     * 查询用户 理财产品 赎回天数跟累计收益
+     * @param userId
+     * @return
+     */
+    UserFinancial selectUserFinancial(Integer userId);
 }

@@ -3,6 +3,7 @@ package com.ant.webPage.service.impl;
 import cn.hutool.core.util.RandomUtil;
 import com.ant.entity.*;
 import com.ant.webPage.dao.*;
+import com.ant.webPage.model.UserFinancial;
 import com.ant.webPage.service.OrderService;
 import com.ant.webPage.util.Result;
 import com.ant.webPage.util.SerialNumberUtil;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Billing
@@ -114,5 +117,28 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     @Override
     public BigDecimal selectAmountByUser(Integer userId) {
         return orderDao.selectAmountByUser(userId);
+    }
+
+    @Override
+    public Result selectCloudOrder(Order order) {
+        CloudProduct cloudProduct = cloudProductDao.selectByProductId(order.getProductId());
+        Map<String, Object> result = new HashMap<>();
+        result.put("order",order);
+        result.put("cloudProduct",cloudProduct);
+        return Result.ok().put("result",result);
+    }
+
+    @Override
+    public Result selectFinancialOrder(Order order) {
+        FinancialProduct financialProduct = financialProductDao.selectByProductId(order.getProductId());
+        Map<String, Object> result = new HashMap<>();
+        result.put("order",order);
+        result.put("financialProduct",financialProduct);
+        return Result.ok().put("result",result);
+    }
+
+    @Override
+    public UserFinancial selectUserFinancial(Integer userId) {
+        return orderDao.selectUserFinancial(userId);
     }
 }

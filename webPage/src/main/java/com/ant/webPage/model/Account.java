@@ -1,7 +1,5 @@
 package com.ant.webPage.model;
 
-import org.springframework.stereotype.Component;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 

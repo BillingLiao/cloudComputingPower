@@ -50,8 +50,9 @@
 		
 		<div class="post_box wow fadeInUp">
 			<div class="post_info">
-				<p><strong>¥{{cloudProduct.retailPrice}}</strong>已售{{cloudProduct.sellOut}}T</p>
-				<div class="deadline">距结束仅剩<span>12</span>小时<span>18</span>分<span>19</span>秒</div>	
+				<p><strong>¥{{cloudProduct.retailPrice}}</strong></p>
+				<div class="deadline">已售{{cloudProduct.sellOut}}T</div>
+				<!--<div class="deadline">距结束仅剩<span>12</span>小时<span>18</span>分<span>19</span>秒</div>-->
 			</div>
 		</div>
 	  
@@ -80,29 +81,14 @@
 			<li>服务费：	 <span>{{cloudProduct.managementExpense}}元</span></li>
 			<li>合同周期：	 <span>{{cloudProduct.contractCycle}}</span></li>
 			<li>预估日收益：	 <span>{{cloudProduct.remark}}元</span></li>
-			<li>购买数量：	 <span><input type="number" name="amount" class="box1"  v-model="amount"/></span></li>
-			<li class="last">总价：	<span>￥  <input type="number" name="actualReceipts" class="box1"  v-model="actualReceipts" readonly="readonly"/></span></li>
-			
-			
-			<!--<script type="text/javascript" src="js/payfor.js"></script>
-			<div class="p_number">
-			
-				<div style="height:36px;font-size:16px;">单价：<strong id="price_item_1">￥ {{cloudProduct.price}}</strong></div>
-				<div class="f_l add_chose">
-					<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">-</a>
-					<input type="text" name="qty_item_1" value="1" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" />
-					<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">+</a>
-				</div>
-				<div class="f_l buy">
-					总价：<span class="total-font" id="total_item_1"></span>
-				</div>
-			
-			</div>-->
-		
+		</ul>
+		<ul class="ord_info">
+		<li>购买数量：	 <span><input type="number" name="amount" class="box1"  v-model="amount"/></span></li>
+		<li class="last">总价：	<span>￥  <input type="number" name="actualReceipts" class="box1"  v-model="actualReceipts" readonly="readonly"/></span></li>
 		</ul>
 		<!--主要参数 end-->
 		
-		<li><input type="checkbox" class="checkbox" name="promise" checked="checked" disabled="true" /><label class="promise" > 同意签约云算力服务协议</label></li>
+		<li><input type="checkbox" class="checkbox" name="promise" checked="checked"/><label class="promise" > 同意签约云算力服务协议</label></li>
 		
 		
 		<div class="index_reg"><a class="yew"  @click="goToPay">去支付</a></div>

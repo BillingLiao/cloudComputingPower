@@ -13,9 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<!--动画-->
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
@@ -28,7 +29,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -41,12 +42,11 @@
 	<div class="conbox">
 		
 		<div class="stats_3">
-			<div class="s_one"><h2><p>持有金额（BTC钱包）</p>0.00005<a href="record_tx.html">提现</a></h2></div>
-			<h2><p>昨日收益（BTC）</p>+0.000000<a href="">买入</a></h2>
-			<h2><p>累计收益（BTC）</p>+0.000000<a href="record.html">交易记录</a></h2>
+			<h2><p>持有金额（BTC钱包）</p>{{account.btcBalance}}<a href="record_tx.html">提现</a></h2>
+			<h2><p>昨日收益（BTC）</p>+{{account.btcYesterday}}<a href="mall.html">买入</a></h2>
 		</div>
-		
-		
+
+		<script language="JavaScript" src="js/tab.js" type="text/javascript"></script>
 		<div class="Menubox">
 		<ul>
 			<li id="one1" onClick="setTab('one',1,2)" class="hover hover_2">持有理财</li>
@@ -96,7 +96,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/financial.js"></script>
 </body>
 </html>

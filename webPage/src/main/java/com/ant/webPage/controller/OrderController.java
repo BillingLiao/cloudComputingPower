@@ -1,5 +1,7 @@
 package com.ant.webPage.controller;
 
+import com.ant.entity.CloudProduct;
+import com.ant.entity.Order;
 import com.ant.entity.Product;
 import com.ant.entity.User;
 import com.ant.webPage.model.Profit;
@@ -26,6 +28,7 @@ public class OrderController{
 
     @Autowired private ProductService productService;
 
+
     /**
      *  用户下单
      * @param user  用户
@@ -44,6 +47,22 @@ public class OrderController{
             return orderService.addCloudOrder(user,product,amount,actualReceipts);
         }else if(type == 3) { //理财产品
             return orderService.addFinancialOrder(user, product, actualReceipts, maturityIncome);
+        }
+        return Result.ok();
+    }
+
+    /**
+     * 根据id查找订单及产品信息
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/findOne")
+    public Result findOrder(@SessionAttribute User user,@RequestParam Integer orderId){
+        Order order = orderService.selectById(orderId);
+        if(order.getOrderType() == 2){
+            return orderService.selectCloudOrder(order);
+        }else if(order.getOrderType() == 3){
+            return orderService.selectFinancialOrder(order);
         }
         return Result.ok();
     }

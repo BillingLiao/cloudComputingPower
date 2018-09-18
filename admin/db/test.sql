@@ -94,7 +94,7 @@ SELECT t.*,s.user_name FROM t_totices t
 LEFT JOIN t_sys_user s ON s.user_id = t.publish_user
 
 
- 
+
  
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
 WHERE o.order_status = 2;

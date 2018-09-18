@@ -20,7 +20,6 @@ import sun.misc.BASE64Encoder;
  * @author Billing
  *
  */
-@SuppressWarnings("restriction")
 public class TokenTool {
 	//加密关键字
 	private static final String DESkeyStr = "9Qk7T1mBkTvHewcOkgcEGwFujv8mrqVhLjFgGDW2AZMNfihmO26dVoeiA2ynFLSG9tGHJCLwhXpBZqZ9yKMganqTTlyWOneqO0r4MrcgJZf4hufo6a0dzppRDGTJcFShma7q74NcwOCl4LqylaGyrQWXpfHWKawMMM5QBYfZEjbwBXvdGPca2s4FkC5lYGCE4xAkXnPBRod3b2rNV4ihMMog5x6k8q3H6bfxvIP52iUr49xJRX5WpONDrS05Vgxj";
