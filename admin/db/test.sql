@@ -93,8 +93,16 @@ WHERE pf.user_id = 2
 SELECT t.*,s.user_name FROM t_totices t
 LEFT JOIN t_sys_user s ON s.user_id = t.publish_user
 
+/*
+	查询用户 理财产品名称,赎回日期，持有金额跟累计收益
+*/
+SELECT p.product_name,(fp.cycle+1+TO_DAYS(o.payment_time)-TO_DAYS(CURRENT_DATE)) AS redemption_day,o.actual_receipts AS money,(maturity_income/cycle*(TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time))) AS cumulative_income FROM t_order o
+LEFT JOIN t_product p ON p.product_id = o.product_id
+LEFT JOIN t_financial_product fp ON fp.product_id = p.product_id
+WHERE o.order_type = 3 AND o.order_status = 2 AND o.user_id = 2
 
-
+fp.cycle+1+TO_DAYS(o.payment_time)-TO_DAYS(CURRENT_DATE) 
+ ,() AS redemption_day,
  
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
 WHERE o.order_status = 2;
