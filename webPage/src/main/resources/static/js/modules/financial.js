@@ -6,7 +6,7 @@ var vm = new Vue({
 	el:'#page',
 	data:{
 		account :{},
-		userFinancial :{}
+		userFinancialList :{}
 	},
 	created: function(){
 	    var token = window.localStorage.getItem('token');
@@ -20,9 +20,8 @@ var vm = new Vue({
             success:function(res){
                 console.log(res);
                 if(res.code==0){
-                    console.log(res.account);
-                    vm.account = res.account;
-                    vm.userFinancial = res.userFinancial;
+                    vm.account = res.result.account;
+                    vm.userFinancialList = res.result.userFinancialList;
                 }else{
                     console.log(res);
                 }

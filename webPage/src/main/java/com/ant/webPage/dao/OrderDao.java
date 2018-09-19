@@ -5,6 +5,7 @@ import com.ant.webPage.model.UserFinancial;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 订单dao
@@ -25,5 +26,5 @@ public interface OrderDao extends BaseMapper<Order> {
      * @param userId
      * @return
      */
-    UserFinancial selectUserFinancial(Integer userId);
+    List<UserFinancial> selectUserFinancial(Integer userId);
 }

@@ -10,4 +10,10 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface ProxyService extends IService<Proxy> {
 
+    /**
+     * 通过用户id查询代理表
+     * @param userId
+     * @return
+     */
+    Proxy selectByUserId(Integer userId);
 }

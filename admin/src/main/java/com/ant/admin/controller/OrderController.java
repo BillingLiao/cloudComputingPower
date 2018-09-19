@@ -3,6 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
+import com.ant.admin.dao.CloudProductDao;
 import com.ant.admin.dao.OrderRecordDao;
 import com.ant.admin.service.CloudProductService;
 import com.ant.admin.service.FinancialProductService;
@@ -37,6 +38,11 @@ public class OrderController extends  AbstractController{
 
     @Autowired private ProductService productService;
 
+    @Autowired private CloudProductDao cloudProductDao;
+
+
+
+
     /**
      * 列表
      * 产品订单
@@ -47,9 +53,6 @@ public class OrderController extends  AbstractController{
     @RequiresPermissions("order:list")
     public Result list(@RequestParam Map<String,Object> params){
         PageUtils page=orderService.queryPage(params);
-/*        EntityWrapper<Order> wrapper = new EntityWrapper<Order>();
-        wrapper.like("c.category_name", order.getCategoryName());
-        PageUtils page = new PageUtils(orderService.queryPage(params, wrapper));*/
         return Result.ok().put("page", page);
     }
 
@@ -62,9 +65,19 @@ public class OrderController extends  AbstractController{
     public Result update(@RequestBody Order order) throws ParseException {
         //校验类型
         ValidatorUtils.validateEntity(order);
+        Order orderOld = orderService.selectById(order.getOrderId());
         Date createTime = new Date();
         //更新付款时间
         if(order.getOrderStatus() == 2){
+            Product product = productService.selectById(order.getProductId());
+            Integer type = product.getCategoryId();
+            if(type == 2){ //云算力产品
+                CloudProduct cloudProduct = cloudProductDao.selectByProductId(product.getProductId());
+                BigDecimal stock = cloudProduct.getStock(); //库存
+                stock = stock.subtract(order.getAmount()); //减去库存
+                cloudProduct.setStock(stock);
+                cloudProductDao.updateAllColumnById(cloudProduct);
+            }
             order.setPaymentTime(createTime);
         }else if(order.getOrderStatus() == 5){ //更新完成时间
             order.setCompletionTime(createTime);

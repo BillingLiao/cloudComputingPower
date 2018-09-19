@@ -80,13 +80,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
         String phone = selectUser.getTelphone();
         BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
         BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
+        BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
         if(btcYesterday == null){
             btcYesterday = new BigDecimal(0.00);
         }
         if(cnyYesterday == null){
             cnyYesterday = new BigDecimal(0.00);
         }
-        Account account = new Account(amount,phone,btcBalance,cnyBalance,btcYesterday,cnyYesterday);
+        if(frozenIncome == null){
+            frozenIncome = new BigDecimal(0.00);
+        }
+        Account account = new Account(amount,phone,btcBalance,cnyBalance,frozenIncome,btcYesterday,cnyYesterday);
         return account;
     }
 }

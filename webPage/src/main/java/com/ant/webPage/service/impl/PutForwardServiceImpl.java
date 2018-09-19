@@ -51,6 +51,14 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
         if(num == 1){
             return Result.error("请填入正确的金额");
         }
+
+        /**
+         * 更新用户余额
+         */
+        btcBalance = btcBalance.subtract(btc);
+        selectUser.setBtc(btcBalance);
+        userDao.updateAllColumnById(selectUser);
+
         String putForwardCode = SerialNumberUtil.toSerialNumber(user.getUserId());
         //生成订单号
         String putForwardNo;
@@ -79,6 +87,13 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
         if(num == 1){
             return Result.error("请填入正确的金额");
         }
+        /**
+         * 更新用户余额
+         */
+        cnyBalance = cnyBalance.subtract(cny);
+        selectUser.setCny(cnyBalance);
+        userDao.updateAllColumnById(selectUser);
+
         String putForwardCode = SerialNumberUtil.toSerialNumber(user.getUserId());
         //生成提现单号
         String putForwardNo;

@@ -8,6 +8,7 @@ import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * 订单service
@@ -62,5 +63,5 @@ public interface OrderService extends IService<Order> {
      * @param userId
      * @return
      */
-    UserFinancial selectUserFinancial(Integer userId);
+    List<UserFinancial> selectUserFinancial(Integer userId);
 }

@@ -53,22 +53,15 @@
 		</ul>
 		</div>
 		
-		<div class="tabconbox">
+		<div class="tabconbox" v-for="userFinancial in userFinancialList">
 			
 			<div class="dl">
-				<h1>矿场合约1个月</h1>
-				<div class="stats_2"><h2>持有金额</h2><h2 class="date">10000元</h2></div>
-				<div class="audit">28天后赎回</div>
-				<div class="amount">累计收益： 1.12元</div>
+				<h1>{{userFinancial.productName}}</h1>
+				<div class="stats_2"><h2>持有金额</h2><h2 class="date">{{userFinancial.money}}元</h2></div>
+				<div class="audit">{{userFinancial.redemptionDay}}天后赎回</div>
+				<div class="amount">累计收益： {{userFinancial.cumulativeIncome}}元</div>
 			</div>
-			
-			<div class="dl">
-				<h1>矿场合约1个月</h1>
-				<div class="stats_2"><h2>持有金额</h2><h2 class="date">10000元</h2></div>
-				<div class="audit">28天后赎回</div>
-				<div class="amount">累计收益： 1.12元</div>
-			</div>
-			
+
 		</div>
 		
 		

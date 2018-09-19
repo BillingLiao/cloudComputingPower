@@ -67,6 +67,11 @@ public class Income implements Serializable {
     private BigDecimal returnCycle;
 
     /**
+     * 理财 日收益
+     */
+    private BigDecimal money;
+
+    /**
      * 日期
      */
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
@@ -143,6 +148,14 @@ public class Income implements Serializable {
 
     public void setReturnCycle(BigDecimal returnCycle) {
         this.returnCycle = returnCycle;
+    }
+
+    public BigDecimal getMoney() {
+        return money;
+    }
+
+    public void setMoney(BigDecimal money) {
+        this.money = money;
     }
 
     public Date getCreateTime() {

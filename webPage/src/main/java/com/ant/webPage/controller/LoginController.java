@@ -9,6 +9,7 @@ import com.ant.entity.Proxy;
 import com.ant.entity.User;
 import com.ant.webPage.service.ProxyService;
 import com.ant.webPage.service.UserService;
+import com.ant.webPage.tool.CheckTool;
 import com.ant.webPage.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,14 +41,13 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(@RequestParam("telphone") String telphone, @RequestParam("password") String password){
-        Result result = userService.login(telphone,password);
-        return result;
+        return userService.login(telphone,password);
     }
 
     /**
      * 发送验证码
      */
-    @GetMapping("/sendCode")
+    @PostMapping("/sendCode")
     public Result sendCode(@RequestParam String phone,@RequestParam Integer msgType) throws ClientException {
         ValidatorUtils.validateEntity(phone);
         //注册发送验证码时，要判断用户是否有账号
@@ -67,33 +67,33 @@ public class LoginController {
         if( redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone)!= null) {
             return Result.error("发送验证码比较频繁，等一分钟之后再试试");
         }
-        String code = RandomUtil.randomNumbers(6);
+        String verificationCode = RandomUtil.randomNumbers(6);
         //SendSmsResponse response = Alimsg.sendSms(phone,tempCode,code);
         /*String resultCode = response.getCode();
         if(!resultCode.equals("OK")){
             return Result.error("获取验证码失败，请重新获取");
         }*/
-        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, code, 60 * 15);
-        redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, code, 60 * 1);
-        return Result.ok("验证码获取成功").put("code",code);
+        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, verificationCode, 60 * 15);
+        redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, verificationCode, 60 * 1);
+        return Result.ok("验证码获取成功").put("verificationCode",verificationCode);
     }
 
     /**
      * 注册
      * @param phone
      * @param password
-     * @param code
+     * @param verification
      * @return
      */
     @PostMapping("/register")
     @Transactional(rollbackFor=Exception.class)
-    public Result register(@RequestParam String phone,@RequestParam String password,@RequestParam String code,@RequestParam(required = false) String invitationCode){
-        Assert.notBlank(code,"短信验证码不能为空");
+    public Result register(@RequestParam String phone,@RequestParam String password,@RequestParam String verification,@RequestParam(required = false) String invitationCode){
+        Assert.notBlank(verification,"短信验证码不能为空");
         String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_CODE_KEY+phone);
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
-        if(! code.equals(codeRedis)) {
+        if(!verification.equals(codeRedis)) {
             return Result.error("输入验证码有误，请重新填写");
         }
         if(password==null || "".equals(password)){
@@ -107,29 +107,33 @@ public class LoginController {
 
         Date createTime = new Date();
         User user = new User(phone,psw,salt,btc,cny,1,createTime);
-        userService.insert(user);
-        //设置邀请码 5位随机数
-        String invitationCodeNew = SerialNumberUtil.toSerialNumber(user.getUserId());
-        user.setInvitationCode(invitationCodeNew);
-        userService.updateAllColumnById(user);
         //判断有无邀请码
-        if(invitationCode != null) {
+        if(CheckTool.isString(invitationCode)) {
             //判断能否找到邀请用户
             User fatherUser = userService.selectByInvitationCode(invitationCode);
             if (fatherUser == null) {
-                return Result.error("验证码有误，请重新填写");
+                return Result.error("邀请码有误，请重新填写");
             }else{
-                Proxy proxy = new Proxy(user.getUserId(),0);
-                Proxy fatherProxy = new Proxy(fatherUser.getUserId(),0);
-                //设置代理
+                userService.insert(user);
+                //设置邀请码 5位随机数
+                String invitationCodeNew = SerialNumberUtil.toSerialNumber(user.getUserId());
+                user.setInvitationCode(invitationCodeNew);
+                userService.updateAllColumnById(user);
+                Proxy fatherProxy = new Proxy();
+                fatherProxy.setUserId(fatherUser.getUserId());
+                //设置子代理
                 fatherProxy.setSonId(user.getUserId());
-                proxy.setFatherId(fatherUser.getUserId());
-                proxyService.insert(proxy);
                 proxyService.insert(fatherProxy);
             }
 
+        }else{
+            userService.insert(user);
+            //设置邀请码 5位随机数
+            String invitationCodeNew = SerialNumberUtil.toSerialNumber(user.getUserId());
+            user.setInvitationCode(invitationCodeNew);
+            userService.updateAllColumnById(user);
         }
-        return Result.ok();
+        return userService.login(phone,password);
     }
 
 
@@ -212,12 +216,10 @@ public class LoginController {
             if (fatherUser == null) {
                 return Result.error("验证码有误，请重新填写");
             }else{
-                Proxy proxy = new Proxy(user.getUserId(),0);
-                Proxy fatherProxy = new Proxy(fatherUser.getUserId(),0);
-                //设置代理
+                Proxy fatherProxy = new Proxy();
+                fatherProxy.setUserId(fatherUser.getUserId());
+                //设置子代理
                 fatherProxy.setSonId(user.getUserId());
-                proxy.setFatherId(fatherUser.getUserId());
-                proxyService.insert(proxy);
                 proxyService.insert(fatherProxy);
             }
 

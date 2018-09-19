@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,7 +51,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     @Transactional(rollbackFor = Exception.class)
     public Result addCloudOrder(User user, Product product, BigDecimal amount, BigDecimal actualReceipts) {
         CloudProduct cloudProduct = cloudProductDao.selectByProductId(product.getProductId());
-        BigDecimal stock = cloudProduct.getStock();
+        BigDecimal stock = cloudProduct.getStock(); //库存
         int i = stock.compareTo(BigDecimal.ZERO);
         if(i == 0){ //判断有无库存
             return Result.error("产品已售完");
@@ -137,8 +138,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         return Result.ok().put("result",result);
     }
 
+    /**
+     * 查询用户 理财产品 赎回天数跟累计收益
+     * @param userId
+     * @return
+     */
     @Override
-    public UserFinancial selectUserFinancial(Integer userId) {
+    public List<UserFinancial> selectUserFinancial(Integer userId) {
         return orderDao.selectUserFinancial(userId);
     }
 }

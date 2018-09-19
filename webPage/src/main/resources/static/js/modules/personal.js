@@ -1,7 +1,3 @@
-if(window.localStorage.getItem('token')==null){
-     window.location.href='login.html'
-}
-
 function getUrlParam(name){
     var obj = {};
     var url_0=window.location.href;
@@ -32,25 +28,35 @@ var vm = new Vue({
 	},
 	created: function(){
 	    var token = window.localStorage.getItem('token');
-	    $.ajax({
-            url: api + 'user/my',
-            type:'POST',
-            dataType:'json',
-            data:{
-                token:token
-            },
-            success:function(res){
-                console.log(res);
-                if(res.code==0){
-                    console.log(res.account);
-                    vm.account = res.account;
-                }else{
+	    if(token == null){
+	         swal("请先登录", {
+               buttons: false,
+               timer: 2000,
+             }).then((value) => {
+                window.location.href='login.html'
+            });
+        }else{
+             $.ajax({
+                url: api + 'user/my',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    token:token
+                },
+                success:function(res){
+                    console.log(res);
+                    if(res.code==0){
+                        console.log(res.account);
+                        vm.account = res.account;
+                    }else{
+                        console.log(res);
+                    }
+                },
+                error: function(res) {
                     console.log(res);
                 }
-            },
-            error: function(res) {
-                console.log(res);
-            }
-        });
+            });
+        }
+
     }
 });

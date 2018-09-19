@@ -58,12 +58,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         return pageUtil;
     }
 
-   /* @Override
-    public Page<Order> queryPage(Map<String, Object> params, Wrapper<Order> wrapper) {
-        Page<Order> page =new Query<Order>(params).getPage();
-        return page.setRecords(baseMapper.selectOrderList(page,wrapper));
-    }*/
-
     @Transactional(rollbackFor=Exception.class)
     @Override
     public void updateTypeByTime() {

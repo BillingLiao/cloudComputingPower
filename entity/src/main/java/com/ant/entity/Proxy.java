@@ -20,11 +20,6 @@ public class Proxy implements Serializable {
 
     }
 
-    public Proxy(Integer userId, Integer level) {
-        this.userId = userId;
-        this.level = level;
-    }
-
     /**
      * 代理编号
      */

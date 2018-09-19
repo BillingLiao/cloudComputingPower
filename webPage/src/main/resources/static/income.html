@@ -57,16 +57,11 @@
 			<div class="tabconbox">		
 				
 				<div class="stats_sl">
-					<div class="ssl_one"><h2>0.00005BTC<p>可提现收益</p><a href="record_tx.html">收益提现</a></h2></div>
+					<div class="ssl_one"><h2>{{account.btcBalance}}BTC<p>可提现收益</p><a href="record_tx.html">收益提现</a></h2></div>
 				</div>
 				
-				<div class="sy_info">
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
+				<div class="sy_info" v-for="btcIncome in btcIncomelist">
+					<div class="stats_sy"><h2>{{btcIncome.createTime}}</h2><h2 class="date">+{{btcIncome.settlementIncome}}BTC</h2></div>
 				</div>
 			
 			</div>
@@ -78,18 +73,13 @@
 			<div class="tabconbox">		
 				
 				<div class="stats_sl">
-					<h2>100041元<p>可提现收益</p></h2>
-					<h2>10000元<p>冻结收益</p></h2>
+					<h2>{{account.cnyBalance}}元<p>可提现收益</p></h2>
+					<h2>{{account.frozenIncome}}元<p>冻结收益</p></h2>
 					<div class="ssl_one"><h2><a href="record_tx.html">收益提现</a></h2></div>
 				</div>
 				
-				<div class="sy_info">
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
+				<div class="sy_info" v-for="cnyIncome in cnyIncomelist">
+					<div class="stats_sy"><h2>{{cnyIncome.createTime}}</h2><h2 class="date">+{{cnyIncome.money}}元</h2></div>
 				</div>
 				
 			
