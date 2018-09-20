@@ -72,14 +72,14 @@
 					<div class="bf">
 						<label>提现金额：（收取0.5%矿工费）</label>
 						<input type="text" name="name" class="box1" value="" v-model = "btcTrue"/>
+						<label><font color="red">{{btcMsg}}</font></label>
 					</div>
 					<div class="pay_tips">
 						<p>余额：{{account.btcBalance}}BTC<a @click="allBtc">全部提现</a></p>
 					</div>
-					<div class="bf" id = "btcmsg">
-					</div>
 
-					<div class="record_btn"><a class="yew" href="">立即提交</a></div>
+
+					<div class="record_btn"><a class="yew" @click="addBtcPutForward">立即提交</a></div>
 
 
 					<link rel="stylesheet" href="css/jquery-labelauty.css">
@@ -113,12 +113,13 @@
 					<div class="bf">
 						<label>提现金额：</label>
 						<input type="text" name="name" class="box1" value="" v-model = "cny"/>
+						<label><font color="red">{{cnyMsg}}</font></label>
 					</div>
 					<div class="pay_tips">
 						<p>余额：{{account.cnyBalance}}元<a @click="allCny">全部提现</a></p>
 					</div>
 					
-					<div class="record_btn"><a class="yew" href="">立即提交</a></div>
+					<div class="record_btn"><a class="yew" @click="addCnyPutForward">立即提交</a></div>
 
 					<link rel="stylesheet" href="css/jquery-labelauty.css">
 					<script src="js/form/jquery-labelauty.js"></script>

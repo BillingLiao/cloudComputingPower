@@ -3,9 +3,18 @@ var vm = new Vue({
 	data:{
 		account :{},
 		cny: null,
-		btc: null,
-		btcTrue: null
+		btcTrue: null,
+		btcMsg: '',
+		cnyMsg: ''
 	},
+	watch: {
+        btcTrue: function(newBtcTrue, oldBtcTrue){
+            this.debouncedGetChangeBtc();
+        },
+        cny: function(newCny, oldCny){
+            this.debouncedGetChangeCny();
+        }
+    },
 	created: function(){
 	    var token = window.localStorage.getItem('token');
         if(token == null){
@@ -44,14 +53,141 @@ var vm = new Vue({
                });
             }
         });
+        this.debouncedGetChangeBtc = _.debounce(this.getChangeBtc, 500);
+        this.debouncedGetChangeCny = _.debounce(this.getChangeCny, 500);
     },
     methods:{
         allBtc: function(res){
-            this.btc = this.account.btcBalance;
-            this.btcTrue = this.btc-(this.btc*0.005);
+            var btc = this.account.btcBalance;
+            this.btcTrue = btc-(btc*0.005);
         },
         allCny: function(res){
             this.cny = this.account.cnyBalance;
+        },
+        getChangeBtc: function(){
+           var btc = vm.account.btcBalance;
+           if(this.btcTrue <= 0){
+               this.btcMsg = '提现金额不能小于0';
+           }else if(this.btcTrue > (btc-(btc*0.005))){
+               this.btcMsg = '输入金额超过可提现余额';
+           }else{
+               this.btcMsg = '';
+           }
+        },
+        getChangeCny: function(){
+            if(this.cny <= 0){
+               this.cnyMsg = '提现金额不能小于0';
+            }else if(this.cny > this.account.cnyBalance){
+              this.cnyMsg = '输入金额超过可提现余额';
+            }else{
+               this.cnyMsg = '';
+            }
+        },
+        addBtcPutForward: function(){
+            var token = window.localStorage.getItem('token');
+            var btc = vm.account.btcBalance;
+            if(this.btcTrue <= 0){
+                swal({
+                   text: "提现金额不能小于0",
+                   icon: "warning",
+                   button: "返回",
+                   });
+　　　           return;
+            }
+            if(this.btcTrue > (btc-(btc*0.005))){
+               swal({
+                    text: "输入金额超过可提现余额",
+                    icon: "warning",
+                    button: "返回",
+                    });
+　　　          return;
+            }
+             $.ajax({
+                url: api + 'putForward/add',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    token: token,
+                    forwardType: 0,
+                    btcTrue: this.btcTrue
+                },
+                success:function(res){
+                    if(res.code==0){
+                        swal(res.msg, {
+                           buttons: false,
+                           timer: 2000,
+                         }).then((value) => {
+                            window.location.reload();
+                        });
+                    }else{
+                         swal({
+                            text: res.msg,
+                            icon: "error",
+                            button: "返回",
+                           });
+                    }
+                },
+                error: function(res) {
+                    swal({
+                       text: res.msg,
+                       icon: "error",
+                       button: "返回",
+                      });
+                }
+             });
+
+        },
+        addCnyPutForward: function(){
+            var token = window.localStorage.getItem('token');
+            if(this.cny <= 0){
+                swal({
+                   text: "提现金额不能小于0",
+                   icon: "warning",
+                   button: "返回",
+                   });
+　　　           return;
+            }
+            if(this.cny > this.account.cnyBalance){
+               swal({
+                    text: "输入金额超过可提现余额",
+                    icon: "warning",
+                    button: "返回",
+                    });
+　　　          return;
+            }
+             $.ajax({
+                url: api + 'putForward/add',
+                type:'POST',
+                dataType:'json',
+                data:{
+                    token: token,
+                    forwardType: 1,
+                    cny: this.cny
+                },
+                success:function(res){
+                    if(res.code==0){
+                        swal(res.msg, {
+                           buttons: false,
+                           timer: 2000,
+                         }).then((value) => {
+                            window.location.reload();
+                        });
+                    }else{
+                         swal({
+                            text: res.msg,
+                            icon: "error",
+                            button: "返回",
+                           });
+                    }
+                },
+                error: function(res) {
+                    swal({
+                       text: res.msg,
+                       icon: "error",
+                       button: "返回",
+                      });
+                }
+             });
         }
     }
 });

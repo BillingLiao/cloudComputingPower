@@ -106,7 +106,7 @@ var vm = new Vue({
                         icon: "warning",
                         button: "返回",
                         });
-    　　　           return false;
+    　　　           return;
                 }
                 if(this.amount > this.cloudProduct.stock){
                     swal({

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -36,13 +37,13 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
     /**
      * 提现btc
      * @param user
-     * @param btc
      * @param btcTrue
      * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result addBtcPutForward(User user, Integer forwardType, BigDecimal btc, BigDecimal btcTrue) {
+    public Result addBtcPutForward(User user, Integer forwardType, BigDecimal btcTrue) {
+        BigDecimal btc = btcTrue.divide(new BigDecimal(0.995),9, RoundingMode.HALF_UP);
         Integer userId = user.getUserId();
         User selectUser = userDao.selectById(userId);
         BigDecimal btcBalance = selectUser.getBtc();

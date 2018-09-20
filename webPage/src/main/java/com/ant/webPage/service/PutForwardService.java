@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  */
 public interface PutForwardService extends IService<PutForward> {
 
-    Result addBtcPutForward(User user,Integer forwardType, BigDecimal btc, BigDecimal btcTrue);
+    Result addBtcPutForward(User user,Integer forwardType, BigDecimal btcTrue);
 
     Result addCnyPutForward(User user, Integer forwardType,BigDecimal cny);
 }
