@@ -13,4 +13,6 @@ public interface BtcAddrService extends IService<BtcAddr> {
     Result addBtcAddr(User user, String btcAddr);
 
     Result updateBtcAddr(User user, String btcAddr, Integer btcAddrId);
+
+    BtcAddr selectBtcAddrByUserId(Integer userId);
 }

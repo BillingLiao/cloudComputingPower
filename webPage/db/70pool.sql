@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS `t_btc_addr`;
 CREATE TABLE `t_btc_addr` (
   `btc_addr_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '比特币地址id',
   `user_id` INT(11) NOT NULL COMMENT '用户编号',
-  `btc_addr` VARCHAR(100) DEFAULT NULL COMMENT '比特币地址',
+  `addr` VARCHAR(100) DEFAULT NULL COMMENT '比特币地址',
   `create_at` DATETIME DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`btc_addr_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='比特币地址';
@@ -533,7 +533,7 @@ CREATE TABLE `t_put_forward` (
   `put_forward_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `forward_no` VARCHAR(50) NOT NULL COMMENT '提现单号',
   `user_id` INT(11) NOT NULL COMMENT '用户编号',
-  `forward_type` INT(11) NOT NULL COMMENT '提现类型 1:比特币钱包地址 2:银行卡',
+  `forward_type` INT(11) NOT NULL COMMENT '提现类型 0:比特币钱包地址 1:银行卡',
   `forward_status` INT(11) NOT NULL COMMENT '提现状态 0:已提交 1:提现关闭 2:提现失败  3:提现成功',
   `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力提现(比特币)',
   `btc_true` DECIMAL(25,11) DEFAULT NULL COMMENT '扣除矿工费(比特币)',
@@ -545,7 +545,8 @@ CREATE TABLE `t_put_forward` (
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','3','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (2,'ysl5454547','2','1','0','0','0','500','2017-03-24 15:23:13',NULL);
 
 DROP TABLE IF EXISTS `t_present_record`;
 
@@ -561,6 +562,7 @@ CREATE TABLE `t_present_record` (
 
 INSERT  INTO `t_present_record` VALUES (1,'1','0','2017-03-24 15:23:13');
 INSERT  INTO `t_present_record` VALUES (2,'1','3','2018-03-24 15:23:13');
+INSERT  INTO `t_present_record` VALUES (3,'2','0','2017-03-24 15:23:13');
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

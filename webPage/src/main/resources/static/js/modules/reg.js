@@ -1,7 +1,6 @@
 var vm = new Vue({
 	el:'#page',
 	data:{
-		account :{},
 		phone: null,
 		password: null,
 		verificationCode: null,
@@ -147,9 +146,15 @@ var vm = new Vue({
                 invitationCode: this.invitationCode
             },
             success:function(res){
+                _this.loading = false;
                 if(res.code==0){
-                    window.localStorage.setItem('token',res.result);
-                    window.location.href='index.html'
+                    swal(res.msg, {
+                       buttons: false,
+                       timer: 2000,
+                     }).then((value) => {
+                        window.localStorage.setItem('token',res.result);
+                        window.location.href='index.html'
+                    });
                 }else{
                     swal({
                      text: res.msg,
@@ -159,6 +164,7 @@ var vm = new Vue({
                 }
             },
             error: function(res) {
+                _this.loading = false;
                 swal({
                  text: res.msg,
                  icon: "error",

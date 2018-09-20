@@ -8,4 +8,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @date 2018/9/15 17:58
  */
 public interface BtcAddrDao extends BaseMapper<BtcAddr> {
+    BtcAddr selectBtcAddrByUserId(Integer userId);
 }

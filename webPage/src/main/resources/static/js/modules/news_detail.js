@@ -27,11 +27,12 @@ var vm = new Vue({
 		totices :{}
 	},
 	created: function(){
+	   var _this = this;
        var productId = getUrlParam('toticesId');
-       debugger;
         $.get(api + 'totices/findOne/'+productId, function(r){
             console.log(r);
-            vm.totices = r.totices;
+            _this.totices = r.totices;
+            $('#contentInfo').html(_this.totices.content);//通过html()方法将数据输出到div中
         });
     }
 });

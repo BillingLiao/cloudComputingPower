@@ -17,7 +17,8 @@
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src = "js/lodash.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -88,7 +89,7 @@
 		</ul>
 		<!--主要参数 end-->
 		
-		<li><input type="checkbox" class="checkbox" name="promise" checked="checked"/><label class="promise" > 同意签约云算力服务协议</label></li>
+		<li><input type="checkbox" class="checkbox" name="promise" checked="true"/><label class="promise" >{{consentClause}}</label></li>
 		
 		
 		<div class="index_reg"><a class="yew"  @click="goToPay">去支付</a></div>

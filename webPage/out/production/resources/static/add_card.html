@@ -17,15 +17,12 @@
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
 		new WOW().init();
-
-		if(window.localStorage.getItem('token')==null){
-            window.location.href='login.html'
-		}
 	</script>
 		
 </head>
@@ -55,9 +52,9 @@
 	
 					<div class="re_box personal">
 						<p class="tips">请仔细核对输入的银行账号信息。</p>
-						<li><label>真实姓名：</label><input type="text" placeholder="未填写" v-model="bank.trueName"/></li>
-						<li><label>开户行：</label><input type="text" placeholder="未填写" v-model="bank.openingBank"/></li>
-						<li><label>银行卡号：</label><input type="text" placeholder="未填写" v-model="bank.cardNumber"/></li>
+						<li><label>真实姓名：</label><input type="text" placeholder="未填写" v-model="trueName"/></li>
+						<li><label>开户行：</label><input type="text" placeholder="未填写" v-model="openingBank"/></li>
+						<li><label>银行卡号：</label><input type="text" placeholder="未填写" v-model="cardNumber"/></li>
 						</li>
 					</div>
 					

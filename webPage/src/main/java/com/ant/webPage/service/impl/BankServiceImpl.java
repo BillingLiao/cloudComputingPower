@@ -25,7 +25,7 @@ public class BankServiceImpl extends ServiceImpl<BankDao, Bank> implements BankS
     @Override
     public Result addBank(User user, String cardNumber, String openingBank, String trueName) {
         if(!CheckTool.isString(cardNumber)){
-            return Result.error("参数为空");
+            return Result.error("银行卡号不能为空");
         }
         Bank bank = new Bank();
         bank.setUserId(user.getUserId());
@@ -34,13 +34,13 @@ public class BankServiceImpl extends ServiceImpl<BankDao, Bank> implements BankS
         bank.setTrueName(trueName);
         bank.setCreateAt(new Date());
         bankDao.insert(bank);
-        return Result.ok("操作成功").put("bank",bank);
+        return Result.ok("添加成功").put("bank",bank);
     }
 
     @Override
     public Result updateBank(User user, String cardNumber, String openingBank, String trueName, Integer bankId) {
         if(!CheckTool.isString(cardNumber)){
-            return Result.error("参数为空");
+            return Result.error("银行卡号不能为空");
         }
         Bank bank = bankDao.selectById(bankId);
         if(bank == null){
@@ -53,7 +53,7 @@ public class BankServiceImpl extends ServiceImpl<BankDao, Bank> implements BankS
         bankUpdate.setOpeningBank(openingBank);
         bankUpdate.setTrueName(trueName);
         bankDao.updateAllColumnById(bankUpdate);
-        return Result.ok("操作成功").put("bank",bank);
+        return Result.ok("修改成功").put("bank",bank);
     }
 
     @Override

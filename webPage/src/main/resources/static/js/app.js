@@ -55,6 +55,15 @@ function isPhone(str) {
 	}
 }
 
+function isPositiveInteger(str) {
+    var myreg = /(^[1-9]\d*$)/;
+    if(!myreg.test(str)){
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function lengthChar(str) {
 	if(!isString(str)) return 0;
 	str = str.replace(/[^\u0000-\u00ff]/g, "aa");

@@ -54,7 +54,7 @@ public class LoginController {
         if(msgType == 0){
             User user = userService.findByPhone(phone);
             if(user != null){
-                return Result.error("您已经注册过账号，请登录");
+                return Result.error("您已经注册过账号");
             }
         }
         else if(msgType == 1){
@@ -142,18 +142,18 @@ public class LoginController {
      * @param phone 手机号码
      * @param password  密码
      * @param confirmPassword   确认密码
-     * @param code  验证码
+     * @param verification  验证码
      * @return
      */
     @PostMapping("/resetPass")
-    public Result resetPass(@RequestParam String phone,@RequestParam String password,@RequestParam String confirmPassword,@RequestParam String code){
+    public Result resetPass(@RequestParam String phone,@RequestParam String password,@RequestParam String confirmPassword,@RequestParam String verification){
         ValidatorUtils.validateEntity(phone);
-        Assert.notBlank(code,"短信验证码不能为空");
+        Assert.notBlank(verification,"短信验证码不能为空");
         String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_CODE_KEY+phone);
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
-        if(!code.equals(codeRedis)) {
+        if(!verification.equals(codeRedis)) {
             return Result.error("输入验证码有误，请重新填写");
         }
 

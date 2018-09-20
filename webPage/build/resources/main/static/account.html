@@ -13,17 +13,16 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
 		new WOW().init();
-
-			if(window.localStorage.getItem('token')==null){
-			    window.location.href='login.html'
-			}
 
 	</script>
 
@@ -35,7 +34,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -57,11 +56,10 @@
 					<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
 						<div>
 							<h2 id="modal1Title">录入BTC地址</h2>
-							<a class="btc_add_a" href="">扫描钱包地址二维码</a>
-							<input type="text" class="btc_add" placeholder="未填写" />
+							<input type="text" class="btc_add" placeholder="未填写" v-model="addr"/>
 						</div>
 						<br>
-					<button data-remodal-action="confirm" class="remodal-confirm">确认</button>
+					<button data-remodal-action="confirm" class="remodal-confirm" @click="confirm">确认</button>
 					<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
 				</div>
 				
@@ -100,7 +98,6 @@
 	
 			
 </div>
-	
-		
+<script stype="text/javascript" src="js/modules/account.js"></script>
 </body>
 </html>

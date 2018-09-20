@@ -13,8 +13,10 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -42,7 +44,7 @@
 	<div class="conbox">
 
 		<!--tab-->
-		<script language="JavaScript" src="js/tab.js" type="text/javascript"></script> 
+		<script language="JavaScript" src="js/tab.js" type="text/javascript"></script>
 		<div class="Menubox">
 		<ul>
 			<li id="one1" onClick="setTab('one',1,2)" class="hover">算力收益</li>
@@ -55,16 +57,11 @@
 			<div class="tabconbox">		
 				
 				<div class="stats_sl">
-					<div class="ssl_one"><h2>0.00005BTC<p>可提现收益</p><a href="record_tx.html">收益提现</a></h2></div>
+					<div class="ssl_one"><h2>{{account.btcBalance}}BTC<p>可提现收益</p><a href="record_tx.html">收益提现</a></h2></div>
 				</div>
 				
-				<div class="sy_info">
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
+				<div class="sy_info" v-for="btcIncome in btcIncomelist">
+					<div class="stats_sy"><h2>{{btcIncome.createTime}}</h2><h2 class="date">+{{btcIncome.settlementIncome}}BTC</h2></div>
 				</div>
 			
 			</div>
@@ -76,18 +73,13 @@
 			<div class="tabconbox">		
 				
 				<div class="stats_sl">
-					<h2>100041元<p>可提现收益</p></h2>
-					<h2>10000元<p>冻结收益</p></h2>
+					<h2>{{account.cnyBalance}}元<p>可提现收益</p></h2>
+					<h2>{{account.frozenIncome}}元<p>冻结收益</p></h2>
 					<div class="ssl_one"><h2><a href="record_tx.html">收益提现</a></h2></div>
 				</div>
 				
-				<div class="sy_info">
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-28</h2><h2 class="date">+0.0000055BTC</h2></div>
-					<div class="stats_sy"><h2>2018-08-25</h2><h2 class="date">+0.0000055BTC</h2></div>
+				<div class="sy_info" v-for="cnyIncome in cnyIncomelist">
+					<div class="stats_sy"><h2>{{cnyIncome.createTime}}</h2><h2 class="date">+{{cnyIncome.money}}元</h2></div>
 				</div>
 				
 			
@@ -121,7 +113,7 @@
 	
 			
 </div>
-	
-		
+
+<script stype="text/javascript" src="js/modules/income.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ import com.ant.entity.Order;
 import com.ant.entity.User;
 import com.ant.webPage.dao.IncomeDao;
 import com.ant.webPage.dao.OrderDao;
+import com.ant.webPage.dao.PutForwardDao;
 import com.ant.webPage.dao.UserDao;
 import com.ant.webPage.model.Account;
 import com.ant.webPage.service.UserService;
@@ -29,6 +30,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
     @Autowired private OrderDao orderDao;
 
     @Autowired private IncomeDao incomeDao;
+
+    @Autowired private PutForwardDao putForwardDao;
 
 
     /**
@@ -57,7 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             }
 
         }else{
-            return Result.error("该手机号还未注册");
+            return Result.error("您还未注册过账户，请先注册");
         }
     }
 
@@ -77,10 +80,18 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
         BigDecimal amount = orderDao.selectAmountByUser(userId);
         BigDecimal btcBalance = selectUser.getBtc();
         BigDecimal cnyBalance = selectUser.getCny();
+        BigDecimal btcPresent = putForwardDao.selectBtcPresentByUserId(userId);
+        BigDecimal cnyPresent = putForwardDao.selectCnyPresentByUserId(userId);
         String phone = selectUser.getTelphone();
         BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
         BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
         BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
+        if(btcPresent == null){
+            btcPresent = new BigDecimal(0.00);
+        }
+        if(cnyPresent == null){
+            cnyPresent = new BigDecimal(0.00);
+        }
         if(btcYesterday == null){
             btcYesterday = new BigDecimal(0.00);
         }
@@ -90,7 +101,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
         if(frozenIncome == null){
             frozenIncome = new BigDecimal(0.00);
         }
-        Account account = new Account(amount,phone,btcBalance,cnyBalance,frozenIncome,btcYesterday,cnyYesterday);
+        Account account = new Account(amount,phone,btcBalance,btcPresent,cnyBalance,cnyPresent,frozenIncome,btcYesterday,cnyYesterday);
         return account;
     }
 }

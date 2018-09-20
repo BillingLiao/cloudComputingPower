@@ -28,9 +28,19 @@ public class Account implements Serializable {
     private BigDecimal btcBalance;
 
     /**
+     * 提现中(比特币)
+     */
+    private BigDecimal btcPresent;
+
+    /**
      * 余额（人民币）
      */
     private BigDecimal cnyBalance;
+
+    /**
+     * 提现中(人民币)
+     */
+    private BigDecimal cnyPresent;
 
     /**
      * 冻结收益(理财订单状态为已付款)
@@ -50,11 +60,13 @@ public class Account implements Serializable {
     public Account() {
     }
 
-    public Account(BigDecimal amount, String phone, BigDecimal btcBalance, BigDecimal cnyBalance, BigDecimal frozenIncome, BigDecimal btcYesterday, BigDecimal cnyYesterday) {
+    public Account(BigDecimal amount, String phone, BigDecimal btcBalance, BigDecimal btcPresent, BigDecimal cnyBalance, BigDecimal cnyPresent, BigDecimal frozenIncome, BigDecimal btcYesterday, BigDecimal cnyYesterday) {
         this.amount = amount;
         this.phone = phone;
         this.btcBalance = btcBalance;
+        this.btcPresent = btcPresent;
         this.cnyBalance = cnyBalance;
+        this.cnyPresent = cnyPresent;
         this.frozenIncome = frozenIncome;
         this.btcYesterday = btcYesterday;
         this.cnyYesterday = cnyYesterday;
@@ -114,5 +126,21 @@ public class Account implements Serializable {
 
     public void setCnyYesterday(BigDecimal cnyYesterday) {
         this.cnyYesterday = cnyYesterday;
+    }
+
+    public BigDecimal getBtcPresent() {
+        return btcPresent;
+    }
+
+    public void setBtcPresent(BigDecimal btcPresent) {
+        this.btcPresent = btcPresent;
+    }
+
+    public BigDecimal getCnyPresent() {
+        return cnyPresent;
+    }
+
+    public void setCnyPresent(BigDecimal cnyPresent) {
+        this.cnyPresent = cnyPresent;
     }
 }

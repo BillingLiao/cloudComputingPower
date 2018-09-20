@@ -47,9 +47,9 @@
 			<ul class="login_ul">
 				<li><input type="text" class="phone" placeholder="请输入手机号码" v-model="phone" maxlength="11"/></li>
 				<li><input type="password" class="password" placeholder="设置登录密码，6-16位数字或字母" v-model="password" minlength="6" maxlength="16"/></li>
-				<li><input type="text" class="code" placeholder="请输入验证码" v-model="verification"/><a @click="getSMSCode" class="dxcode" maxlength="6">{{sendMsgText}}</a></li>
-				<li><input type="text" class="code" placeholder="邀请码或者推荐人手机（选填）" v-model="invitationCode"/></li>
-				<li><input class="login_btn wow bounceIn" type="button" value="注册并登陆" @click="regAndLogin"/></li>
+				<li><input type="text" class="code" placeholder="请输入验证码" v-model="verification" maxlength="6" @keyup.enter="regAndLogin"/><a @click="getSMSCode" class="dxcode">{{sendMsgText}}</a></li>
+				<li><input type="text" class="code" placeholder="邀请码或者推荐人手机（选填）" v-model="invitationCode" @keyup.enter="regAndLogin"/></li>
+				<li><input class="login_btn wow bounceIn" type="button" value="注册并登录" @click="regAndLogin"/></li>
 				<li><input class="reg_btn_2" type="button" value="忘记密码？" onClick="location.href='forget_password.html'" /></li>
 			</ul>
 			
@@ -87,6 +87,6 @@
 			
 </div>
 
-<script stype="text/javascript" src="js/modules/reg.js"></script>
+<script type="text/javascript" src="js/modules/reg.js"></script>
 </body>
 </html>

@@ -45,6 +45,22 @@ var vm = new Vue({
     },
     methods:{
         getProfit: function(){
+            if(this.actualReceipts < this.financialProduct.thresholdAmount){
+                swal({
+                 text: "投入金额不能小于起投金额",
+                 icon: "warning",
+                 button: "返回",
+                });
+                return;
+            }
+            if(this.actualReceipts > 10000000){
+                swal({
+                 text: "投入金额不能超过1000万",
+                 icon: "warning",
+                 button: "返回",
+                });
+                return;
+            }
             $.ajax({
                 url: api + 'order/profit',
                 type:'POST',
@@ -55,18 +71,25 @@ var vm = new Vue({
                     cycle: this.financialProduct.cycle
                 },
                 success:function(res){
-                    console.log(res);
                     if(res.code==0){
                         var profit = res.profit;
                         vm.maturityIncome = profit.maturityIncome;
                         vm.daily = profit.daily;
                         vm.monthly = profit.monthly
                     }else{
-                        console.log(res);
+                       swal({
+                        text: res.msg,
+                        icon: "error",
+                        button: "返回",
+                       });
                     }
                 },
                 error: function(res) {
-                    console.log(res);
+                   swal({
+                    text: res.msg,
+                    icon: "error",
+                    button: "返回",
+                   });
                 }
             });
         },
@@ -74,10 +97,29 @@ var vm = new Vue({
             var token = window.localStorage.getItem('token');
             var productId = getUrlParam('productId');
             if(token == null){
-                alert('请先登录再购买');
-                window.location.href='login.html'
+                swal('请先登录', {
+                   buttons: false,
+                   timer: 2000,
+                 }).then((value) => {
+                    window.location.href='login.html'
+                });
             }else{
-                var productId = getUrlParam('productId');
+                if(this.actualReceipts < this.financialProduct.thresholdAmount){
+                    swal({
+                     text: "投入金额不能小于起投金额",
+                     icon: "warning",
+                     button: "返回",
+                    });
+                    return;
+                }
+                if(this.actualReceipts > 10000000){
+                    swal({
+                     text: "投入金额不能超过1000万",
+                     icon: "warning",
+                     button: "返回",
+                    });
+                    return;
+                }
                 $.ajax({
                     url: api + 'order/add',
                     type:'POST',
@@ -93,11 +135,19 @@ var vm = new Vue({
                             var orderId = res.order.orderId;
                             window.location.href='pay.html?orderId='+orderId;
                         }else{
-                            console.log(res);
+                           swal({
+                            text: res.msg,
+                            icon: "error",
+                            button: "返回",
+                           });
                         }
                     },
                     error: function(res) {
-                        console.log(res);
+                           swal({
+                            text: res.msg,
+                            icon: "error",
+                            button: "返回",
+                           });
                     }
                 });
             }

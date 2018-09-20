@@ -37,12 +37,12 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
      * 提现btc
      * @param user
      * @param btc
-     * @param btc_true
+     * @param btcTrue
      * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result addBtcPutForward(User user, Integer forwardType, BigDecimal btc, BigDecimal btc_true) {
+    public Result addBtcPutForward(User user, Integer forwardType, BigDecimal btc, BigDecimal btcTrue) {
         Integer userId = user.getUserId();
         User selectUser = userDao.selectById(userId);
         BigDecimal btcBalance = selectUser.getBtc();
@@ -64,7 +64,7 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
         String putForwardNo;
         putForwardNo = "BTC" + putForwardCode;
         Date createTime = new Date();
-        PutForward putForward = new PutForward(putForwardNo,user.getUserId(),forwardType,0,btc,btc_true,createTime);
+        PutForward putForward = new PutForward(putForwardNo,user.getUserId(),forwardType,0,btc,btcTrue,createTime);
         putForwardDao.insert(putForward);
         PresentRecord presentRecord = new PresentRecord(putForward.getPutForwardId(),0,createTime);
         presentRecordDao.insert(presentRecord);

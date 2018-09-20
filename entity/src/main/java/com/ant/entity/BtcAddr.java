@@ -35,7 +35,7 @@ public class BtcAddr implements Serializable {
     /**
      * 比特币地址
      */
-    private String btc_addr;
+    private String addr;
 
     /**
      * 创建时间
@@ -61,12 +61,12 @@ public class BtcAddr implements Serializable {
         this.userId = userId;
     }
 
-    public String getBtc_addr() {
-        return btc_addr;
+    public String getAddr() {
+        return addr;
     }
 
-    public void setBtc_addr(String btc_addr) {
-        this.btc_addr = btc_addr;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public Date getCreateAt() {

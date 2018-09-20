@@ -111,16 +111,28 @@ LEFT JOIN t_financial_product f ON f.product_id = o.product_id
 WHERE o.order_type = 3 AND o.order_status = 2 AND o.user_id = 2
 
 /*
-	查询云算力所有收益记录
+	查询用户云算力所有收益记录
 */
 SELECT * FROM t_income 
 WHERE income_type = 2 AND user_id = 2
 
 /*
-	查询理财所有收益记录
+	查询用户理财所有收益记录
 */
 SELECT * FROM t_income 
 WHERE income_type = 3 AND user_id = 2
+
+/*
+	查找用户btc提现中金额
+*/
+SELECT SUM(btc_true) FROM t_put_forward
+WHERE forward_type = 0 AND forward_status = 0 AND user_id = 2;
+
+/*
+	查找用户cny提现中金额
+*/
+SELECT SUM(cny) FROM t_put_forward
+WHERE forward_type = 1 AND forward_status = 0 AND user_id = 2;
  
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
 WHERE o.order_status = 2;

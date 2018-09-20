@@ -19,17 +19,15 @@ public class BankController {
     @Autowired
     private BankService bankService;
 
-    @RequestMapping("/add")
-    public Result add(@SessionAttribute User user, @RequestParam String cardNumber, @RequestParam(required = false) String openingBank, @RequestParam(required = false) String trueName,
-                      @RequestParam(required = false) Integer bankId){
-        if(bankId == null){
+    @PostMapping("/add")
+    public Result add(@SessionAttribute User user, @RequestParam String cardNumber, @RequestParam(required = false) String openingBank, @RequestParam(required = false) String trueName){
             return bankService.addBank(user,cardNumber,openingBank,trueName);
-        }else{
-            return bankService.updateBank(user,cardNumber,openingBank,trueName,bankId);
-        }
-
     }
 
+    @PostMapping("/update")
+    public Result update(@SessionAttribute User user, @RequestParam String cardNumber, @RequestParam(required = false) String openingBank, @RequestParam(required = false) String trueName, @RequestParam Integer bankId) {
+        return bankService.updateBank(user,cardNumber,openingBank,trueName,bankId);
+    }
     /**
      * 查找有无bankId
      * @return

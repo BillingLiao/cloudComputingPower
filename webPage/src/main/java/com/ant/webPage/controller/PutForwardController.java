@@ -29,15 +29,15 @@ public class PutForwardController {
      * @param user 用户
      * @param forwardType 提现类型 0：比特币地址钱包;1：银行卡
      * @param btc
-     * @param btc_true
+     * @param btcTrue
      * @param cny
      * @return
      */
     @RequestMapping("/add")
     public Result add(@SessionAttribute User user, @RequestParam Integer forwardType, @RequestParam(required = false) BigDecimal btc,
-                      @RequestParam(required = false) BigDecimal btc_true, @RequestParam(required = false) BigDecimal cny){
+                      @RequestParam(required = false) BigDecimal btcTrue, @RequestParam(required = false) BigDecimal cny){
         if(forwardType == 0){
-            return putForwardService.addBtcPutForward(user,forwardType,btc,btc_true);
+            return putForwardService.addBtcPutForward(user,forwardType,btc,btcTrue);
         }else if(forwardType == 1) {
             return putForwardService.addCnyPutForward(user,forwardType,cny);
         }

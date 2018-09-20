@@ -13,17 +13,16 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/mmenu.css" />
-	
+
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
 	<script>
 		new WOW().init();
-
-			if(window.localStorage.getItem('token')==null){
-			    window.location.href='login.html'
-			}
 
 	</script>
 
@@ -35,7 +34,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -48,40 +47,13 @@
 	<!--个人信息-->
 	<div class="conbox">
 		<div class="account_list">
-		
-			<div class="acc_btn"><a href="#modal">添加BTC地址</a></div>
+			<div class="acc_btn"><a href="add_btc_attr.html">添加BTC地址</a></div>
 			<div class="acc_btn"><a href="add_card.html">添加银行卡</a></div>
-			
-				<!--模态框-->
-				<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-					<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-						<div>
-							<h2 id="modal1Title">录入BTC地址</h2>
-							<a class="btc_add_a" href="">扫描钱包地址二维码</a>
-							<input type="text" class="btc_add" placeholder="未填写" />
-						</div>
-						<br>
-					<button data-remodal-action="confirm" class="remodal-confirm">确认</button>
-					<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
-				</div>
-				
-				<!--模态框-->
-				<link rel="stylesheet" href="js/Remodal/remodal.css">
-				<link rel="stylesheet" href="js/Remodal/remodal-default-theme.css">
-				
-				<script src="http://cdnjs.cloudflare.com/ajax/zepto/1.1.4/zepto.js"></script>
-				<script>window.Zepto || document.write('<script src="js/Remodal/zepto/zepto.min.js"><\/script>')</script>
-				<script src="js/Remodal/remodal.js"></script>
-				<!-- Events -->
-				<script src="js/Remodal/a_remodal.js"></script>
-				<!--模态框 end-->
-			
+			<div><br/><br/><input class="reg_btn_2" type="button" value="去提现" onClick="location.href='record_tx.html'" /></div>
 		</div>
 	</div>
 	<!--个人信息 end-->
-	
-	
-		
+
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
@@ -100,7 +72,6 @@
 	
 			
 </div>
-	
-		
+<script stype="text/javascript" src="js/modules/account.js"></script>
 </body>
 </html>

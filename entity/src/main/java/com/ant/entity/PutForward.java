@@ -167,4 +167,12 @@ public class PutForward implements Serializable {
     public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
     }
+
+    public BigDecimal getBtcTrue() {
+        return btcTrue;
+    }
+
+    public void setBtcTrue(BigDecimal btcTrue) {
+        this.btcTrue = btcTrue;
+    }
 }

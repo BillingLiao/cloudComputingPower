@@ -1,10 +1,22 @@
 var vm = new Vue({
 	el:'#page',
 	data:{
-		bank : {}
+		trueName : null,
+		openingBank: null,
+		cardNumber: null,
+		bankId: null
 	},
 	created: function(){
        var token = window.localStorage.getItem('token');
+       if(token == null){
+            swal("请先登录", {
+                 buttons: false,
+                 timer: 2000,
+               }).then((value) => {
+                  window.location.href='login.html'
+              });
+              return;
+       }
         $.ajax({
            url: api + 'bank/find',
            type:'POST',
@@ -15,46 +27,124 @@ var vm = new Vue({
            success:function(res){
                console.log(res);
                if(res.code==0){
-                   console.log(res.bank);
-                   vm.bank = res.bank;
+                   if(res.bank != null){
+                     vm.trueName = res.bank.trueName;
+                     vm.openingBank = res.bank.openingBank;
+                     vm.cardNumber = res.bank.cardNumber;
+                     vm.bankId = res.bank.bankId;
+                   }
                }else{
-                   console.log(res);
+                   swal({
+                   text: res.msg,
+                   icon: "error",
+                   button: "返回",
+                  });
                }
            },
            error: function(res) {
-               console.log(res);
+               swal({
+               text: res.msg,
+               icon: "error",
+               button: "返回",
+              });
            }
        });
     },
     methods:{
         save: function(){
             var token = window.localStorage.getItem('token');
-            var bank = vm.bank;
-            $.ajax({
-               url: api + 'bank/add',
-               type:'POST',
-               dataType:'json',
-               data:{
-                   token: token,
-                   cardNumber: bank.cardNumber,
-                   openingBank: bank.openingBank,
-                   trueName: bank.trueName,
-                   bankId: bank.bankId
-               },
-               success:function(res){
-                   console.log(res);
-                   if(res.code==0){
-                       console.log(res.bank);
-                       vm.bank = res.bank;
-                       window.location.href='account.html';
-                   }else{
+            if(token == null){
+                 swal("请先登录", {
+                      buttons: false,
+                      timer: 2000,
+                    }).then((value) => {
+                       window.location.href='login.html'
+                   });
+                   return;
+            }
+            if(!isString(this.cardNumber)){
+                swal({
+                       text: "请输入您的银行卡号",
+                       icon: "warning",
+                       button: "返回",
+                  });
+                 return;
+            }
+            if(this.bankId == null){
+                $.ajax({
+                   url: api + 'bank/add',
+                   type:'POST',
+                   dataType:'json',
+                   data:{
+                       token: token,
+                       cardNumber: this.cardNumber,
+                       openingBank: this.openingBank,
+                       trueName: this.trueName
+                   },
+                   success:function(res){
                        console.log(res);
+                       if(res.code==0){
+                           swal(res.msg, {
+                             buttons: false,
+                             timer: 2000,
+                           }).then((value) => {
+                              window.location.href='account.html';
+                          });
+                       }else{
+                           swal({
+                           text: res.msg,
+                           icon: "error",
+                           button: "返回",
+                          });
+                       }
+                   },
+                   error: function(res) {
+                       swal({
+                       text: res.msg,
+                       icon: "error",
+                       button: "返回",
+                      });
                    }
-               },
-               error: function(res) {
-                   console.log(res);
-               }
-           });
+               });
+            }else{
+                $.ajax({
+                   url: api + 'bank/update',
+                   type:'POST',
+                   dataType:'json',
+                   data:{
+                       token: token,
+                       cardNumber: this.cardNumber,
+                       openingBank: this.openingBank,
+                       trueName: this.trueName,
+                       bankId: this.bankId
+                   },
+                   success:function(res){
+                       console.log(res);
+                       if(res.code==0){
+                           swal(res.msg, {
+                                buttons: false,
+                                timer: 2000,
+                              }).then((value) => {
+                                 window.location.href='account.html';
+                             });
+                       }else{
+                           swal({
+                           text: res.msg,
+                           icon: "error",
+                           button: "返回",
+                          });
+                       }
+                   },
+                   error: function(res) {
+                       swal({
+                       text: res.msg,
+                       icon: "error",
+                       button: "返回",
+                      });
+                   }
+               });
+            }
+
         }
     }
 

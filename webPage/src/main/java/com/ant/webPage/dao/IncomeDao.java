@@ -16,20 +16,20 @@ public interface IncomeDao extends BaseMapper<Income> {
      * 查询出用户云算力产品昨日所有收益
      * @return
      */
-    public BigDecimal selectCloudIncomeUser(Integer userId);
+    BigDecimal selectCloudIncomeUser(Integer userId);
 
     /**
      * 查询用户理财产品昨日所有收益
      * @return
      */
-    public BigDecimal selectFinancialIncomeUser(Integer userId);
+    BigDecimal selectFinancialIncomeUser(Integer userId);
 
     /**
      * 查询出用户理财订单的冻结收益
      * @param userId
      * @return
      */
-    public BigDecimal selectFrozenIncomeUser(Integer userId);
+    BigDecimal selectFrozenIncomeUser(Integer userId);
 
     /**
      * 查询出用户云算力收益记录
@@ -44,4 +44,5 @@ public interface IncomeDao extends BaseMapper<Income> {
      * @return
      */
     List<Income> selectFinancialIncomeList(Integer userId);
+
 }

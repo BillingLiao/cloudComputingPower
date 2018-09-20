@@ -26,7 +26,8 @@ var vm = new Vue({
 	data:{
 		cloudProduct :{},
 		amount: null,
-		actualReceipts:null
+		actualReceipts:null,
+		consentClause: '同意签约云算力服务协议'
 	},
 	watch: {
         amount: function(newAmount, oldAmount){
@@ -36,13 +37,28 @@ var vm = new Vue({
 	created: function(){
        var productId = getUrlParam('productId');
         $.get(api + 'cloud/findOne/'+productId, function(r){
-            console.log(r);
             vm.cloudProduct = r.cloudProduct;
         });
         this.debouncedGetActualReceipts = _.debounce(this.getActualReceipts, 500)
     },
     methods:{
         getActualReceipts: function(){
+            if (!isPositiveInteger(this.amount)) {
+　　　　　　      swal({
+                    text: "购买数量须填入正整数",
+                    icon: "warning",
+                    button: "返回",
+                    });
+　　　           return false;
+            }
+            if(this.amount > this.cloudProduct.stock){
+                swal({
+                 text: "购买数量不能大于库存",
+                 icon: "warning",
+                 button: "返回",
+                });
+                return;
+            }
             $.ajax({
                 url: api + 'order/actualReceipts',
                 type:'POST',
@@ -56,22 +72,54 @@ var vm = new Vue({
                     if(res.code==0){
                         vm.actualReceipts = res.actualReceipts;
                     }else{
-                        console.log(res);
+                         swal({
+                            text: res.msg,
+                            icon: "error",
+                            button: "返回",
+                          });
                     }
                 },
                 error: function(res) {
-                    console.log(res);
+                     swal({
+                        text: res.msg,
+                        icon: "error",
+                        button: "返回",
+                       });
                 }
             });
         },
         goToPay: function(){
+            var _this = this;
             var token = window.localStorage.getItem('token');
             var productId = getUrlParam('productId');
             if(token == null){
-                alert('请先登录再购买');
-                window.location.href='login.html'
+                swal('请先登录', {
+                   buttons: false,
+                   timer: 2000,
+                 }).then((value) => {
+                    window.location.href='login.html'
+                });
             }else{
-                var productId = getUrlParam('productId');
+                if (!isPositiveInteger(this.amount)) {
+    　　　　　　      swal({
+                        text: "购买数量须填入正整数",
+                        icon: "warning",
+                        button: "返回",
+                        });
+    　　　           return false;
+                }
+                if(this.amount > this.cloudProduct.stock){
+                    swal({
+                     text: "购买数量不能大于库存",
+                     icon: "warning",
+                     button: "返回",
+                    });
+                    return;
+                }
+                if (!$(".checkbox").attr("checked") == true){
+                    _this.consentClause = '请先同意签约云算力服务协议';
+                    return;
+                }
                 $.ajax({
                     url: api + 'order/add',
                     type:'POST',
@@ -79,19 +127,27 @@ var vm = new Vue({
                     data:{
                         token: token,
                         productId:productId,
-                        actualReceipts:vm.actualReceipts,
-                        amount:vm.amount
+                        actualReceipts:this.actualReceipts,
+                        amount:this.amount
                     },
                     success:function(res){
                         if(res.code==0){
                             var orderId = res.order.orderId;
                             window.location.href='pay.html?orderId='+orderId;
                         }else{
-                            console.log(res);
+                             swal({
+                                text: res.msg,
+                                icon: "error",
+                                button: "返回",
+                               });
                         }
                     },
                     error: function(res) {
-                        console.log(res);
+                        swal({
+                           text: res.msg,
+                           icon: "error",
+                           button: "返回",
+                          });
                     }
                 });
             }
