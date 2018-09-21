@@ -17,6 +17,8 @@
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src = "js/lodash.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -30,7 +32,7 @@
 	
 	
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -59,23 +61,25 @@
 				<div class="drawal_2">
 
 					<div class="stats_3 stats_tx">
-						<h2>0.00000013 BTC<p>可提现金额</p></h2>
-						<h2>0.00000013 BTC<p>提现中金额</p></h2>
+						<h2>{{account.btcBalance}} BTC<p>可提现金额</p></h2>
+						<h2>{{account.btcPresent}} BTC<p>提现中金额</p></h2>
 					</div>
 
 					<div class="account">提现方式：</div>
 
-					<div class="account"><a href="#modal2">数字钱包设置</a></div>
+					<div class="account"><a href="add_btc_attr.html">数字钱包设置</a></div>
 
 					<div class="bf">
 						<label>提现金额：（收取0.5%矿工费）</label>
-						<input type="text" name="name" class="box1" value="" />
+						<input type="text" name="name" class="box1" value="" v-model = "btcTrue"/>
+						<label><font color="red">{{btcMsg}}</font></label>
 					</div>
 					<div class="pay_tips">
-						<p>余额：0.35564465BTC5<a href="">全部提现</a></p>
+						<p>余额：{{account.btcBalance}}BTC<a @click="allBtc">全部提现</a></p>
 					</div>
 
-					<div class="record_btn"><a class="yew" href="">立即提交</a></div>
+
+					<div class="record_btn"><a class="yew" @click="addBtcPutForward">立即提交</a></div>
 
 
 					<link rel="stylesheet" href="css/jquery-labelauty.css">
@@ -85,32 +89,6 @@
 							$(':input').labelauty();
 						});
 					</script>
-
-
-					<!--模态框-->
-					<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-						<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-							<div>
-								<h2 id="modal1Title">数字钱包设置</h2>
-								<input type="text" class="btc_add" placeholder="未填写" />
-							</div>
-						<br>
-						<button data-remodal-action="confirm" class="remodal-confirm">确认</button>
-						<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
-					</div>
-
-
-
-					<!--模态框-->
-					<link rel="stylesheet" href="js/Remodal/remodal.css">
-					<link rel="stylesheet" href="js/Remodal/remodal-default-theme.css">
-
-					<script src="http://cdnjs.cloudflare.com/ajax/zepto/1.1.4/zepto.js"></script>
-					<script>window.Zepto || document.write('<script src="js/Remodal/zepto/zepto.min.js"><\/script>')</script>
-					<script src="js/Remodal/remodal.js"></script>
-					<!-- Events -->
-					<script src="js/Remodal/a_remodal.js"></script>
-					<!--模态框 end-->
 				</div>
 
 			</div>
@@ -124,25 +102,25 @@
 			    <div class="drawal_2">
 				
 					<div class="stats_3 stats_tx">
-						<h2>0元<p>可提现金额</p></h2>
-						<h2>10000元<p>提现中金额</p></h2>
+						<h2>{{account.cnyBalance}}元<p>可提现金额</p></h2>
+						<h2>{{account.cnyPresent}}元<p>提现中金额</p></h2>
 					</div>
 					
 					<div class="account">提现方式：</div>
 
-					<div class="account"><a href="#modal">银行卡设置</a></div>
+					<div class="account"><a href="add_card.html">银行卡设置</a></div>
 					
 					<div class="bf">
 						<label>提现金额：</label>
-						<input type="text" name="name" class="box1" value="" />
+						<input type="text" name="name" class="box1" value="" v-model = "cny"/>
+						<label><font color="red">{{cnyMsg}}</font></label>
 					</div>
 					<div class="pay_tips">
-						<p>余额：0.35564465BTC5<a href="">全部提现</a></p>
+						<p>余额：{{account.cnyBalance}}元<a @click="allCny">全部提现</a></p>
 					</div>
 					
-					<div class="record_btn"><a class="yew" href="">立即提交</a></div>
-					
-					
+					<div class="record_btn"><a class="yew" @click="addCnyPutForward">立即提交</a></div>
+
 					<link rel="stylesheet" href="css/jquery-labelauty.css">
 					<script src="js/form/jquery-labelauty.js"></script>
 					<script>
@@ -150,31 +128,6 @@
 							$(':input').labelauty();
 						});
 					</script>
-					
-				
-					<!--模态框-->
-					<div class="remodal" data-remodal-id="modal2" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-						<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-							<div>
-								<h2 id="modal1Title">银行卡设置</h2>
-								<input type="text" class="btc_add" placeholder="未填写" />
-							</div>
-							<br>
-						<button data-remodal-action="confirm" class="remodal-confirm">确认</button>
-						<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
-					</div>
-					
-					
-					<!--模态框-->
-					<link rel="stylesheet" href="js/Remodal/remodal.css">
-					<link rel="stylesheet" href="js/Remodal/remodal-default-theme.css">
-					
-					<script src="http://cdnjs.cloudflare.com/ajax/zepto/1.1.4/zepto.js"></script>
-					<script>window.Zepto || document.write('<script src="js/Remodal/zepto/zepto.min.js"><\/script>')</script>
-					<script src="js/Remodal/remodal.js"></script>
-					<!-- Events -->
-					<script src="js/Remodal/a_remodal.js"></script>
-					<!--模态框 end-->
 				</div>
 			
 			</div>

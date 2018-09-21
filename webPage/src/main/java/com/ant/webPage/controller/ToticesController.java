@@ -22,7 +22,7 @@ public class ToticesController {
 
     /**
      * 列表
-     * 云算力产品
+     * 公告
      * @return
      */
     @GetMapping("/findList")

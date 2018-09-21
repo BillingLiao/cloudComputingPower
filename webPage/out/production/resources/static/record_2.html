@@ -17,6 +17,7 @@
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/vue.min.js"></script>
+	<script src = "js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -25,10 +26,7 @@
 	</script>
 		
 </head>
-	
-	
-	
-	
+
 <body class="cbp-spmenu-push">
 <div id="page" v-cloak>
 
@@ -56,7 +54,7 @@
 			<div class="tabconbox" v-for="presentRecord in presentRecordList">
 				
 				<div class="order_info">
-					<div class="dl" v-if="presentRecord.forwardType === 2">
+					<div class="dl" v-if="presentRecord.forwardType === 0">
 						<h1>创建时间：{{presentRecord.createTime}}</h1>
 						<div class="stats_2" ><h2>提现方式：数字钱包地址</h2></div>
 						<div class="stats_2"><h2>流水号：{{presentRecord.forwardNo}}</h2></div>
@@ -66,7 +64,7 @@
 						<div class="amount" v-else-if="presentRecord.presentStatus === 2" ><span>处理失败</span>金额：{{presentRecord.btc}}BTC</div>
 						<div class="amount" v-else-if="presentRecord.presentStatus === 3" ><span>已完成</span>金额：{{presentRecord.btc}}BTC</div>
 					</div>
-					<div class="dl" v-else-if="presentRecord.forwardType === 3">
+					<div class="dl" v-else-if="presentRecord.forwardType === 1">
 						<h1>创建时间：{{presentRecord.createTime}}</h1>
 						<div class="stats_2"><h2>提现方式：银行卡</h2></div>
 						<div class="stats_2"><h2>流水号：{{presentRecord.forwardNo}}</h2></div>

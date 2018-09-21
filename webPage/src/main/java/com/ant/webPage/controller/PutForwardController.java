@@ -1,9 +1,6 @@
 package com.ant.webPage.controller;
 
-import com.ant.entity.Product;
 import com.ant.entity.User;
-import com.ant.webPage.service.OrderService;
-import com.ant.webPage.service.ProductService;
 import com.ant.webPage.service.PutForwardService;
 import com.ant.webPage.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;

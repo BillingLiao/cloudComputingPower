@@ -47,39 +47,14 @@
 	<!--个人信息-->
 	<div class="conbox">
 		<div class="account_list">
-		
-			<div class="acc_btn"><a href="#modal">添加BTC地址</a></div>
-			<div class="acc_btn"><a href="add_card.html">添加银行卡</a></div>
-			
-				<!--模态框-->
-				<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-					<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-						<div>
-							<h2 id="modal1Title">录入BTC地址</h2>
-							<input type="text" class="btc_add" placeholder="未填写" v-model="addr"/>
-						</div>
-						<br>
-					<button data-remodal-action="confirm" class="remodal-confirm" @click="confirm">确认</button>
-					<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
-				</div>
-				
-				<!--模态框-->
-				<link rel="stylesheet" href="js/Remodal/remodal.css">
-				<link rel="stylesheet" href="js/Remodal/remodal-default-theme.css">
-				
-				<script src="http://cdnjs.cloudflare.com/ajax/zepto/1.1.4/zepto.js"></script>
-				<script>window.Zepto || document.write('<script src="js/Remodal/zepto/zepto.min.js"><\/script>')</script>
-				<script src="js/Remodal/remodal.js"></script>
-				<!-- Events -->
-				<script src="js/Remodal/a_remodal.js"></script>
-				<!--模态框 end-->
-			
+			<div class="acc_btn"><a href="add_btc_attr.html">添加BTC地址</a></div>
+			<div class="acc_btn"><a href="add_card.html">添加银行卡</a><br/></div>
+			<div class="acc_btn"><a href="record_tx.html">去提现</a><br/></div>
 		</div>
+
 	</div>
 	<!--个人信息 end-->
-	
-	
-		
+
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>

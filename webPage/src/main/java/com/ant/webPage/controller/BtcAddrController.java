@@ -1,6 +1,5 @@
 package com.ant.webPage.controller;
 
-import com.ant.entity.Bank;
 import com.ant.entity.BtcAddr;
 import com.ant.entity.User;
 import com.ant.webPage.service.BtcAddrService;

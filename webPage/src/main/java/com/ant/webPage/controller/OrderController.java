@@ -1,6 +1,5 @@
 package com.ant.webPage.controller;
 
-import com.ant.entity.CloudProduct;
 import com.ant.entity.Order;
 import com.ant.entity.Product;
 import com.ant.entity.User;
@@ -43,7 +42,7 @@ public class OrderController{
                       @RequestParam(required = false) BigDecimal amount, @RequestParam(required = false) BigDecimal maturityIncome){
         Product product = productService.selectById(productId);
         Integer type = product.getCategoryId();
-        if(type == 2 || type == 1){ //云算力产品
+        if(type == 2){ //云算力产品
             return orderService.addCloudOrder(user,product,amount,actualReceipts);
         }else if(type == 3) { //理财产品
             return orderService.addFinancialOrder(user, product, actualReceipts, maturityIncome);
@@ -67,6 +66,13 @@ public class OrderController{
         return Result.ok();
     }
 
+    /**
+     * 计算理财产品每日收益，每月收益，到期收益
+     * @param actualReceipts 实付款
+     * @param rewardRate 年化
+     * @param cycle 周期
+     * @return
+     */
     @PostMapping("/profit")
     public Result profit(@RequestParam BigDecimal actualReceipts,@RequestParam BigDecimal rewardRate,@RequestParam BigDecimal cycle){
         Profit profit = new Profit();
@@ -80,6 +86,12 @@ public class OrderController{
         return Result.ok().put("profit",profit);
     }
 
+    /**
+     * 计算云算力产品付款金额
+     * @param amount 购买数量
+     * @param price 单件售价
+     * @return
+     */
     @PostMapping("/actualReceipts")
     public Result profit(@RequestParam BigDecimal amount,@RequestParam BigDecimal price){
         BigDecimal actualReceipts = amount.multiply(price);
