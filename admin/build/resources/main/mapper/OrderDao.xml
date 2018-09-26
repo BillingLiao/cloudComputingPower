@@ -14,9 +14,17 @@
     </select>
     <update id="updateTypeByTime">
         UPDATE t_order o LEFT JOIN t_financial_product f ON f.product_id = o.product_id
-        SET order_status = 5
-        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>f.cycle
+        SET o.order_status = 5,o.`completion_time` = CURRENT_DATE
+        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
     </update>
+
+    <select id="selectByTime" resultType="com.ant.entity.Order">
+        SELECT o.*
+        FROM
+        t_order o
+        LEFT JOIN t_financial_product f ON f.product_id = o.product_id
+        WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
+    </select>
 
     <!--<select id="selectByProductId" resultType="com.ant.admin.dto.CloudProduct">
         SELECT

@@ -59,3 +59,8 @@ mybatis-plus:
     #驼峰下划线转换
     configuration:
         map-underscore-to-camel-case: true
+#log
+logging:
+   config: classpath:logback.xml
+   path: logs/webPage
+   file: webPage.log

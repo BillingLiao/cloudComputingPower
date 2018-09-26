@@ -3,9 +3,11 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.OrderDao;
+import com.ant.admin.dao.OrderRecordDao;
 import com.ant.admin.dao.ProductDao;
 import com.ant.admin.dao.UserDao;
 import com.ant.entity.Order;
+import com.ant.entity.OrderRecord;
 import com.ant.entity.Product;
 import com.ant.entity.User;
 import com.ant.admin.service.OrderService;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
 
     @Autowired
     private OrderDao orderDao;
+
+    @Autowired
+    private OrderRecordDao orderRecordDao;
 
     @Autowired
     private ProductDao productDao;
@@ -61,6 +67,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     @Transactional(rollbackFor=Exception.class)
     @Override
     public void updateTypeByTime() {
+        Date createTime = new Date();
         /**
          *  判断理财产品是否到期
          *  将今日到期产品的本金与收益插入用户余额
@@ -80,5 +87,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
          * 到期后更改订单状态
          */
         orderDao.updateTypeByTime();
+        orderRecordDao.insertRecord();
     }
 }

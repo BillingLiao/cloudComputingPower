@@ -7,6 +7,7 @@ import com.ant.entity.User;
 import com.ant.webPage.service.UserService;
 import com.ant.webPage.tool.CheckTool;
 
+import com.ant.webPage.tool.CodeConstant;
 import com.ant.webPage.tool.HttpTool;
 import com.ant.webPage.tool.TokenTool;
 import com.ant.webPage.util.Result;
@@ -46,7 +47,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 					//被锁定的情况，从数据库中确认
 					user = userService.selectById(userId);
 					operations.set("user:"+userId, user);
-					HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));
+					HttpTool.jsonMsg(response, Result.error(CodeConstant.LOCK,"您被管理员锁定，请联系管理员处理"));
 				} else {
 					request.getSession().setAttribute("user", user);
 					return true;
@@ -58,7 +59,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 					if(user != null) {
 						if(user.getStatus() == 0) {
 							//被锁定的情况
-							HttpTool.jsonMsg(response, Result.error("您被管理员锁定，请联系管理员处理"));
+							HttpTool.jsonMsg(response, Result.error(CodeConstant.LOCK,"您被管理员锁定，请联系管理员处理"));
 						} else {
 							request.getSession().setAttribute("user", user);
 							operations.set("user:"+userId, user);
@@ -68,14 +69,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 						HttpTool.jsonMsg(response, Result.error("没有找到指定用户"));
 					}
 				} else if(userId == 0) {
-					HttpTool.jsonMsg(response, Result.error("token超时，请重新登录"));
+					HttpTool.jsonMsg(response, Result.error(CodeConstant.ERR_AUTH,"token超时，请重新登录"));
 				} else {
-					HttpTool.jsonMsg(response, Result.error("token有误"));
+					HttpTool.jsonMsg(response, Result.error(CodeConstant.ERR_AUTH,"token有误"));
 				}
 			}
 		}else {
 			//没有带token的情况
-			HttpTool.jsonMsg(response, Result.error("请先登录"));
+			HttpTool.jsonMsg(response, Result.error(CodeConstant.ERR_AUTH,"请先登录"));
 		}
 		return false;
 	}

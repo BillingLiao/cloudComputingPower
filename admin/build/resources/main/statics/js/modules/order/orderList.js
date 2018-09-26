@@ -95,8 +95,8 @@ var vm = new Vue({
 		},
 
 		update: function (event) {
-		    var productId = getSelectedRow();
-                if(productId == null){
+		    var orderId = getSelectedRow();
+                if(orderId == null){
                     return ;
                 }
                 vm.showList = false;
@@ -105,15 +105,56 @@ var vm = new Vue({
                 vm.getInfo(orderId);
 
 		},
+        status: function(){
+            var orderId = getSelectedRow();
+            if(orderId == null){
+                return ;
+            }
+            vm.getInfo(orderId);
+
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "设置状态",
+                area: ['300px', '300px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#statusLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    $.ajax({
+                        type: "POST",
+                        url: baseURL + "order/status",
+                        contentType: "application/json",
+                        data: JSON.stringify(vm.order),
+                        success: function(r){
+                            if(r.code === 0){
+                                alert('操作成功', function(data){
+                                     layer.close(index);
+                                });
+                            }else{
+                                alert(r.msg, function(data){
+                                 layer.close(index);
+                                });
+                            }
+                            vm.reload();
+                        }
+                    });
+
+                }
+
+            });
+        },
 
 		saveOrUpdate: function (event) {
 
-			var url = vm.cloudProduct.productId == null ? "cloud/save" : "cloud/update";
+			var url = vm.order.orderId == null ? "order/save" : "order/update";
 			$.ajax({
 				type: "POST",
 			    url: baseURL + url,
                 contentType: "application/json",
-			    data: JSON.stringify(vm.cloudProduct),
+			    data: JSON.stringify(vm.order),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -126,17 +167,17 @@ var vm = new Vue({
 			});
 		},
 		del: function (event) {
-			var productIds = getSelectedRows();
-			if(productIds == null){
+			var orderIds = getSelectedRows();
+			if(orderIds == null){
 				return ;
 			}
 			
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: baseURL + "cloud/delete",
+				    url: baseURL + "order/delete",
                     contentType: "application/json",
-				    data: JSON.stringify(productIds),
+				    data: JSON.stringify(orderIds),
 				    success: function(r){
 						if(r.code == 0){
 							alert('操作成功', function(index){

@@ -53,6 +53,11 @@ public class Product<T> implements Serializable {
     private String productName;
 
     /**
+     * 产品图片
+     */
+    private String picImg;
+
+    /**
      * 产品介绍
      */
     private String introduction;
@@ -118,6 +123,14 @@ public class Product<T> implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getPicImg() {
+        return picImg;
+    }
+
+    public void setPicImg(String picImg) {
+        this.picImg = picImg;
     }
 
     public String getIntroduction() {

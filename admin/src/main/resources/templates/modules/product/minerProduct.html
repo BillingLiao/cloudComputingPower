@@ -27,8 +27,10 @@
                 <#if shiro.hasPermission("product:miner:delete")>
                 <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
                 </#if>
+    <#if shiro.hasPermission("product:cloud:update")>
     <a class="btn btn-success" @click="shelve1"><i class="fa fa-plus-square"></i>&nbsp;上架</a>
     <a class="btn btn-success" @click="shelve0"><i class="fa fa-minus-square"></i>&nbsp;下架</a>
+</#if>
 </div>
 </div>
 <table id="jqGrid"></table>

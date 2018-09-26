@@ -9,4 +9,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @date 2018/9/15 14:14
  */
 public interface OrderRecordDao extends BaseMapper<OrderRecord> {
+     void insertRecord();
 }

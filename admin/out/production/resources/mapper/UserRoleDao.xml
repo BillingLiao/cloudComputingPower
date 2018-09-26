@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.UserRoleDao">
 
-	<select id="queryRoleIdList" resultType="long">
+	<select id="queryRoleIdList" resultType="Integer">
 		select role_id from t_user_role where user_id = #{value}
 	</select>
 

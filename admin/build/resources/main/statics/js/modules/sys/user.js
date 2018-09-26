@@ -63,10 +63,11 @@ var vm = new Vue({
         showList: true,
         title:null,
         roleList:{},
-        user:{
+        sysUser:{
             status:1,
             roleIdList:[]
-        }
+        },
+        password: null
     },
     methods: {
         query: function () {
@@ -76,7 +77,7 @@ var vm = new Vue({
             vm.showList = false;
             vm.title = "新增";
             vm.roleList = {};
-            vm.user = {status:1, roleIdList:[]};
+            vm.sysUser = {status:1, roleIdList:[]};
 
             //获取角色信息
             this.getRoleList();
@@ -120,12 +121,12 @@ var vm = new Vue({
             });
         },
         saveOrUpdate: function () {
-            var url = vm.user.userId == null ? "sys/user/save" : "sys/user/update";
+            var url = vm.sysUser.userId == null ? "sys/user/save" : "sys/user/update";
             $.ajax({
                 type: "POST",
                 url: baseURL + url,
                 contentType: "application/json",
-                data: JSON.stringify(vm.user),
+                data: JSON.stringify(vm.sysUser),
                 success: function(r){
                     if(r.code === 0){
                         alert('操作成功', function(){
@@ -139,8 +140,9 @@ var vm = new Vue({
         },
         getUser: function(userId){
             $.get(baseURL + "sys/user/info/"+userId, function(r){
-                vm.user = r.user;
-                vm.user.password = null;
+                vm.sysUser = r.sysUser;
+                console.log(r);
+                vm.sysUser.password = null;
 
                 //vm.getDept();
             });

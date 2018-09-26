@@ -17,7 +17,7 @@
                        v-model="categoryName" @keyup.enter="query" placeholder="订单类型">
                 <a class="btn btn-default" @click="query()">查询</a>
                 <#if shiro.hasPermission("order:status:update")>
-                <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+                <a class="btn btn-primary" @click="status"><i class="fa fa-pencil-square-o"></i>&nbsp;设置订单状态</a>
                 </#if>
             </div>
 
@@ -27,7 +27,7 @@
     <span><input class="btn btn-default " id="allOrder" type="button" value="全部订单" @click="query('')"></span>
     <span><input class="btn btn-default" type="button" value="待支付" @click="query(0)"></span>
     <span><input class="btn btn-default" type="button" value="待支付关闭" @click="query(1)"></span>
-    <span><input class="btn btn-default" type="button" value="待发货" @click="query(2)"></span>
+    <span><input class="btn btn-default" type="button" value="已付款" @click="query(2)"></span>
     <span><input class="btn btn-default" type="button" value="待收货" @click="query(3)"></span>
     <span><input class="btn btn-default" type="button" value="已收货" @click="query(4)"></span>
     <span><input class="btn btn-default" type="button" value="已完成" @click="query(5)"></span>
@@ -40,109 +40,15 @@
     <div class="panel-heading">{{title}}</div>
     <form class="form-horizontal">
         <div class="form-group">
-            <div class="col-sm-2 control-label">产品名称</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.productName" placeholder="产品名称"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">售价</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.retailPrice" placeholder="售价"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">单价（元）</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.price" placeholder="单价(元)"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">服务费（元）</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.managementExpense" placeholder="服务费(元)"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">本期总算力(T)</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.totalStock" placeholder="总算力"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">库存(T)</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.stock" placeholder="库存"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">机型</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.model" placeholder="机型"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">额定算力</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.rated" placeholder="额定算力"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">预计日收益</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.remark" placeholder="预估日收益"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">起投单位(T)</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.startStep" placeholder="起投单位"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">本期开售时间</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.saleTime" placeholder="本期开售时间"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">电费</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.power" placeholder="电费"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">电源</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.electricityFees" placeholder="电源"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-2 control-label">合同周期</div>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.contractCycle" placeholder="合同周期"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-2 control-label">产品介绍</div>
-            <div class="col-sm-10">
-                <!--<textarea class="layui-textarea" id="LAY_demo1" style="display: none">
-                </textarea>-->
-                <div id="editor" style="width: 710px;">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-sm-2 control-label">创建时间</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.createAt" placeholder="创建时间" readonly="readonly"/>
+                <input type="text" class="form-control" v-model="order.createTime" placeholder="订单提交时间" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-2 control-label">更新时间</div>
+            <div class="col-sm-2 control-label">支付时间</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="order.updateAt" placeholder="更新时间" readonly="readonly"/>
+                <input type="text" class="form-control" v-model="order.paymentTime" placeholder="订单支付时间" readonly="readonly"/>
             </div>
         </div>
         <div class="form-group">
@@ -153,6 +59,18 @@
     </form>
 
 </div>
+    <!-- 预览 -->
+    <div id="statusLayer" style="display: none; padding: 10px;">
+        <div class="itemb tabitem">
+            <div class="form-group">
+                <div class="col-sm-4 control-label">设置状态</div>
+                <div class="col-sm-8">
+                    <label class="radio-inline"><input type="radio" name="status" value="2" v-model="order.orderStatus" > 已付款</label>
+                    <label class="radio-inline"><input type="radio" name="status" value="5" v-model="order.orderStatus"  > 订单完成</label>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 

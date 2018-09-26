@@ -48,12 +48,21 @@ var vm = new Vue({
                     if(res.code==0){
                         console.log(res.account);
                         vm.account = res.account;
-                    }else{
-                        console.log(res);
+                    }else if(res.code == 3){
+                        swal("请先登录", {
+                           buttons: false,
+                           timer: 2000,
+                         }).then((value) => {
+                            window.location.href='login.html'
+                        });
                     }
                 },
                 error: function(res) {
-                    console.log(res);
+                    swal({
+                        text: res.msg,
+                        icon: "error",
+                        button: "返回",
+                       });
                 }
             });
         }

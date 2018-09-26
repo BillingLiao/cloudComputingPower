@@ -2,6 +2,8 @@ package com.ant.admin.common.quartz;
 
 import com.ant.admin.service.IncomeService;
 import com.ant.admin.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,7 @@ public class CalculateDailyIncomeJob {
     @Resource
     private OrderService orderService; // 订单Service
 
+    protected Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * 每天凌晨2点定期执行
      */
@@ -31,18 +34,20 @@ public class CalculateDailyIncomeJob {
          * 计算购买产品每日收益，全部插入收益表
          * 将云算力产品每日收益插入用户余额
          */
+        logger.info("=====>>>>>使用cron  {insertIncome}",System.currentTimeMillis());
         incomeService.insertAllIncome();
     }
 
     /**
      * 每日凌晨2点01分定期执行
      */
-    @Scheduled(cron="1 0 2 * * ?")
+    @Scheduled(cron="01 0 2 * * ?")
     public void work2(){
         /**
          *  判断理财产品是否到期
          *  到期后将本金收益插入用户余额更改订单状态
          */
+        logger.info("=====>>>>>使用cron  {updateOrderType}",System.currentTimeMillis());
         orderService.updateTypeByTime();
     }
 

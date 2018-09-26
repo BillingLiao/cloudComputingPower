@@ -56,10 +56,7 @@ mybatis-plus:
     configuration:
         map-underscore-to-camel-case: true
 #log
-#logging:
-   # config:
-        #classpath:logback.xml
-    #path: /computingPower-log/my.log
-    #path: logs/
-    #file: admin.log
+logging:
+   config: classpath:logback.xml
+   path: /70pool-log/admin
 

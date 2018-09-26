@@ -36,9 +36,16 @@ WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cyc
 	理财产品到期后更改状态为已完成
 */
 UPDATE t_order o LEFT JOIN t_financial_product f ON f.product_id = o.product_id
-SET o.order_status = 5 
+SET o.order_status = 5,o.`completion_time` = CURRENT_DATE
 WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
 
+/*
+	理财产品到期更改状态后插入订单记录表
+*/
+INSERT INTO t_order_record(order_id,order_status,create_time)
+SELECT o.order_id,5, NOW() FROM
+t_order o LEFT JOIN t_financial_product f ON f.product_id = o.product_id
+WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
 
 /*
 	云算力产品昨日收益余额

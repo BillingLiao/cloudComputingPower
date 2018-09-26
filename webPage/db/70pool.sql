@@ -245,6 +245,7 @@ CREATE TABLE `t_product` (
   `product_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '产品编号',
   `category_id` INT(11) NOT NULL COMMENT '产品类别编号',
   `product_name` VARCHAR(100) NOT NULL COMMENT '产品名称',
+  `pic_img` VARCHAR(255) DEFAULT NULL COMMENT '展示图片',
   `introduction` TEXT DEFAULT NULL COMMENT '产品介绍',
   `show_in_shelve` TINYINT(1) DEFAULT '0' COMMENT '是否上架：1=上架/0=下架',
   `create_user` INT(11) DEFAULT NULL COMMENT '创建者',
@@ -257,16 +258,16 @@ CREATE TABLE `t_product` (
 
 /*Data for the table `t_product` */
 
-INSERT INTO `t_product` VALUES ('1', '3', '理财产品1号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('2', '3', '理财产品2号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号', '1. 扫描玛雅矿机官方微信号二维码可获取最新资讯消息。2. 本批矿机价格已包含电源价格。3. 款项支付时间：确认订单60分钟内支付。4. 预期发货时间：2018年6月，物流运费到付。5. 已付货款项将不予退还，矿机无法出货情况除外。6. 本批次矿机最小订单量为1台，仅支持发货不支持托管。7. 玛雅保留此次预售的最终解释权。', '1', NULL,'2018-06-12 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('4', '1', '矿机产品2号', '这款打造的,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('5', '2', '云算力产品1号', '这优惠,dfkjkj1dfdfad1', '1', NULL,'2018-06-11 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('6', '2', '云算力产品2号', '这价格,dfkjkj1dfdfad1', '1', NULL,'2018-08-11 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('7', '3', '理财产品3号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('8', '3', '理财产品4号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('9', '3', '理财产品5号', '这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
-INSERT INTO `t_product` VALUES ('10', '3', '理财产品6号', '这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('1', '3', '理财产品1号', NULL,'这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('2', '3', '理财产品2号', NULL,'这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('3', '1', '矿机产品1号',NULL, '1. 扫描玛雅矿机官方微信号二维码可获取最新资讯消息。2. 本批矿机价格已包含电源价格。3. 款项支付时间：确认订单60分钟内支付。4. 预期发货时间：2018年6月，物流运费到付。5. 已付货款项将不予退还，矿机无法出货情况除外。6. 本批次矿机最小订单量为1台，仅支持发货不支持托管。7. 玛雅保留此次预售的最终解释权。', '1', NULL,'2018-06-12 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('4', '1', '矿机产品2号', NULL,'这款打造的,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('5', '2', '云算力产品1号',NULL,'这优惠,dfkjkj1dfdfad1', '1', NULL,'2018-06-11 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('6', '2', '云算力产品2号',NULL, '这价格,dfkjkj1dfdfad1', '1', NULL,'2018-08-11 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('7', '3', '理财产品3号', NULL,'这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('8', '3', '理财产品4号', NULL,'这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('9', '3', '理财产品5号', NULL,'这是理财,dfkjkj1dfdfad1', '1', NULL,'2018-06-15 14:09:31',NULL, NULL,'0');
+INSERT INTO `t_product` VALUES ('10', '3', '理财产品6号', NULL,'这当时的理财啊,dfkjkj1dfdfad1', '1', NULL,'2018-08-15 14:09:31',NULL, NULL,'0');
 
 /*Table structure for table `t_product_cloud` */
 
