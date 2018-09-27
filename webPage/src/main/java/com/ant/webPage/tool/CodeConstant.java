@@ -51,4 +51,9 @@ public class CodeConstant {
 	 * 成功(特殊状态)
 	 */
 	public static final int SUCCESS_2 = 9;
+
+	/**
+	 * token错误
+	 */
+	public static final int ERR_TOKEN = 10;
 }

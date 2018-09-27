@@ -13,6 +13,8 @@ import com.ant.webPage.tool.TokenTool;
 import com.ant.webPage.util.Md5Util;
 import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,8 @@ import java.math.BigDecimal;
  */
 @Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserService {
+
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired private UserDao userDao;
 
@@ -76,32 +80,36 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
     @Override
     public Account selectAccountByUserId(Integer userId) {
-        User selectUser = userDao.selectById(userId);
-        BigDecimal amount = orderDao.selectAmountByUser(userId);
-        BigDecimal btcBalance = selectUser.getBtc();
-        BigDecimal cnyBalance = selectUser.getCny();
-        BigDecimal btcPresent = putForwardDao.selectBtcPresentByUserId(userId);
-        BigDecimal cnyPresent = putForwardDao.selectCnyPresentByUserId(userId);
-        String phone = selectUser.getTelphone();
-        BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
-        BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
-        BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
-        if(btcPresent == null){
-            btcPresent = new BigDecimal(0.00);
-        }
-        if(cnyPresent == null){
-            cnyPresent = new BigDecimal(0.00);
-        }
-        if(btcYesterday == null){
-            btcYesterday = new BigDecimal(0.00);
-        }
-        if(cnyYesterday == null){
-            cnyYesterday = new BigDecimal(0.00);
-        }
-        if(frozenIncome == null){
-            frozenIncome = new BigDecimal(0.00);
-        }
-        Account account = new Account(amount,phone,btcBalance,btcPresent,cnyBalance,cnyPresent,frozenIncome,btcYesterday,cnyYesterday);
-        return account;
+            User selectUser = userDao.selectById(userId);
+            if (selectUser == null)
+                return null;
+            BigDecimal amount = orderDao.selectAmountByUser(userId);
+            if (amount == null)
+                return null;
+            BigDecimal btcBalance = selectUser.getBtc();
+            BigDecimal cnyBalance = selectUser.getCny();
+            BigDecimal btcPresent = putForwardDao.selectBtcPresentByUserId(userId);
+            BigDecimal cnyPresent = putForwardDao.selectCnyPresentByUserId(userId);
+            String phone = selectUser.getTelphone();
+            BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
+            BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
+            BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
+            if (btcPresent == null) {
+                btcPresent = new BigDecimal(0.00);
+            }
+            if (cnyPresent == null) {
+                cnyPresent = new BigDecimal(0.00);
+            }
+            if (btcYesterday == null) {
+                btcYesterday = new BigDecimal(0.00);
+            }
+            if (cnyYesterday == null) {
+                cnyYesterday = new BigDecimal(0.00);
+            }
+            if (frozenIncome == null) {
+                frozenIncome = new BigDecimal(0.00);
+            }
+            Account account = new Account(amount, phone, btcBalance, btcPresent, cnyBalance, cnyPresent, frozenIncome, btcYesterday, cnyYesterday);
+            return account;
     }
 }

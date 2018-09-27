@@ -10,6 +10,7 @@ import com.ant.webPage.tool.CheckTool;
 import com.ant.webPage.tool.CodeConstant;
 import com.ant.webPage.tool.HttpTool;
 import com.ant.webPage.tool.TokenTool;
+import com.ant.webPage.util.Ding;
 import com.ant.webPage.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -38,8 +39,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 		
 		if(CheckTool.isString(token)) {
 			int userId = TokenTool.verify(token);
-			ValueOperations<String, User> operations=redisTemplate.opsForValue();
-			boolean exists = redisTemplate.hasKey("user:"+userId);
+			ValueOperations<String, User> operations = null;
+			boolean exists = false;
+			try {
+				operations = redisTemplate.opsForValue();
+			    exists = redisTemplate.hasKey("user:"+userId);
+			}catch (Exception e){
+				Ding.ErrorDing("redis出现了问题，请速去处理！",new String[]{"17608170325"});
+			}
 			if(exists) {
 				//有缓存的情况，直接从缓存中取
 				User user = operations.get("user:" + userId);
@@ -66,7 +73,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 							return true;
 						}
 					} else {
-						HttpTool.jsonMsg(response, Result.error("没有找到指定用户"));
+						HttpTool.jsonMsg(response, Result.error(CodeConstant.ERR_TOKEN,"没有找到指定用户"));
 					}
 				} else if(userId == 0) {
 					HttpTool.jsonMsg(response, Result.error(CodeConstant.ERR_AUTH,"token超时，请重新登录"));

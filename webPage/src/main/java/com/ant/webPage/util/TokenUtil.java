@@ -54,11 +54,12 @@ public class TokenUtil {
     }
 
     public static void main(String[] args) {
-        int userId = 2;
-        String userName = "577207298@qq.com";
-        String tokenString = TokenUtil.getToken(userId, userName);
-        System.out.println("加密后tokenString = " + tokenString);
-        boolean flag = TokenUtil.checkToken(tokenString);
-        System.out.println("flag = " + flag);
+//        int userId = 2;
+//        String userName = "577207298@qq.com";
+//        String tokenString = TokenUtil.getToken(userId, userName);
+        TokenUtil.checkToken("+P9KHGGb5jrJcN61zTRcUWzJTv/p6IPwXF/uwVy3CUROOk2jAfOCKn2iomxU2D8r4GWO5vpc0flze1MSf3ievw==");
+//        System.out.println("加密后tokenString = " + tokenString);
+//        boolean flag = TokenUtil.checkToken(tokenString);
+//        System.out.println("flag = " + flag);
     }
 }

@@ -46,18 +46,26 @@ var vm = new Vue({
                 success:function(res){
                     console.log(res);
                     if(res.code==0){
-                        console.log(res.account);
                         vm.account = res.account;
-                    }else if(res.code == 3){
+                    }else if(res.code == 0){
                         swal("请先登录", {
                            buttons: false,
                            timer: 2000,
                          }).then((value) => {
                             window.location.href='login.html'
                         });
+                    }else if(res.code == 10){
+                        localStorage.removeItem('token');
+                        swal("请重新登录", {
+                            buttons: false,
+                            timer: 2000,
+                        }).then((value) => {
+                            window.location.href='login.html'
+                    });
                     }
                 },
                 error: function(res) {
+                    localStorage.removeItem('token');
                     swal({
                         text: res.msg,
                         icon: "error",
