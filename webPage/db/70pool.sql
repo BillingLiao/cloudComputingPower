@@ -247,7 +247,7 @@ CREATE TABLE `t_product` (
   `product_name` VARCHAR(100) NOT NULL COMMENT '产品名称',
   `pic_img` VARCHAR(255) DEFAULT NULL COMMENT '展示图片',
   `introduction` TEXT DEFAULT NULL COMMENT '产品介绍',
-  `show_in_shelve` TINYINT(1) DEFAULT '0' COMMENT '是否上架：1=上架/0=下架',
+  `show_in_shelve` TINYINT(1) DEFAULT '1' COMMENT '是否上架：1=上架/0=下架',
   `create_user` INT(11) DEFAULT NULL COMMENT '创建者',
   `create_at` DATETIME DEFAULT NULL COMMENT '创建时间',
   `update_user` INT(11) DEFAULT NULL COMMENT '更新者',
@@ -277,7 +277,7 @@ CREATE TABLE t_cloud_product
 (
    cloud_id             INT(11) NOT NULL AUTO_INCREMENT COMMENT '云算力明细id',
    product_id           INT(11) NOT NULL COMMENT '产品id',
-   sell_out          	DECIMAL(15,3) DEFAULT NULL COMMENT '售出算力',
+   sell_out          	DECIMAL(15,3) DEFAULT '0.00' COMMENT '售出算力',
    stock                DECIMAL(15,3) NOT NULL COMMENT '剩余算力',
    electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
    retail_price		DECIMAL(15,3) DEFAULT NULL COMMENT '售价',

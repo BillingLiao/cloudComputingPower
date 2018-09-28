@@ -134,6 +134,11 @@ public class CloudProduct extends Product implements Serializable {
     private String productName;
 
     /**
+     * 产品图片
+     */
+    @TableField(exist = false)
+    private String picImg;
+    /**
      * 产品介绍
      */
     @TableField(exist = false)
@@ -349,6 +354,16 @@ public class CloudProduct extends Product implements Serializable {
     @Override
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    @Override
+    public String getPicImg() {
+        return picImg;
+    }
+
+    @Override
+    public void setPicImg(String picImg) {
+        this.picImg = picImg;
     }
 
     @Override

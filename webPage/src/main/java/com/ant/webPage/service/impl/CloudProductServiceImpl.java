@@ -24,6 +24,7 @@ public class CloudProductServiceImpl extends ServiceImpl<CloudProductDao, CloudP
 
     @Override
     public List<CloudProduct> findList() {
+        List<CloudProduct> list= cloudProductDao.findList();
         return cloudProductDao.findList();
     }
 

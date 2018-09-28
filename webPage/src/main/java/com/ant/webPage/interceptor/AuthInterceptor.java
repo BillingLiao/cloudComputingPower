@@ -3,11 +3,11 @@ package com.ant.webPage.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ant.common.tool.CodeConstant;
 import com.ant.entity.User;
 import com.ant.webPage.service.UserService;
 import com.ant.webPage.tool.CheckTool;
 
-import com.ant.webPage.tool.CodeConstant;
 import com.ant.webPage.tool.HttpTool;
 import com.ant.webPage.tool.TokenTool;
 import com.ant.webPage.util.Ding;

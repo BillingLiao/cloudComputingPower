@@ -6,6 +6,14 @@ $(function () {
         colModel: [			
 			{ label: '产品id', name: 'productId', index: 'product_id', width: 80, key: true },
 			{ label: '产品名称', name: 'productName', index: 'product_name', width: 150 },
+			{ label: '缩略图', name: 'picImg', index: 'pic_img', width: 150,formatter: function(cellvalue, options, rowObject){
+                 if(cellvalue){
+                     return       '<a class="btn btn-sm btn-success" href="'+cellvalue+'"  target="_blank"><i class="fa fa-file-photo-o"></i>&nbsp;预览</a>';
+                 }else{
+                     return       '<a class="btn btn-sm btn-warning" ><i class="fa fa-file-photo-o"></i>&nbsp;暂无图片</a>';
+
+                 }
+            }},
 			{ label: '分类', name: 'categoryName', index: 'category_name', width: 120 ,formatter: function(cellvalue, options, rowObject){
                 if(cellvalue == null || cellvalue == ''){
                 return   "它的分类被删除了";
@@ -70,10 +78,7 @@ var vm = new Vue({
 		title: null,
 		cloudProduct: {},
 		introduction:true,
-		search:{},
-		goodImage:[],
-		goodImageIds:[],
-		initialPreviewConfig:[],
+		search:{}
 	},
 	created:function() {
       	   Vue.nextTick(function () {
@@ -229,3 +234,84 @@ var vm = new Vue({
 		},
 	}
 });
+
+$(document).on("ready", function() {
+	$("#input-7021").fileinput({
+	     theme: 'fa',
+	    uploadUrl: baseURL + "cloud/mulUpload",
+	    uploadAsync: false,
+	    minFileCount: 1,
+	    maxFileCount: 1,
+	    overwriteInitial: false,
+        showRemove:false,
+        showUpload: false,
+	    language : 'zh',
+	    initialPreview: [
+	        // "http://lorempixel.com/800/460/people/1",
+	        // "http://lorempixel.com/800/460/people/2"
+	    ],
+	    initialPreviewAsData: true, // identify if you are sending preview data only and not the raw markup
+	    initialPreviewFileType: 'image', // image is the default and can be overridden in config below
+	    initialPreviewConfig: [
+	        // {caption: "People-1.jpg", size: 576237, width: "120px", url: "/site/file-delete", key: 1},
+	        // {caption: "People-2.jpg", size: 932882, width: "120px", url: "/site/file-delete", key: 2},
+	    ]
+	}).on('filesorted', function(e, params) {
+	    console.log('file sorted', e, params);
+	}).on('fileuploaded', function(event, data, previewId, index) {
+	     console.log('fileuploaded', data);
+ 		 var url = data.response.url;
+	     vm.cloudProduct.picImg=url;
+
+	 }).on('filesuccessremove', function(event, data, index,e) {
+			var filePath = [];
+			console.log("filesuccessremove");
+			console.log(filePath);
+			filePath.push(vm.cloudProduct.picImg);
+			deleteFiles(filePath);
+			vm.cloudProduct.picImg="";
+		//return false;
+	}).on('filecleared', function(event, data, previewId, index) {
+		console.log(event, data, previewId,index);
+		console.log("filecleared");
+	}).on('filedeleted', function(event, data, previewId, index) {
+		console.log(event, data, previewId,index);
+		console.log("filedeleted");
+	}).on('filepreremove', function(event, data, previewId, index) {
+		console.log(event, data, previewId,index);
+		console.log("filepreremove");
+	}).on('fileclear', function(event, data, previewId, index) {
+		console.log(event, data);
+		console.log("fileclear");
+	}).on('filepreupload', function(event, data, previewId, index) {
+		console.log(event, data);
+		console.log("filepreupload");
+	}).on('filebatchuploadcomplete', function(event, data, previewId, index) {
+
+		console.log(event, data);
+		console.log("filebatchuploadcomplete");
+	}).on('beforeSend', function(event, data, previewId, index) {
+		console.log(event, data);
+		console.log("beforeSend");
+	}) .on('fileselect', function(event, data, previewId, index) {
+
+		console.log(event, data,previewId,index);
+		console.log("fileselect");
+
+	}).on('filebatchpreupload', function(event, data, previewId, index) {
+
+
+	}).on('filepreajax', function(event, data, previewId, index) {
+		 var test = $("#picimg .file-preview-thumbnails .kv-preview-thumb").length;
+		 if(test >1){alert("只能上传一个文件");
+			 var container = $(".file-input");
+			var processDiv = container.find('.kv-upload-progress');
+			processDiv.hide();
+			console.log(event, data,previewId,index);
+			console.log("filepreajax");
+			 return false;
+		 }
+
+
+	});
+})

@@ -1,9 +1,12 @@
 package com.ant.admin.controller;
 
+import com.ant.admin.common.exception.RRException;
+import com.ant.admin.common.tool.FileTool;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.common.validator.ValidatorUtils;
 import com.ant.admin.service.ProductService;
+import com.ant.common.tool.CodeConstant;
 import com.ant.entity.CloudProduct;
 import com.ant.entity.Product;
 import com.ant.admin.service.CloudProductService;
@@ -11,9 +14,12 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * 云算力产品controller
@@ -106,5 +112,34 @@ public class CloudProductController extends AbstractController{
         Product product = new Product(cloudProduct);
         productService.updateById(product);
         return Result.ok();
+    }
+
+    /**
+     * 上传图片
+     *
+     * @throws IOException
+     */
+    @RequestMapping("/mulUpload")
+    @RequiresPermissions("product:cloud:save")
+    public Result upload(@RequestParam("files") MultipartFile file,HttpServletRequest request) throws IOException {
+        if (file.isEmpty()) {
+            throw new RRException("上传文件不能为空");
+        }
+            // 上传文件
+        String fileName = UUID.randomUUID().toString() + System.currentTimeMillis()
+                + file.getOriginalFilename();
+        System.out.println("file-->" + file);
+        // System.out.println("getContentType-->" + contentType);
+        String filePath = request.getSession().getServletContext().getRealPath("/upload");
+        String url = null;
+        try {
+            FileTool.uploadFile(file.getBytes(), filePath, fileName);
+            url = filePath+"/"+fileName;
+        } catch (Exception e) {
+            // TODO: handle exception
+            Result.error(CodeConstant.SET_ERR,"图片上传失败");
+        }
+
+        return Result.ok().put("url", url);
     }
 }

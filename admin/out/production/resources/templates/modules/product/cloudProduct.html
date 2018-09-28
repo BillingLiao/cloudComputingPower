@@ -49,25 +49,25 @@
         <div class="form-group">
             <div class="col-sm-2 control-label">售价</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.retailPrice" placeholder="售价"/>
+                <input type="number" class="form-control" v-model="cloudProduct.retailPrice" placeholder="售价"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">单价（元）</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.price" placeholder="单价(元)"/>
+                <input type="number" class="form-control" v-model="cloudProduct.price" placeholder="单价(元)"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">服务费（元）</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.managementExpense" placeholder="服务费(元)"/>
+                <input type="number" class="form-control" v-model="cloudProduct.managementExpense" placeholder="服务费(元)"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-2 control-label">库存(T)</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.stock" placeholder="库存"/>
+                <input type="number" class="form-control" v-model="cloudProduct.stock" placeholder="库存"/>
             </div>
         </div>
         <div class="form-group">
@@ -79,7 +79,13 @@
         <div class="form-group">
             <div class="col-sm-2 control-label">额定算力</div>
             <div class="col-sm-10">
-                <input type="text" class="form-control" v-model="cloudProduct.rated" placeholder="额定算力"/>
+                <input type="number" class="form-control" v-model="cloudProduct.rated" placeholder="额定算力"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">功耗</div>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" v-model="cloudProduct.powerWaste" placeholder="功耗"/>
             </div>
         </div>
         <div class="form-group">
@@ -118,6 +124,16 @@
                 <input type="text" class="form-control" v-model="cloudProduct.contractCycle" placeholder="合同周期"/>
             </div>
         </div>
+        <!--  上传图片start-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="exampleInputName2">商品缩略图</label>
+        </div>
+        <div class="form-group" id="picimg">
+            <div class="file-loading col-sm-10"  >
+                <input id="input-7021" name="files" type="file"  data-min-file-count="1">
+            </div>
+        </div>
+        <!--  上传图片end-->
         <div class="form-group">
             <div class="col-sm-2 control-label">产品介绍</div>
             <div class="col-sm-10">
