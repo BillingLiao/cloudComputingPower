@@ -84,8 +84,6 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             if (selectUser == null)
                 return null;
             BigDecimal amount = orderDao.selectAmountByUser(userId);
-            if (amount == null)
-                return null;
             BigDecimal btcBalance = selectUser.getBtc();
             BigDecimal cnyBalance = selectUser.getCny();
             BigDecimal btcPresent = putForwardDao.selectBtcPresentByUserId(userId);
@@ -94,6 +92,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
             BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
             BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
+            if (amount == null){
+                amount = new BigDecimal(0.00);
+            }
             if (btcPresent == null) {
                 btcPresent = new BigDecimal(0.00);
             }

@@ -109,14 +109,6 @@ var vm = new Vue({
                });
               return;
           }
-          if (this.verification != this.verificationCode) {
-                swal({
-                    text: "验证码输入错误",
-                    icon: "warning",
-                    button: "返回",
-                });
-               return;
-           }
            if(!isString(this.password)){
               swal({
                    text: "请输入您的密码",

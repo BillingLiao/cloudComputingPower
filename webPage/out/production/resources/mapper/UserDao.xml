@@ -8,7 +8,7 @@
     </select>
 
     <select id="findOneByPhone" parameterType="String" resultType="com.ant.entity.User">
-        select * from t_user where status = 1 and telphone = #{telphone}
+        select * from t_user where status = 1 and telphone = #{phone}
     </select>
 
     <select id="selectByInvitationCode" parameterType="String" resultType="com.ant.entity.User">

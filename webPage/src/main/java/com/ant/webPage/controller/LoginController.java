@@ -50,32 +50,35 @@ public class LoginController {
     @PostMapping("/sendCode")
     public Result sendCode(@RequestParam String phone,@RequestParam Integer msgType) throws ClientException {
         ValidatorUtils.validateEntity(phone);
+        String tempCode = "";
         //注册发送验证码时，要判断用户是否有账号
         if(msgType == 0){
             User user = userService.findByPhone(phone);
             if(user != null){
                 return Result.error("您已经注册过账号");
             }
+            tempCode = "SMS_144375029";
         }
         else if(msgType == 1){
             User user = userService.findByPhone(phone);
             if(user == null){
                 return Result.error("您还未注册过账号，请先注册");
             }
+            tempCode = "SMS_146802920";
         }
-        //String tempCode = "SMS_144375029";
+
         if( redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone)!= null) {
             return Result.error("发送验证码比较频繁，等一分钟之后再试试");
         }
-        String verificationCode = RandomUtil.randomNumbers(6);
-        //SendSmsResponse response = Alimsg.sendSms(phone,tempCode,code);
-        /*String resultCode = response.getCode();
+        String verificationCode = RandomUtil.randomNumbers(4);
+        SendSmsResponse response = Alimsg.sendSms(phone,tempCode,verificationCode);
+        String resultCode = response.getCode();
         if(!resultCode.equals("OK")){
             return Result.error("获取验证码失败，请重新获取");
-        }*/
-        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, verificationCode, 60 * 15);
+        }
+        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, verificationCode, 60 * 5);
         redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, verificationCode, 60 * 1);
-        return Result.ok("验证码获取成功").put("verificationCode",verificationCode);
+        return Result.ok("验证码获取成功");
     }
 
     /**

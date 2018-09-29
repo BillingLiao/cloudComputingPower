@@ -51,9 +51,8 @@ var vm = new Vue({
                 password: this.password
             },
             success:function(res){
-                console.log(res.result);
                 _this.loading = false;
-                if(res.code == 0){
+                if(res.code==0){
                     swal(res.msg, {
                        buttons: false,
                        timer: 2000,

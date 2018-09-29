@@ -47,30 +47,21 @@ var vm = new Vue({
                     console.log(res);
                     if(res.code==0){
                         vm.account = res.account;
-                    }else if(res.code == 0){
-                        swal("请先登录", {
+                    }else if(res.code==3){
+                        swal(res.msg, {
                            buttons: false,
                            timer: 2000,
                          }).then((value) => {
                             window.location.href='login.html'
                         });
-                    }else if(res.code == 10){
-                        localStorage.removeItem('token');
-                        swal("请重新登录", {
-                            buttons: false,
-                            timer: 2000,
-                        }).then((value) => {
-                            window.location.href='login.html'
-                    });
                     }
                 },
                 error: function(res) {
-                    localStorage.removeItem('token');
                     swal({
-                        text: res.msg,
-                        icon: "error",
-                        button: "返回",
-                       });
+                       text: res.msg,
+                       icon: "error",
+                       button: "返回",
+                      });
                 }
             });
         }

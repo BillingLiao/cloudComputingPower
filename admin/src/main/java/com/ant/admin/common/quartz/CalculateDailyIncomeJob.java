@@ -28,6 +28,7 @@ public class CalculateDailyIncomeJob {
     /**
      * 每天凌晨2点定期执行
      */
+    //@Scheduled(cron="0 0 10 * * ?")
     @Scheduled(cron="0 0 2 * * ?")
     public void work(){
         /**
@@ -41,6 +42,7 @@ public class CalculateDailyIncomeJob {
     /**
      * 每日凌晨2点01分定期执行
      */
+    //@Scheduled(cron="01 0 10 * * ?")
     @Scheduled(cron="01 0 2 * * ?")
     public void work2(){
         /**
