@@ -21,9 +21,9 @@ spring:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
     datasource:
-        url: jdbc:mysql://localhost:3306/cloudcomputingpower?useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://103.210.237.150:3306/cloudcomputingpower?useUnicode=true&characterEncoding=utf-8
         username: root
-        #password: 123456
+        password: SfS2Bbghfs6rttr1yfdDSD5FSDRT
         #password: Zpc577207.
         password: mysql123456
         type: com.alibaba.druid.pool.DruidDataSource

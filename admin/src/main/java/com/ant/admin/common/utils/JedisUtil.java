@@ -22,7 +22,8 @@ public class JedisUtil {
     private final String REDIS_HOST = "127.0.0.1";
     private final int REDIS_PORT = 6379;
     private final int timeout = 2000;
-    private final String password = "123456";
+    //private final String password = "123456";
+    private final String password = "";
     //private final String password = "70pool";
 
 

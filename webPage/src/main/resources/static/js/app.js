@@ -1,6 +1,7 @@
 //var api = "http://70pool.com/"
-var api = "http://120.79.244.153/"
-//var api = "http://localhost:8082/"
+//var api = "http://120.79.244.153/"
+var api = "http://103.210.237.150/"
+//var api = "http://127.0.0.1:8082/"
 
 function AntiSqlValid(oField) {
 	var sql = /select|update|delete|exec|count|'|"|=|;|>|<|%/i;
