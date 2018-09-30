@@ -260,7 +260,8 @@ $(document).on("ready", function() {
 	    console.log('file sorted', e, params);
 	}).on('fileuploaded', function(event, data, previewId, index) {
 	     console.log('fileuploaded', data);
- 		 var url = data.response.url;
+ 		 var fileName = data.response.fileName;
+ 		 var url = baseURL + "upload/" + fileName;
 	     vm.cloudProduct.picImg=url;
 
 	 }).on('filesuccessremove', function(event, data, index,e) {
@@ -311,7 +312,5 @@ $(document).on("ready", function() {
 			console.log("filepreajax");
 			 return false;
 		 }
-
-
 	});
 })

@@ -131,15 +131,13 @@ public class CloudProductController extends AbstractController{
         System.out.println("file-->" + file);
         // System.out.println("getContentType-->" + contentType);
         String filePath = request.getSession().getServletContext().getRealPath("/upload");
-        String url = null;
         try {
             FileTool.uploadFile(file.getBytes(), filePath, fileName);
-            url = filePath+"/"+fileName;
         } catch (Exception e) {
             // TODO: handle exception
             Result.error(CodeConstant.SET_ERR,"图片上传失败");
         }
 
-        return Result.ok().put("url", url);
+        return Result.ok().put("fileName", fileName);
     }
 }

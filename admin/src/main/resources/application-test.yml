@@ -4,9 +4,9 @@ server:
         uri-encoding: UTF-8
         max-threads: 1000
         min-spare-threads: 30
-    port: 8081
+    port: 8080
     servlet:
-        context-path: /admin
+        context-path: /
 spring:
     http:
         multipart:
@@ -25,7 +25,7 @@ spring:
         username: root
         password: SfS2Bbghfs6rttr1yfdDSD5FSDRT
         #password: Zpc577207.
-        password: mysql123456
+        #password: mysql123456
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         filters: stat
@@ -60,7 +60,5 @@ mybatis-plus:
 #log
 logging:
    config: classpath:logback.xml
-   path: /computingPower-log/my_admin.log
-    #path: logs/
-    #file: admin.log
+   path: /70pool-log/admi
 

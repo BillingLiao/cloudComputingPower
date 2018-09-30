@@ -182,7 +182,12 @@ INSERT INTO `t_menu` VALUES ('54', '53', '查看', NULL, 'totices:list,totices:i
 INSERT INTO `t_menu` VALUES ('55', '53', '新增', NULL, 'totices:save', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('56', '53', '修改', NULL, 'totices:update', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('57', '53', '删除', NULL, 'totices:delete', '2', NULL, '0');
-
+INSERT INTO `t_menu` VALUES ('58', '0', '用户管理', NULL, NULL, '0', 'fa fa-bars', '3');
+INSERT INTO `t_menu` VALUES ('59', '58', '用户列表', 'modules/user/user.html', NULL, '1', NULL, '0');
+INSERT INTO `t_menu` VALUES ('60', '59', '查看', NULL, 'user:list,user:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('61', '59', '新增', NULL, 'user:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('62', '59', '修改', NULL, 'user:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('63', '59', '删除', NULL, 'user:delete', '2', NULL, '0');
 
 /*Table structure for table `t_order` */
 
@@ -546,7 +551,7 @@ CREATE TABLE `t_put_forward` (
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1','','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
 INSERT  INTO `t_put_forward` VALUES (2,'ysl5454547','2','1','0','0','0','500','2017-03-24 15:23:13',NULL);
 
 DROP TABLE IF EXISTS `t_present_record`;
