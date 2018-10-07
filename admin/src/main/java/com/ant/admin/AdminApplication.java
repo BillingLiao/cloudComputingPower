@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 @EnableScheduling
+
 @MapperScan(basePackages = {"com.ant.admin.dao"})
 public class AdminApplication extends SpringBootServletInitializer {
 

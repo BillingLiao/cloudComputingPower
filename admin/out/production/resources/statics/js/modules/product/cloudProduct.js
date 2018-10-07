@@ -312,7 +312,5 @@ $(document).on("ready", function() {
 			console.log("filepreajax");
 			 return false;
 		 }
-
-
 	});
 })

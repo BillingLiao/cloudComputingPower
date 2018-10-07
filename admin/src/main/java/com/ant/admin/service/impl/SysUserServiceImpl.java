@@ -1,6 +1,5 @@
 package com.ant.admin.service.impl;
 
-import com.ant.admin.common.annotation.DataFilter;
 import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.PageUtils;
@@ -26,7 +25,7 @@ import java.util.Map;
  * @author Billing
  * @date 2018/8/13 19:43
  */
-@Service("userService")
+@Service("sysUerService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserDao,SysUser> implements SysUserService {
 
     @Autowired

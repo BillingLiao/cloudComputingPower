@@ -1,146 +1,114 @@
 package com.ant.admin.controller;
 
-import com.ant.admin.common.annotation.SysLog;
-import com.ant.admin.common.shiro.ShiroUtils;
+import com.ant.admin.common.utils.MPUtil;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
-import com.ant.admin.common.validator.Assert;
-import com.ant.admin.common.validator.ValidatorUtils;
-import com.ant.admin.common.validator.group.AddGroup;
-import com.ant.admin.common.validator.group.UpdateGroup;
-import com.ant.admin.service.SysUserService;
-import com.ant.admin.service.UserRoleService;
 import com.ant.admin.service.UserService;
+import com.ant.common.validator.ValidatorUtils;
 import com.ant.entity.User;
-import org.apache.commons.lang.ArrayUtils;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
-/**
- * @author Billing
- * @date 2018/8/15 11:59
- */
-@Controller
-@RequestMapping("/user")
-public class UserController extends  AbstractController{
 
+/**
+ * 用户表
+ * 后端接口
+ * @author xuchen
+ * @email 171998110@qq.com
+ * @date 2018-06-30 13:40:24
+ */
+@RestController
+@RequestMapping("user")
+public class UserController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRoleService userRoleService;
 
     /**
-     * 所有用户列表
+     * 列表
+     */
+    @RequestMapping("/page")
+    @RequiresPermissions("user:user:list")
+    public Result page(@RequestParam Map<String, Object> params, User user){
+ 
+       
+    	PageUtils page = userService.queryPage(params, user);
+    
+        return Result.ok().put("page", page);
+        
+    }
+
+	/**
+     * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("sys:user:list")
-    @ResponseBody
-    public Result list(@RequestParam Map<String, Object> params){
-        PageUtils page = userService.queryPage(params);
-
-        return Result.ok().put("page", page);
+    @RequiresPermissions("user:user:list")
+    public Result list(User user){
+       	EntityWrapper<User> ew = new EntityWrapper<User>();
+      	ew.allEq(MPUtil.allEQMapPre( user, "user")); 
+        return Result.ok().put("data",  userService.selectListView(ew));
     }
 
-    /**
-     * 获取登录的用户信息
+	 /**
+     * 查询
      */
-    @RequestMapping("/info")
-    public Result info(){
-        return Result.ok().put("sysUser", getUser());
+    @RequestMapping("/query")
+    @RequiresPermissions("user:user:info")
+    public Result query(User user){
+        EntityWrapper<User> ew = new EntityWrapper<User>();
+ 		ew.allEq(MPUtil.allEQMapPre( user, "user"));
+		User  userView =  userService.selectView(ew);
+		return Result.ok("查询用户表成功").put("data",  userView);
     }
-
+	
     /**
-     * 修改登录用户密码
-     */
-    @SysLog("修改密码")
-    @RequestMapping("/password")
-    public Result password(String password, String newPassword){
-        Assert.isBlank(newPassword, "新密码不为能空");
-
-        //原密码
-        password = ShiroUtils.sha256(password, getUser().getSalt());
-        //新密码
-        newPassword = ShiroUtils.sha256(newPassword, getUser().getSalt());
-
-        //更新密码
-        boolean flag = sysUserService.updatePassword(getUserId(), password, newPassword);
-        if(!flag){
-            return Result.error("原密码不正确");
-        }
-
-        return Result.ok();
-    }
-
-    /**
-     * 用户信息
+     * 信息
      */
     @RequestMapping("/info/{userId}")
-    @RequiresPermissions("sys:user:info")
-    @ResponseBody
+    @RequiresPermissions("user:user:info")
     public Result info(@PathVariable("userId") Integer userId){
-        User user = user.selectById(userId);
+        User user = userService.selectById(userId);
 
-        //获取用户所属的角色列表
-        List<Integer> roleIdList = userRoleService.queryRoleIdList(userId);
-        user.setRoleIdList(roleIdList);
-
-        return Result.ok().put("sysUser", sysUser);
+        return Result.ok().put("user", user);
     }
 
     /**
-     * 保存用户
+     * 保存
      */
-    @SysLog("保存用户")
     @RequestMapping("/save")
-    @RequiresPermissions("sys:user:save")
-    @ResponseBody
-    public Result save(@RequestBody SysUser sysUser){
-        ValidatorUtils.validateEntity(sysUser, AddGroup.class);
-
-        sysUserService.save(sysUser);
+    @RequiresPermissions("user:user:save")
+    public Result save(@RequestBody User user){
+    	ValidatorUtils.validateEntity(user);
+        userService.insert(user);
 
         return Result.ok();
     }
 
     /**
-     * 修改用户
+     * 修改
      */
-    @SysLog("修改用户")
     @RequestMapping("/update")
-    @RequiresPermissions("sys:user:update")
-    @ResponseBody
-    public Result update(@RequestBody SysUser sysUser){
-        ValidatorUtils.validateEntity(sysUser, UpdateGroup.class);
-
-        sysUserService.update(sysUser);
-
+    @RequiresPermissions("user:user:update")
+    public Result update(@RequestBody User user){
+        ValidatorUtils.validateEntity(user);
+        userService.updateAllColumnById(user);//全部更新
+        
         return Result.ok();
     }
 
     /**
-     * 删除用户
+     * 删除
      */
-    @SysLog("删除用户")
     @RequestMapping("/delete")
-    @RequiresPermissions("sys:user:delete")
-    @ResponseBody
+    @RequiresPermissions("user:user:delete")
     public Result delete(@RequestBody Integer[] userIds){
-        if(ArrayUtils.contains(userIds, 1)){
-            return Result.error("系统管理员不能删除");
-        }
-
-        if(ArrayUtils.contains(userIds, getUserId())){
-            return Result.error("当前用户不能删除");
-        }
-
-        sysUserService.deleteBatchIds(Arrays.asList(userIds));
+        userService.deleteBatchIds(Arrays.asList(userIds));
 
         return Result.ok();
     }
+
 }
