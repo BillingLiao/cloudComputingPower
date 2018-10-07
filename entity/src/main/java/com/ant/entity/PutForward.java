@@ -144,6 +144,14 @@ public class PutForward implements Serializable {
         this.btc = btc;
     }
 
+    public BigDecimal getBtcTrue() {
+        return btcTrue;
+    }
+
+    public void setBtcTrue(BigDecimal btcTrue) {
+        this.btcTrue = btcTrue;
+    }
+
     public BigDecimal getCny() {
         return cny;
     }
@@ -166,13 +174,5 @@ public class PutForward implements Serializable {
 
     public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
-    }
-
-    public BigDecimal getBtcTrue() {
-        return btcTrue;
-    }
-
-    public void setBtcTrue(BigDecimal btcTrue) {
-        this.btcTrue = btcTrue;
     }
 }

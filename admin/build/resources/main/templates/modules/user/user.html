@@ -9,18 +9,18 @@
     <div v-show="showList">
         <div class="grid-btn">
               <select id="selectType" class="form-control" style="width:auto;display:inline-block;" v-model="selectSearch">
-                        <option value="phone" selected >按手机号</option>
+                        <option value="telphone" selected >按手机号</option>
                         <option value="userName">按用户名</option>
-                        <option value="realName">按真实姓名</option>
+                        <!--<option value="realName">按真实姓名</option>-->
               </select>
              
               
-        <input type="text" class="form-control" style="width:auto;display:inline-block;"  v-if="selectSearch === 'phone'" placeholder="手机号" v-model="selectSearchVal">
+        <input type="text" class="form-control" style="width:auto;display:inline-block;"  v-if="selectSearch === 'telphone'" placeholder="手机号" v-model="selectSearchVal">
                 <input type="text" class="form-control" style="width:auto;display:inline-block;" v-if="selectSearch === 'userName'" placeholder="用户名" v-model="selectSearchVal">
-                <input type="text" class="form-control" style="width:auto;display:inline-block;"  v-if="selectSearch === 'realName'" placeholder="真实姓名" v-model="selectSearchVal">
+                <!--<input type="text" class="form-control" style="width:auto;display:inline-block;"  v-if="selectSearch === 'realName'" placeholder="真实姓名" v-model="selectSearchVal">-->
           
          <a class="btn btn-default" @click="query()">查询</a>
-			<#if shiro.hasPermission("user:user:save")>
+			<!--<#if shiro.hasPermission("user:user:save")>
             <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			</#if>
 			<#if shiro.hasPermission("user:user:update")>
@@ -28,7 +28,7 @@
 			</#if>
 			<#if shiro.hasPermission("user:user:delete")>
             <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
-			</#if>
+			</#if>-->
         </div>
         <table id="jqGrid"></table>
         <div id="jqGridPager"></div>

@@ -23,7 +23,7 @@ import java.util.Map;
  * @date 2018-06-30 13:40:24
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("user/user")
 public class UserController {
     @Autowired
     private UserService userService;

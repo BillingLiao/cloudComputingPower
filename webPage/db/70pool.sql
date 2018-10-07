@@ -184,10 +184,10 @@ INSERT INTO `t_menu` VALUES ('56', '53', '修改', NULL, 'totices:update', '2', 
 INSERT INTO `t_menu` VALUES ('57', '53', '删除', NULL, 'totices:delete', '2', NULL, '0');
 INSERT INTO `t_menu` VALUES ('58', '0', '用户管理', NULL, NULL, '0', 'fa fa-bars', '3');
 INSERT INTO `t_menu` VALUES ('59', '58', '用户列表', 'modules/user/user.html', NULL, '1', NULL, '0');
-INSERT INTO `t_menu` VALUES ('60', '59', '查看', NULL, 'user:list,user:info', '2', NULL, '0');
-INSERT INTO `t_menu` VALUES ('61', '59', '新增', NULL, 'user:save', '2', NULL, '0');
-INSERT INTO `t_menu` VALUES ('62', '59', '修改', NULL, 'user:update', '2', NULL, '0');
-INSERT INTO `t_menu` VALUES ('63', '59', '删除', NULL, 'user:delete', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('60', '59', '查看', NULL, 'user:user:list,user:user:info', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('61', '59', '新增', NULL, 'user:user:save', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('62', '59', '修改', NULL, 'user:user:update', '2', NULL, '0');
+INSERT INTO `t_menu` VALUES ('63', '59', '删除', NULL, 'user:user:delete', '2', NULL, '0');
 
 /*Table structure for table `t_order` */
 

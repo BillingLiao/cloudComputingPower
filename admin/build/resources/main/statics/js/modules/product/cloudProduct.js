@@ -99,6 +99,18 @@ var vm = new Vue({
 			vm.reload();
 		},
 		add: function(){
+
+        			location.href=baseURL + 'modules/product/sort.html';
+        		},
+        update: function (event) {
+            var productId = getSelectedRow();
+            if(productId == null){
+                return ;
+            }
+
+            location.href=baseURL + 'modules/product/type.html?productId='+productId;
+        },
+/*		add: function(){
 		    vm.showList = false;
             vm.title = "新增";
             vm.cloudProduct = {};
@@ -120,7 +132,7 @@ var vm = new Vue({
                 if(editor){
                    editor.txt.html(vm.cloudProduct.introduction);
                 }
-		},
+		},*/
 		 
 		shelve1: function (event) {
 			var productId = getSelectedRow();
@@ -312,7 +324,5 @@ $(document).on("ready", function() {
 			console.log("filepreajax");
 			 return false;
 		 }
-
-
 	});
 })

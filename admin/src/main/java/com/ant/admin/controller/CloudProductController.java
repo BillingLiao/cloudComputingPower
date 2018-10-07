@@ -131,6 +131,7 @@ public class CloudProductController extends AbstractController{
         System.out.println("file-->" + file);
         // System.out.println("getContentType-->" + contentType);
         String filePath = request.getSession().getServletContext().getRealPath("/upload");
+        //String filePath = "D:/upload";
         try {
             FileTool.uploadFile(file.getBytes(), filePath, fileName);
         } catch (Exception e) {

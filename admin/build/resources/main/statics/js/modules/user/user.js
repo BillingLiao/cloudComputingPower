@@ -4,9 +4,9 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'userId', name: 'userId', index: 'user_id', width: 50, key: true },
-			{ label: '手机号', name: 'phone', index: 'phone', width: 80 }, 				
+			{ label: '手机号', name: 'telphone', index: 'telphone', width: 80 },
 			{ label: '用户昵称', name: 'userName', index: 'user_name', width: 80 }, 			
-			{ label: '真实姓名', name: 'realName', index: 'real_name', width: 80 }, 			
+			/*{ label: '真实姓名', name: 'realName', index: 'real_name', width: 80 },
 			{ label: '性别', name: 'sex', index: 'sex', width: 80 ,formatter: function(cellvalue, options, rowObject){
 				if(cellvalue == 0){
 	                return '男';
@@ -26,29 +26,20 @@ $(function () {
 						 return '暂无图片';
 			           
 	           
-	        }}, 			
+	        }}, */
 			{ label: '状态 ', name: 'status', index: 'status', width: 80 ,formatter: function(cellvalue, options, rowObject){
 				if(cellvalue == 0){
-	                return '<span class="label label-primary">正常/span>';
+	                return '<span class="label label-primary">冻结/span>';
 	            }
 	            if(cellvalue == 1){
-	                return '<span class="label label-success">冻结</span>';
+	                return '<span class="label label-success">正常</span>';
 	            }  
 	            return '<span class="label label-primary">正常</span>';
 	           
 	        }}, 								
-			{ label: '总金额', name: 'amount', index: 'amount', width: 80 }, 			
-			{ label: '用户类型', name: 'userType', index: 'user_type', width: 80 ,formatter: function(cellvalue, options, rowObject){
-				if(cellvalue === 0){
-	                return '<span class="label label-primary">会员/span>';
-	            }
-	            if(cellvalue === 1){
-	                return '<span class="label label-success">其他</span>';
-	            }  
-	            return '<span class="label label-primary">会员</span>';
-	           
-	        }}, 											
-			{ label: '注册时间', name: 'regeistTime', index: 'regeist_time', width: 80 }, 			
+			{ label: '总金额（btc）', name: 'btc', index: 'btc', width: 80 },
+			{ label: '总金额（cny）', name: 'cny', index: 'cny', width: 80 },
+			{ label: '注册时间', name: 'registerTime', index: 'register_time', width: 80 },
 			/*{ label: '创建者', name: 'createBy', index: 'create_by', width: 80 }, 			
 			{ label: '修改时间', name: 'updateTime', index: 'update_time', width: 80 }, 			
 			{ label: '修改人', name: 'updateBy', index: 'update_by', width: 80 }, 	*/		
@@ -89,7 +80,7 @@ var vm = new Vue({
 		title: null,
 		user: {},
 		search : {},
-		selectSearch : 'phone',
+		selectSearch : 'telphone',
 		selectSearchVal : null
 
 	},
