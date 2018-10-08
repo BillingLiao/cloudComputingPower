@@ -3,7 +3,7 @@
 
 <head>
 	<title>商城产品详情 - 蚂蚁矿业</title>
-	<meta name="keywords" content="蚂蚁矿业" /> 
+	<meta name="keywords" content="蚂蚁矿业" />
 	<meta name="description" content="蚂蚁矿业" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="author" content="pennychen" />
@@ -25,12 +25,12 @@
 	<script>
 		new WOW().init();
 	</script>
-		
+
 </head>
-	
-	
-	
-	
+
+
+
+
 <body class="cbp-spmenu-push">
 <div id="page" v-cloak>
 
@@ -42,13 +42,13 @@
 
 
 	<h1 class="mall_t">{{cloudProduct.productName}}</h1>
-	
+
 	<div class="index_banner">
-		
+
 		<div id="owl-demo" class="owl-carousel">
 		   <div class="item"><a><img src="images/a_1.jpg" alt="" /></a></div>
 		</div>
-		
+
 		<div class="post_box wow fadeInUp">
 			<div class="post_info">
 				<p><strong>¥{{cloudProduct.retailPrice}}</strong></p>
@@ -56,21 +56,21 @@
 				<!--<div class="deadline">距结束仅剩<span>12</span>小时<span>18</span>分<span>19</span>秒</div>-->
 			</div>
 		</div>
-	  
+
 		<!-- Owl Carousel Assets -->
 		<link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
 		<link href="js/owl-carousel/owl.theme.css" rel="stylesheet">
 		<script src="js/owl-carousel/owl.carousel.js"></script>
 		<script src="js/owl-carousel/one.js"></script>
-	
+
 	</div>
-		
-	
+
+
 	<div class="agent_box_2">
-		
+
 		<!--主要参数-->
 		<ul class="c_info" id="car_two">
-	
+
 			<li>售价：	 <span>¥{{cloudProduct.sellOut}}元</span></li>
 			<li>价格： <span>{{cloudProduct.price}}元</span></li>
 			<li>本期云算力库存：	 <span>{{cloudProduct.stock}}T</span></li>
@@ -88,16 +88,16 @@
 		<li class="last">总价：	<span>￥  <input type="number" name="actualReceipts" class="box1"  v-model="actualReceipts" readonly="readonly"/></span></li>
 		</ul>
 		<!--主要参数 end-->
-		
+
 		<li><input type="checkbox" class="checkbox" name="promise" checked="true"/><label class="promise" >{{consentClause}}</label></li>
-		
-		
+
+
 		<div class="index_reg"><a class="yew"  @click="goToPay">去支付</a></div>
-		
-		
+
+
 			<!--选择器-->
 			<link href="js/icheck/css/square/yellow.css" rel="stylesheet">
-			<script src="js/icheck/js/icheck.min.js"></script>	
+			<script src="js/icheck/js/icheck.min.js"></script>
 			<script>
 				$(document).ready(function(){
 				  $('input').iCheck({
@@ -108,25 +108,25 @@
 				});
 			</script>
 	</div>
-		
+
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
 		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
 	</div>
 	<!--footer end-->
-	
+
 
 	<!--导航-->
 	<ul class="nav_b">
 		<li><a class="icon_01" href="index.html">首页</a></li>
-		<li><a class="icon_02" href="rent.html">租赁</a></li>
+		<!--<li><a class="icon_02" href="rent.html">租赁</a></li>-->
 		<li><a class="icon_03" href="mall.html">购买</a></li>
 		<li><a class="icon_05" href="personal.html">我</a></li>
 	</ul>
 
-	
-			
+
+
 </div>
 
 <script stype="text/javascript" src="js/modules/mall_detail.js"></script>

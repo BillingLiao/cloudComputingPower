@@ -41,6 +41,11 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+    redis:
+        host: 127.0.0.1
+        port: 6379
+        password: 123456 # 密码（默认为空）
+        timeout: 2000  # 连接超时时长（毫秒）
 mybatis-plus:
     typeAliasesPackage: com.ant.entity
     mapper-locations: classpath:mapper/*.xml

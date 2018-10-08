@@ -1,14 +1,10 @@
 package com.ant.webPage.config;
 
 import com.ant.webPage.interceptor.AuthInterceptor;
-import com.ant.webPage.interceptor.LogInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.util.Arrays;
 
 /**
  * WebMvc配置
@@ -17,8 +13,6 @@ import java.util.Arrays;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private LogInterceptor logInterceptor;
     @Autowired
     private AuthInterceptor authInterceptor;
 
@@ -43,7 +37,6 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(logInterceptor).addPathPatterns("/**");
         registry.addInterceptor(authInterceptor).addPathPatterns("/**").excludePathPatterns(noInterceptor);
     }
 }

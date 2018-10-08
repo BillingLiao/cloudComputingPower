@@ -2,7 +2,7 @@ var vm = new Vue({
 	el:'#page',
 	data:{
 	    addr: null,
-	    btcAddrId: null,
+	    btcAddrId: null
     	},
 	created: function(){
        var token = window.localStorage.getItem('token');

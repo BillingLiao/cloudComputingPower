@@ -1,11 +1,14 @@
 var vm = new Vue({
 	el:'#page',
 	data:{
+	    showList: true,
 		account :{},
 		cny: null,
 		btcTrue: null,
 		btcMsg: '',
-		cnyMsg: ''
+		cnyMsg: '',
+		addr: null,
+		btcAddrId: null,
 	},
 	watch: {
         btcTrue: function(newBtcTrue, oldBtcTrue){
@@ -53,6 +56,37 @@ var vm = new Vue({
                });
             }
         });
+        $.ajax({
+           url: api + 'btcAddr/find',
+           type:'POST',
+           dataType:'json',
+           data:{
+               token:token
+           },
+           success:function(res){
+               console.log(res);
+               if(res.code==0){
+                   if(res.btcAddr != null){
+                      vm.showList = false;
+                      vm.addr = res.btcAddr.addr;
+                      vm.btcAddrId = res.btcAddr.btcAddrId;
+                   }
+               }else{
+                   swal({
+                    text: res.msg,
+                    icon: "error",
+                    button: "返回",
+                   });
+               }
+           },
+           error: function(res) {
+               swal({
+                text: res.msg,
+                icon: "error",
+                button: "返回",
+               });
+           }
+       });
         this.debouncedGetChangeBtc = _.debounce(this.getChangeBtc, 500);
         this.debouncedGetChangeCny = _.debounce(this.getChangeCny, 500);
     },
@@ -71,7 +105,7 @@ var vm = new Vue({
            }else if(this.btcTrue > (btc-(btc*0.005))){
                this.btcMsg = '输入金额超过可提现余额';
            }else{
-               this.btcMsg = '';
+               this.btcMsg = '实际提现金额为:'+this.btcTrue/0.995;
            }
         },
         getChangeCny: function(){
@@ -86,6 +120,14 @@ var vm = new Vue({
         addBtcPutForward: function(){
             var token = window.localStorage.getItem('token');
             var btc = vm.account.btcBalance;
+            if(this.btcAddrId == null){
+                swal({
+                   text: "请先设置btc地址",
+                   icon: "warning",
+                   button: "返回",
+                   });
+　　　           return;
+            }
             if(this.btcTrue <= 0){
                 swal({
                    text: "提现金额不能小于0",

@@ -8,7 +8,7 @@
 }
 
 img {
-	border: 0px;	
+	border: 0px;
 }
 ul {
 	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; list-style-type: none
@@ -16,14 +16,14 @@ ul {
 li {
 	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; list-style-type: none
 }
-h1 { 
-    font-size:18px; 
+h1 {
+    font-size:18px;
 }
-h2 { 
-    font-size:16px; 
+h2 {
+    font-size:16px;
 }
-h3 { 
-    font-size:14px; 
+h3 {
+    font-size:14px;
 }
 p {
 	font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
@@ -52,8 +52,8 @@ select{
 input[type="button"], input[type="submit"], input[type="reset"] {
 -webkit-appearance: none;
 }
-textarea {  -webkit-appearance: none;}   
-.button{ border-radius: 0; } 
+textarea {  -webkit-appearance: none;}
+.button{ border-radius: 0; }
 
 /**********基本  end**********/
 
@@ -202,7 +202,7 @@ input.submit_btn {
 	border-bottom: 1px #EBEBEB solid;
 	border-right: 1px #EBEBEB solid;
 }
-.sty_box:last-child { 
+.sty_box:last-child {
 	width: 20%;
 	border-right: none;
 }
@@ -320,7 +320,7 @@ input.submit_btn {
 	background-size: 20px 20px;
 	position: absolute;
 	top: 0px;
-	right: 4%;	
+	right: 4%;
 }
 .refresh a {
 	color: #333333;
@@ -951,10 +951,10 @@ h1.xgt {
 	border-radius: 10px; /* css 3标准 */
     -moz-border-radius: 10px; /* mozilla */
     -webkit-border-radius: 10px;
-	background: radial-gradient(#ffffff, #F0F0F0); 
-    background: -o-radial-gradient(#ffffff, #F0F0F0); 
+	background: radial-gradient(#ffffff, #F0F0F0);
+    background: -o-radial-gradient(#ffffff, #F0F0F0);
     background: -moz-radial-gradient(#ffffff, #F0F0F0);
-    background: radial-gradient(#ffffff, #F0F0F0); 
+    background: radial-gradient(#ffffff, #F0F0F0);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#F0F0F0',GradientType=0 ); /******兼容IE*****/
 	float: left;
 	width: 55%;
@@ -1166,9 +1166,9 @@ h1.xgt {
 	border-radius: 4px; /* css 3标准 */
     -moz-border-radius: 4px; /* mozilla */
     -webkit-border-radius: 4px;
-	background-color: #14B9FF;	
+	background-color: #14B9FF;
 	padding: 12px 0%;
-	text-align: center;	
+	text-align: center;
 	cursor:pointer;
 }
 .login_box input.login_btn:hover {
@@ -1191,9 +1191,9 @@ h1.xgt {
 	border-radius: 4px; /* css 3标准 */
     -moz-border-radius: 4px; /* mozilla */
     -webkit-border-radius: 4px;
-	background-color: #78D400;	
+	background-color: #78D400;
 	padding: 10px 0%;
-	text-align: center;	
+	text-align: center;
 	cursor:pointer;
 }
 .login_box input.reg_btn:hover {
@@ -1745,7 +1745,7 @@ h1.xgt {
 	border-right: 1px solid #ccc;
 	padding: 0px 3% 0px 3%;
 }
-.about a:last-child { 
+.about a:last-child {
 	border-right: none;
 }
 .about a{
@@ -2135,7 +2135,7 @@ h1.xgt {
 	background-color: #FFFFFF;
 }
 .nav_b li {
-	width:21%;
+	width:29%;
 	float:left;
 	padding: 5px 2% 0% 2%;
 	text-align: center;

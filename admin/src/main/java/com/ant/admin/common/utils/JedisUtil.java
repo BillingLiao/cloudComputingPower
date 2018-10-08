@@ -2,6 +2,7 @@ package com.ant.admin.common.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -19,11 +20,17 @@ public class JedisUtil {
     private Logger logger = LoggerFactory.getLogger(JedisUtil.class);
     private static JedisPool jedisPool;
 
-    private final String REDIS_HOST = "127.0.0.1";
-    private final int REDIS_PORT = 6379;
-    private final int timeout = 2000;
-    //private final String password = "";
-    private final String password = "70pool";
+    @Value("${spring.redis.host}")
+    private String REDIS_HOST;
+
+    @Value("${spring.redis.port}")
+    private int REDIS_PORT;
+
+    @Value("${spring.redis.timeout}")
+    private int timeout;
+
+    @Value("${spring.redis.password}")
+    private String password;
 
 
     private Jedis getResource() {

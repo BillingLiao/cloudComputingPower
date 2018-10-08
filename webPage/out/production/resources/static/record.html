@@ -3,7 +3,7 @@
 
 <head>
 	<title>交易记录 - 蚂蚁矿业</title>
-	<meta name="keywords" content="蚂蚁矿业" /> 
+	<meta name="keywords" content="蚂蚁矿业" />
 	<meta name="description" content="蚂蚁矿业" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="author" content="pennychen" />
@@ -23,12 +23,12 @@
 	<script>
 		new WOW().init();
 	</script>
-		
+
 </head>
-	
-	
-	
-	
+
+
+
+
 <body class="cbp-spmenu-push">
 <div id="page" v-cloak>
 
@@ -49,7 +49,7 @@
 			<li id="one1" @click="setTab('one',1,2)" class="hover hover_2">交易记录</li>
 		</ul>
 		</div>
-		
+
 		<!--1-->
 		<div id="con_one_1" class="me_con" style="display:block;">
 			<div class="tabconbox" v-for="orderRecord in orderRecordList">
@@ -73,35 +73,35 @@
 					<div class="audit" v-else-if="orderRecord.orderStatus === 5">订单完成</div>
 					<div class="amount">金额：¥ {{orderRecord.actualReceipts}}</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<!--end 1-->
-		
-		
-			
-			
+
+
+
+
 	</div>
 	<!--交易记录 end-->
-	
-	
-		
+
+
+
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
 		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
 	</div>
 	<!--footer end-->
-	
+
 
 	<!--导航-->
 	<ul class="nav_b">
 		<li><a class="icon_01" href="index.html">首页</a></li>
-		<li><a class="icon_02" href="rent.html">租赁</a></li>
+		<!--<li><a class="icon_02" href="rent.html">租赁</a></li>-->
 		<li><a class="icon_03" href="mall.html">商城</a></li>
 		<li><a class="icon_05" href="personal.html">我</a></li>
 	</ul>
-			
+
 </div>
 
 <script stype="text/javascript" src="js/modules/record.js"></script>
