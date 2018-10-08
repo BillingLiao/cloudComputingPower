@@ -1,6 +1,6 @@
 //var api = "http://70pool.com/"
-//var api = "http://120.79.244.153/"
-var api = "http://39.109.116.80/"
+var api = "http://120.79.244.153/"
+//var api = "http://39.109.116.80/"
 //var api = "http://127.0.0.1:8082/"
 //var api = "http://localhost:8082/"
 

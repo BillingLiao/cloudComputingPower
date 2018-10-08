@@ -74,7 +74,7 @@ public class PutForward implements Serializable {
     @DateTimeFormat
     private Date completionTime;
 
-    public PutForward() {
+    public PutForward(){
     }
 
     public PutForward(String forwardNo, Integer userId, Integer forwardType, Integer forwardStatus, BigDecimal cny, Date createTime) {

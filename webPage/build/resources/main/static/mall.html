@@ -3,7 +3,7 @@
 
 <head>
 	<title>商城 - 蚂蚁矿业</title>
-	<meta name="keywords" content="蚂蚁矿业" /> 
+	<meta name="keywords" content="蚂蚁矿业" />
 	<meta name="description" content="蚂蚁矿业" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="author" content="pennychen" />
@@ -23,12 +23,12 @@
 	<script>
 		new WOW().init();
 	</script>
-		
+
 </head>
-	
-	
-	
-	
+
+
+
+
 <body class="cbp-spmenu-push">
 <div id="page">
 
@@ -38,10 +38,10 @@
 	</div>
 	<!--header end-->
 
-	
+
 	<!--热门-->
 	<div class="hotpro">
-		<div class="rent_con">		
+		<div class="rent_con">
 
 		</div>
 		<script TYPE="text/template" id="cloudProductList">
@@ -82,18 +82,18 @@
 			});
 		</script>
 
-		<div class="page">
+		<!--<div class="page">
 			<div class="next"><a href="#">查看更多</a></div>
-		</div>
-	</div>	
-	<!--热门 end-->	
-	
+		</div>-->
+	</div>
+	<!--热门 end-->
+
 			<!--瀑布流JS-->
 			<script src="js/pubu/jquery.lazyload.min.js"></script>
 			<script src="js/pubu/blocksit.min.js"></script>
 			<script>
 			$(function(){
-				$("img.lazy").lazyload({		
+				$("img.lazy").lazyload({
 					load:function(){
 						$('#content').BlocksIt({
 							numOfCol:1, //每行显示图片个数
@@ -101,10 +101,10 @@
 							offsetY: 0
 						});
 					}
-				});	
+				});
 				$(window).scroll(function(){
 						// 当滚动到最底部以上50像素时， 加载新内容
-					if ($(document).height() - $(this).scrollTop() - $(this).height()<50){		
+					if ($(document).height() - $(this).scrollTop() - $(this).height()<50){
 						$('#content').BlocksIt({
 							numOfCol:1, //每行显示图片个数
 							offsetX: 0,
@@ -116,38 +116,38 @@
 			});
 			</script>
 			<!--end 瀑布流JS-->
-					
-	
-	
+
+
+
 	<!--微信-->
 	<div class="index_wx">
 		<h1>蚂蚁云算力</h1>
 		<img src="images/wx.png" alt="" />
 	</div>
 	<!--end 微信-->
-	
-		
-		
+
+
+
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
 		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
 	</div>
 	<!--footer end-->
-	
+
 
 	<!--导航-->
 	<ul class="nav_b">
 		<li><a class="icon_01" href="index.html">首页</a></li>
-		<li><a class="icon_02" href="rent.html">租赁</a></li>
+		<!--<li><a class="icon_02" href="rent.html">租赁</a></li>-->
 		<li><a class="icon_03" href="mall.html">购买</a></li>
 		<li><a class="icon_05" href="personal.html">我</a></li>
 	</ul>
 
-	
-			
+
+
 </div>
-	
-		
+
+
 </body>
 </html>
