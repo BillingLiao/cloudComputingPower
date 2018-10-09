@@ -118,10 +118,13 @@ LEFT JOIN t_financial_product f ON f.product_id = o.product_id
 WHERE o.order_type = 3 AND o.order_status = 2 AND o.user_id = 2
 
 /*
-	查询用户云算力所有收益记录
+	查询用户云算力所有收益记录（同一天相加）
 */
-SELECT * FROM t_income 
+SELECT income_id,user_id,SUM(settlement_income) AS settlement_income,DATE_SUB(create_time,INTERVAL 1 DAY) AS create_time
+FROM t_income 
 WHERE income_type = 2 AND user_id = 2
+GROUP BY create_time
+ORDER BY create_time
 
 /*
 	查询用户理财所有收益记录
