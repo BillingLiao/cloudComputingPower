@@ -18,8 +18,11 @@
     </select>
 
     <select id="selectCloudIncomeList" resultType="com.ant.entity.Income">
-        SELECT * FROM t_income
+        SELECT income_id,user_id,SUM(settlement_income) AS settlement_income,DATE_SUB(create_time,INTERVAL 1 DAY) AS create_time
+        FROM t_income
         WHERE income_type = 2 AND user_id = #{userId}
+        GROUP BY create_time
+        ORDER BY create_time
     </select>
 
     <select id="selectFinancialIncomeList" resultType="com.ant.entity.Income">

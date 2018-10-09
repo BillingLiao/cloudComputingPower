@@ -95,7 +95,7 @@
 	<!--动态滚动 end-->
 
 
-	<h1 class="hot_t"><span></span>为您推荐<span></span></h1>
+	<div id="cloudList"><h1 class="hot_t"><span></span>为您推荐<span></span></h1>
 
 	<!--热门-->
 	<div class="hotpro" id="cloudPage" v-cloak>
@@ -103,8 +103,8 @@
 	        <div class="j_list">
 				<div class="jimg"><a @click="clickBuy"><img class="lazy" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
 				<div class="jtx">
-					<h1><a href="mall_detail.html">{{cloudProduct.productName}}</a></h1>
-					<p>售价：{{cloudProduct.sellOut}}元/T</p>
+					<h1><a @click="clickBuy">{{cloudProduct.productName}}</a></h1>
+					<p>售价：{{cloudProduct.retailPrice}}元/T</p>
 					<p>库存：{{cloudProduct.stock}}T</p>
 				</div>
 				<div class="salary"><a @click="clickBuy">购买</a></div>
@@ -115,6 +115,7 @@
 
 
 		</div>
+	</div>
 	</div>
 	<!--热门 end-->
 	<script type="text/javascript" src="js/modules/index.js"></script>

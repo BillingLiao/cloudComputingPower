@@ -85,26 +85,7 @@ CREATE TABLE `t_income` (
   PRIMARY KEY (`income_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='产品收益表';
 
-
-
 /*Data for the table `t_income` */
-
-/*Table structure for table `t_jurisdiction` */
-
-DROP TABLE IF EXISTS `t_jurisdiction`;
-
-CREATE TABLE `t_jurisdiction` (
-  `jurisdiction_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '权限id',
-  `jurisdiction_name` VARCHAR(20) NOT NULL COMMENT '权限名称',
-  `url` VARCHAR(50) NOT NULL COMMENT '权限url',
-  `level` INT(11) NOT NULL COMMENT '权限等级',
-  `icon` VARCHAR(50) NOT NULL COMMENT '权限图标',
-  `parent_id` INT(11) DEFAULT NULL COMMENT '父级id',
-  `is_open` SMALLINT(6) NOT NULL COMMENT '是否开启',
-  PRIMARY KEY (`jurisdiction_id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='权限表';
-
-/*Data for the table `t_jurisdiction` */
 
 /*Table structure for table `t_menu` */
 
@@ -387,17 +368,6 @@ CREATE TABLE `t_role` (
 /*Data for the table `t_role` */
 
 INSERT  INTO `t_role`(`role_id`,`role_name`,`remark`,`create_time`) VALUES (1,'用户',NULL,'2018-06-07 16:29:40'),(2,'数据权限测试','22','2018-07-10 17:49:54'),(3,'数据权限测试','22','2018-07-10 17:50:13'),(4,'admin','admin','2018-07-11 21:55:58');
-
-/*Table structure for table `t_role_func` */
-
-DROP TABLE IF EXISTS `t_role_func`;
-
-CREATE TABLE `t_role_func` (
-  `role_id` INT(11) DEFAULT NULL COMMENT '角色id',
-  `jurisdiction_id` INT(11) DEFAULT NULL COMMENT '权限id'
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='角色权限表';
-
-/*Data for the table `t_role_func` */
 
 /*Table structure for table `t_role_menu` */
 
