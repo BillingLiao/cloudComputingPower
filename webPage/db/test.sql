@@ -84,8 +84,8 @@ SELECT odr.*,o.order_no,o.order_type,o.amount,o.actual_receipts,p.product_name
 FROM t_order_record odr
 LEFT JOIN t_order o ON o.order_id = odr.order_id
 LEFT JOIN t_product p ON p.product_id = o.product_id
-WHERE o.user_id = 2
-
+WHERE o.user_id = 2 AND ((odr.order_status = 0  AND (TO_DAYS(CURRENT_DATE) - TO_DAYS(odr.create_time))<3) OR odr.order_status != 0)
+ORDER BY odr.create_time DESC
 /*
 	查询提现订单记录
 */
@@ -93,7 +93,7 @@ SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.cny
 FROM t_present_record pr
 LEFT JOIN t_put_forward pf ON pf.put_forward_id = pr.put_forward_id
 WHERE pf.user_id = 2
-
+ORDER BY pr.create_time DESC
 /*
 	查询出公告，加管理员姓名
 */

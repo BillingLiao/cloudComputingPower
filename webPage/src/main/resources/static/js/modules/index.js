@@ -32,9 +32,11 @@ var vm = new Vue({
             type:'POST',
             dataType:'json',
             success:function(res){
-                console.log(res);
                 if(res.code==0){
                     vm.cloudProduct = res.cloudProduct;
+                    if(vm.cloudProduct == null){
+                        $('#cloudList').hide();
+                    }
                 }else{
                     console.log(res);
                 }
