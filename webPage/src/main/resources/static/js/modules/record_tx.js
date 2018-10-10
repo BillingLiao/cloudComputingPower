@@ -37,7 +37,6 @@ var vm = new Vue({
                 token:token
             },
             success:function(res){
-                console.log(res);
                 if(res.code==0){
                     vm.account = res.account;
                 }else{
@@ -64,7 +63,6 @@ var vm = new Vue({
                token:token
            },
            success:function(res){
-               console.log(res);
                if(res.code==0){
                    if(res.btcAddr != null){
                       vm.showList = false;

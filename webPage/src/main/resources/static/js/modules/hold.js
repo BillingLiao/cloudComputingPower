@@ -40,16 +40,22 @@ var vm = new Vue({
                 token:token
             },
             success:function(res){
-                console.log(res);
                 if(res.code==0){
-                    console.log(res.account);
                     vm.account = res.account;
                 }else{
-                    console.log(res);
+                    swal({
+                    text: res.msg,
+                    icon: "error",
+                    button: "返回",
+                   });
                 }
             },
             error: function(res) {
-                console.log(res);
+                swal({
+                text: res.msg,
+                icon: "error",
+                button: "返回",
+               });
             }
         });
     }

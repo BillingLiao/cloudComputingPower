@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
-	<title>蚂蚁矿业</title>
-	<meta name="keywords" content="蚂蚁矿业" />
-	<meta name="description" content="蚂蚁矿业" />
+	<title>麒麟云算</title>
+	<meta name="keywords" content="麒麟云算" />
+	<meta name="description" content="麒麟云算" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="author" content="pennychen" />
-	<meta name="Copyright" content="蚂蚁矿业" />
+	<meta name="Copyright" content="麒麟云算" />
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-transform" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -32,7 +32,7 @@
 
 	<!--header-->
     <div id="header">
-		<div class="logo">蚂蚁云算力</div>
+		<div class="logo">麒麟云算</div>
 	</div>
 	<!--header end-->
 
@@ -76,15 +76,13 @@
 						success:function(res){
 							if(res.code==0){
 								var data = res.toticesList;
-								console.log(res.toticesList);
 								$('.newsList').html(template('toticesList',{model:data}));
 							}else{
 								alert(res.msg);
-								console.log(res);
 							}
 						},
 						error: function(res) {
-							console.log(res);
+							alert(res.msg);
 						}
 					});
 				});
@@ -101,7 +99,7 @@
 	<div class="hotpro" id="cloudPage" v-cloak>
 		<div class="hotpro_con">
 	        <div class="j_list">
-				<div class="jimg"><a @click="clickBuy"><img class="lazy" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
+				<div class="jimg"><a @click="clickBuy"><img class="lazy" v-bind:src="cloudProduct.picImg" alt="S9i云算力" /></a></div>
 				<div class="jtx">
 					<h1><a @click="clickBuy">{{cloudProduct.productName}}</a></h1>
 					<p>售价：{{cloudProduct.retailPrice}}元/T</p>
@@ -192,13 +190,13 @@
 
 
 
-	<h1 class="hot_t"><span></span>了解蚂蚁云算力<span></span></h1>
+	<h1 class="hot_t"><span></span>了解麒麟云算力<span></span></h1>
 
 	<!--优势-->
 	<div class="con">
 		<div class="adv_con">
 
-			<h1 class="pt"><span>——</span>蚂蚁云算力平台<span>——</span></h1>
+			<h1 class="pt"><span>——</span>麒麟云算力平台<span>——</span></h1>
 			<h2 class="fb"></h2>
 			<p class="zy">无需苦苦等待矿机到货，付费即可开始挖矿</p>
 			<p class="zy">算力自由购买 + 挖矿简单快捷 + 收益非同凡响</p>
@@ -261,7 +259,7 @@
 
 	<!--微信-->
 	<div class="index_wx">
-		<h1>蚂蚁云算力</h1>
+		<h1>麒麟云算力</h1>
 		<img src="images/wx.png" alt="" />
 		<div class="index_reg"><a href="reg.html">立即注册</a></div>
 	</div>
@@ -272,7 +270,7 @@
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
-		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
+		麒麟云算 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
 	</div>
 	<!--footer end-->
 

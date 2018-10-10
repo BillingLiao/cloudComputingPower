@@ -23,7 +23,6 @@ var vm = new Vue({
                token:token
            },
            success:function(res){
-               console.log(res);
                if(res.code==0){
                    if(res.btcAddr != null){
                       vm.btcAddrId = res.btcAddr.btcAddrId;
@@ -66,7 +65,6 @@ var vm = new Vue({
                   });
                  return;
             }
-            console.log(this.btcAddrId);
             if(this.btcAddrId == null){
                 $.ajax({
                    url: api + 'btcAddr/add',

@@ -1,7 +1,3 @@
-if(window.localStorage.getItem('token')==null){
-    window.location.href='login.html'
-}
-
 function getUrlParam(name){
     var obj = {};
     var url_0=window.location.href;
@@ -35,6 +31,15 @@ var vm = new Vue({
 	created: function(){
 	   var token = window.localStorage.getItem('token');
        var orderId = getUrlParam('orderId');
+       if(token == null){
+           swal('请先登录', {
+              buttons: false,
+              timer: 2000,
+            }).then((value) => {
+               window.location.href='login.html'
+           });
+           return;
+       }
        $.ajax({
            url: api + 'order/findOne',
            type:'POST',
@@ -44,18 +49,24 @@ var vm = new Vue({
                orderId: orderId
            },
            success:function(res){
-               console.log(res);
                if(res.code==0){
-                   console.log(res.result);
                    vm.order = res.result.order;
                    vm.cloudProduct = res.result.cloudProduct;
                    vm.financialProduct = res.result.financialProduct;
                }else{
-                   console.log(res);
+                   swal({
+                      text: res.msg,
+                      icon: "error",
+                      button: "返回",
+                     });
                }
            },
            error: function(res) {
-               console.log(res);
+               swal({
+                 text: res.msg,
+                 icon: "error",
+                 button: "返回",
+                });
            }
        });
     }

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title>商城 - 蚂蚁矿业</title>
-	<meta name="keywords" content="蚂蚁矿业" />
-	<meta name="description" content="蚂蚁矿业" />
+	<title>商城 - 麒麟云算</title>
+	<meta name="keywords" content="麒麟云算" />
+	<meta name="description" content="麒麟云算" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="author" content="pennychen" />
-	<meta name="Copyright" content="蚂蚁矿业" />
+	<meta name="Copyright" content="麒麟云算" />
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-transform" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -17,6 +17,7 @@
 	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/template-native.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<!--动画-->
 	<script src="js/wow.min.js"></script>
 	<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -30,7 +31,7 @@
 
 
 <body class="cbp-spmenu-push">
-<div id="page">
+<div id="page" v-cloak>
 
 	<!--header-->
     <div id="header">
@@ -41,46 +42,17 @@
 
 	<!--热门-->
 	<div class="hotpro">
-		<div class="rent_con">
-
-		</div>
-		<script TYPE="text/template" id="cloudProductList">
-			<% if(model && model.length>0){ %>
-			<% for(var i=0;i<model.length;i++) { %>
-				<div class="j_list">
-					<div class="jimg"><a href="mall_detail.html?productId=<%=model[i].productId%>"><img class="lazy"  src="images/bit_1.jpg" data-original="images/bit_1.jpg" alt="S9i云算力" /></a></div>
-					<div class="jtx">
-						<h1><a href="mall_detail.html?productId=<%=model[i].productId%>"><%=model[i].productName%></a></h1>
-						<p>售价：<%=model[i].retailPrice%>元/T</p>
-						<p>库存：<%=model[i].stock%>T</p>
-					</div>
-					<div class="salary"><a href="mall_detail.html?productId=<%=model[i].productId%>">购买</a></div>
+		<div class="rent_con" v-for="cloudProduct in cloudProductList">
+			<div class="j_list">
+				<div class="jimg"><a @click="clickBuy(cloudProduct.productId)"><img class="lazy"  v-bind:src="cloudProduct.picImg" alt="S9i云算力" /></a></div>
+				<div class="jtx">
+					<h1><a @click="clickBuy(cloudProduct.productId)">{{cloudProduct.productName}}</a></h1>
+					<p>售价：{{cloudProduct.retailPrice}}元/T</p>
+					<p>库存：{{cloudProduct.stock}}T</p>
 				</div>
-			<% } %>
-			<% } %>
-		</script>
-
-		<script TYPE="text/javascript">
-			$(function(){
-				$.ajax({
-					url: api + 'cloud/findList',
-					type:'GET',
-					dataType:'json',
-					success:function(res){
-						if(res.code==0){
-							var data = res.cloudProductList;
-							$('.rent_con').html(template('cloudProductList',{model:data}));
-						}else{
-							alert(res.msg);
-							console.log(res);
-						}
-					},
-					error: function(res) {
-						console.log(res);
-					}
-				});
-			});
-		</script>
+				<div class="salary"><a @click="clickBuy(cloudProduct.productId)">购买</a></div>
+			</div>
+		</div>
 
 		<!--<div class="page">
 			<div class="next"><a href="#">查看更多</a></div>
@@ -121,7 +93,7 @@
 
 	<!--微信-->
 	<div class="index_wx">
-		<h1>蚂蚁云算力</h1>
+		<h1>麒麟云算力</h1>
 		<img src="images/wx.png" alt="" />
 	</div>
 	<!--end 微信-->
@@ -131,7 +103,7 @@
 	<!--footer-->
 	<div class="footer">
 		<div class="links"></div>
-		蚂蚁矿业 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
+		麒麟云算 &nbsp; All Rights Reserved. <br /><a href="http://www.miitbeian.gov.cn/">粤ICP备17090461号 </a>
 	</div>
 	<!--footer end-->
 
@@ -148,6 +120,6 @@
 
 </div>
 
-
+<script stype="text/javascript" src="js/modules/mall.js"></script>
 </body>
 </html>

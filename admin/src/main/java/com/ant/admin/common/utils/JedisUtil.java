@@ -20,17 +20,14 @@ public class JedisUtil {
     private Logger logger = LoggerFactory.getLogger(JedisUtil.class);
     private static JedisPool jedisPool;
 
-    @Value("${spring.redis.host}")
-    private String REDIS_HOST;
+    //@Value("${spring.redis.host}")
+    private final String REDIS_HOST = "127.0.0.1";
 
-    @Value("${spring.redis.port}")
-    private int REDIS_PORT;
+    private final int REDIS_PORT = 6379;
 
-    @Value("${spring.redis.timeout}")
-    private int timeout;
+    private final int timeout = 2000;
 
-    @Value("${spring.redis.password}")
-    private String password;
+    private final String password = "123456";
 
 
     private Jedis getResource() {

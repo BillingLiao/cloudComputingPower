@@ -25,8 +25,8 @@ var vm = new Vue({
 	el:'#page',
 	data:{
 		cloudProduct :{},
-		amount: null,
-		actualReceipts:null,
+		amount: 1,
+		actualReceipts: null,
 		consentClause: '同意签约云算力服务协议'
 	},
 	watch: {
@@ -38,6 +38,7 @@ var vm = new Vue({
        var productId = getUrlParam('productId');
         $.get(api + 'cloud/findOne/'+productId, function(r){
             vm.cloudProduct = r.cloudProduct;
+            vm.actualReceipts = vm.cloudProduct.price*vm.amount;
         });
         this.debouncedGetActualReceipts = _.debounce(this.getActualReceipts, 500)
     },
@@ -49,6 +50,7 @@ var vm = new Vue({
                     icon: "warning",
                     button: "返回",
                     });
+                 vm.actualReceipts = 0;
 　　　           return false;
             }
             if(this.amount > this.cloudProduct.stock){
@@ -57,6 +59,7 @@ var vm = new Vue({
                  icon: "warning",
                  button: "返回",
                 });
+                vm.actualReceipts = 0;
                 return;
             }
             $.ajax({
@@ -68,7 +71,6 @@ var vm = new Vue({
                     price: vm.cloudProduct.price
                 },
                 success:function(res){
-                    console.log(res);
                     if(res.code==0){
                         vm.actualReceipts = res.actualReceipts;
                     }else{

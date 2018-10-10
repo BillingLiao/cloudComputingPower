@@ -1,9 +1,9 @@
 var vm = new Vue({
 	el:'#page',
 	data:{
-		trueName : null,
-		openingBank: null,
-		cardNumber: null,
+		trueName : '',
+		openingBank: '',
+		cardNumber: '',
 		bankId: null
 	},
 	created: function(){
@@ -25,7 +25,6 @@ var vm = new Vue({
                token:token
            },
            success:function(res){
-               console.log(res);
                if(res.code==0){
                    if(res.bank != null){
                      vm.trueName = res.bank.trueName;
@@ -82,7 +81,6 @@ var vm = new Vue({
                        trueName: this.trueName
                    },
                    success:function(res){
-                       console.log(res);
                        if(res.code==0){
                            swal(res.msg, {
                              buttons: false,
@@ -119,7 +117,6 @@ var vm = new Vue({
                        bankId: this.bankId
                    },
                    success:function(res){
-                       console.log(res);
                        if(res.code==0){
                            swal(res.msg, {
                                 buttons: false,

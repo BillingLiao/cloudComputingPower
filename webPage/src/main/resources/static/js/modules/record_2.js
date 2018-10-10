@@ -22,7 +22,6 @@ var vm = new Vue({
                token: token
            },
            success:function(res){
-               console.log(res);
                if(res.code==0){
                    vm.presentRecordList = res.presentRecordList;
                }else{

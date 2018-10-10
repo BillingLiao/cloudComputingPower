@@ -44,7 +44,6 @@ var vm = new Vue({
                     token:token
                 },
                 success:function(res){
-                    console.log(res);
                     if(res.code==0){
                         vm.account = res.account;
                     }else if(res.code==3){

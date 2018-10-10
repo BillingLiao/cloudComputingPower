@@ -1,7 +1,3 @@
-if(window.localStorage.getItem('token')==null){
-    window.location.href='login.html'
-}
-
 var vm = new Vue({
 	el:'#page',
 	data:{
@@ -9,6 +5,15 @@ var vm = new Vue({
 	},
 	created: function(){
 	    var token = window.localStorage.getItem('token');
+	    if(token == null){
+            swal('请先登录', {
+               buttons: false,
+               timer: 2000,
+             }).then((value) => {
+                window.location.href='login.html'
+            });
+            return;
+        }
 	    $.ajax({
             url: api + 'orderRecord/my',
             type:'POST',
@@ -17,15 +22,22 @@ var vm = new Vue({
                 token:token
             },
             success:function(res){
-                console.log(res);
                 if(res.code==0){
                     vm.orderRecordList = res.orderRecordList;
                 }else{
-                    console.log(res);
+                    swal({
+                      text: res.msg,
+                      icon: "error",
+                      button: "返回",
+                     });
                 }
             },
             error: function(res) {
-                console.log(res);
+                swal({
+                  text: res.msg,
+                  icon: "error",
+                  button: "返回",
+                 });
             }
         });
     }
