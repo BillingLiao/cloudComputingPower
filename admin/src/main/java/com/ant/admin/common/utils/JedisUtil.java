@@ -27,7 +27,7 @@ public class JedisUtil {
 
     private final int timeout = 2000;
 
-    private final String password = "123456";
+    private final String password = "70pool";
 
 
     private Jedis getResource() {
