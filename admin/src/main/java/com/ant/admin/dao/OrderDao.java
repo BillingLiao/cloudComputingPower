@@ -4,6 +4,7 @@ import com.ant.entity.Order;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface OrderDao extends BaseMapper<Order> {
      * @param wrapper
      * @return
      */
-    public List<Order> selectOrderList(Page<Order> page,@Param("ew") Wrapper<Order> wrapper);
+    public List<Order> selectOrderList(Pagination page, @Param("ew") Wrapper<Order> wrapper);
 
     public void updateTypeByTime();
 

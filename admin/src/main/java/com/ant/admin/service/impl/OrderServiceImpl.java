@@ -59,7 +59,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         orderEntityWrapper.like("c.category_name", categoryName);
         orderEntityWrapper.eq(StringUtils.isNotBlank(orderStatus), "o.order_status", orderStatus);
         Page<Order> page =new Query<Order>(params).getPage();
-        page.setRecords(baseMapper.selectOrderList(page,orderEntityWrapper));
+        List<Order> list = baseMapper.selectOrderList(page,orderEntityWrapper);
+        page.setRecords(list);
         PageUtils pageUtil = new PageUtils(page);
         return pageUtil;
     }

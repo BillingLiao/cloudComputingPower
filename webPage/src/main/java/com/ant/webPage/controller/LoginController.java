@@ -67,7 +67,7 @@ public class LoginController {
             tempCode = "SMS_146802920";
         }
 
-        if( redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone)!= null) {
+        if( redisUtils.get(Constant.RESET_PASS_SMS_CODE_KEY+phone)!= null) {
             return Result.error("发送验证码比较频繁，等一分钟之后再试试");
         }
         String verificationCode = RandomUtil.randomNumbers(4);
@@ -76,8 +76,8 @@ public class LoginController {
         if(!resultCode.equals("OK")){
             return Result.error("获取验证码失败，请重新获取");
         }
-        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, verificationCode, 60 * 5);
-        redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, verificationCode, 60 * 1);
+        redisUtils.set(Constant.RESET_PASS_SMS_CODE_KEY+phone, verificationCode, 60 * 1);
+        redisUtils.set(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone, verificationCode, 60 * 5);
         return Result.ok("验证码获取成功");
     }
 
@@ -92,7 +92,7 @@ public class LoginController {
     @Transactional(rollbackFor=Exception.class)
     public Result register(@RequestParam String phone,@RequestParam String password,@RequestParam String verification,@RequestParam(required = false) String invitationCode){
         Assert.notBlank(verification,"短信验证码不能为空");
-        String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_CODE_KEY+phone);
+        String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone);
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
@@ -152,7 +152,7 @@ public class LoginController {
     public Result resetPass(@RequestParam String phone,@RequestParam String password,@RequestParam String confirmPassword,@RequestParam String verification){
         ValidatorUtils.validateEntity(phone);
         Assert.notBlank(verification,"短信验证码不能为空");
-        String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_CODE_KEY+phone);
+        String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone);
         if(codeRedis == null) {
             return Result.error("验证码已经失效，请重新获取");
         }
