@@ -1672,6 +1672,25 @@ ul.c_info li span {
 	padding: 0px 0px 0px 30px;
 }
 
+ul.c_info li span.cost {
+	color: #666666;
+	height: auto;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: left;
+	padding: 0px 0px 0px 20px;
+	text-decoration: line-through;
+}
+
+ul.c_info li span.sales {
+	color: #FF6600;
+	height: auto;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	padding: 0px 0px 0px 20px;
+}
+
 ul.c_info li.thr span {
 	color: #666666;
 	line-height: 36px;

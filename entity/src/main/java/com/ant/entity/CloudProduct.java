@@ -49,7 +49,7 @@ public class CloudProduct extends Product implements Serializable {
     /**
      * 电费
      */
-    private BigDecimal ElectricityFees;
+    private BigDecimal electricityFees;
 
     /**
      * 售价
@@ -214,11 +214,11 @@ public class CloudProduct extends Product implements Serializable {
     }
 
     public BigDecimal getElectricityFees() {
-        return ElectricityFees;
+        return electricityFees;
     }
 
     public void setElectricityFees(BigDecimal electricityFees) {
-        ElectricityFees = electricityFees;
+        this.electricityFees = electricityFees;
     }
 
     public BigDecimal getRetailPrice() {

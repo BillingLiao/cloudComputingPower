@@ -63,6 +63,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-sm-2 control-label">电费</div>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" v-model="cloudProduct.electricityFees" placeholder="电费"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-2 control-label">预计日收益</div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" v-model="cloudProduct.remark" placeholder="预估日收益"/>
@@ -81,15 +87,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-2 control-label">电费</div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="cloudProduct.power" placeholder="电费"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <div class="col-sm-2 control-label">电源</div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="cloudProduct.electricityFees" placeholder="电源"/>
+                            <input type="text" class="form-control" v-model="cloudProduct.power" placeholder="电源"/>
                         </div>
                     </div>
                     <div class="form-group">

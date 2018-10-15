@@ -58,5 +58,5 @@ mybatis-plus:
 #log
 logging:
    config: classpath:logback.xml
-   path: /70pool-log/admi
+   path: /70pool-log/admin
 

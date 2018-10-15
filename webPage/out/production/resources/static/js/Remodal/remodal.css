@@ -85,6 +85,10 @@ html.remodal-is-locked {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  border-radius: 10px; /* css 3±ê×¼ */
+
+  -moz-border-radius: 10px; /* mozilla */
+  -webkit-border-radius: 10px;
 }
 
 .remodal-is-initialized {
