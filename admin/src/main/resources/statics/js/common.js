@@ -3,7 +3,7 @@ $.jgrid.defaults.width = 1000;
 $.jgrid.defaults.responsive = true;
 $.jgrid.defaults.styleUI = 'Bootstrap';
 
-//var baseURL = "http://120.79.244.153:8080/";
+//var baseURL = "http://120.79.244.153/admin/";
 var baseURL = "http://www.70pool.com/admin/";
 //var baseURL = "http://localhost:8081/admin/";
 //var baseURL = "../../";

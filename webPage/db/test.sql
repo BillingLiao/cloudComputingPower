@@ -1,7 +1,7 @@
 /*
 	插入所有云算力产品收益
 */
-INSERT INTO t_income(user_id,income_type,electricity_fees,theoretical_income,settlement_income,return_cycle,create_time)
+INSERT INTO t_income(user_id,income_type,electricity_fees,theoretical_income,pure_income,settlement_income,return_cycle,create_time)
 SELECT o.user_id AS user_id,o.order_type AS income_type,
 	c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1) AS electricity_fees,
 	(SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1) AS theoretical_income,
