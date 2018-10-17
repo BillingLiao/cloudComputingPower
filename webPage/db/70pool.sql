@@ -75,10 +75,10 @@ CREATE TABLE `t_income` (
   `income_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '收益编号',
   `user_id` INT(11) NOT NULL COMMENT '用户编号',
   `income_type` INT(11) NOT NULL COMMENT '收益类别',
-  `theoretical_income` DECIMAL(25,11) DEFAULT NULL COMMENT '整机理论收益值(BTC)',
-  `electricity_fees` DECIMAL(25,11) DEFAULT NULL COMMENT '电费(BTC)',
-  `pure_income` DECIMAL(25,11) DEFAULT NULL COMMENT '纯收益(BTC)',
-  `settlement_income` DECIMAL(25,11) DEFAULT NULL COMMENT '结算收益(BTC)',
+  `theoretical_income` DECIMAL(25,10) DEFAULT NULL COMMENT '整机理论收益值(BTC)',
+  `electricity_fees` DECIMAL(25,10) DEFAULT NULL COMMENT '电费(BTC)',
+  `pure_income` DECIMAL(25,10) DEFAULT NULL COMMENT '纯收益(BTC)',
+  `settlement_income` DECIMAL(25,10) DEFAULT NULL COMMENT '结算收益(BTC)',
   `return_cycle` DECIMAL(15,3) DEFAULT NULL COMMENT '回本周期(天)',
   `money` DECIMAL(15,3) DEFAULT NULL COMMENT '理财日收益',
   `create_time` DATE DEFAULT NULL COMMENT '日期',
@@ -181,7 +181,7 @@ CREATE TABLE `t_order` (
   `user_id` INT(11) DEFAULT NULL COMMENT '用户编号',
   `order_type` INT(11) NOT NULL  COMMENT '订单类型 1:矿机 2:运算力产品 3:理财产品',
   `order_status` INT(11) NOT NULL  COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货 ,3:订单关闭,4:待收货 5:已完成订单',
-  `amount` DECIMAL(15,3) DEFAULT NULL COMMENT '购买数量',
+  `amount` DECIMAL(15,2) DEFAULT NULL COMMENT '购买数量',
   `actual_receipts` DECIMAL(15,3) DEFAULT NULL COMMENT '实收款',
   `maturity_income` DECIMAL(15,3) DEFAULT NULL COMMENT '到期收益',
   `memo` VARCHAR(200) DEFAULT NULL COMMENT '备注',
@@ -197,14 +197,6 @@ CREATE TABLE `t_order` (
 /*Data for the table `t_order` */
 
 INSERT INTO `t_order` VALUES ('1', 'LC20103', '1', '2','3','2','1','5000','21', '理财产品', '2018-06-27', '2018-09-02', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('2', 'YSL20101', '5', '2','2','2','12','8000',NULL, '云算力',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('3', 'LC20113', '7', '2','3','2','1','5000', '21','理财产品', '2018-06-27', '2018-07-10', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('4', 'LC20123', '8', '2','3','2','1','8000', '31','理财产品',  '2018-06-27', '2018-08-10', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('5', 'LC20133', '9', '2','3','2','1','5000', '22','理财产品', '2018-06-27', '2018-08-11', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('6', 'LC20143', '10', '2','3','2','1','8000', '34','理财产品',  '2018-06-27', '2018-09-01', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('7', 'YSL20102', '6', '2','2','2','14','10000',NULL, '云算力',  '2018-09-12', '2018-09-12', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('8', 'YSL20103', '5', '2','2','2','15','11000',NULL, '云算力',  '2018-09-13', '2018-09-13', NULL, NULL,NULL, '0');
-INSERT INTO `t_order` VALUES ('9', 'YSL20104', '6', '2','2','2','20','15000',NULL, '云算力',  '2018-09-14', '2018-09-14', NULL, NULL,NULL, '0');
 
 DROP TABLE IF EXISTS `t_order_record`;
 
@@ -263,14 +255,14 @@ CREATE TABLE t_cloud_product
 (
    cloud_id             INT(11) NOT NULL AUTO_INCREMENT COMMENT '云算力明细id',
    product_id           INT(11) NOT NULL COMMENT '产品id',
-   sell_out          	DECIMAL(15,3) DEFAULT '0.00' COMMENT '售出算力',
-   stock                DECIMAL(15,3) NOT NULL COMMENT '剩余算力',
-   electricity_fees     DECIMAL(15,3) DEFAULT NULL COMMENT '电费',
+   sell_out          	DECIMAL(15,2) DEFAULT '0.00' COMMENT '售出算力',
+   stock                DECIMAL(15,2) NOT NULL COMMENT '剩余算力',
+   electricity_fees     DECIMAL(15,2) DEFAULT NULL COMMENT '电费',
    retail_price		DECIMAL(15,3) DEFAULT NULL COMMENT '售价',
    price                DECIMAL(15,3) NOT NULL COMMENT '单价',
    sale_time            VARCHAR(50) DEFAULT NULL COMMENT '本期售卖时间',
    model                VARCHAR(50) NOT NULL COMMENT '机型',
-   rated                DECIMAL(15,3) NOT NULL COMMENT '额定算力/T',
+   rated                DECIMAL(15,2) NOT NULL COMMENT '额定算力/T',
    power_waste		DECIMAL(15,3) NOT NULL COMMENT '功耗',
    remark               VARCHAR(200) DEFAULT NULL COMMENT '参考收益',
    start_step           INT(11) DEFAULT '0' COMMENT '起投单位',
@@ -416,7 +408,7 @@ CREATE TABLE `t_user` (
   `salt` VARCHAR(20) NOT NULL COMMENT '盐',
   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
   `alipay` VARCHAR(50) DEFAULT NULL COMMENT '支付宝账号',
-  `btc` DECIMAL(25,11) DEFAULT '0' COMMENT '云算力余额(比特币)',
+  `btc` DECIMAL(25,10) DEFAULT '0' COMMENT '云算力余额(比特币)',
   `cny` DECIMAL(15,3) DEFAULT '0' COMMENT '理财余额(人民币)',
   `register_time` DATETIME DEFAULT NULL COMMENT '注册时间',
   `update_time` DATETIME DEFAULT NULL COMMENT '修改时间',
@@ -474,7 +466,7 @@ DROP TABLE IF EXISTS `t_tstimate`;
 
 CREATE TABLE `t_tstimate` (
   `tstimate_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `tstimate` DECIMAL(25,11) NOT NULL COMMENT '预估收益',
+  `tstimate` DECIMAL(25,10) NOT NULL COMMENT '预估收益',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`tstimate_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='预估收益表';
@@ -490,8 +482,8 @@ DROP TABLE IF EXISTS `t_currency_price`;
 
 CREATE TABLE `t_currency_price` (
   `price_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `btc_cny` DECIMAL(25,11) DEFAULT NULL COMMENT '比特币CNY价格',
-  `btc_usd` DECIMAL(25,11) DEFAULT NULL COMMENT '比特币USD价格',
+  `btc_cny` DECIMAL(25,10) DEFAULT NULL COMMENT '比特币CNY价格',
+  `btc_usd` DECIMAL(25,10) DEFAULT NULL COMMENT '比特币USD价格',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`price_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='比特币价格';
@@ -509,10 +501,12 @@ CREATE TABLE `t_put_forward` (
   `put_forward_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `forward_no` VARCHAR(50) NOT NULL COMMENT '提现单号',
   `user_id` INT(11) NOT NULL COMMENT '用户编号',
+  `bank_id` INT(11) DEFAULT NULL COMMENT '用户银行编号',
+  `btc_addr_id` INT(11) DEFAULT NULL COMMENT '比特币地址id',
   `forward_type` INT(11) NOT NULL COMMENT '提现类型 0:比特币钱包地址 1:银行卡',
   `forward_status` INT(11) NOT NULL COMMENT '提现状态 0:已提交 1:提现关闭 2:提现失败  3:提现成功',
-  `btc` DECIMAL(25,11) DEFAULT NULL COMMENT '云算力提现(比特币)',
-  `btc_true` DECIMAL(25,11) DEFAULT NULL COMMENT '扣除矿工费(比特币)',
+  `btc` DECIMAL(25,10) DEFAULT NULL COMMENT '云算力提现(比特币)',
+  `btc_true` DECIMAL(25,10) DEFAULT NULL COMMENT '扣除矿工费(比特币)',
   `cny` DECIMAL(15,3) DEFAULT NULL COMMENT '理财提现(人民币)',
   `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
   `completion_time` DATETIME DEFAULT NULL COMMENT '提现时间',
@@ -521,8 +515,8 @@ CREATE TABLE `t_put_forward` (
 
 /*Data for the table `t_put_forward` */
 
-INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
-INSERT  INTO `t_put_forward` VALUES (2,'ysl5454547','2','1','0','0','0','500','2017-03-24 15:23:13',NULL);
+INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1',NULL,'1','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
+INSERT  INTO `t_put_forward` VALUES (2,'ysl5454547','2','1',NULL,'1','0','0','0','500','2017-03-24 15:23:13',NULL);
 
 DROP TABLE IF EXISTS `t_present_record`;
 

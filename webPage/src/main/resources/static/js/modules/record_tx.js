@@ -120,10 +120,17 @@ var vm = new Vue({
             var btc = vm.account.btcBalance;
             if(this.btcAddrId == null){
                 swal({
-                   text: "请先设置btc地址",
+                   text: "是否前往设置btc地址？",
                    icon: "warning",
-                   button: "返回",
-                   });
+                   buttons: true,
+                   dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                         window.location.href='add_btc_attr.html'
+                    } else {
+
+                    }
+                });
 　　　           return;
             }
             if(this.btcTrue <= 0){

@@ -1,11 +1,11 @@
-server:
-    tomcat:
-        uri-encoding: UTF-8
-        max-threads: 1000
-        min-spare-threads: 30
-    port: 80
-    servlet:
-        context-path: /
+#server:
+#    tomcat:
+#        uri-encoding: UTF-8
+#        max-threads: 1000
+#        min-spare-threads: 30
+#    port: 80
+#    servlet:
+#        context-path: /
 spring:
     datasource:
         url: jdbc:mysql://120.79.244.153:3306/cloudcomputingpower?useUnicode=true&characterEncoding=utf-8
@@ -43,6 +43,8 @@ spring:
                 min-idle: 5       # 连接池中的最小空闲连接
     resources:
         static-locations: classpath:/static/
+    jmx:
+        default-domain: webPage
 mybatis-plus:
     typeAliasesPackage: com.ant.entity
     mapper-locations: classpath:mapper/*.xml

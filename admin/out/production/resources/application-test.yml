@@ -1,12 +1,12 @@
 # Tomcat
-server:
-    tomcat:
-        uri-encoding: UTF-8
-        max-threads: 1000
-        min-spare-threads: 30
-    port: 8080
-    servlet:
-        context-path: /
+#server:
+#    tomcat:
+#        uri-encoding: UTF-8
+#        max-threads: 1000
+#        min-spare-threads: 30
+#    port: 8080
+#    servlet:
+#        context-path: /
 spring:
     http:
         multipart:
@@ -39,6 +39,8 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+    jmx:
+        default-domain: admin
 mybatis-plus:
     typeAliasesPackage: com.ant.entity
     mapper-locations: classpath:mapper/*.xml
