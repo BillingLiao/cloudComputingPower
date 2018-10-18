@@ -43,7 +43,7 @@ public class PutForwardServiceImpl extends ServiceImpl<PutForwardDao, PutForward
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Result addBtcPutForward(User user, Integer forwardType, BigDecimal btcTrue) {
-        BigDecimal btc = btcTrue.divide(new BigDecimal(0.995),9, RoundingMode.HALF_UP);
+        BigDecimal btc = btcTrue.multiply(new BigDecimal(1.005));
         Integer userId = user.getUserId();
         User selectUser = userDao.selectById(userId);
         BigDecimal btcBalance = selectUser.getBtc();

@@ -25,6 +25,7 @@ var vm = new Vue({
 	el:'#page',
 	data:{
 		cloudProduct :{},
+		tstimateOne: {},
 		amount: 1,
 		actualReceipts: null,
 		consentClause: '同意签约云算力服务协议'
@@ -39,6 +40,29 @@ var vm = new Vue({
         $.get(api + 'cloud/findOne/'+productId, function(r){
             vm.cloudProduct = r.cloudProduct;
             vm.actualReceipts = vm.cloudProduct.price*vm.amount;
+        });
+        $.ajax({
+            url: api + 'tstimate/first',
+            type:'GET',
+            dataType:'json',
+            success:function(res){
+                if(res.code==0){
+                    vm.tstimateOne = res.tstimateOne;
+                }else{
+                    swal({
+                        text: res.msg,
+                        icon: "error",
+                        button: "返回",
+                      });
+                }
+            },
+            error: function(res) {
+               swal({
+                   text: res.msg,
+                   icon: "error",
+                   button: "返回",
+                 });
+            }
         });
         this.debouncedGetActualReceipts = _.debounce(this.getActualReceipts, 500)
     },
@@ -136,13 +160,14 @@ var vm = new Vue({
                         if(res.code==0){
                             var orderId = res.order.orderId;
                             window.location.href='pay.html?orderId='+orderId;
-                        }else{
-                             swal({
-                                text: res.msg,
-                                icon: "error",
-                                button: "返回",
-                               });
-                        }
+                        }else if(res.code==3){
+                             swal(res.msg, {
+                                buttons: false,
+                                timer: 2000,
+                              }).then((value) => {
+                                 window.location.href='login.html'
+                             });
+                         }
                     },
                     error: function(res) {
                         swal({

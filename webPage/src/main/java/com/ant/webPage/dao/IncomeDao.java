@@ -19,6 +19,12 @@ public interface IncomeDao extends BaseMapper<Income> {
     BigDecimal selectCloudIncomeUser(Integer userId);
 
     /**
+     * 查询出用户云算力产品所有收益
+     * @return
+     */
+    BigDecimal selectCountCloudIncomeUser(Integer userId);
+
+    /**
      * 查询用户理财产品昨日所有收益
      * @return
      */

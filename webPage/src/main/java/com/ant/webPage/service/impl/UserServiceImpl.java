@@ -90,6 +90,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             BigDecimal cnyPresent = putForwardDao.selectCnyPresentByUserId(userId);
             String phone = selectUser.getTelphone();
             BigDecimal btcYesterday = incomeDao.selectCloudIncomeUser(userId);
+            BigDecimal btcCount = incomeDao.selectCountCloudIncomeUser(userId);
             BigDecimal cnyYesterday = incomeDao.selectFinancialIncomeUser(userId);
             BigDecimal frozenIncome = incomeDao.selectFrozenIncomeUser(userId);
             if (amount == null){
@@ -104,13 +105,16 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             if (btcYesterday == null) {
                 btcYesterday = new BigDecimal(0.00);
             }
+            if (btcCount == null) {
+                btcCount = new BigDecimal(0.00);
+            }
             if (cnyYesterday == null) {
                 cnyYesterday = new BigDecimal(0.00);
             }
             if (frozenIncome == null) {
                 frozenIncome = new BigDecimal(0.00);
             }
-            Account account = new Account(amount, phone, btcBalance, btcPresent, cnyBalance, cnyPresent, frozenIncome, btcYesterday, cnyYesterday);
+            Account account = new Account(amount, phone, btcBalance, btcPresent, cnyBalance, cnyPresent, frozenIncome, btcYesterday,btcCount, cnyYesterday);
             return account;
     }
 }

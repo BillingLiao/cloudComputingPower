@@ -24,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
             "/images/**",
             "/login/**", // 用户登录注册相关接口
             "/totices/**",  //公告相关接口
+            "/tstimate/**",  //预估日收益相关接口
             "/cloud/**",  //云算力列表相关接口
             "/financial/**", //理财列表相关接口
             "/miner/**", //矿机列表相关接口

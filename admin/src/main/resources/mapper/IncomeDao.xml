@@ -8,12 +8,11 @@
         SELECT o.user_id AS user_id,o.order_type AS income_type,
         c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1) AS electricity_fees,
         (SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1) AS theoretical_income,
+        (SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)*o.amount AS pure_income,
         CASE WHEN ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount &lt;= 0 THEN 0
-        ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount END AS pure_income,
-        CASE WHEN ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount &lt;= 0 THEN 0
-        ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount END AS settlement_income,
-        CASE WHEN o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount) &lt;= 0 THEN 0
-        ELSE o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount) END AS return_cycle,
+        ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount END AS settlement_income,
+        CASE WHEN o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount) &lt;= 0 THEN 0
+        ELSE o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount) END AS return_cycle,
         CURRENT_DATE AS create_time
         FROM t_order o
         LEFT JOIN t_cloud_product c ON c.product_id = o.product_id

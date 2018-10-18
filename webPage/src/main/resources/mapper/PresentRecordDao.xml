@@ -4,7 +4,7 @@
 <mapper namespace="com.ant.webPage.dao.PresentRecordDao">
 
     <select id="selectPresentRecord" resultType="com.ant.entity.PresentRecord">
-        SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.cny
+        SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.btc_true,pf.cny
         FROM t_present_record pr
         LEFT JOIN t_put_forward pf ON pf.put_forward_id = pr.put_forward_id
         where pf.user_id = #{userId}

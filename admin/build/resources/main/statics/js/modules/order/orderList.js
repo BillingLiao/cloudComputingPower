@@ -42,7 +42,7 @@ $(function () {
 			{ label: '订单编号', name: 'orderId', index: 'order_id', width: 80, key: true },
 			{ label: '订单号', name: 'orderNo', index: 'order_no', width: 150 },
 			{ label: '订单类型', name: 'categoryName', index: 'category_name', width: 100 },
-	        { label: '收款(元)', name: 'amount', index: 'amount', width: 120 },
+	        { label: '收款(元)', name: 'actualReceipts', index: 'actual_receipts', width: 120 },
 	        { label: '订单提交时间', name: 'createTime', width: 120 },
             { label: '订单状态', name: 'orderStatus', width: 100, formatter: function (cellvalue, options, rowObject) {
                       return getOrderStatus(cellvalue);

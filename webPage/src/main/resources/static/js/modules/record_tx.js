@@ -91,19 +91,24 @@ var vm = new Vue({
     methods:{
         allBtc: function(res){
             var btc = this.account.btcBalance;
-            this.btcTrue = btc-(btc*0.005);
+            var btcTrueNo = btc/1.005;
+            this.btcTrue = btcTrueNo.toFixed(10);
         },
         allCny: function(res){
             this.cny = this.account.cnyBalance;
         },
         getChangeBtc: function(){
            var btc = vm.account.btcBalance;
-           if(this.btcTrue <= 0){
-               this.btcMsg = '提现金额不能小于0';
-           }else if(this.btcTrue > (btc-(btc*0.005))){
+           if(!isDouble(this.btcTrue)) {
+                this.btcMsg = '请输入正确的数字';
+           }else if(this.btcTrue <= 0.001) {
+               this.btcMsg = '提现金额不能小于0.001BTC';
+           }else if(this.btcTrue > btc/1.005) {
                this.btcMsg = '输入金额超过可提现余额';
-           }else{
-               this.btcMsg = '实际提现金额为:'+this.btcTrue/0.995;
+           }else {
+               var oldBtc = this.btcTrue*1.005;
+               var newBtc = oldBtc.toFixed(10);
+               this.btcMsg = '实际扣除BTC:'+newBtc+'BTC';
            }
         },
         getChangeCny: function(){
@@ -118,7 +123,7 @@ var vm = new Vue({
         addBtcPutForward: function(){
             var token = window.localStorage.getItem('token');
             var btc = vm.account.btcBalance;
-            if(this.btcAddrId == null){
+            if(!isString(this.addr)){
                 swal({
                    text: "是否前往设置btc地址？",
                    icon: "warning",
@@ -126,22 +131,30 @@ var vm = new Vue({
                    dangerMode: true,
                 }).then((willDelete) => {
                     if (willDelete) {
-                         window.location.href='add_btc_attr.html'
+                         window.location.href='add_btc_attr_2.html'
                     } else {
 
                     }
                 });
 　　　           return;
             }
-            if(this.btcTrue <= 0){
+            if(!isDouble(this.btcTrue)) {
+                 swal({
+                   text: "请填入正确的数字",
+                   icon: "warning",
+                   button: "返回",
+                   });
+    　　　        return;
+            }
+            if(this.btcTrue <= 0.001){
                 swal({
-                   text: "提现金额不能小于0",
+                   text: "提现金额不能小于0.001BTC",
                    icon: "warning",
                    button: "返回",
                    });
 　　　           return;
             }
-            if(this.btcTrue > (btc-(btc*0.005))){
+            if(this.btcTrue > btc/1.005){
                swal({
                     text: "输入金额超过可提现余额",
                     icon: "warning",

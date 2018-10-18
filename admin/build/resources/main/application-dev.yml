@@ -6,7 +6,7 @@ server:
         min-spare-threads: 30
     port: 8081
     servlet:
-        context-path: /admin
+        context-path: /
 spring:
     http:
         multipart:
@@ -57,3 +57,9 @@ mybatis-plus:
     #驼峰下划线转换
     configuration:
         map-underscore-to-camel-case: true
+logging:
+    level:
+        com:
+            ant:
+                admin:
+                    dao: debug

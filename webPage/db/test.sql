@@ -5,12 +5,11 @@ INSERT INTO t_income(user_id,income_type,electricity_fees,theoretical_income,pur
 SELECT o.user_id AS user_id,o.order_type AS income_type,
 	c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1) AS electricity_fees,
 	(SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1) AS theoretical_income,
-	CASE WHEN ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount <= 0 THEN 0
-	 ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount END AS pure_income,
-	 CASE WHEN ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount <= 0 THEN 0
-	 ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount END AS settlement_income,
-	CASE WHEN o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount) <= 0 THEN 0
-	ELSE o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*0.95*o.amount) END AS return_cycle,
+	(SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)*o.amount AS pure_income,
+	 CASE WHEN ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount <= 0 THEN 0
+	 ELSE ((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount END AS settlement_income,
+	CASE WHEN o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount) <= 0 THEN 0
+	ELSE o.actual_receipts/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)/(((SELECT tstimate FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1)-(c.electricity_fees*c.power_waste*24/c.rated/(SELECT btc_cny FROM t_currency_price ORDER BY price_id DESC LIMIT 0,1)))*o.amount) END AS return_cycle,
 	CURRENT_DATE AS create_time
 FROM t_order o
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
@@ -61,12 +60,20 @@ t_income
  
  
  /*
-	统计云算力产品昨日收益总额
+	统计用户云算力产品昨日收益总额
  */
 SELECT SUM(settlement_income)
 FROM
 t_income
 WHERE income_type = 2 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time) AND user_id = 2
+
+ /*
+	统计用户云算力产品收益总额
+ */
+SELECT SUM(settlement_income)
+FROM
+t_income
+WHERE income_type = 2  AND user_id = 2
 
  /*
 	统计理财产品昨日收益总额
@@ -93,7 +100,7 @@ ORDER BY odr.create_time DESC
 /*
 	查询提现订单记录
 */
-SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.cny
+SELECT pr.*,pf.forward_no,pf.forward_type,pf.btc,pf.btc_true,pf.cny
 FROM t_present_record pr
 LEFT JOIN t_put_forward pf ON pf.put_forward_id = pr.put_forward_id
 WHERE pf.user_id = 2
@@ -147,7 +154,19 @@ WHERE forward_type = 0 AND forward_status = 0 AND user_id = 2;
 */
 SELECT SUM(cny) FROM t_put_forward
 WHERE forward_type = 1 AND forward_status = 0 AND user_id = 2;
- 
+
+/*
+	查找cloudproduct产品信息
+*/
+SELECT
+cloud.*,product.*,c.category_name
+FROM
+t_cloud_product cloud
+LEFT JOIN t_product product ON cloud.product_id = product.product_id
+LEFT JOIN t_category c ON c.category_id = product.category_id
+WHERE loud.product_id = 2 AND cloud.del_flag = 0
+
+
 LEFT JOIN t_cloud_product c ON c.product_id = o.product_id
 WHERE o.order_status = 2;
 

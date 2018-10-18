@@ -59,10 +59,10 @@
 						<div class="stats_2" ><h2>提现方式：数字钱包地址</h2></div>
 						<div class="stats_2"><h2>流水号：{{presentRecord.forwardNo}}</h2></div>
 						<div class="stats_2"><h2>系统操作时间：{{presentRecord.createTime}}</h2></div>
-						<div class="amount" v-if="presentRecord.presentStatus === 0" ><span>未处理</span>金额：{{presentRecord.btc}}BTC</div>
-						<div class="amount" v-else-if="presentRecord.presentStatus === 1" ><span>已取消</span>金额：{{presentRecord.btc}}BTC</div>
-						<div class="amount" v-else-if="presentRecord.presentStatus === 2" ><span>处理失败</span>金额：{{presentRecord.btc}}BTC</div>
-						<div class="amount" v-else-if="presentRecord.presentStatus === 3" ><span>已完成</span>金额：{{presentRecord.btc}}BTC</div>
+						<div class="amount" v-if="presentRecord.presentStatus === 0" ><span>未处理</span>金额：{{presentRecord.btcTrue}}BTC</div>
+						<div class="amount" v-else-if="presentRecord.presentStatus === 1" ><span>已取消</span>金额：{{presentRecord.btcTrue}}BTC</div>
+						<div class="amount" v-else-if="presentRecord.presentStatus === 2" ><span>处理失败</span>金额：{{presentRecord.btcTrue}}BTC</div>
+						<div class="amount" v-else-if="presentRecord.presentStatus === 3" ><span>已完成</span>金额：{{presentRecord.btcTrue}}BTC</div>
 					</div>
 					<div class="dl" v-else-if="presentRecord.forwardType === 1">
 						<h1>创建时间：{{presentRecord.createTime}}</h1>

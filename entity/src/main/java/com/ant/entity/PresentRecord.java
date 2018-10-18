@@ -71,6 +71,12 @@ public class PresentRecord implements Serializable {
     private BigDecimal btc;
 
     /**
+     * 提现比特币(扣除手续费)
+     */
+    @TableField(exist = false)
+    private BigDecimal btcTrue;
+
+    /**
      * 提现人民币(理财)
      */
     @TableField(exist = false)
@@ -130,6 +136,14 @@ public class PresentRecord implements Serializable {
 
     public void setBtc(BigDecimal btc) {
         this.btc = btc;
+    }
+
+    public BigDecimal getBtcTrue() {
+        return btcTrue;
+    }
+
+    public void setBtcTrue(BigDecimal btcTrue) {
+        this.btcTrue = btcTrue;
     }
 
     public BigDecimal getCny() {
