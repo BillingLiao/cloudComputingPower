@@ -518,6 +518,8 @@ CREATE TABLE `t_put_forward` (
 INSERT  INTO `t_put_forward` VALUES (1,'ysl5454544','2','1',NULL,'1','3','0','0','100','2017-03-24 15:23:13','2018-03-24 15:23:13');
 INSERT  INTO `t_put_forward` VALUES (2,'ysl5454547','2','1',NULL,'1','0','0','0','500','2017-03-24 15:23:13',NULL);
 
+/*Table structure for table `t_present_record` */
+
 DROP TABLE IF EXISTS `t_present_record`;
 
 CREATE TABLE `t_present_record` (
@@ -533,6 +535,31 @@ CREATE TABLE `t_present_record` (
 INSERT  INTO `t_present_record` VALUES (1,'1','0','2017-03-24 15:23:13');
 INSERT  INTO `t_present_record` VALUES (2,'1','3','2018-03-24 15:23:13');
 INSERT  INTO `t_present_record` VALUES (3,'2','0','2017-03-24 15:23:13');
+
+/*Table structure for table `t_pay` */
+
+DROP TABLE IF EXISTS `t_pay`;
+
+CREATE TABLE `t_pay` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `pay_commodity_id` VARCHAR(255) DEFAULT NULL,
+  `pay_commodity_money` VARCHAR(255) DEFAULT NULL,
+  `pay_commodity_name` VARCHAR(255) DEFAULT NULL,
+  `pay_commodity_unit_price` VARCHAR(255) DEFAULT NULL,
+  `pay_email` VARCHAR(255) DEFAULT NULL,
+  `pay_id` VARCHAR(255) DEFAULT NULL,
+  `pay_mode` VARCHAR(255) DEFAULT NULL,
+  `pay_name` VARCHAR(255) DEFAULT NULL,
+  `pay_order_id` VARCHAR(255) DEFAULT NULL,
+  `pay_phone` VARCHAR(255) DEFAULT NULL,
+  `pay_state` VARCHAR(255) DEFAULT NULL,
+  `pay_voucher_state` VARCHAR(255) DEFAULT NULL,
+  `pay_voucher_url` VARCHAR(255) DEFAULT NULL,
+  `pay_time` DATETIME DEFAULT NULL,
+  `pay_num` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_nj36pnqh80vesiu6v8829gx2l` (`pay_id`)
+) ENGINE=MYISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
