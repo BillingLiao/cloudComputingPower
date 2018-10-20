@@ -413,14 +413,18 @@ CREATE TABLE `t_user` (
   `register_time` DATETIME DEFAULT NULL COMMENT '注册时间',
   `update_time` DATETIME DEFAULT NULL COMMENT '修改时间',
   `invitation_code` VARCHAR(100) DEFAULT NULL COMMENT '邀请码',
+  `img_url` VARCHAR(255) DEFAULT NULL COMMENT '用户头像',
+  `id_card_no` VARCHAR(255) DEFAULT NULL COMMENT '身份证号码',
+  `identity_card_positive_url` VARCHAR(255) DEFAULT NULL COMMENT '身份证照片正面',
+  `identity_card_negative_url` VARCHAR(255) DEFAULT NULL COMMENT '身份证照片正面',
   `status` TINYINT(4) DEFAULT '1' COMMENT '状态  0：冻结   1：正常',
   PRIMARY KEY (`user_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 /*Data for the table `t_user` */
 
-INSERT  INTO `t_user` VALUES (1,'李定韬','17620895280','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','1342f',1);
-INSERT  INTO `t_user` VALUES (2,'Billing','15012920449','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',1);
+INSERT  INTO `t_user` VALUES (1,'李定韬','17620895280','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','1342f',NULL,NULL,NULL,NULL,1);
+INSERT  INTO `t_user` VALUES (2,'Billing','15012920449','f651b74e526731fd6ea45c995783343f', 'l9rewDxy6Nw4rYdytb2p','root@cnadmart.com','136000001','0','0','2016-11-11 11:11:11','2017-03-24 15:23:13','134df',NULL,NULL,NULL,NULL,1);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -541,13 +545,13 @@ INSERT  INTO `t_present_record` VALUES (3,'2','0','2017-03-24 15:23:13');
 DROP TABLE IF EXISTS `t_pay`;
 
 CREATE TABLE `t_pay` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `pay_id` INT(11) INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `pay_no` VARCHAR(50) NOT NULL COMMENT '提现单号',
   `pay_commodity_id` VARCHAR(255) DEFAULT NULL,
   `pay_commodity_money` VARCHAR(255) DEFAULT NULL,
   `pay_commodity_name` VARCHAR(255) DEFAULT NULL,
   `pay_commodity_unit_price` VARCHAR(255) DEFAULT NULL,
   `pay_email` VARCHAR(255) DEFAULT NULL,
-  `pay_id` VARCHAR(255) DEFAULT NULL,
   `pay_mode` VARCHAR(255) DEFAULT NULL,
   `pay_name` VARCHAR(255) DEFAULT NULL,
   `pay_order_id` VARCHAR(255) DEFAULT NULL,
@@ -557,9 +561,10 @@ CREATE TABLE `t_pay` (
   `pay_voucher_url` VARCHAR(255) DEFAULT NULL,
   `pay_time` DATETIME DEFAULT NULL,
   `pay_num` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_nj36pnqh80vesiu6v8829gx2l` (`pay_id`)
-) ENGINE=MYISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`pay_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='支付提交表';
+
+/*Data for the table `t_pay` */
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
