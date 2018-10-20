@@ -1,7 +1,7 @@
 package com.ant.webPage.service;
 
-import com.ant.entity.PutForward;
-import com.ant.entity.User;
+import com.ant.entity.phone.PutForward;
+import com.ant.entity.phone.User;
 import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.IService;
 

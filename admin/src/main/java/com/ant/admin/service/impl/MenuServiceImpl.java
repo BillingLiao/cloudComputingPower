@@ -4,7 +4,7 @@ import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.MapUtils;
 import com.ant.admin.dao.MenuDao;
 import com.ant.admin.service.SysUserService;
-import com.ant.entity.Menu;
+import com.ant.entity.phone.Menu;
 import com.ant.admin.service.MenuService;
 import com.ant.admin.service.RoleMenuService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

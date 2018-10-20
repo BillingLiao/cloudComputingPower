@@ -1,8 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.CloudProduct;
-import com.ant.entity.Product;
-import com.ant.entity.Tstimate;
+import com.ant.entity.phone.Tstimate;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

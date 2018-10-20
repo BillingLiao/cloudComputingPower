@@ -1,6 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Income;
+import com.ant.entity.phone.Income;
 import com.ant.webPage.dao.IncomeDao;
 import com.ant.webPage.service.IncomeService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

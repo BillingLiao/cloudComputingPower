@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.FinancialProductDao">
 
-    <select id="findList" resultType="com.ant.entity.FinancialProduct">
+    <select id="findList" resultType="com.ant.entity.phone.FinancialProduct">
         SELECT
         financial.*,product.*,c.category_name
         FROM
@@ -13,7 +13,7 @@
         <where>financial.del_flag = 0 and product.show_in_shelve = 1</where>
     </select>
 
-    <select id="selectByProductId" resultType="com.ant.entity.FinancialProduct">
+    <select id="selectByProductId" resultType="com.ant.entity.phone.FinancialProduct">
         SELECT
         financial.*,product.*,c.category_name
         FROM
@@ -23,7 +23,7 @@
         <where>financial.product_id = #{productId} and financial.del_flag = 0</where>
     </select>
 
-    <select id="findFour" resultType="com.ant.entity.FinancialProduct">
+    <select id="findFour" resultType="com.ant.entity.phone.FinancialProduct">
         SELECT
         financial.*,product.*,c.category_name
         FROM

@@ -1,7 +1,7 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.MinerProduct;
-import com.ant.entity.Product;
+import com.ant.entity.phone.MinerProduct;
+import com.ant.entity.phone.Product;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

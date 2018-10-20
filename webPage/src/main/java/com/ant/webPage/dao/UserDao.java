@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

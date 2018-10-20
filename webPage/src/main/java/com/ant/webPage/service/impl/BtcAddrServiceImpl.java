@@ -1,7 +1,7 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.BtcAddr;
-import com.ant.entity.User;
+import com.ant.entity.phone.BtcAddr;
+import com.ant.entity.phone.User;
 import com.ant.webPage.dao.BtcAddrDao;
 import com.ant.webPage.service.BtcAddrService;
 import com.ant.webPage.tool.CheckTool;

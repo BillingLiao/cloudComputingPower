@@ -5,7 +5,7 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.service.UserService;
 import com.ant.common.validator.ValidatorUtils;
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

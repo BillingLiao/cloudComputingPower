@@ -1,7 +1,7 @@
 package com.ant.admin.service;
 
 import com.ant.admin.common.utils.PageUtils;
-import com.ant.entity.PutForward;
+import com.ant.entity.phone.PutForward;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.Map;
@@ -16,6 +16,6 @@ public interface PutForwardService extends IService<PutForward> {
 
     //Page<PutForward> queryPage(Map<String, Object> params, Wrapper<PutForward> wrapper);
 
-    //void add(User user, Integer productId, BigDecimal amount, BigDecimal actualReceipts);
+    //void add(PCUser user, Integer productId, BigDecimal amount, BigDecimal actualReceipts);
 
 }

@@ -17,7 +17,7 @@
 package com.ant.admin.common.shiro;
 
 import com.ant.admin.common.exception.RRException;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.SysUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.shiro.SecurityUtils;

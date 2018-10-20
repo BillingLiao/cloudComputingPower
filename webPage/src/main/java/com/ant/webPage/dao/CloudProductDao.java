@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.CloudProduct;
+import com.ant.entity.phone.CloudProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

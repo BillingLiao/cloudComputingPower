@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.MinerProduct;
+import com.ant.entity.phone.MinerProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

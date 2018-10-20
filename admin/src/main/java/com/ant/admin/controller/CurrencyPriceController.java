@@ -4,7 +4,7 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.admin.service.CurrencyPriceService;
 import com.ant.common.validator.ValidatorUtils;
-import com.ant.entity.CurrencyPrice;
+import com.ant.entity.phone.CurrencyPrice;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

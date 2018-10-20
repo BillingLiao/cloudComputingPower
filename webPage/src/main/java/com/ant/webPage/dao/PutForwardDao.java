@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.PutForward;
+import com.ant.entity.phone.PutForward;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.math.BigDecimal;

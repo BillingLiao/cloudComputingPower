@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.PresentRecord;
+import com.ant.entity.phone.PresentRecord;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

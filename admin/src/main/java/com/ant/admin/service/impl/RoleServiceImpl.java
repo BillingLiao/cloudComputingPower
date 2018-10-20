@@ -5,7 +5,7 @@ import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.RoleDao;
-import com.ant.entity.Role;
+import com.ant.entity.phone.Role;
 import com.ant.admin.service.RoleMenuService;
 import com.ant.admin.service.RoleService;
 import com.ant.admin.service.UserRoleService;

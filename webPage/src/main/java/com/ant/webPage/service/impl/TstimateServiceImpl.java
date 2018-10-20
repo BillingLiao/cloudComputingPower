@@ -1,6 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Tstimate;
+import com.ant.entity.phone.Tstimate;
 import com.ant.webPage.dao.TstimateDao;
 import com.ant.webPage.service.TstimateService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

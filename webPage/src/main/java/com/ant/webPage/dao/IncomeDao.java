@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.Income;
+import com.ant.entity.phone.Income;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.math.BigDecimal;

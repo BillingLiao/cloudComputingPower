@@ -4,26 +4,26 @@
 <mapper namespace="com.ant.admin.dao.UserDao">
 
 	<select id="selectListVO"
-		resultType="com.ant.entity.User" >
+		resultType="com.ant.entity.phone.User" >
 		SELECT * FROM t_user  user
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectVO"
-		resultType="com.ant.entity.User" >
+		resultType="com.ant.entity.phone.User" >
 		SELECT  user.* FROM t_user  user
  		<where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 
     <select id="selectListView"
-		resultType="com.ant.entity.User" >
+		resultType="com.ant.entity.phone.User" >
 
 		SELECT  user.* FROM t_user  user
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectView"
-		resultType="com.ant.entity.User" >
+		resultType="com.ant.entity.phone.User" >
 		SELECT * FROM t_user  user <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 </mapper>

@@ -2,7 +2,7 @@ package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.ProductDao;
 import com.ant.admin.service.ProductService;
-import com.ant.entity.Product;
+import com.ant.entity.phone.Product;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

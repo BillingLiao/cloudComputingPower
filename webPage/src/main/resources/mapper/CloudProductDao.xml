@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.CloudProductDao">
 
-    <select id="findList" resultType="com.ant.entity.CloudProduct">
+    <select id="findList" resultType="com.ant.entity.phone.CloudProduct">
         SELECT
         cloud.*,product.*,c.category_name
         FROM
@@ -13,7 +13,7 @@
         <where>cloud.del_flag = 0 and product.show_in_shelve = 1</where>
     </select>
 
-    <select id="selectByProductId" resultType="com.ant.entity.CloudProduct">
+    <select id="selectByProductId" resultType="com.ant.entity.phone.CloudProduct">
         SELECT
         cloud.*,product.*,c.category_name
         FROM
@@ -23,7 +23,7 @@
         <where>cloud.product_id = #{productId} and cloud.del_flag = 0</where>
     </select>
 
-    <select id="findFirst" resultType="com.ant.entity.CloudProduct">
+    <select id="findFirst" resultType="com.ant.entity.phone.CloudProduct">
         SELECT
         cloud.*,product.*,c.category_name
         FROM

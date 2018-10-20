@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.Bank;
+import com.ant.entity.phone.Bank;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 

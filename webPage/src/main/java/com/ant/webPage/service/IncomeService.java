@@ -1,6 +1,6 @@
 package com.ant.webPage.service;
 
-import com.ant.entity.Income;
+import com.ant.entity.phone.Income;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.math.BigDecimal;

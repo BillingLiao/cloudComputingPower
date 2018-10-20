@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.CurrencyPrice;
+import com.ant.entity.phone.CurrencyPrice;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;

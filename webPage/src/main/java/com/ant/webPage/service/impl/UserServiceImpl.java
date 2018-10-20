@@ -1,8 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Income;
-import com.ant.entity.Order;
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.ant.webPage.dao.IncomeDao;
 import com.ant.webPage.dao.OrderDao;
 import com.ant.webPage.dao.PutForwardDao;

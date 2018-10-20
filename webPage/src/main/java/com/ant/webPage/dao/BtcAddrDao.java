@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.BtcAddr;
+import com.ant.entity.phone.BtcAddr;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

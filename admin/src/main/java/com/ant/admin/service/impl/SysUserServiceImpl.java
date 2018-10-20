@@ -7,7 +7,7 @@ import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.SysUserDao;
 import com.ant.admin.service.SysUserService;
 import com.ant.admin.service.UserRoleService;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.SysUser;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
@@ -46,8 +46,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao,SysUser> implemen
                         .like(StringUtils.isNotBlank(userName),"userName", userName)
                         .addFilterIfNeed(params.get(Constant.SQL_FILTER) != null, (String)params.get(Constant.SQL_FILTER))
         );
-        /*for(User sysUserEntity : page.getRecords()){
-            User sysDeptEntity = sysDeptService.selectById(sysUserEntity.getDeptId());
+        /*for(PCUser sysUserEntity : page.getRecords()){
+            PCUser sysDeptEntity = sysDeptService.selectById(sysUserEntity.getDeptId());
             sysUserEntity.setDeptName(sysDeptEntity.getName());
         }*/
         return new PageUtils(page);

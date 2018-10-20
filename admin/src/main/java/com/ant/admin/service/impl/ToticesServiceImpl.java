@@ -3,14 +3,12 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.shiro.ShiroUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.ToticesDao;
-import com.ant.entity.SysUser;
-import com.ant.entity.Totices;
-import com.ant.entity.User;
+import com.ant.entity.phone.SysUser;
+import com.ant.entity.phone.Totices;
 import com.ant.admin.service.ToticesService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

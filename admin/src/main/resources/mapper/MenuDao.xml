@@ -3,11 +3,11 @@
 
 <mapper namespace="com.ant.admin.dao.MenuDao" >
 
-    <select id="queryListParentId" resultType="com.ant.entity.Menu">
+    <select id="queryListParentId" resultType="com.ant.entity.phone.Menu">
         select * from t_menu where parent_id = #{parentId} order by order_num asc
     </select>
 
-    <select id="queryNotButtonList" resultType="com.ant.entity.Menu">
+    <select id="queryNotButtonList" resultType="com.ant.entity.phone.Menu">
         select * from t_menu where type != 2 order by order_num asc
     </select>
 </mapper>

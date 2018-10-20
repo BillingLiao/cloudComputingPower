@@ -1,7 +1,7 @@
 package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.RoleMenuDao;
-import com.ant.entity.RoleMenu;
+import com.ant.entity.phone.RoleMenu;
 import com.ant.admin.service.RoleMenuService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

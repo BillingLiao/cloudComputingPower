@@ -3,9 +3,9 @@ package com.ant.admin.service.impl;
 import com.ant.admin.dao.IncomeDao;
 import com.ant.admin.dao.UserDao;
 import com.ant.admin.service.IncomeService;
-import com.ant.entity.Income;
+import com.ant.entity.phone.Income;
 
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

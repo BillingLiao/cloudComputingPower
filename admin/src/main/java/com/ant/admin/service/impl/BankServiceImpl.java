@@ -3,7 +3,7 @@ package com.ant.admin.service.impl;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.BankDao;
-import com.ant.entity.Bank;
+import com.ant.entity.phone.Bank;
 import com.ant.admin.service.BankService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;

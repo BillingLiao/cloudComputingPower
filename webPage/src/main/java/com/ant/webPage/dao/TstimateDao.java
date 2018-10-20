@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.Tstimate;
+import com.ant.entity.phone.Tstimate;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

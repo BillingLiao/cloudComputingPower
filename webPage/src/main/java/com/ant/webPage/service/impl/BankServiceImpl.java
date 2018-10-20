@@ -1,7 +1,7 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Bank;
-import com.ant.entity.User;
+import com.ant.entity.phone.Bank;
+import com.ant.entity.phone.User;
 import com.ant.webPage.dao.BankDao;
 import com.ant.webPage.service.BankService;
 import com.ant.webPage.tool.CheckTool;

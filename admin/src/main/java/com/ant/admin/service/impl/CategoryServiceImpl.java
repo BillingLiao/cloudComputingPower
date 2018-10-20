@@ -1,12 +1,10 @@
 package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.CategoryDao;
-import com.ant.entity.Category;
+import com.ant.entity.phone.Category;
 import com.ant.admin.service.CategoryService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * @author Billing

@@ -1,7 +1,7 @@
 package com.ant.admin.common.config;
 
 import com.ant.admin.common.shiro.ShiroUtils;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.SysUser;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;

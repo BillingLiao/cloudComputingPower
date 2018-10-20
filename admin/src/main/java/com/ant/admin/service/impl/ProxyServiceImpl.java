@@ -1,7 +1,7 @@
 package com.ant.admin.service.impl;
 
 import com.ant.admin.dao.ProxyDao;
-import com.ant.entity.Proxy;
+import com.ant.entity.phone.Proxy;
 import com.ant.admin.service.ProxyService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 

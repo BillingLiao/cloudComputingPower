@@ -24,7 +24,7 @@
         WHERE income_type = 3 AND TO_DAYS(CURRENT_DATE) = TO_DAYS(create_time) AND user_id = #{userId}
     </select>
 
-    <select id="selectCloudIncomeList" resultType="com.ant.entity.Income">
+    <select id="selectCloudIncomeList" resultType="com.ant.entity.phone.Income">
         SELECT income_id,user_id,SUM(settlement_income) AS settlement_income,DATE_SUB(create_time,INTERVAL 1 DAY) AS create_time
         FROM t_income
         WHERE income_type = 2 AND user_id = #{userId}
@@ -32,7 +32,7 @@
         ORDER BY create_time
     </select>
 
-    <select id="selectFinancialIncomeList" resultType="com.ant.entity.Income">
+    <select id="selectFinancialIncomeList" resultType="com.ant.entity.phone.Income">
         SELECT * FROM t_income
         WHERE income_type = 3 AND user_id = #{userId}
     </select>

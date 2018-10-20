@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.Menu;
+import com.ant.entity.phone.Menu;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

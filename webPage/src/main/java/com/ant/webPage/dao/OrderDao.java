@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.Order;
+import com.ant.entity.phone.Order;
 import com.ant.webPage.model.UserFinancial;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 

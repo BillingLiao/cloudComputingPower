@@ -3,7 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.common.validator.ValidatorUtils;
-import com.ant.entity.Totices;
+import com.ant.entity.phone.Totices;
 import com.ant.admin.service.ToticesService;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

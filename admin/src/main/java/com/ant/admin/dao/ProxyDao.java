@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.Proxy;
+import com.ant.entity.phone.Proxy;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

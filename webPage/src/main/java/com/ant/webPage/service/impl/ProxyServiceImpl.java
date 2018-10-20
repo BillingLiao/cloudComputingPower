@@ -1,6 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Proxy;
+import com.ant.entity.phone.Proxy;
 import com.ant.webPage.dao.ProxyDao;
 import com.ant.webPage.service.ProxyService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

@@ -1,7 +1,7 @@
 package com.ant.admin.service;
 
-import com.ant.entity.CloudProduct;
-import com.ant.entity.Product;
+import com.ant.entity.phone.CloudProduct;
+import com.ant.entity.phone.Product;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;

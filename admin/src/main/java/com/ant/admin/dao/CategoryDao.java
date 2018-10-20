@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.Category;
+import com.ant.entity.phone.Category;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

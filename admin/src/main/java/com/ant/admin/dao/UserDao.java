@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;

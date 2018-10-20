@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ant.common.tool.CodeConstant;
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.ant.webPage.service.UserService;
 import com.ant.webPage.tool.CheckTool;
 
@@ -12,6 +12,8 @@ import com.ant.webPage.tool.HttpTool;
 import com.ant.webPage.tool.TokenTool;
 import com.ant.webPage.util.Ding;
 import com.ant.webPage.util.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -26,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
+
+	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired private UserService userService;
 
@@ -35,6 +39,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		log.info("注入token处理类！");
 		String token = request.getParameter("token");
 		
 		if(CheckTool.isString(token)) {
@@ -45,7 +50,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 				operations = redisTemplate.opsForValue();
 			    exists = redisTemplate.hasKey("user:"+userId);
 			}catch (Exception e){
-				Ding.ErrorDing("redis出现了问题，请速去处理！",new String[]{"17608170325"});
+//				Ding.ErrorDing("redis出现了问题，请速去处理！",new String[]{"17608170325"});
 			}
 			if(exists) {
 				//有缓存的情况，直接从缓存中取
@@ -91,6 +96,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		log.info("注入http状态码处理！");
 		if(response.getStatus() == 200) {
 			//访问正常的情况
 			return ;

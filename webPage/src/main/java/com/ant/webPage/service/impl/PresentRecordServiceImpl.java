@@ -1,6 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.PresentRecord;
+import com.ant.entity.phone.PresentRecord;
 import com.ant.webPage.dao.PresentRecordDao;
 import com.ant.webPage.service.PresentRecordService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

@@ -1,7 +1,7 @@
 package com.ant.admin.service;
 
 import com.ant.admin.common.utils.PageUtils;
-import com.ant.entity.User;
+import com.ant.entity.phone.User;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
 import org.apache.ibatis.annotations.Param;

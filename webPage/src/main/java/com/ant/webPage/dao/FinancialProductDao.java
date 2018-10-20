@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.FinancialProduct;
+import com.ant.entity.phone.FinancialProduct;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

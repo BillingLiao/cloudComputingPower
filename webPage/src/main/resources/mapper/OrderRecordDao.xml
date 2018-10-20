@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.OrderRecordDao">
 
-    <select id="selectOrderRecord" resultType="com.ant.entity.OrderRecord">
+    <select id="selectOrderRecord" resultType="com.ant.entity.phone.OrderRecord">
         SELECT odr.*,o.order_no,o.order_type,o.amount,o.actual_receipts,p.product_name
         FROM t_order_record odr
         LEFT JOIN t_order o ON o.order_id = odr.order_id

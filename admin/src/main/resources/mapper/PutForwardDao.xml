@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.PutForwardDao">
 
-    <select id="selectPutForwardList" resultType="com.ant.entity.PutForward">
+    <select id="selectPutForwardList" resultType="com.ant.entity.phone.PutForward">
         SELECT *
         FROM
         t_put_forward p

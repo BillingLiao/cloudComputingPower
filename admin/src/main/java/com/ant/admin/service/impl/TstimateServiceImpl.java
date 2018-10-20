@@ -4,7 +4,7 @@ import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Query;
 import com.ant.admin.dao.TstimateDao;
 import com.ant.admin.service.TstimateService;
-import com.ant.entity.Tstimate;
+import com.ant.entity.phone.Tstimate;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

@@ -3,7 +3,7 @@ package com.ant.admin.controller;
 import com.ant.admin.common.exception.RRException;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.common.utils.Result;
-import com.ant.entity.Menu;
+import com.ant.entity.phone.Menu;
 import com.ant.admin.service.MenuService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

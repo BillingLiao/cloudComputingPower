@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.ProxyDao">
 
-    <select id="selectByUserId"  resultType="com.ant.entity.Proxy">
+    <select id="selectByUserId"  resultType="com.ant.entity.phone.Proxy">
         select * from t_proxy where user_id = #{userId}
     </select>
 </mapper>

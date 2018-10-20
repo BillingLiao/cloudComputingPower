@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.OrderDao">
 
-    <select id="selectOrderList" resultType="com.ant.entity.Order">
+    <select id="selectOrderList" resultType="com.ant.entity.phone.Order">
         SELECT
         o.*,c.category_name
         FROM
@@ -18,7 +18,7 @@
         WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) = f.cycle+1;
     </update>
 
-    <select id="selectByTime" resultType="com.ant.entity.Order">
+    <select id="selectByTime" resultType="com.ant.entity.phone.Order">
         SELECT o.*
         FROM
         t_order o

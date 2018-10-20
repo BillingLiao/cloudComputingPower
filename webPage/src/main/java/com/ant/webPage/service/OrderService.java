@@ -1,8 +1,8 @@
 package com.ant.webPage.service;
 
-import com.ant.entity.Order;
-import com.ant.entity.Product;
-import com.ant.entity.User;
+import com.ant.entity.phone.Order;
+import com.ant.entity.phone.Product;
+import com.ant.entity.phone.User;
 import com.ant.webPage.model.UserFinancial;
 import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.IService;

@@ -1,6 +1,6 @@
 package com.ant.webPage.service;
 
-import com.ant.entity.Totices;
+import com.ant.entity.phone.Totices;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

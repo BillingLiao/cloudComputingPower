@@ -74,7 +74,7 @@ public class HttpTool {
 		ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
 		
 		/*上面这句返回的是往 url发送 post请求 请求携带信息为entity时返回的结果信息
-		String.class 是可以修改的，例如User.class，这样你就可以有 User resultUser接返回结果了*/
+		String.class 是可以修改的，例如User.class，这样你就可以有 PCUser resultUser接返回结果了*/
 		
 		return result.getBody();
 	}
@@ -106,7 +106,7 @@ public class HttpTool {
 			//con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			//con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 			con.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-			con.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
+			con.setRequestProperty("PCUser-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
 
 			OutputStreamWriter osw = new OutputStreamWriter(con.getOutputStream(), "UTF-8");
 			osw.write(sb.toString());

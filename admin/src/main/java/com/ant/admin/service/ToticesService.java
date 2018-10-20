@@ -1,6 +1,6 @@
 package com.ant.admin.service;
 
-import com.ant.entity.Totices;
+import com.ant.entity.phone.Totices;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;

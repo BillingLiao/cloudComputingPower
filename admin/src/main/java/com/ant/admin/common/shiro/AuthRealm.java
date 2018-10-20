@@ -3,8 +3,8 @@ package com.ant.admin.common.shiro;
 import com.ant.admin.common.utils.Constant;
 import com.ant.admin.dao.MenuDao;
 import com.ant.admin.dao.SysUserDao;
-import com.ant.entity.Menu;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.Menu;
+import com.ant.entity.phone.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -56,7 +56,7 @@ public class AuthRealm extends AuthorizingRealm {
         //SecurityUtils.getSubject().getSession().setAttribute("user",permissions);
         return info;
 */
-        //User user = (User)principals.getPrimaryPrincipal();
+        //PCUser user = (PCUser)principals.getPrimaryPrincipal();
         SysUser sysUser = ShiroUtils.getUser();//(SysUser) SecurityUtils.getSubject().getSession().getAttribute("sysUser");
 
         Integer userId = sysUser.getUserId();

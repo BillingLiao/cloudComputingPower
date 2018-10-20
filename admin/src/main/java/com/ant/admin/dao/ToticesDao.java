@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.Totices;
+import com.ant.entity.phone.Totices;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 公告mapper

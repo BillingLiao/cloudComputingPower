@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.TstimateDao">
 
-    <select id="findFirst"  resultType="com.ant.entity.Tstimate">
+    <select id="findFirst"  resultType="com.ant.entity.phone.Tstimate">
         SELECT * FROM t_tstimate ORDER BY tstimate_id DESC LIMIT 0,1
     </select>
 </mapper>

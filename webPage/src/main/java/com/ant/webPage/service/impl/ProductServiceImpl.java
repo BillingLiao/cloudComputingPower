@@ -1,6 +1,6 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.Product;
+import com.ant.entity.phone.Product;
 import com.ant.webPage.dao.*;
 import com.ant.webPage.service.ProductService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

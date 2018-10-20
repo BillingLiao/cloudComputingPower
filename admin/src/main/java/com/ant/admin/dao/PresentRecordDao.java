@@ -1,6 +1,6 @@
 package com.ant.admin.dao;
 
-import com.ant.entity.PresentRecord;
+import com.ant.entity.phone.PresentRecord;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

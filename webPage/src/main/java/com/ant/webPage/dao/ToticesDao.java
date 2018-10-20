@@ -1,6 +1,6 @@
 package com.ant.webPage.dao;
 
-import com.ant.entity.Totices;
+import com.ant.entity.phone.Totices;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;

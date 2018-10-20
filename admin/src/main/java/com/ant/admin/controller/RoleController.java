@@ -4,7 +4,7 @@ import com.ant.admin.common.annotation.SysLog;
 import com.ant.admin.common.utils.PageUtils;
 import com.ant.admin.common.utils.Result;
 import com.ant.common.validator.ValidatorUtils;
-import com.ant.entity.Role;
+import com.ant.entity.phone.Role;
 import com.ant.admin.service.RoleMenuService;
 import com.ant.admin.service.RoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;

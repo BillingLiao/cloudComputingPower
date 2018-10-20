@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.webPage.dao.BankDao">
 
-    <select id="selectBank"  resultType="com.ant.entity.Bank">
+    <select id="selectBank"  resultType="com.ant.entity.phone.Bank">
         select * from t_bank where user_id = #{userId}
     </select>
 </mapper>

@@ -1,11 +1,8 @@
 package com.ant.webPage.service.impl;
 
-import com.ant.entity.CloudProduct;
-import com.ant.entity.Totices;
+import com.ant.entity.phone.CloudProduct;
 import com.ant.webPage.dao.CloudProductDao;
-import com.ant.webPage.dao.ToticesDao;
 import com.ant.webPage.service.CloudProductService;
-import com.ant.webPage.service.ToticesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

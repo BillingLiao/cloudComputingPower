@@ -1,6 +1,8 @@
 package com.ant.webPage.config;
 
 import com.ant.webPage.interceptor.AuthInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private AuthInterceptor authInterceptor;
@@ -38,6 +42,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        log.info("注入拦截配置！");
         registry.addInterceptor(authInterceptor).addPathPatterns("/**").excludePathPatterns(noInterceptor);
     }
 }

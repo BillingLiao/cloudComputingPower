@@ -3,15 +3,15 @@
 
 <mapper namespace="com.ant.webPage.dao.UserDao">
 
-    <select id="findOneById" parameterType="Integer" resultType="com.ant.entity.User">
+    <select id="findOneById" parameterType="Integer" resultType="com.ant.entity.phone.User">
         select * from t_user where status = 1 and user_id = #{userId}
     </select>
 
-    <select id="findOneByPhone" parameterType="String" resultType="com.ant.entity.User">
+    <select id="findOneByPhone" parameterType="String" resultType="com.ant.entity.phone.User">
         select * from t_user where status = 1 and telphone = #{phone}
     </select>
 
-    <select id="selectByInvitationCode" parameterType="String" resultType="com.ant.entity.User">
+    <select id="selectByInvitationCode" parameterType="String" resultType="com.ant.entity.phone.User">
         select * from t_user where status = 1 and invitation_code = #{invitationCode}
     </select>
 </mapper>

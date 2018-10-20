@@ -1,7 +1,7 @@
 package com.ant.admin.service;
 
 import com.ant.admin.common.utils.PageUtils;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.SysUser;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;

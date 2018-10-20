@@ -10,7 +10,7 @@ import com.ant.common.validator.group.AddGroup;
 import com.ant.common.validator.group.UpdateGroup;
 import com.ant.admin.service.SysUserService;
 import com.ant.admin.service.UserRoleService;
-import com.ant.entity.SysUser;
+import com.ant.entity.phone.SysUser;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
