@@ -9,7 +9,7 @@ public class MMP {
         info.setCode(0);
         info.setPmsg("成功");
         info.setData(o);
-        return null;
+        return info;
     }
 
     public static PrInfo Error(Integer s ,String msg ,Object o){

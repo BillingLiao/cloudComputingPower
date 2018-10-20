@@ -2,6 +2,7 @@ package com.ant.webPage.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ant.common.tool.CodeConstant;
 import com.ant.entity.phone.User;
@@ -39,9 +40,13 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("注入token处理类！");
-		String token = request.getParameter("token");
-		
+		log.info("token处理类！");
+//		String token = request.getParameter("token");
+		//更改了获取token的方式/././././././././././././././././././//././././././../././././././.
+		HttpSession session = request.getSession();
+		String token = (String) redisTemplate.opsForValue().get("CLOUD_"+session.getId());
+		//./././././././././././././././././././././././.
+		//>/././././././././/./././././.
 		if(CheckTool.isString(token)) {
 			int userId = TokenTool.verify(token);
 			ValueOperations<String, User> operations = null;

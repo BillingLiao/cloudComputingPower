@@ -34,6 +34,8 @@ public class WebConfig implements WebMvcConfigurer {
             "/miner/**", //矿机列表相关接口
             "/order/profit", //查询理财产品收益
             "/order/actualReceipts", //查询云算力总价
+            "/captcha/**",
+            "/sign_up",
     };
 
     /**
