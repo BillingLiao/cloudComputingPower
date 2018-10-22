@@ -27,4 +27,10 @@ public interface OrderDao extends BaseMapper<Order> {
      * @return
      */
     List<UserFinancial> selectUserFinancial(Integer userId);
+
+    /**
+     * 查询用户全部订单
+     * @return
+     */
+    List<Order> selectCloudAll(Integer userId);
 }

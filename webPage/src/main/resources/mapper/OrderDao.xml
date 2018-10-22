@@ -14,4 +14,8 @@
         WHERE o.order_type = 3 AND o.order_status = 2 AND o.user_id = #{userId}
     </select>
 
+    <select id="selectCloudAll" resultType="com.ant.entity.phone.Order">
+        SELECT * FOR t_order WHERE orderType = 2 AND  user_id = #{userId}
+    </select>
+
 </mapper>
