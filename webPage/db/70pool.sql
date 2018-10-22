@@ -545,26 +545,44 @@ INSERT  INTO `t_present_record` VALUES (3,'2','0','2017-03-24 15:23:13');
 DROP TABLE IF EXISTS `t_pay`;
 
 CREATE TABLE `t_pay` (
-  `pay_id` INT(11) INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `pay_no` VARCHAR(50) NOT NULL COMMENT '提现单号',
-  `pay_commodity_id` VARCHAR(255) DEFAULT NULL,
-  `pay_commodity_money` VARCHAR(255) DEFAULT NULL,
-  `pay_commodity_name` VARCHAR(255) DEFAULT NULL,
-  `pay_commodity_unit_price` VARCHAR(255) DEFAULT NULL,
-  `pay_email` VARCHAR(255) DEFAULT NULL,
-  `pay_mode` VARCHAR(255) DEFAULT NULL,
-  `pay_name` VARCHAR(255) DEFAULT NULL,
-  `pay_order_id` VARCHAR(255) DEFAULT NULL,
-  `pay_phone` VARCHAR(255) DEFAULT NULL,
-  `pay_state` VARCHAR(255) DEFAULT NULL,
-  `pay_voucher_state` VARCHAR(255) DEFAULT NULL,
-  `pay_voucher_url` VARCHAR(255) DEFAULT NULL,
-  `pay_time` DATETIME DEFAULT NULL,
-  `pay_num` VARCHAR(255) DEFAULT NULL,
+  `pay_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `pay_no` VARCHAR(50) DEFAULT NULL COMMENT '支付单号',
+  `order_id` INT(11) NOT NULL COMMENT '订单id',
+  `voucher_url` VARCHAR(255) DEFAULT NULL COMMENT '上传凭证图片',
+  `pay_time` DATETIME DEFAULT NULL COMMENT '支付時間',
   PRIMARY KEY (`pay_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='支付提交表';
 
 /*Data for the table `t_pay` */
+
+/*Table structure for table `t_coupon` */
+
+DROP TABLE IF EXISTS `t_coupon`;
+
+CREATE TABLE `t_coupon` (
+  `coupon_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '优惠劵编号',
+  `coupon_name` VARCHAR(50) DEFAULT NULL COMMENT '优惠劵名称',
+  `coupon_price` DECIMAL(15,3) DEFAULT NULL COMMENT '面值',
+  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`coupon_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='优惠劵表';
+
+/*Data for the table `t_coupon` */
+
+/*Table structure for table `t_coupon` */
+
+DROP TABLE IF EXISTS `t_user_coupon`;
+
+CREATE TABLE `t_user_coupon` (
+  `user_coupon_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户优惠劵编号',
+  `coupon_id` INT(11) NOT NULL COMMENT '优惠劵编号',
+  `user_id` INT(11) NOT NULL COMMENT '用户编号',
+  `coupon_status` INT(11) DEFAULT NULL COMMENT '状态:0:待领取 1:已领取,未使用 2:已使用',
+  `create_time` DATETIME DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`user_coupon_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='用户优惠劵表';
+
+/*Data for the table `t_user_coupon` */
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
