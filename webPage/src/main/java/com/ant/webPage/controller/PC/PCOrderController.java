@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(allowCredentials="true")
 @RestController
 @RequestMapping("/order")
-public class OrderController {
+public class PCOrderController {
 
     @Autowired
     private PCOrderServer pcOrderServer;
