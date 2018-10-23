@@ -11,10 +11,13 @@ import com.ant.webPage.service.ProxyService;
 import com.ant.webPage.service.UserService;
 import com.ant.webPage.tool.CheckTool;
 import com.ant.webPage.util.*;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -40,8 +43,10 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Result login(@RequestParam("telphone") String telphone, @RequestParam("password") String password){
-        return userService.login(telphone,password);
+    public Result login(HttpServletRequest request, @RequestParam("telphone") String telphone, @RequestParam("password") String password){
+        HttpSession session = request.getSession();
+        System.out.println(session.getId());
+        return userService.login(session,telphone,password);
     }
 
     /**
@@ -90,7 +95,8 @@ public class LoginController {
      */
     @PostMapping("/register")
     @Transactional(rollbackFor=Exception.class)
-    public Result register(@RequestParam String phone,@RequestParam String password,@RequestParam String verification,@RequestParam(required = false) String invitationCode){
+    public Result register(HttpServletRequest request,@RequestParam String phone,@RequestParam String password,@RequestParam String verification,@RequestParam(required = false) String invitationCode){
+        HttpSession session = request.getSession();
         Assert.notBlank(verification,"短信验证码不能为空");
         String codeRedis = redisUtils.get(Constant.RESET_PASS_SMS_OVERTIME_KEY+phone);
         if(codeRedis == null) {
@@ -136,7 +142,7 @@ public class LoginController {
             user.setInvitationCode(invitationCodeNew);
             userService.updateAllColumnById(user);
         }
-        return userService.login(phone,password);
+        return userService.login(session,phone,password);
     }
 
 

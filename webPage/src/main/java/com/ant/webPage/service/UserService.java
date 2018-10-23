@@ -5,6 +5,8 @@ import com.ant.webPage.model.Account;
 import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.IService;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author Billing
  * @date 2018/9/5 14:55
@@ -24,7 +26,7 @@ public interface UserService extends IService<User> {
      * @param password
      * @return
      */
-    public Result login(String telphone, String password);
+    public Result login(HttpSession session , String telphone, String password);
 
     /**
      * 通过手机号码查找用户

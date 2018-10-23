@@ -3,7 +3,7 @@
 
 <mapper namespace="com.ant.admin.dao.MinerProductDao">
 
-    <select id="selectProductList" resultType="com.ant.entity.MinerProduct">
+    <select id="selectProductList" resultType="com.ant.entity.phone.MinerProduct">
         SELECT
         miner.*,product.*,c.category_name
         FROM
@@ -13,7 +13,7 @@
         <where> 1=1 and miner.del_flag = 0 ${ew.sqlSegment} </where>
     </select>
 
-    <select id="selectByProductId" resultType="com.ant.entity.MinerProduct">
+    <select id="selectByProductId" resultType="com.ant.entity.phone.MinerProduct">
         SELECT
         miner.*,product.*,c.category_name
         FROM

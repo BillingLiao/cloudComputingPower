@@ -180,7 +180,7 @@ CREATE TABLE `t_order` (
   `product_id` INT(11) NOT NULL COMMENT '产品编号',
   `user_id` INT(11) DEFAULT NULL COMMENT '用户编号',
   `order_type` INT(11) NOT NULL  COMMENT '订单类型 1:矿机 2:运算力产品 3:理财产品',
-  `order_status` INT(11) NOT NULL  COMMENT '订单状态 0:待支付 1:待支付关闭 2:已付款，待发货 ,3:订单关闭,4:待收货 5:已完成订单',
+  `order_status` INT(11) NOT NULL  COMMENT '订单状态 0:待支付 1:支付待审核 2:已付款，待发货 ,3:订单关闭,4:待收货 5:已完成订单',
   `amount` DECIMAL(15,2) DEFAULT NULL COMMENT '购买数量',
   `actual_receipts` DECIMAL(15,3) DEFAULT NULL COMMENT '实收款',
   `maturity_income` DECIMAL(15,3) DEFAULT NULL COMMENT '到期收益',
@@ -548,7 +548,11 @@ CREATE TABLE `t_pay` (
   `pay_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `pay_no` VARCHAR(50) DEFAULT NULL COMMENT '支付单号',
   `order_id` INT(11) NOT NULL COMMENT '订单id',
+  `user_id` INT(11) NOT NULL COMMENT '用户编号',
   `voucher_url` VARCHAR(255) DEFAULT NULL COMMENT '上传凭证图片',
+  `opening_bank` VARCHAR(50) DEFAULT NULL COMMENT '开户行',
+  `card_number` VARCHAR(50) DEFAULT NULL COMMENT '银行卡号',
+  `true_name` VARCHAR(20) DEFAULT NULL COMMENT '姓名',
   `pay_time` DATETIME DEFAULT NULL COMMENT '支付時間',
   PRIMARY KEY (`pay_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='支付提交表';

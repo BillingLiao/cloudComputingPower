@@ -4,8 +4,8 @@ $.jgrid.defaults.responsive = true;
 $.jgrid.defaults.styleUI = 'Bootstrap';
 
 //var baseURL = "http://120.79.244.153/admin/";
-var baseURL = "http://www.70pool.com/admin/";
-//var baseURL = "http://localhost:8081/";
+//var baseURL = "http://www.70pool.com/admin/";
+var baseURL = "http://localhost:8081/";
 //var baseURL = "../../";
 
 //工具集合Tools

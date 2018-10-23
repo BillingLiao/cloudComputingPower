@@ -37,9 +37,29 @@ public class Pay implements Serializable {
     private Integer orderId;
 
     /**
+     * 用户id
+     */
+    private Integer userId;
+
+    /**
      * 上传凭证图片
      */
     private String voucherUrl;
+
+    /**
+     * 开户行
+     */
+    private String openingBank;
+
+    /**
+     * 银行卡号
+     */
+    private String cardNumber;
+
+    /**
+     * 姓名
+     */
+    private String trueName;
 
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
@@ -52,6 +72,14 @@ public class Pay implements Serializable {
 
     public void setPayId(Integer payId) {
         this.payId = payId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer usrId) {
+        this.userId = usrId;
     }
 
     public String getPayNo() {
@@ -84,5 +112,29 @@ public class Pay implements Serializable {
 
     public void setPayTime(Date payTime) {
         this.payTime = payTime;
+    }
+
+    public String getOpeningBank() {
+        return openingBank;
+    }
+
+    public void setOpeningBank(String openingBank) {
+        this.openingBank = openingBank;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getTrueName() {
+        return trueName;
+    }
+
+    public void setTrueName(String trueName) {
+        this.trueName = trueName;
     }
 }

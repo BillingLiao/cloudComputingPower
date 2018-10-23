@@ -29,7 +29,7 @@
         WHERE o.order_type = 3 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time)>=2 AND TO_DAYS(CURRENT_DATE)-TO_DAYS(o.payment_time) &lt; f.cycle+2;
     </insert>
 
-    <select id="selectCloudIncomeList" resultType="com.ant.entity.Income">
+    <select id="selectCloudIncomeList" resultType="com.ant.entity.phone.Income">
         SELECT *
         FROM
         t_income

@@ -9,6 +9,7 @@ import com.ant.webPage.model.Account;
 import com.ant.webPage.service.UserService;
 import com.ant.webPage.tool.TokenTool;
 import com.ant.webPage.util.Md5Util;
+import com.ant.webPage.util.RedisUtils;
 import com.ant.webPage.util.Result;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 
 /**
@@ -35,6 +37,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
     @Autowired private PutForwardDao putForwardDao;
 
+    @Autowired private RedisUtils redisUtils;
 
     /**
      * 通过id查找用户
@@ -48,7 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
 
 
     @Override
-    public Result login(String telphone, String password){
+    public Result login(HttpSession session, String telphone, String password){
         User user = userDao.findOneByPhone(telphone);
         if(user != null){
             String salt = user.getSalt();
@@ -56,6 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserSe
             String psw = encoderMd5.encode(password);
             if(user.getPassword().equals(psw)) {
                 String result = TokenTool.create(user.getUserId());
+                redisUtils.set("CLOUD_"+session.getId(),result,86400000);
                 return Result.ok("登录成功").put("result",result);
             } else {
                 return Result.error("密码错误，请重新输入");
