@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Billing
@@ -28,6 +25,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
     private OrderDao orderDao;
     @Autowired
     private OrderRecordDao orderRecordDao;
+    @Autowired
+    private PayDao payDao;
 
     @Autowired
     private ProductDao productDao;
@@ -77,6 +76,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, Order> implements Or
         orderDao.insert(order);
         OrderRecord orderRecord = new OrderRecord(order.getOrderId(),0,createTime);
         orderRecordDao.insert(orderRecord);
+        Pay pay = new Pay();
+        pay.setOrderId(order.getOrderId());
+        pay.setUserId(user.getUserId());
+        payDao.insert(pay);
         return Result.ok("下单成功").put("order",order);
     }
 

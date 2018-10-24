@@ -55,7 +55,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 				operations = redisTemplate.opsForValue();
 			    exists = redisTemplate.hasKey("user:"+userId);
 			}catch (Exception e){
-//				Ding.ErrorDing("redis出现了问题，请速去处理！",new String[]{"17608170325"});
+				Ding.ErrorDing("redis出现了问题，请速去处理！",new String[]{"17608170325"});
 			}
 			if(exists) {
 				//有缓存的情况，直接从缓存中取

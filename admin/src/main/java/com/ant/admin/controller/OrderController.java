@@ -66,6 +66,9 @@ public class OrderController extends  AbstractController{
         //校验类型
         ValidatorUtils.validateEntity(order);
         Order orderOld = orderService.selectById(order.getOrderId());
+        if(orderOld.getOrderStatus() == order.getOrderStatus()){
+            return Result.ok("更新成功");
+        }
         Date createTime = new Date();
         //更新付款时间
         if(order.getOrderStatus() == 2){

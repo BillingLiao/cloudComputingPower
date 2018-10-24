@@ -15,7 +15,7 @@
     </select>
 
     <select id="selectCloudAll" resultType="com.ant.entity.phone.Order">
-        SELECT * FOR t_order WHERE orderType = 2 AND  user_id = #{userId}
+        SELECT * FROM t_order WHERE orderType = 2 AND  user_id = #{userId}
     </select>
 
 </mapper>

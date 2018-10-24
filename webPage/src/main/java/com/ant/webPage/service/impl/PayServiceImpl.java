@@ -92,8 +92,9 @@ public class PayServiceImpl extends ServiceImpl<PayDao, Pay> implements PayServi
         //修改支付单信息
         Pay payUpdate = new Pay();
         log.info("将存储地址储存到数据库");
-        payUpdate.setVoucherUrl("/pay/pay_img/" + fileName);
+        payUpdate.setVoucherUrl("/img/pay_img/" + fileName);
         payUpdate.setUserId(user.getUserId());
+        payUpdate.setOrderId(pay.getOrderId());
         payUpdate.setPayId(payId);
         payUpdate.setCardNumber(cardNumber);
         payUpdate.setOpeningBank(openingBank);
@@ -102,10 +103,8 @@ public class PayServiceImpl extends ServiceImpl<PayDao, Pay> implements PayServi
         payDao.updateAllColumnById(payUpdate);
         //修改订单状态
         Order order = orderDao.selectById(pay.getOrderId());
-        Order orderUpdate = new Order();
-        orderUpdate.setOrderId(order.getOrderId());
-        orderUpdate.setOrderStatus(1);
-        orderDao.updateAllColumnById(orderUpdate);
+        order.setOrderStatus(1);
+        orderDao.updateAllColumnById(order);
         OrderRecord orderRecord = new OrderRecord(order.getOrderId(),order.getOrderStatus(),new Date());
         orderRecordDao.insert(orderRecord);
         return Result.ok("修改成功");

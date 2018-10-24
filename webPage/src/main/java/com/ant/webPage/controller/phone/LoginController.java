@@ -45,7 +45,6 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(HttpServletRequest request, @RequestParam("telphone") String telphone, @RequestParam("password") String password){
         HttpSession session = request.getSession();
-        System.out.println(session.getId());
         return userService.login(session,telphone,password);
     }
 

@@ -63,7 +63,7 @@ public class Pay implements Serializable {
 
     @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.UPDATE)
     private Date payTime;
 
     public Integer getPayId() {
