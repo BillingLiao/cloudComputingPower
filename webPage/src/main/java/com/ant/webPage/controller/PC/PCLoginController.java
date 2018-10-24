@@ -31,7 +31,6 @@ public class PCLoginController {
     @PostMapping("/login")
     public Object Login(HttpServletRequest request, HttpServletResponse response, @RequestParam String phone, @RequestParam String pass){
         HttpSession session = request.getSession();
-        //redisUtils.set("CLOUD_"+session.getId(),userService.login(phone,pass),86400000);
         return userService.login(session,phone,pass);
     }
 }

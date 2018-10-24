@@ -4,6 +4,8 @@ import com.ant.entity.PC.PCOrder;
 import com.ant.entity.phone.Order;
 import com.ant.webPage.dao.OrderDao;
 import com.ant.webPage.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Service
 public class PCOrderServer {
+
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private OrderService orderService;
@@ -53,6 +57,8 @@ public class PCOrderServer {
             }
             return pcOrders;
         }catch (Exception e){
+            log.error("查询全部订单错误");
+            log.error(""+e);
             return "给我了一些奇怪的东西！";
         }
     }
